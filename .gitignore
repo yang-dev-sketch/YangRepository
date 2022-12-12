@@ -1,0 +1,8 @@
+# Global
+.vscode
+**/jsconfig.json
+**/settings.json
+**/package-lock.json
+
+# Homeward Library
+**/node_modules/

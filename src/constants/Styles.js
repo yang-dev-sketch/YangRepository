@@ -7,46 +7,51 @@ export default StyleSheet.create({
   container: {
     width: '100%',
     height: '100%',
-    backgroundColor: Colors.white
+    backgroundColor: Colors.white,
+    fontFamily: FontFamily.danidin,
+    direction: 'rtl',
   },
   full: {
     width: '100%',
     height: '100%',
-    backgroundColor: 'white'
+    backgroundColor: '#f5f5f5',
+  },
+  wrapper: {
+    paddingHorizontal: 20,
   },
   center: {
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   horizontal: {
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
   vertical: {
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
   h_center: {
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   v_center: {
-    alignItems: 'center'
+    alignItems: 'center',
   },
   v_align_right: {
-    alignItems: 'flex-end'
+    alignItems: 'flex-end',
   },
   v_align_left: {
-    alignItems: 'flex-start'
+    alignItems: 'flex-start',
   },
   space_between: {
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
   },
   width_100: {
-    width: '100%'
+    width: '100%',
   },
   flex_1: {
-    flex: 1
+    flex: 1,
   },
   text_bold: {
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   dlg_bg: {
     width: '100%',
@@ -74,7 +79,7 @@ export default StyleSheet.create({
     width: 37,
     height: '100%',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   popup_left_header: {
     height: 48,
@@ -96,7 +101,11 @@ export default StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#eeeded',
   },
-  popup_title: { color: Colors.text, fontSize: Dimens.fs_16, fontFamily: FontFamily.korean_gd_13_r },
+  popup_title: {
+    color: Colors.text,
+    fontSize: Dimens.fs_16,
+    fontFamily: FontFamily.korean_gd_13_r,
+  },
   popup_close_btn: {
     width: 48,
     height: '100%',
@@ -118,7 +127,13 @@ export default StyleSheet.create({
   tab_text: { color: Colors.black, fontSize: Dimens.fs_14, fontFamily: FontFamily.korean_gd_15_r },
   tab_active_text: { color: Colors.primary },
   filter: { height: 31, alignItems: 'center', marginHorizontal: 18 },
-  filter_input: { borderWidth: 0.5, borderColor: '#bebdbd', borderRadius: 3, paddingHorizontal: 10, overflow: 'hidden' },
+  filter_input: {
+    borderWidth: 0.5,
+    borderColor: '#bebdbd',
+    borderRadius: 3,
+    paddingHorizontal: 10,
+    overflow: 'hidden',
+  },
   search_wrapper: { flex: 1, marginLeft: 5, borderTopRightRadius: 0, borderBottomRightRadius: 0 },
   search_input: { fontSize: Dimens.fs_12, color: Colors.black, flex: 1, padding: 0 },
   select_text: { color: '#7d7d7d', fontSize: Dimens.fs_12 },
@@ -175,18 +190,18 @@ export default StyleSheet.create({
 
   bottom_confirm_text: {
     color: 'white',
-    fontSize: 15
+    fontSize: 15,
   },
 
   bottom_confirm_text_disabled: {
     color: 'white',
     fontSize: 18,
-    opacity: 0.4
+    opacity: 0.4,
   },
 
   usage_skip_text: {
     color: '#aeaeae',
-    fontSize: 16
+    fontSize: 16,
   },
 
   top_navbar: {
@@ -240,10 +255,10 @@ export default StyleSheet.create({
   },
 
   modal_bg: {
-    backgroundColor: "rgba(0,0,0,0.6)",
-    width: "100%",
-    justifyContent: "center",
-    height: "100%",
+    backgroundColor: 'rgba(0,0,0,0.6)',
+    width: '100%',
+    justifyContent: 'center',
+    height: '100%',
   },
 
   // glory begin-------
@@ -271,7 +286,7 @@ export default StyleSheet.create({
   menu_sep: {
     marginTop: 5,
     borderWidth: 1,
-    borderColor: '#ebebee'
+    borderColor: '#ebebee',
   },
   sub_menu_bar: {
     overflow: 'scroll',
@@ -279,7 +294,6 @@ export default StyleSheet.create({
     alignItems: 'center',
     marginLeft: 5,
     marginRight: 5,
-
   },
   sub_menu_link: {
     fontWeight: '500',
@@ -296,7 +310,7 @@ export default StyleSheet.create({
     backgroundColor: '#00d562',
   },
   signup_block: {
-    marginHorizontal:32,
+    marginHorizontal: 32,
     backgroundColor: '#ebebf3',
     borderRadius: 15,
     height: 55,
@@ -325,26 +339,26 @@ export default StyleSheet.create({
     color: '#ffffff',
     fontSize: Dimens.fs_14,
     borderRadius: 5,
-    height:36,
+    height: 36,
     lineHeight: 36,
     width: '100%',
-    textAlign: 'center'
+    textAlign: 'center',
   },
   // glory end------
   dateTouch: {
-    width: 142
+    width: 142,
   },
   dateTouchBody: {
     flexDirection: 'row',
     height: 40,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   dateIcon: {
     width: 32,
     height: 32,
     marginLeft: 5,
-    marginRight: 5
+    marginRight: 5,
   },
   dateInput: {
     flex: 1,
@@ -352,24 +366,24 @@ export default StyleSheet.create({
     borderWidth: 1,
     borderColor: '#aaa',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   dateText: {
-    color: '#333'
+    color: '#333',
   },
   placeholderText: {
-    color: '#c9c9c9'
+    color: '#c9c9c9',
   },
   datePickerMask: {
     flex: 1,
     alignItems: 'flex-end',
     flexDirection: 'row',
-    backgroundColor: '#00000077'
+    backgroundColor: '#00000077',
   },
   datePickerCon: {
     backgroundColor: '#fff',
     height: 0,
-    overflow: 'hidden'
+    overflow: 'hidden',
   },
   btnText: {
     position: 'absolute',
@@ -378,28 +392,28 @@ export default StyleSheet.create({
     paddingHorizontal: 20,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   btnTextText: {
     fontSize: 16,
-    color: '#46cf98'
+    color: '#46cf98',
   },
   btnTextCancel: {
-    color: '#666'
+    color: '#666',
   },
   btnCancel: {
-    left: 0
+    left: 0,
   },
   btnConfirm: {
-    right: 0
+    right: 0,
   },
   datePicker: {
     marginTop: 42,
     borderTopColor: '#ccc',
-    borderTopWidth: 1
+    borderTopWidth: 1,
   },
   disabled: {
-    backgroundColor: '#eee'
+    backgroundColor: '#eee',
   },
 
   lblCertTime: {
@@ -411,7 +425,7 @@ export default StyleSheet.create({
     alignSelf: 'center',
     paddingHorizontal: 4,
     paddingVertical: 2,
-    borderRadius: 5
+    borderRadius: 5,
   },
 
   lblChTopStartTime: {
@@ -423,6 +437,6 @@ export default StyleSheet.create({
     left: 20,
     paddingHorizontal: 8,
     paddingVertical: 4,
-    borderRadius: 5
-  }
+    borderRadius: 5,
+  },
 });

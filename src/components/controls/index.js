@@ -8,21 +8,21 @@ import ShakeAnimateView from './ShakeAnimateView';
 
 class HorizontalLayout extends React.Component {
   render() {
-    return <View {...this.props} style={[this.props.style, {flexDirection: 'row'}]}/>;
+    return (
+      <View {...this.props} style={[this.props.style, { flexDirection: 'row', display: 'flex' }]} />
+    );
   }
 }
 
 class VerticalLayout extends React.Component {
   render() {
-    return <View {...this.props} style={[this.props.style, {flexDirection: 'column'}]}/>;
+    return (
+      <View
+        {...this.props}
+        style={[this.props.style, { flexDirection: 'column', display: 'flex' }]}
+      />
+    );
   }
 }
 
-export {
-  LocalImage,
-  Button,
-  HorizontalLayout,
-  VerticalLayout,
-  AppScreen,
-  ShakeAnimateView
-}
+export { LocalImage, Button, HorizontalLayout, VerticalLayout, AppScreen, ShakeAnimateView };

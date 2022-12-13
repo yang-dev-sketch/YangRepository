@@ -9,6 +9,7 @@ import {Button, HorizontalLayout, LocalImage, VerticalLayout} from '../component
 import HomeScreen from './home/HomeScreen';
 
 import Toast from 'react-native-root-toast';
+import { BottomMenu } from "../components/common";
 
 @observer
 export default class MainScreen extends AppScreen {
@@ -89,71 +90,7 @@ export default class MainScreen extends AppScreen {
                     </View>
 
                     {/*bottom menu*/}
-                    <HorizontalLayout style={[styles.menu_bar]}>
-                        <Button style={styles.menu}
-                            onPress={() => {
-                                if(GlobalState.getTabIndex != MAIN_TAB.HOME) {
-                                    GlobalState.setTabIndex(MAIN_TAB.HOME);
-                                }
-                            }}>
-                            <VerticalLayout style={Styles.center}>
-                                <LocalImage source={
-                                    GlobalState.getTabIndex == MAIN_TAB.HOME ? require('src/assets/image/ic_banner2.png') : require('src/assets/image/ic_banner2.png')
-                                } style={{ width: 21, height: 21 }}/>
-                            </VerticalLayout>
-                        </Button>
-
-                        <Button style={styles.menu}
-                            onPress={() => {
-                                if(GlobalState.getTabIndex != MAIN_TAB.CHALLENGE) {
-                                    GlobalState.setTabIndex(MAIN_TAB.CHALLENGE);
-                                }
-                            }}>
-                            <VerticalLayout style={Styles.center}>
-                                <LocalImage source={
-                                    GlobalState.getTabIndex == MAIN_TAB.CHALLENGE ? require('src/assets/image/ic_banner2.png') : require('src/assets/image/ic_banner2.png')
-                                } style={{ width: 26, height: 26 }}/>
-                            </VerticalLayout>
-                        </Button>
-
-                        <Button style={styles.menu}
-                            onPress={() => {
-                                this.props.navigation.navigate("ShoppingMall");
-                            }}>
-                            <VerticalLayout style={Styles.center}>
-                                <LocalImage source={
-                                    require('src/assets/image/ic_banner2.png')} style={{ width: 20, height: 19 }}
-                                />
-                            </VerticalLayout>
-                        </Button>
-
-                        <Button style={styles.menu}
-                            onPress={() => {
-                                if(GlobalState.getTabIndex != MAIN_TAB.OPEN) {
-                                    GlobalState.setTabIndex(MAIN_TAB.OPEN);
-                                }
-                            }}>
-                            <VerticalLayout style={Styles.center}>
-                                <LocalImage source={
-                                    GlobalState.getTabIndex == MAIN_TAB.OPEN ? require('src/assets/image/ic_banner2.png') : require('src/assets/image/ic_banner2.png')
-                                } style={{ width: 27, height: 27 }}/>
-
-                            </VerticalLayout>
-                        </Button>
-
-                        <Button style={styles.menu}
-                            onPress={() => {
-                                if(GlobalState.getTabIndex != MAIN_TAB.MYPAGE) {
-                                    GlobalState.setTabIndex(MAIN_TAB.MYPAGE);
-                                }
-                            }}>
-                            <VerticalLayout style={Styles.center}>
-                                <LocalImage source={
-                                    GlobalState.getTabIndex == MAIN_TAB.MYPAGE ? require('src/assets/image/ic_banner2.png') : require('src/assets/image/ic_banner2.png')
-                                } style={{ width: 21, height: 21 }}/>
-                            </VerticalLayout>
-                        </Button>
-                    </HorizontalLayout>
+                    <BottomMenu />
                 </VerticalLayout>
             </SafeAreaView>
         );

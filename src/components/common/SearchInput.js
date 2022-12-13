@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, TextInput, View } from 'react-native';
-import { HorizontalLayout, LocalImage, VerticalLayout } from '../controls';
+import { Button, HorizontalLayout, LocalImage, VerticalLayout } from '../controls';
 
 export default class SearchInput extends React.Component {
   constructor(props) {
@@ -16,11 +16,31 @@ export default class SearchInput extends React.Component {
   render() {
     return (
       <View style={this.props.style}>
-        <TextInput style={styles.search} />
-        <LocalImage
-          source={require('src/assets/image/ic_close.png')}
-          style={{ width: 31, height: 31, position: 'absolute' }}
+        <TextInput
+          numberOfLines={1}
+          value={this.state.search}
+          placeholder="חיפוש"
+          returnKeyType="done"
+          keyboardType="string"
+          style={styles.search}
+          onChangeText={(text) => this.updateSearch(text)}
         />
+        <LocalImage
+          source={require('src/assets/image/ic_search.png')}
+          style={{ width: 13, height: 13, position: 'absolute', right: 30, top: 17.5 }}
+        />
+        {this.state.search !== '' && (
+          <Button
+            onPress={() => {
+              this.updateSearch('');
+            }}
+            style={{ position: 'absolute', left: 30, top: 20 }}>
+            <LocalImage
+              source={require('src/assets/image/ic_delete.png')}
+              style={{ width: 10, height: 10 }}
+            />
+          </Button>
+        )}
       </View>
     );
   }
@@ -38,5 +58,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 19,
     color: '#6F6F6F',
+    paddingRight: 32,
+    textAlign: 'right',
   },
 });

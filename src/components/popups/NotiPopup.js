@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react';
 import React from 'react';
-import { Pressable, SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { FlatList, Pressable, SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import Modal from 'react-native-modal';
 import { Langs, Colors, Dimens, FontFamily, Styles } from '../../constants';
 import GlobalState from '../../mobx/GlobalState';
@@ -22,17 +22,37 @@ class NotiPopup extends React.Component {
         {
           id: 1,
           title: 'וחלקים מתוך הספרות הלטינית הקלאסית מאז 45 לפני',
-          date: '22:45, 10.06.2022',
+          date: '2022-12-13 04:50:10',
+          task: 'שם המשימה',
+          avatar: '',
         },
         {
           id: 2,
           title: 'וחלקים מתוך הספרות הלטינית הקלאסית מאז 45 לפני',
-          date: '22:45, 10.06.2022',
+          date: '2022-12-13 01:28:14',
+          task: 'שם המשימה',
+          avatar: '',
         },
         {
           id: 3,
           title: 'וחלקים מתוך הספרות הלטינית הקלאסית מאז 45 לפני',
-          date: '22:45, 10.06.2022',
+          date: '2022-12-13 01:28:14',
+          task: 'שם המשימה',
+          avatar: '',
+        },
+        {
+          id: 3,
+          title: 'וחלקים מתוך הספרות הלטינית הקלאסית מאז 45 לפני',
+          date: '2022-12-13 01:28:14',
+          task: 'שם המשימה',
+          avatar: '',
+        },
+        {
+          id: 3,
+          title: 'וחלקים מתוך הספרות הלטינית הקלאסית מאז 45 לפני',
+          date: '2022-12-13 01:28:14',
+          task: 'שם המשימה',
+          avatar: '',
         },
       ],
     };
@@ -42,22 +62,16 @@ class NotiPopup extends React.Component {
     this.props.onCancel();
   };
 
-  componentDidMount(): void {
-    EventBus.getInstance().addListener('changeLang', this.changeLang);
-  }
-
-  componentWillUnmount(): void {
-    EventBus.getInstance().removeListener(this.changeLang);
-  }
-
   render() {
     return (
       <SwipeUpDownModal
         ContentModalStyle={styles.Modal}
         modalVisible={this.props.visible}
-        PressToanimate={this.state.animationModal}
+        onClose={() => {
+          this.props.onCancel();
+        }}
         ContentModal={
-          <VerticalLayout>
+          <VerticalLayout style={{ height: '100%' }}>
             <View
               style={{ width: '100%', height: 23, alignItems: 'center', justifyContent: 'center' }}>
               <View
@@ -76,24 +90,47 @@ class NotiPopup extends React.Component {
                 justifyContent: 'space-between',
                 marginBottom: 16.94,
               }}>
-              <LocalImage
-                source={require('src/assets/image/ic_close.png')}
-                style={{ width: 31, height: 31 }}
-              />
+              <Button
+                onPress={() => {
+                  this.props.onCancel();
+                }}>
+                <LocalImage
+                  source={require('src/assets/image/ic_close.png')}
+                  style={{ width: 31, height: 31 }}
+                />
+              </Button>
               <Text style={{ fontSize: 18, lineHeight: 22 }}>התראות</Text>
             </HorizontalLayout>
             <SearchInput style={{ paddingHorizontal: 20 }} />
             <ScrollView style={{ paddingHorizontal: 20, marginTop: 20 }}>
-              {this.state.notiList.map((item, index) => {
-                return (
-                  <NotiItem title={item.title} date={item.date} style={{ marginBottom: 15 }} />
-                );
-              })}
+              <FlatList
+                ref={(ref) => {
+                  this._flContent = ref;
+                }}
+                showsVerticalScrollIndicator={false}
+                style={{ marginTop: 15 }}
+                data={this.state.notiList}
+                numColumns={1}
+                renderItem={({ item, index }) => {
+                  return (
+                    <NotiItem
+                      title={item.title}
+                      date={item.date}
+                      task={item.task}
+                      avatar={item.avatar}
+                    />
+                  );
+                }}
+                keyExtractor={(item, idx) => idx.toString()}
+                ItemSeparatorComponent={() => {
+                  return <View style={{ height: 15 }} />;
+                }}
+              />
             </ScrollView>
           </VerticalLayout>
         }
         onClose={() => {
-          this.setState({ animationModal: false, showComment: false });
+          this.props.onCancel();
         }}
       />
     );

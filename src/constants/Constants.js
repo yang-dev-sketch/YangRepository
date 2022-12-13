@@ -6,7 +6,7 @@ export const IS_UI_MODE = false;
 // export const SERVER_URL = IS_OFFLINE_MODE ? 'http://192.168.0.58:9006/admin/index.php' : 'http://api.made.me';
 export const SERVER_URL = IS_OFFLINE_MODE ? 'http://192.168.0.33/Koeyou/PSJDC2202-Keoyou/admin/index.php' : 'http://api.made.me';
 export const API_URL = SERVER_URL + '/api/';
-export const IMAGE_FOO_URL = 'http://localhost:8081/src/assets/image/ic_banner2.png';
+export const IMAGE_FOO_URL = 'http://localhost:8081/src/assets/image/ic_shadow.png';
 export const SHOPPING_MALL_URL = 'http://192.168.0.58:9006/admin/index.php/api/Login/test';
 
 export const MANAGER_PHONE = '020000000';

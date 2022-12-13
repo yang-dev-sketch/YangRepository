@@ -16,8 +16,6 @@ class NotiPopup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      animationModal: false,
-      showComment: false,
       notiList: [
         {
           id: 1,
@@ -114,10 +112,10 @@ class NotiPopup extends React.Component {
                 renderItem={({ item, index }) => {
                   return (
                     <NotiItem
-                      title={item.title}
-                      date={item.date}
-                      task={item.task}
-                      avatar={item.avatar}
+                      data={item.data}
+                      setTrainingTime={() => {
+                        this.props.setTrainingTime(id);
+                      }}
                     />
                   );
                 }}

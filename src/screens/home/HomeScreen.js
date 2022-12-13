@@ -34,6 +34,7 @@ import TotalItem from '../../components/items/TotalItem';
 import LinearGradient from 'react-native-linear-gradient';
 import NumberFormat from 'react-number-format';
 import NotiPopup from '../../components/popups/NotiPopup';
+import TrainTimePopup from '../../components/popups/TrainTimePopup';
 
 @observer
 export default class HomeScreen extends React.Component {
@@ -58,12 +59,18 @@ export default class HomeScreen extends React.Component {
         { title: 'מאמנים באירגון', image: require('src/assets/image/ic_trainer.png'), url: '' },
       ],
       showNotiPopup: false,
+      showTrainTimePopup: false,
     };
   }
 
   componentDidMount() {}
 
   componentWillUnmount() {}
+
+  setTrainingTime = (id) => {
+    //get info
+    this.setState({ showTrainTimePopup: true });
+  };
 
   render() {
     return (
@@ -313,6 +320,29 @@ export default class HomeScreen extends React.Component {
           onCancel={() => {
             this.setState({
               showNotiPopup: false,
+            });
+          }}
+          setTrainingTime={(id) => {
+            this.setState({ showNotiPopup: false });
+            this.setTrainingTime(id);
+          }}
+        />
+        <TrainTimePopup
+          visible={this.state.showTrainTimePopup}
+          onCancel={() => {
+            this.setState({
+              showTrainTimePopup: false,
+            });
+          }}
+          onBack={() => {
+            this.setState({
+              showTrainTimePopup: false,
+              showNotiPopup: true,
+            });
+          }}
+          onConfirm={() => {
+            this.setState({
+              showTrainTimePopup: false,
             });
           }}
         />

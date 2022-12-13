@@ -17,9 +17,10 @@ class NotiItem extends React.Component {
   componentDidMount() {}
 
   render() {
+    const data = this.props;
     return (
       <View>
-        {(CommonUtils.isBeforeToday(this.props.date) && (
+        {(CommonUtils.isBeforeToday(data.date) && (
           <VerticalLayout style={styles.active_item}>
             <View
               style={{
@@ -39,11 +40,11 @@ class NotiItem extends React.Component {
                 justifyContent: 'space-between',
               }}>
               <Text style={{ fontSize: 14, lineHeight: 22, color: '#1E6FD9' }}>
-                {CommonUtils.getFormatedDate(this.props.date, 'hh:mm')}
+                {CommonUtils.getFormatedDate(data.date, 'hh:mm')}
               </Text>
               <HorizontalLayout>
                 <VerticalLayout>
-                  <Text style={{ fontSize: 16, lineHeight: 19 }}>{this.props.task}</Text>
+                  <Text style={{ fontSize: 16, lineHeight: 19 }}>{data.task}</Text>
                   <Text
                     style={{
                       fontSize: 14,
@@ -51,11 +52,11 @@ class NotiItem extends React.Component {
                       letterSpacing: -0.17,
                       color: '#979797',
                     }}>
-                    {CommonUtils.getFormatedDate(this.props.date, 'hh:mm, DD.MM.YYYY')}
+                    {CommonUtils.getFormatedDate(data.date, 'hh:mm, DD.MM.YYYY')}
                   </Text>
                 </VerticalLayout>
                 <FastImage
-                  source={{ uri: this.props.avatar ? this.props.avatar : IMAGE_FOO_URL }}
+                  source={{ uri: data.avatar ? data.avatar : IMAGE_FOO_URL }}
                   resizeMode={FastImage.resizeMode.cover}
                   style={{ width: 34, height: 34, borderRadius: 17 }}
                 />
@@ -65,10 +66,21 @@ class NotiItem extends React.Component {
               <Text style={{ fontSize: 14, lineHeight: 17, marginBottom: 8 }}>
                 זוהי עובדה מבוססת שדעתו של ...
               </Text>
-              <Text
-                style={{ fontSize: 14, lineHeight: 17, letterSpacing: -0.17, color: '#5C9DF2' }}>
-                להזכיר במועד מאוחר יותר
-              </Text>
+              <Button
+                onPress={() => {
+                  if (this.props.setTrainingTime) this.props.setTrainingTime(data.id);
+                }}>
+                <Text
+                  style={{
+                    fontSize: 14,
+                    lineHeight: 17,
+                    letterSpacing: -0.17,
+                    color: '#5C9DF2',
+                    textDecorationLine: 'underline',
+                  }}>
+                  להזכיר במועד מאוחר יותר
+                </Text>
+              </Button>
             </VerticalLayout>
           </VerticalLayout>
         )) || (
@@ -77,10 +89,10 @@ class NotiItem extends React.Component {
               <Text
                 numberOfLines={2}
                 style={{ fontSize: 16, lineHeight: 22, letterSpacing: -0.17, width: '70%' }}>
-                {this.props.title}
+                {data.title}
               </Text>
               <Text numberOfLines={1} style={{ fontSize: 14, lineHeight: 22, color: '#979797' }}>
-                {CommonUtils.getFormatedDate(this.props.date, 'hh:mm, DD.MM.YYYY')}
+                {CommonUtils.getFormatedDate(data.date, 'hh:mm, DD.MM.YYYY')}
               </Text>
             </VerticalLayout>
             <LocalImage

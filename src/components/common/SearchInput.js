@@ -10,7 +10,8 @@ export default class SearchInput extends React.Component {
     };
   }
   updateSearch = (search) => {
-    this.setState({ search });
+    this.setState({ search: search });
+    this.props.setSearch(search);
   };
 
   render() {

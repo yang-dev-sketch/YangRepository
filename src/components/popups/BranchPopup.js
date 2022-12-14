@@ -7,60 +7,33 @@ import GlobalState from '../../mobx/GlobalState';
 import { Button, HorizontalLayout, VerticalLayout, LocalImage, CheckBox } from '../controls';
 import EventBus from 'react-native-event-bus';
 import SwipeUpDownModal from 'react-native-swipe-modal-up-down';
-import { SearchInput } from '../common';
+import { ActiveButton, SearchInput, DisactiveButton } from '../common';
 import { ScrollView } from 'react-navigation';
 import NotiItem from '../items/NotiItem';
+import { BranchItem } from '../items';
+import { requestPost } from '../../utils/ApiUtils';
+import { API } from '../../constants/Constants';
 
 @observer
 class BranchPopup extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      notiList: [
-        {
-          id: 1,
-          title: 'וחלקים מתוך הספרות הלטינית הקלאסית מאז 45 לפני',
-          date: '2022-12-13 04:50:10',
-          task: 'שם המשימה',
-          avatar: '',
-        },
-        {
-          id: 2,
-          title: 'וחלקים מתוך הספרות הלטינית הקלאסית מאז 45 לפני',
-          date: '2022-12-13 01:28:14',
-          task: 'שם המשימה',
-          avatar: '',
-        },
-        {
-          id: 3,
-          title: 'וחלקים מתוך הספרות הלטינית הקלאסית מאז 45 לפני',
-          date: '2022-12-13 01:28:14',
-          task: 'שם המשימה',
-          avatar: '',
-        },
-        {
-          id: 3,
-          title: 'וחלקים מתוך הספרות הלטינית הקלאסית מאז 45 לפני',
-          date: '2022-12-13 01:28:14',
-          task: 'שם המשימה',
-          avatar: '',
-        },
-        {
-          id: 3,
-          title: 'וחלקים מתוך הספרות הלטינית הקלאסית מאז 45 לפני',
-          date: '2022-12-13 01:28:14',
-          task: 'שם המשימה',
-          avatar: '',
-        },
-      ],
-    };
   }
 
   onCancel = () => {
     this.props.onCancel();
   };
 
+  deleteBranch = () => {
+    this.props.deleteBranch();
+  };
+
+  showDetail = () => {
+    this.onCancel();
+  };
+
   render() {
+    const data = this.props.data;
     return (
       <SwipeUpDownModal
         ContentModalStyle={styles.Modal}
@@ -99,32 +72,67 @@ class BranchPopup extends React.Component {
               </Button>
               <Text style={{ fontSize: 18, lineHeight: 22 }}>הסניפים שלנו</Text>
             </HorizontalLayout>
-            <SearchInput style={{ paddingHorizontal: 20 }} />
-            <ScrollView style={{ paddingHorizontal: 20, marginTop: 20 }}>
-              <FlatList
-                ref={(ref) => {
-                  this._flContent = ref;
-                }}
-                showsVerticalScrollIndicator={false}
-                style={{ marginTop: 15 }}
-                data={this.state.notiList}
-                numColumns={1}
-                renderItem={({ item, index }) => {
-                  return (
-                    <NotiItem
-                      data={item.data}
-                      setTrainingTime={() => {
-                        this.props.setTrainingTime(id);
-                      }}
-                    />
-                  );
-                }}
-                keyExtractor={(item, idx) => idx.toString()}
-                ItemSeparatorComponent={() => {
-                  return <View style={{ height: 15 }} />;
-                }}
-              />
-            </ScrollView>
+            <SearchInput
+              style={{ paddingHorizontal: 20 }}
+              setSearch={(search) => {
+                this.props.setSearch(search);
+              }}
+            />
+            <FlatList
+              ref={(ref) => {
+                this._flContent = ref;
+              }}
+              style={{ paddingHorizontal: 20, marginTop: 20 }}
+              showsVerticalScrollIndicator={false}
+              data={data}
+              numColumns={1}
+              renderItem={({ item, index }) => {
+                return (
+                  <BranchItem
+                    data={item}
+                    selectBranchId={this.props.selectBranchId}
+                    selectBranch={() => {
+                      this.props.selectBranch(item.id);
+                    }}
+                  />
+                );
+              }}
+              keyExtractor={(item, idx) => idx.toString()}
+              ItemSeparatorComponent={() => {
+                return <View style={{ height: 15 }} />;
+              }}
+            />
+            <Button
+              onPress={() => {
+                this.props.addBranch();
+              }}>
+              <HorizontalLayout
+                style={{ alignItems: 'center', justifyContent: 'center', paddingVertical: 15 }}>
+                <Text style={{ fontSize: 16, lineHeight: 19 }}>הוספת סניף חדש</Text>
+                <LocalImage
+                  source={require('src/assets/image/ic_plus_sign.png')}
+                  style={{ width: 24, height: 24, marginLeft: 6 }}
+                />
+              </HorizontalLayout>
+            </Button>
+            {this.props.selectBranchId != 0 && (
+              <VerticalLayout style={{ paddingHorizontal: 20 }}>
+                <ActiveButton
+                  text="הראה פרטים"
+                  style={{ marginBottom: 15 }}
+                  action={() => {
+                    this.showDetail();
+                  }}
+                />
+                <DisactiveButton
+                  text="למחוק סניף"
+                  style={{ marginBottom: 15 }}
+                  action={() => {
+                    this.deleteBranch();
+                  }}
+                />
+              </VerticalLayout>
+            )}
           </VerticalLayout>
         }
         onClose={() => {
@@ -144,7 +152,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     width: '100%',
-    height: '95%',
+    height: '90%',
   },
 });
 

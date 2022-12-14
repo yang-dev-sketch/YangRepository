@@ -62,5 +62,8 @@ export const API = {
   },
   Home: {
     update_train_time: 'Home/update_train_time',
+    get_branch: 'Home/get_branch',
+    add_branch: 'Home/add_branch',
+    delete_branch: 'Home/delete_branch',
   }
 };

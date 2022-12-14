@@ -95,7 +95,7 @@ class NotiItem extends React.Component {
             </VerticalLayout>
             <LocalImage
               source={require('src/assets/image/ic_noti.png')}
-              style={{ width: 45, height: 45, borderRadius: 17, marginLeft: 10 }}
+              style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 10 }}
             />
           </HorizontalLayout>
         )}

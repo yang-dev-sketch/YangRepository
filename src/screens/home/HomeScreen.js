@@ -27,7 +27,7 @@ import {
 } from '../../components/controls';
 import GlobalState from '../../mobx/GlobalState';
 import MyInfo from '../../mobx/MyInfo';
-import { requestPost } from '../../utils/ApiUtils';
+import { requestGet, requestPost } from '../../utils/ApiUtils';
 import Toast from 'react-native-root-toast';
 import EventBus from 'react-native-event-bus';
 import TotalItem from '../../components/items/TotalItem';
@@ -35,7 +35,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import NumberFormat from 'react-number-format';
 import NotiPopup from '../../components/popups/NotiPopup';
 import TrainTimePopup from '../../components/popups/TrainTimePopup';
-import { DatePickerPopup } from '../../components/popups';
+import { BranchPopup, DatePickerPopup } from '../../components/popups';
 import TimePickerPopup from '../../components/popups/TimePickerPopup';
 
 @observer
@@ -53,16 +53,55 @@ export default class HomeScreen extends React.Component {
         { title: 'מתאמנים באירגון', image: require('src/assets/image/ic_train.png'), url: '' },
         { title: 'מאמנים באירגון', image: require('src/assets/image/ic_trainer.png'), url: '' },
       ],
+      //noti
       showNotiPopup: false,
       trainId: 0,
       showTrainTimePopup: false,
       showDatePickerPopup: false,
       showTimePickerPopup: false,
       trainDateTime: new Date(),
+      //branch
+      showBranchPopup: false,
+      branchList: [],
+      selectedBranchId: 0,
+      branchSearch: '',
+      //addbranch
+      showAddBranchPopup: false,
     };
   }
 
+  getBranch = () => {
+    // requestGet(API.Home.get_branch, {
+    //   search: this.state.branchSearch,
+    // }).then(async (result) => {
+    //   if (result.code == API_RES_CODE.SUCCESS) {
+    //   } else {
+    //   }
+    // });
+    const branchList = [
+      { id: 1, name: 'צעדים לונדון', checked: false },
+      { id: 2, name: 'צעדים פריז', checked: false },
+      { id: 3, name: 'צעדים קייב', checked: false },
+      { id: 4, name: 'צעדים קייב', checked: false },
+    ];
+    this.setState({ branchList: branchList });
+  };
+
+  deleteBranch = () => {
+    // requestPost(API.Home.delete_branch, {}).then(async (result) => {
+    //   if (result.code == API_RES_CODE.SUCCESS) {
+    this.setState({
+      branchList: this.state.branchList.filter((item) => {
+        return item.id != this.state.selectedBranchId;
+      }),
+    });
+    //   } else {
+    //   }
+    // });
+  };
+
   getInfo = () => {
+    this.getBranch();
     const trainType = [
       { id: 1, title: 'אימון אישי', color: '#43C7FF', amount: 20 },
       { id: 2, title: 'אימון קבוצות', color: '#1E6FD9', amount: 30 },
@@ -73,7 +112,12 @@ export default class HomeScreen extends React.Component {
     ];
     const income = 12875;
     const upcoming = 34;
-    this.setState({ trainType: trainType, income: income, upcoming: upcoming });
+
+    this.setState({
+      trainType: trainType,
+      income: income,
+      upcoming: upcoming,
+    });
   };
 
   componentDidMount() {
@@ -143,6 +187,9 @@ export default class HomeScreen extends React.Component {
             <HorizontalLayout
               style={{ alignItems: 'center', justifyContent: 'space-between', marginTop: 15 }}>
               <Button
+                onPress={() => {
+                  this.setState({ showBranchPopup: true });
+                }}
                 style={{
                   width: 49,
                   height: 43,
@@ -390,6 +437,26 @@ export default class HomeScreen extends React.Component {
           }}
           onCancel={() => {
             this.setState({ showTimePickerPopup: false });
+          }}
+        />
+        <BranchPopup
+          visible={this.state.showBranchPopup}
+          data={this.state.branchList}
+          selectBranchId={this.state.selectedBranchId}
+          selectBranch={(index) => {
+            this.setState({ selectedBranchId: index });
+          }}
+          setSearch={() => {
+            this.getBranch();
+          }}
+          addBranch={() => {
+            this.setState({ showBranchPopup: false, showAddBranchPopup: true });
+          }}
+          deleteBranch={() => {
+            this.deleteBranch();
+          }}
+          onCancel={() => {
+            this.setState({ showBranchPopup: false });
           }}
         />
       </SafeAreaView>

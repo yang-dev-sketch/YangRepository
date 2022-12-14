@@ -37,6 +37,7 @@ import NotiPopup from '../../components/popups/NotiPopup';
 import TrainTimePopup from '../../components/popups/TrainTimePopup';
 import { AddBranchPopup, BranchPopup, DatePickerPopup, LeadPopup } from '../../components/popups';
 import TimePickerPopup from '../../components/popups/TimePickerPopup';
+import CloseTrainPopup from "../../components/popups/CloseTrainPopup";
 
 @observer
 export default class HomeScreen extends React.Component {
@@ -45,13 +46,13 @@ export default class HomeScreen extends React.Component {
 
     this.state = {
       trainType: [],
-      income: 12875,
-      upcoming: 34,
+      income: 0,
+      upcoming: 0,
       detailList: [
-        { title: 'חנות', image: require('src/assets/image/ic_store.png'), popup: 'showLeadPopup' },
-        { title: 'יצירת אימון', image: require('src/assets/image/ic_work.png'), popup: '' },
-        { title: 'מתאמנים באירגון', image: require('src/assets/image/ic_train.png'), popup: '' },
-        { title: 'מאמנים באירגון', image: require('src/assets/image/ic_trainer.png'), popup: '' },
+        { title: 'חנות', image: require('src/assets/image/ic_store.png') },
+        { title: 'יצירת אימון', image: require('src/assets/image/ic_work.png') },
+        { title: 'מתאמנים באירגון', image: require('src/assets/image/ic_train.png') },
+        { title: 'מאמנים באירגון', image: require('src/assets/image/ic_trainer.png') },
       ],
       //noti
       showNotiPopup: false,
@@ -69,6 +70,8 @@ export default class HomeScreen extends React.Component {
       showAddBranchPopup: false,
       //total lead
       showLeadPopup: false,
+      //close train
+      showCloseTrainPopup: false,
     };
   }
 
@@ -272,7 +275,13 @@ export default class HomeScreen extends React.Component {
             </HorizontalLayout>
             <HorizontalLayout style={{ marginTop: 15, justifyContent: 'space-between' }}>
               <TotalItem event={{}} amount={12} text="סה״כ הגיעו" color="#4399FF"></TotalItem>
-              <TotalItem event={() => {this.setState({showLeadPopup: true});}} amount={4} text="סה״כ נרשמו היום" color="#4E0DD9"></TotalItem>
+              <TotalItem
+                event={() => {
+                  this.setState({ showLeadPopup: true });
+                }}
+                amount={4}
+                text="סה״כ נרשמו היום"
+                color="#4E0DD9"></TotalItem>
             </HorizontalLayout>
             <HorizontalLayout
               style={{
@@ -318,7 +327,10 @@ export default class HomeScreen extends React.Component {
               </HorizontalLayout>
               <Text style={{ fontSize: 14, lineHeight: 17 }}>ההכנסה היומית שלי</Text>
             </HorizontalLayout>
-            <Button>
+            <Button
+              onPress={() => {
+                this.setState({ showCloseTrainPopup: true });
+              }}>
               <HorizontalLayout
                 style={{
                   width: '100%',
@@ -489,6 +501,15 @@ export default class HomeScreen extends React.Component {
           }}
           onCancel={() => {
             this.setState({ showLeadPopup: false });
+          }}
+        />
+        <CloseTrainPopup
+          visible={this.state.showCloseTrainPopup}
+          setSearch={() => {
+            this.getLead();
+          }}
+          onCancel={() => {
+            this.setState({ showCloseTrainPopup: false });
           }}
         />
       </SafeAreaView>

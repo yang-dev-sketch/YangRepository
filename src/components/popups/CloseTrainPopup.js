@@ -14,9 +14,10 @@ import { API } from '../../constants/Constants';
 import TotalItem from '../items/TotalItem';
 import Timeline from 'react-native-timeline-flatlist';
 import LeadItem from '../items/LeadItem';
+import TrainItem from '../items/TrainItem';
 
 @observer
-class LeadPopup extends React.Component {
+class CloseTrainPopup extends React.Component {
   constructor(props) {
     super(props);
     this.onEventPress = this.onEventPress.bind(this);
@@ -24,34 +25,28 @@ class LeadPopup extends React.Component {
     this.renderDetail = this.renderDetail.bind(this);
     this.data = [
       {
+        type: 'אימון אישי ',
         time: '08:00',
+        min: '45',
+        timeArea: '08:00 - 08:45',
         name: 'שם הליד',
-        avatar: '',
-        type: 'fail',
-        phone: '052 - 000000000',
-        gmail: 'nastya1106@gmail.com',
-        createdAt: '13:34, 11.06.2022',
-        updatedAt: '14.08.2022',
+        participants: '10/12',
       },
       {
+        type: 'אימון אישי ',
         time: '09:00',
+        min: '45',
+        timeArea: '08:00 - 08:45',
         name: 'שם הליד',
-        avatar: '',
-        type: 'treatment',
-        phone: '052 - 000000000',
-        gmail: 'nastya1106@gmail.com',
-        createdAt: '13:34, 11.06.2022',
-        updatedAt: '14.08.2022',
+        participants: '10/12',
       },
       {
+        type: 'אימון אישי ',
         time: '10:00',
+        min: '45',
+        timeArea: '08:00 - 08:45',
         name: 'שם הליד',
-        avatar: '',
-        type: 'noreply',
-        phone: '052 - 000000000',
-        gmail: 'nastya1106@gmail.com',
-        createdAt: '13:34, 11.06.2022',
-        updatedAt: '14.08.2022',
+        participants: '10/12',
       },
     ];
     this.state = { selected: null };
@@ -60,10 +55,6 @@ class LeadPopup extends React.Component {
   onCancel = () => {
     this.props.onCancel();
   };
-
-  onSort = () => {};
-
-  onSave = () => {};
 
   onEventPress(data) {
     this.setState({ selected: data });
@@ -74,7 +65,7 @@ class LeadPopup extends React.Component {
   }
 
   renderDetail(rowData, sectionID, rowID) {
-    return <LeadItem data={rowData} />;
+    return <TrainItem data={rowData} even={sectionID % 2 === 0} />;
   }
 
   render() {
@@ -116,20 +107,7 @@ class LeadPopup extends React.Component {
                   style={{ width: 31, height: 31 }}
                 />
               </Button>
-              <Text style={{ fontSize: 18, lineHeight: 22 }}>לידים</Text>
-            </HorizontalLayout>
-            <HorizontalLayout style={{ justifyContent: 'space-between', paddingHorizontal: 20 }}>
-              <TotalItem event={{}} amount={94} text="לידים נרשמו" color="#43C7FF"></TotalItem>
-              <TotalItem event={{}} amount={5} text="נרשמו היום" color="#0D65D9"></TotalItem>
-            </HorizontalLayout>
-            <HorizontalLayout
-              style={{ marginTop: 15, justifyContent: 'space-between', paddingHorizontal: 20 }}>
-              <TotalItem
-                event={{}}
-                amount={12}
-                text="אחוז המרה ללקוחות"
-                color="#4399FF"></TotalItem>
-              <TotalItem event={{}} amount={4} text="תזכורות לידים" color="#4E0DD9"></TotalItem>
+              <Text style={{ fontSize: 18, lineHeight: 22 }}>אימונים קרובים</Text>
             </HorizontalLayout>
             <SearchInput
               style={{ paddingHorizontal: 20, marginVertical: 15 }}
@@ -140,30 +118,10 @@ class LeadPopup extends React.Component {
             <HorizontalLayout
               style={{
                 alignItems: 'center',
-                justifyContent: 'space-between',
+                justifyContent: 'flex-end',
                 paddingHorizontal: 20,
                 marginBottom: 16.25,
               }}>
-              <Button
-                onPress={() => {
-                  this.onSort();
-                }}>
-                <HorizontalLayout>
-                  <Text
-                    style={{
-                      fontSize: 16,
-                      lineHeight: 19,
-                      color: '#5C9DF2',
-                      textDecorationLine: 'underline',
-                    }}>
-                    סינון
-                  </Text>
-                  <LocalImage
-                    source={require('src/assets/image/ic_sort.png')}
-                    style={{ width: 21, height: 21 }}
-                  />
-                </HorizontalLayout>
-              </Button>
               <Text style={{ fontSize: 18, lineHeight: 22 }}>{this.renderSelected()}</Text>
             </HorizontalLayout>
             <ScrollView style={{ paddingHorizontal: 20 }}>
@@ -201,25 +159,6 @@ class LeadPopup extends React.Component {
                 renderDetail={this.renderDetail}
               />
             </ScrollView>
-            <Button
-              onPress={() => {
-                this.props.addBranch();
-              }}
-              style={{ alignItems: 'center' }}>
-              <LocalImage
-                source={require('src/assets/image/ic_plus_sign.png')}
-                style={{ width: 45, height: 45, marginBottom: 15 }}
-              />
-            </Button>
-            <View style={{ paddingHorizontal: 20 }}>
-              <ActiveButton
-                text="שמירה"
-                style={{ marginBottom: 15 }}
-                action={() => {
-                  this.onSave();
-                }}
-              />
-            </View>
           </VerticalLayout>
         }
         onClose={() => {
@@ -239,8 +178,8 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     width: '100%',
-    height: '95%',
+    height: '80%',
   },
 });
 
-export default LeadPopup;
+export default CloseTrainPopup;

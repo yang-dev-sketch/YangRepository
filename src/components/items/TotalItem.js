@@ -39,6 +39,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: 11,
     paddingHorizontal: 14,
+    borderWidth: 1,
+    borderColor: '#D8D8D8',
     alignItems: 'center',
     justifyContent: 'space-between',
   },
@@ -57,6 +59,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 17,
     letterSpacing: 1,
-    width: '60%',
+    width: '53%',
   },
 });

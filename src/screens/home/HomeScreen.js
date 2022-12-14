@@ -35,7 +35,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import NumberFormat from 'react-number-format';
 import NotiPopup from '../../components/popups/NotiPopup';
 import TrainTimePopup from '../../components/popups/TrainTimePopup';
-import { AddBranchPopup, BranchPopup, DatePickerPopup } from '../../components/popups';
+import { AddBranchPopup, BranchPopup, DatePickerPopup, LeadPopup } from '../../components/popups';
 import TimePickerPopup from '../../components/popups/TimePickerPopup';
 
 @observer
@@ -48,10 +48,10 @@ export default class HomeScreen extends React.Component {
       income: 12875,
       upcoming: 34,
       detailList: [
-        { title: 'חנות', image: require('src/assets/image/ic_store.png'), url: '' },
-        { title: 'יצירת אימון', image: require('src/assets/image/ic_work.png'), url: '' },
-        { title: 'מתאמנים באירגון', image: require('src/assets/image/ic_train.png'), url: '' },
-        { title: 'מאמנים באירגון', image: require('src/assets/image/ic_trainer.png'), url: '' },
+        { title: 'חנות', image: require('src/assets/image/ic_store.png'), popup: 'showLeadPopup' },
+        { title: 'יצירת אימון', image: require('src/assets/image/ic_work.png'), popup: '' },
+        { title: 'מתאמנים באירגון', image: require('src/assets/image/ic_train.png'), popup: '' },
+        { title: 'מאמנים באירגון', image: require('src/assets/image/ic_trainer.png'), popup: '' },
       ],
       //noti
       showNotiPopup: false,
@@ -67,6 +67,8 @@ export default class HomeScreen extends React.Component {
       branchSearch: '',
       //addbranch
       showAddBranchPopup: false,
+      //total lead
+      showLeadPopup: false,
     };
   }
 
@@ -128,6 +130,15 @@ export default class HomeScreen extends React.Component {
     // requestPost(API.Home.update_train_time, {
     //   id: this.state.trainId,
     //   time: this.state.trainDateTime,
+    // }).then(async (result) => {
+    //   if (result.code == API_RES_CODE.SUCCESS) {
+    //   } else {
+    //   }
+    // });
+  };
+
+  getLead = () => {
+    // requestPost(API.Home.get_lead, {
     // }).then(async (result) => {
     //   if (result.code == API_RES_CODE.SUCCESS) {
     //   } else {
@@ -261,7 +272,7 @@ export default class HomeScreen extends React.Component {
             </HorizontalLayout>
             <HorizontalLayout style={{ marginTop: 15, justifyContent: 'space-between' }}>
               <TotalItem event={{}} amount={12} text="סה״כ הגיעו" color="#4399FF"></TotalItem>
-              <TotalItem event={{}} amount={4} text="סה״כ נרשמו היום" color="#4E0DD9"></TotalItem>
+              <TotalItem event={() => {this.setState({showLeadPopup: true});}} amount={4} text="סה״כ נרשמו היום" color="#4E0DD9"></TotalItem>
             </HorizontalLayout>
             <HorizontalLayout
               style={{
@@ -349,9 +360,7 @@ export default class HomeScreen extends React.Component {
               renderItem={({ item, index }) => {
                 return (
                   <Button
-                    onPress={() => {
-                      this.props.navigation.navigate(item.url);
-                    }}
+                    onPress={() => {}}
                     style={[
                       { width: (SCREEN_WIDTH - 64) / 2, height: 115, alignItems: 'center' },
                       index % 2 === 0 && { marginRight: 24 },
@@ -471,6 +480,15 @@ export default class HomeScreen extends React.Component {
           }}
           onCancel={() => {
             this.setState({ showAddBranchPopup: false });
+          }}
+        />
+        <LeadPopup
+          visible={this.state.showLeadPopup}
+          setSearch={() => {
+            this.getLead();
+          }}
+          onCancel={() => {
+            this.setState({ showLeadPopup: false });
           }}
         />
       </SafeAreaView>

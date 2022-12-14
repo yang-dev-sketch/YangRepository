@@ -12,6 +12,7 @@ import { ScrollView } from 'react-navigation';
 import NotiItem from '../items/NotiItem';
 import { SCREEN_WIDTH } from '../../constants/Constants';
 import DisactiveButton from '../common/DisactiveButton';
+import { CommonUtils } from '../../utils';
 
 @observer
 class TrainTimePopup extends React.Component {
@@ -28,6 +29,12 @@ class TrainTimePopup extends React.Component {
   };
   onConfirm = () => {
     this.props.onConfirm();
+  };
+  setDatePicker = () => {
+    this.props.setDatePicker();
+  };
+  setTimePicker = () => {
+    this.props.setTimePicker();
   };
 
   render() {
@@ -85,7 +92,10 @@ class TrainTimePopup extends React.Component {
                   title="תאריך האימון"
                   image={require('src/assets/image/ic_calendar.png')}
                   inputNode={
-                    <View
+                    <Button
+                      onPress={() => {
+                        this.setDatePicker();
+                      }}
                       style={{
                         width: (SCREEN_WIDTH - 85) / 2,
                         height: 40,
@@ -94,8 +104,8 @@ class TrainTimePopup extends React.Component {
                         alignItems: 'center',
                         justifyContent: 'center',
                       }}>
-                      <Text>inputnode</Text>
-                    </View>
+                      <Text>{this.props.trainDate}</Text>
+                    </Button>
                   }
                 />
               </View>
@@ -104,7 +114,10 @@ class TrainTimePopup extends React.Component {
                   title="תאריך האימון"
                   image={require('src/assets/image/ic_clock.png')}
                   inputNode={
-                    <View
+                    <Button
+                      onPress={() => {
+                        this.setTimePicker();
+                      }}
                       style={{
                         width: (SCREEN_WIDTH - 85) / 2,
                         height: 40,
@@ -113,8 +126,8 @@ class TrainTimePopup extends React.Component {
                         alignItems: 'center',
                         justifyContent: 'center',
                       }}>
-                      <Text>inputnode</Text>
-                    </View>
+                      <Text>{this.props.trainTime}</Text>
+                    </Button>
                   }
                 />
               </View>

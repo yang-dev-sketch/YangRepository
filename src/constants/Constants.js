@@ -60,4 +60,7 @@ export const API = {
     sign_up: 'Login/sign_up',
     check_phone: 'Login/check_phone',
   },
+  Home: {
+    update_train_time: 'Home/update_train_time',
+  }
 };

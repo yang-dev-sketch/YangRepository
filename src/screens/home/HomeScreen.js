@@ -14,7 +14,7 @@ import {
 } from 'react-native';
 import Swiper from 'react-native-swiper';
 import FastImage from 'react-native-fast-image';
-
+import moment from 'moment';
 import { CommonUtils } from '../../utils';
 import { Langs, Styles } from '../../constants';
 import { API, API_RES_CODE, IMAGE_FOO_URL, SCREEN_WIDTH } from '../../constants/Constants';
@@ -35,6 +35,8 @@ import LinearGradient from 'react-native-linear-gradient';
 import NumberFormat from 'react-number-format';
 import NotiPopup from '../../components/popups/NotiPopup';
 import TrainTimePopup from '../../components/popups/TrainTimePopup';
+import { DatePickerPopup } from '../../components/popups';
+import TimePickerPopup from '../../components/popups/TimePickerPopup';
 
 @observer
 export default class HomeScreen extends React.Component {
@@ -42,14 +44,7 @@ export default class HomeScreen extends React.Component {
     super(props);
 
     this.state = {
-      trainType: [
-        { id: 1, title: 'אימון אישי', color: '#43C7FF', amount: 20 },
-        { id: 2, title: 'אימון קבוצות', color: '#1E6FD9', amount: 30 },
-        { id: 3, title: 'קיקבוקס', color: '#0019FF', amount: 15 },
-        { id: 4, title: 'פילאטיס', color: '#5C9DF2', amount: 10 },
-        { id: 5, title: 'יוגה', color: '#004765', amount: 40 },
-        { id: 6, title: 'פונקציונאלי', color: '#000E88', amount: 20 },
-      ],
+      trainType: [],
       income: 12875,
       upcoming: 34,
       detailList: [
@@ -59,17 +54,41 @@ export default class HomeScreen extends React.Component {
         { title: 'מאמנים באירגון', image: require('src/assets/image/ic_trainer.png'), url: '' },
       ],
       showNotiPopup: false,
+      trainId: 0,
       showTrainTimePopup: false,
+      showDatePickerPopup: false,
+      showTimePickerPopup: false,
+      trainDateTime: new Date(),
     };
   }
 
-  componentDidMount() {}
+  getInfo = () => {
+    const trainType = [
+      { id: 1, title: 'אימון אישי', color: '#43C7FF', amount: 20 },
+      { id: 2, title: 'אימון קבוצות', color: '#1E6FD9', amount: 30 },
+      { id: 3, title: 'קיקבוקס', color: '#0019FF', amount: 15 },
+      { id: 4, title: 'פילאטיס', color: '#5C9DF2', amount: 10 },
+      { id: 5, title: 'יוגה', color: '#004765', amount: 40 },
+      { id: 6, title: 'פונקציונאלי', color: '#000E88', amount: 20 },
+    ];
+    const income = 12875;
+    const upcoming = 34;
+    this.setState({ trainType: trainType, income: income, upcoming: upcoming });
+  };
 
-  componentWillUnmount() {}
+  componentDidMount() {
+    this.getInfo();
+  }
 
-  setTrainingTime = (id) => {
-    //get info
-    this.setState({ showTrainTimePopup: true });
+  changeTrainDateTime = () => {
+    requestPost(API.Home.update_train_time, {
+      id: this.state.trainId,
+      time: this.state.trainDateTime,
+    }).then(async (result) => {
+      if (result.code == API_RES_CODE.SUCCESS) {
+      } else {
+      }
+    });
   };
 
   render() {
@@ -318,21 +337,21 @@ export default class HomeScreen extends React.Component {
         <NotiPopup
           visible={this.state.showNotiPopup}
           onCancel={() => {
-            this.setState({
-              showNotiPopup: false,
-            });
-          }}
-          setTrainingTime={(id) => {
             this.setState({ showNotiPopup: false });
-            this.setTrainingTime(id);
+          }}
+          setTrainingTime={(id, date) => {
+            this.setState({
+              trainId: id,
+              showNotiPopup: false,
+              trainDateTime: date,
+              showTrainTimePopup: true,
+            });
           }}
         />
         <TrainTimePopup
           visible={this.state.showTrainTimePopup}
           onCancel={() => {
-            this.setState({
-              showTrainTimePopup: false,
-            });
+            this.setState({ showTrainTimePopup: false });
           }}
           onBack={() => {
             this.setState({
@@ -340,10 +359,37 @@ export default class HomeScreen extends React.Component {
               showNotiPopup: true,
             });
           }}
+          trainDate={CommonUtils.getFormatedDate(this.state.trainDateTime, 'DD/MM/YYYY')}
+          trainTime={CommonUtils.getFormatedDate(this.state.trainDateTime, 'HH:mm')}
           onConfirm={() => {
-            this.setState({
-              showTrainTimePopup: false,
-            });
+            this.setState({ showTrainTimePopup: false });
+            this.changeTrainDateTime();
+          }}
+          setDatePicker={() => {
+            this.setState({ showDatePickerPopup: true });
+          }}
+          setTimePicker={() => {
+            this.setState({ showTimePickerPopup: true });
+          }}
+        />
+        <DatePickerPopup
+          visible={this.state.showDatePickerPopup}
+          date={new Date(moment(this.state.trainDateTime))}
+          setTrainDate={(date) => {
+            this.setState({ trainDateTime: date });
+          }}
+          onCancel={() => {
+            this.setState({ showDatePickerPopup: false });
+          }}
+        />
+        <TimePickerPopup
+          visible={this.state.showTimePickerPopup}
+          time={new Date(moment(this.state.trainDateTime))}
+          setTrainTime={(time) => {
+            this.setState({ trainDateTime: time });
+          }}
+          onCancel={() => {
+            this.setState({ showTimePickerPopup: false });
           }}
         />
       </SafeAreaView>

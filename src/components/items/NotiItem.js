@@ -10,14 +10,12 @@ import { IMAGE_FOO_URL } from '../../constants/Constants';
 class NotiItem extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {};
   }
 
   componentDidMount() {}
 
   render() {
-    const data = this.props;
+    const data = this.props.data;
     return (
       <View>
         {(CommonUtils.isBeforeToday(data.date) && (
@@ -68,7 +66,7 @@ class NotiItem extends React.Component {
               </Text>
               <Button
                 onPress={() => {
-                  if (this.props.setTrainingTime) this.props.setTrainingTime(data.id);
+                  if (this.props.setTrainingTime) this.props.setTrainingTime();
                 }}>
                 <Text
                   style={{

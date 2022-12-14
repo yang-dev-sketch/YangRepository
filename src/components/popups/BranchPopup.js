@@ -12,7 +12,7 @@ import { ScrollView } from 'react-navigation';
 import NotiItem from '../items/NotiItem';
 
 @observer
-class NotiPopup extends React.Component {
+class BranchPopup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,7 +20,7 @@ class NotiPopup extends React.Component {
         {
           id: 1,
           title: 'וחלקים מתוך הספרות הלטינית הקלאסית מאז 45 לפני',
-          date: '2022-12-14 08:50:10',
+          date: '2022-12-13 04:50:10',
           task: 'שם המשימה',
           avatar: '',
         },
@@ -39,14 +39,14 @@ class NotiPopup extends React.Component {
           avatar: '',
         },
         {
-          id: 4,
+          id: 3,
           title: 'וחלקים מתוך הספרות הלטינית הקלאסית מאז 45 לפני',
           date: '2022-12-13 01:28:14',
           task: 'שם המשימה',
           avatar: '',
         },
         {
-          id: 5,
+          id: 3,
           title: 'וחלקים מתוך הספרות הלטינית הקלאסית מאז 45 לפני',
           date: '2022-12-13 01:28:14',
           task: 'שם המשימה',
@@ -97,7 +97,7 @@ class NotiPopup extends React.Component {
                   style={{ width: 31, height: 31 }}
                 />
               </Button>
-              <Text style={{ fontSize: 18, lineHeight: 22 }}>התראות</Text>
+              <Text style={{ fontSize: 18, lineHeight: 22 }}>הסניפים שלנו</Text>
             </HorizontalLayout>
             <SearchInput style={{ paddingHorizontal: 20 }} />
             <ScrollView style={{ paddingHorizontal: 20, marginTop: 20 }}>
@@ -112,9 +112,9 @@ class NotiPopup extends React.Component {
                 renderItem={({ item, index }) => {
                   return (
                     <NotiItem
-                      data={item}
+                      data={item.data}
                       setTrainingTime={() => {
-                        this.props.setTrainingTime(item.id, item.date);
+                        this.props.setTrainingTime(id);
                       }}
                     />
                   );
@@ -148,4 +148,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default NotiPopup;
+export default BranchPopup;

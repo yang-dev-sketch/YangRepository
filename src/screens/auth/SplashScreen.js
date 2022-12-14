@@ -39,7 +39,7 @@ export default class SplashScreen extends AppScreen {
     return (
       <SafeAreaView style={[Styles.container, Styles.v_center, {position: 'relative', alignItems:'center', justifyContent: 'center'}]}>
 
-        <LocalImage source={require('src/assets/image/ic_banner2.png')} style={[Styles.full, {position: 'absolute', top: 0, left:0}]} resizeMode="cover"/>
+        <LocalImage source={require('src/assets/image/ic_home.png')} style={[{width: 50, height: 50}]} resizeMode="cover"/>
         <Text style={styles.logo_text}></Text>
 
       </SafeAreaView>

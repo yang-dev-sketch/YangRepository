@@ -35,7 +35,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import NumberFormat from 'react-number-format';
 import NotiPopup from '../../components/popups/NotiPopup';
 import TrainTimePopup from '../../components/popups/TrainTimePopup';
-import { BranchPopup, DatePickerPopup } from '../../components/popups';
+import { AddBranchPopup, BranchPopup, DatePickerPopup } from '../../components/popups';
 import TimePickerPopup from '../../components/popups/TimePickerPopup';
 
 @observer
@@ -125,14 +125,14 @@ export default class HomeScreen extends React.Component {
   }
 
   changeTrainDateTime = () => {
-    requestPost(API.Home.update_train_time, {
-      id: this.state.trainId,
-      time: this.state.trainDateTime,
-    }).then(async (result) => {
-      if (result.code == API_RES_CODE.SUCCESS) {
-      } else {
-      }
-    });
+    // requestPost(API.Home.update_train_time, {
+    //   id: this.state.trainId,
+    //   time: this.state.trainDateTime,
+    // }).then(async (result) => {
+    //   if (result.code == API_RES_CODE.SUCCESS) {
+    //   } else {
+    //   }
+    // });
   };
 
   render() {
@@ -222,6 +222,7 @@ export default class HomeScreen extends React.Component {
                   paddingVertical: 20,
                   justifyContent: 'space-between',
                 }}>
+                <View></View>
                 <VerticalLayout style={{ alignItems: 'flex-end' }}>
                   {this.state.trainType.map((item, index) => {
                     return (
@@ -394,6 +395,7 @@ export default class HomeScreen extends React.Component {
               showTrainTimePopup: true,
             });
           }}
+          setSearch={() => {}}
         />
         <TrainTimePopup
           visible={this.state.showTrainTimePopup}
@@ -457,6 +459,18 @@ export default class HomeScreen extends React.Component {
           }}
           onCancel={() => {
             this.setState({ showBranchPopup: false });
+          }}
+        />
+        <AddBranchPopup
+          visible={this.state.showAddBranchPopup}
+          onBack={() => {
+            this.setState({
+              showAddBranchPopup: false,
+              showBranchPopup: true,
+            });
+          }}
+          onCancel={() => {
+            this.setState({ showAddBranchPopup: false });
           }}
         />
       </SafeAreaView>

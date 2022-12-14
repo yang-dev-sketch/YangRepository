@@ -99,7 +99,12 @@ class NotiPopup extends React.Component {
               </Button>
               <Text style={{ fontSize: 18, lineHeight: 22 }}>התראות</Text>
             </HorizontalLayout>
-            <SearchInput style={{ paddingHorizontal: 20 }} />
+            <SearchInput
+              style={{ paddingHorizontal: 20 }}
+              setSearch={(search) => {
+                this.props.setSearch(search);
+              }}
+            />
             <ScrollView style={{ paddingHorizontal: 20, marginTop: 20 }}>
               <FlatList
                 ref={(ref) => {

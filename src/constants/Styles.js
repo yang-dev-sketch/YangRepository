@@ -22,10 +22,8 @@ export default StyleSheet.create({
   input_wrapper: {
     width: '100%',
     height: 'auto',
-    borderRadius: 8,
+    borderRadius: 11,
     backgroundColor: '#F5F5F5',
     padding: 10,
-    alignItems: 'center',
-    justifyContent: 'space-between',
   },
 });

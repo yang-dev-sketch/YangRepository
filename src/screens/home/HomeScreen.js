@@ -181,7 +181,7 @@ export default class HomeScreen extends React.Component {
               </Text>
               <Button onPress={() => {}}>
                 <LocalImage
-                  source={require('src/assets/image/ic_gyme.png')}
+                  source={require('src/assets/image/ic_bottom_gyme_off.png')}
                   style={{ width: 39, height: 39 }}
                 />
               </Button>
@@ -189,7 +189,7 @@ export default class HomeScreen extends React.Component {
             <HorizontalLayout
               style={{ alignItems: 'center', justifyContent: 'space-between', marginTop: 15 }}>
               <Button
-                onPress={() => {
+                onPress={() => {``
                   this.setState({ showBranchPopup: true });
                 }}
                 style={{

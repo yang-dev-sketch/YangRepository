@@ -179,8 +179,16 @@ export default class BottomMenu extends React.Component {
             }}
             style={styles.menu}>
             <LocalImage
-              source={require('src/assets/image/ic_gyme.png')}
-              style={{ width: 24, height: 24 }}
+              source={
+                GlobalState.getTabIndex == MAIN_TAB.GYME
+                  ? require('src/assets/image/ic_bottom_gyme_on.png')
+                  : require('src/assets/image/ic_bottom_gyme_on.png')
+              }
+              style={[
+                GlobalState.getTabIndex == MAIN_TAB.GYME
+                  ? { width: 41, height: 41 }
+                  : { width: 26, height: 26 },
+              ]}
             />
           </Button>
         )}

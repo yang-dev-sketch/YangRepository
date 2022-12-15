@@ -39,9 +39,17 @@ import EventBus from 'react-native-event-bus';
 import TotalItem from '../../components/items/TotalItem';
 import LinearGradient from 'react-native-linear-gradient';
 import NumberFormat from 'react-number-format';
-import { ActiveButton, DisactiveButton, SearchInput } from '../../components/common';
+import {
+  ActiveButton,
+  BottomMenu,
+  CommonInput,
+  DisactiveButton,
+  SearchInput,
+  SetValueGroup,
+} from '../../components/common';
 import ProductItem from '../../components/items/ProductItem';
 import { RESULTS } from 'react-native-permissions';
+import ImageCropPicker from 'react-native-image-crop-picker';
 
 @observer
 export default class AddProduct extends React.Component {
@@ -49,16 +57,12 @@ export default class AddProduct extends React.Component {
     super(props);
 
     this.state = {
-      search: '',
-      selectedId: 0,
-      productList: [
-        {
-          id: 1,
-          name: 'אבזר',
-          amount: '99',
-          image: '',
-        },
-      ],
+      logo: '',
+      name: '',
+      description: '',
+      numberLine: 1,
+      stock: null,
+      price: null,
     };
   }
 
@@ -79,32 +83,39 @@ export default class AddProduct extends React.Component {
     this.getInfo();
   }
 
-  setSearch = (search) => {
-    this.setState({ search: search }, () => {
-      this.getInfo();
+  addSKU = () => {};
+
+  onGallery = () => {
+    ImageCropPicker.openPicker({
+      cropping: true,
+    }).then((image) => {
+      this.uploadLogo(image.path);
     });
   };
 
-  onSort = () => {
-    this.props.navigation.navigate('AddProduct');
+  uploadLogo = (filepath) => {
+    requestUpload(API.Upload.upload, filePath, '').then((result) => {
+      console.log(result);
+      if (result.code == API_RES_CODE.SUCCESS) {
+        this.setState({
+          logo: result.data.file_path,
+        });
+      } else {
+        Toast.show(result.msg);
+      }
+    });
   };
 
-  addProduct = () => {};
-
-  editProduct = () => {};
-
-  deleteProduct = () => {
-    // requestPost(API.Home.delete_product, {
-    //   id: this.state.trainId,
-    //   time: this.state.trainDateTime,
+  addProduct = () => {
+    // requestPost(API.Home.add_product, {
+    //   logo: this.state.logo,
+    //   name: this.state.name,
+    //   name: this.state.name,
+    //   stock: this.state.stock,
+    //   price: this.state.price,
     // }).then(async (result) => {
     //   if (result.code == API_RES_CODE.SUCCESS) {
-    this.setState({
-      productList: this.state.productList.filter((item) => {
-        return item.id != this.state.selectedId;
-      }),
-      selectedId: 0,
-    });
+    this.props.navigation.navigate('Shop');
     //   } else {
     //   }
     // });
@@ -112,17 +123,17 @@ export default class AddProduct extends React.Component {
 
   render() {
     return (
-      <SafeAreaView>
+      <SafeAreaView style={{ flex: 1 }}>
         <ScrollView style={Styles.wrapper}>
           <VerticalLayout style={{ paddingVertical: 29 }}>
             <HorizontalLayout style={{ alignItems: 'center', justifyContent: 'space-between' }}>
               <Button
                 onPress={() => {
-                  this.setState({ showNotiPopup: true });
+                  this.props.navigation.navigate('Shop');
                 }}>
                 <LocalImage
-                  source={require('src/assets/image/ic_nofitication.png')}
-                  style={{ width: 19.87, height: 19.44 }}
+                  source={require('src/assets/image/ic_close.png')}
+                  style={{ width: 17.5, height: 17.5 }}
                 />
               </Button>
               <Text
@@ -141,120 +152,146 @@ export default class AddProduct extends React.Component {
                 />
               </Button>
             </HorizontalLayout>
-            <HorizontalLayout style={{ marginTop: 22.25, justifyContent: 'space-between' }}>
-              <TotalItem amount={12} text="סך ההזמנות" color="#4399FF"></TotalItem>
-              <TotalItem amount={4} text="פריטים במלאי" color="#4E0DD9"></TotalItem>
-            </HorizontalLayout>
-            <HorizontalLayout style={{ marginVertical: 15, justifyContent: 'space-between' }}>
-              <HorizontalLayout style={styles.total_item}>
-                <View
-                  style={{
-                    backgroundColor: '#59E967',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    width: 31,
-                    height: 31,
-                    borderRadius: 15.5,
-                  }}>
-                  <LocalImage
-                    source={require('src/assets/image/ic_arrow_up.png')}
-                    style={{ width: 11.67, height: 13.33 }}
-                  />
-                </View>
-                <Text style={{ fontSize: 24, lineHeight: 29 }}>5</Text>
-                <Text numberOfLines={2} style={{ width: '50%' }}>
-                  נמכר בחודש
-                </Text>
-              </HorizontalLayout>
-              <HorizontalLayout style={styles.total_item}>
-                <Text style={{ fontSize: 24, lineHeight: 29, color: '#688EF8' }}>100K</Text>
-                <Text numberOfLines={2} style={{ width: '50%' }}>
-                  נמכר
-                </Text>
-              </HorizontalLayout>
-            </HorizontalLayout>
-            <SearchInput
-              setSearch={(search) => {
-                this.setSearch(search);
-              }}
-            />
-            <Button
-              onPress={() => {
-                this.onSort();
+            <Text
+              style={{
+                fontSize: 18,
+                lineHeight: 22,
+                textAlign: 'right',
+                marginBottom: 15,
+                marginTop: 20,
               }}>
-              <HorizontalLayout
-                style={{ alignItems: 'center', justifyContent: 'flex-start', marginVertical: 15 }}>
-                <Text
-                  style={{
-                    fontSize: 16,
-                    lineHeight: 19.2,
-                    color: '#5C9DF2',
-                    textDecorationLine: 'underline',
-                  }}>
-                  סינון
-                </Text>
-                <LocalImage
-                  source={require('src/assets/image/ic_arrow_down.png')}
-                  style={{ width: 13.06, height: 6.88, marginLeft: 4.47 }}
+              להוסיף מוצר
+            </Text>
+            <VerticalLayout
+              style={{
+                width: 155,
+                alignSelf: 'center',
+                borderRadius: 11,
+                backgroundColor: '#FFF',
+                paddingVertical: 18,
+                paddingHorizontal: 29,
+                marginBottom: 15,
+                alignItems: 'center',
+              }}>
+              <Button
+                onPress={() => {
+                  this.onGallery();
+                }}>
+                {(this.state.logo === '' && (
+                  <LocalImage
+                    source={require('src/assets/image/ic_add_image.png')}
+                    style={{ width: 70, height: 70, marginBottom: 10 }}
+                  />
+                )) || (
+                  <FastImage
+                    source={{ uri: this.state.logo ? this.state.logo : IMAGE_FOO_URL }}
+                    resizeMode={FastImage.resizeMode.cover}
+                    style={{ width: 70, height: 70, marginBottom: 10, borderRadius: 35 }}
+                  />
+                )}
+              </Button>
+              <Text numberOfLines={2} style={{ fontSize: 16, lineHeight: 19 }}>
+                העלאת תמונה ראשית למוצר
+              </Text>
+            </VerticalLayout>
+            <SetValueGroup
+              style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: 'white' }]}
+              title="שם מוצר"
+              image={require('src/assets/image/ic_branch.png')}
+              inputNode={
+                <CommonInput
+                  numberOfLines={1}
+                  value={this.state.name}
+                  backgroundColor="#F5F5F5"
+                  onChangeText={(text) => {
+                    this.setState({ name: text });
+                  }}
                 />
-              </HorizontalLayout>
-            </Button>
-            <FlatList
-              ref={(ref) => {
-                this._flContent = ref;
+              }
+            />
+            <SetValueGroup
+              style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: 'white' }]}
+              title="תיאור"
+              image={require('src/assets/image/ic_info.png')}
+              expandable
+              numberLine={this.state.numberLine}
+              setExpand={() => {
+                this.setState({ numberLine: this.state.numberLine === 1 ? 5 : 1 });
               }}
-              showsVerticalScrollIndicator={false}
-              data={this.state.productList}
-              numColumns={1}
-              renderItem={({ item, index }) => {
-                return (
-                  <ProductItem
-                    data={item}
-                    selectedId={this.state.selectedId}
-                    selectProduct={() => {
-                      this.setState({ selectedId: item.id });
+              inputNode={
+                (this.state.numberLine !== 1 && (
+                  <CommonInput
+                    numberOfLines={this.state.numberLine}
+                    backgroundColor="#F5F5F5"
+                    value={this.state.description}
+                    onChangeText={(text) => {
+                      this.setState({ description: text });
                     }}
                   />
-                );
-              }}
-              keyExtractor={(item, idx) => idx.toString()}
-              ItemSeparatorComponent={() => {
-                return <View style={{ height: 10 }} />;
-              }}
+                )) || <></>
+              }
             />
+            <HorizontalLayout style={{ justifyContent: 'space-between', marginBottom: 15 }}>
+              <View style={{ width: (SCREEN_WIDTH - 64) / 2 }}>
+                <SetValueGroup
+                  style={[Styles.input_wrapper, { backgroundColor: 'white' }]}
+                  title="מְלַאי"
+                  image={require('src/assets/image/ic_stock.png')}
+                  inputNode={
+                    <CommonInput
+                      numberOfLines={1}
+                      keyboardType="numeric"
+                      backgroundColor="#F5F5F5"
+                      value={this.state.stock}
+                      onChangeText={(text) => {
+                        this.setState({ stock: text });
+                      }}
+                    />
+                  }
+                />
+              </View>
+              <View style={{ width: (SCREEN_WIDTH - 64) / 2 }}>
+                <SetValueGroup
+                  style={[Styles.input_wrapper, { marginBottom: 0, backgroundColor: 'white' }]}
+                  title="מחיר"
+                  image={require('src/assets/image/ic_price.png')}
+                  inputNode={
+                    <CommonInput
+                      numberOfLines={1}
+                      keyboardType="numeric"
+                      backgroundColor="#F5F5F5"
+                      value={this.state.price}
+                      onChangeText={(text) => {
+                        this.setState({ price: text });
+                      }}
+                    />
+                  }
+                />
+              </View>
+            </HorizontalLayout>
             <Button
               onPress={() => {
-                this.addProduct();
+                this.addSKU();
               }}>
               <HorizontalLayout
-                style={{ alignItems: 'center', justifyContent: 'center', paddingVertical: 15 }}>
-                <Text style={{ fontSize: 16, lineHeight: 19.2 }}>להוסיף מוצר</Text>
+                style={{ alignItems: 'center', justifyContent: 'center', marginBottom: 35 }}>
+                <Text style={{ fontSize: 16, lineHeight: 19.2 }}>הוסף מק"ט</Text>
                 <LocalImage
                   source={require('src/assets/image/ic_plus_sign.png')}
                   style={{ width: 24, height: 24, marginLeft: 6 }}
                 />
               </HorizontalLayout>
             </Button>
-            {this.state.selectedId !== 0 && (
-              <VerticalLayout style={{ paddingHorizontal: 20 }}>
-                <ActiveButton
-                  text="עריכה"
-                  style={{ marginBottom: 15 }}
-                  action={() => {
-                    this.editProduct();
-                  }}
-                />
-                <DisactiveButton
-                  text="למחוק מוצר"
-                  style={{ marginBottom: 15 }}
-                  action={() => {
-                    this.deleteProduct();
-                  }}
-                />
-              </VerticalLayout>
-            )}
+            <ActiveButton
+              text="יצירת מוצר"
+              style={{ marginBottom: 15 }}
+              action={() => {
+                this.addProduct();
+              }}
+            />
           </VerticalLayout>
         </ScrollView>
+        {/* <BottomMenu /> */}
       </SafeAreaView>
     );
   }

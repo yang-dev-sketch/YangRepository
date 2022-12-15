@@ -119,17 +119,16 @@ class LeadPopup extends React.Component {
               <Text style={{ fontSize: 18, lineHeight: 22 }}>לידים</Text>
             </HorizontalLayout>
             <HorizontalLayout style={{ justifyContent: 'space-between', paddingHorizontal: 20 }}>
-              <TotalItem event={{}} amount={94} text="לידים נרשמו" color="#43C7FF"></TotalItem>
-              <TotalItem event={{}} amount={5} text="נרשמו היום" color="#0D65D9"></TotalItem>
+              <TotalItem amount={94} text="לידים נרשמו" color="#43C7FF"></TotalItem>
+              <TotalItem amount={5} text="נרשמו היום" color="#0D65D9"></TotalItem>
             </HorizontalLayout>
             <HorizontalLayout
               style={{ marginTop: 15, justifyContent: 'space-between', paddingHorizontal: 20 }}>
               <TotalItem
-                event={{}}
                 amount={12}
                 text="אחוז המרה ללקוחות"
                 color="#4399FF"></TotalItem>
-              <TotalItem event={{}} amount={4} text="תזכורות לידים" color="#4E0DD9"></TotalItem>
+              <TotalItem amount={4} text="תזכורות לידים" color="#4E0DD9"></TotalItem>
             </HorizontalLayout>
             <SearchInput
               style={{ paddingHorizontal: 20, marginVertical: 15 }}

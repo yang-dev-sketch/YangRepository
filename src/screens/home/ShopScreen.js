@@ -11,6 +11,7 @@ import {
   View,
   RefreshControl,
   Touchable,
+  BackHandler,
 } from 'react-native';
 import Swiper from 'react-native-swiper';
 import FastImage from 'react-native-fast-image';
@@ -42,6 +43,7 @@ import NumberFormat from 'react-number-format';
 import { ActiveButton, DisactiveButton, SearchInput } from '../../components/common';
 import ProductItem from '../../components/items/ProductItem';
 import { RESULTS } from 'react-native-permissions';
+import EditProductPopup from '../../components/popups/EditProductPopup';
 
 @observer
 export default class ShopScreen extends React.Component {
@@ -54,29 +56,43 @@ export default class ShopScreen extends React.Component {
       productList: [
         {
           id: 1,
+          logo: '',
           name: 'אבזר',
-          amount: '99',
-          image: '',
+          description: 'description',
+          stock: 99,
+          price: 100
         },
         {
           id: 2,
+          logo: '',
           name: 'אבזר',
-          amount: '99',
-          image: '',
+          description: 'description',
+          stock: 99,
+          price: 100
         },
         {
           id: 3,
+          logo: '',
           name: 'אבזר',
-          amount: '99',
-          image: '',
+          description: 'description',
+          stock: 99,
+          price: 100
         },
         {
           id: 4,
+          logo: '',
           name: 'אבזר',
-          amount: '99',
-          image: '',
+          description: 'description',
+          stock: 99,
+          price: 100
         },
       ],
+      showEditProductPopup: false,
+      logo: '',
+      name: '',
+      description: '',
+      stock: null,
+      price: null
     };
   }
 
@@ -94,7 +110,9 @@ export default class ShopScreen extends React.Component {
   };
 
   componentDidMount() {
+    GlobalState.setTabIndex(MAIN_TAB.GYME);
     this.getInfo();
+    this.backHandler = BackHandler.removeEventListener('hardwareBackPress');
   }
 
   setSearch = (search) => {
@@ -103,13 +121,15 @@ export default class ShopScreen extends React.Component {
     });
   };
 
-  onSort = () => {
+  onSort = () => {};
+
+  addProduct = () => {
     this.props.navigation.navigate('AddProduct');
   };
 
-  addProduct = () => {};
-
-  editProduct = () => {};
+  editProduct = () => {
+    this.setState({ showEditProductPopup: true });
+  };
 
   deleteProduct = () => {
     // requestPost(API.Home.delete_product, {
@@ -230,7 +250,14 @@ export default class ShopScreen extends React.Component {
                     data={item}
                     selectedId={this.state.selectedId}
                     selectProduct={() => {
-                      this.setState({ selectedId: item.id });
+                      this.setState({
+                        selectedId: item.id,
+                        logo: item.logo,
+                        name: item.name,
+                        description: item.description,
+                        stock: item.stock,
+                        price: item.price,
+                      });
                     }}
                   />
                 );
@@ -273,6 +300,22 @@ export default class ShopScreen extends React.Component {
             )}
           </VerticalLayout>
         </ScrollView>
+        <EditProductPopup
+          visible={this.state.showEditProductPopup}
+          logo={this.state.logo}
+          name={this.state.name}
+          description={this.state.description}
+          stock={this.state.stock}
+          price={this.state.price}
+          setLogo={(text) => {this.setState({logo: text})}}
+          setName={(text) => {this.setState({name: text})}}
+          setDescription={(text) => {this.setState({description: text})}}
+          setStock={(text) => {this.setState({stock: text})}}
+          setPrice={(text) => {this.setState({price: text})}}
+          onCancel={() => {
+            this.setState({ showEditProductPopup: false, selectedId: 0 });
+          }}
+        />
       </SafeAreaView>
     );
   }

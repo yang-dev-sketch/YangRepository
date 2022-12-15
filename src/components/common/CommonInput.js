@@ -10,7 +10,7 @@ export default class CommonInput extends React.Component {
     return (
       <View>
         <TextInput
-          backgroundColor="white"
+          backgroundColor={this.props.backgroundColor}
           borderRadius={this.props.numberOfLines === 1 ? 43 : 8}
           textAlign="right"
           textAlignVertical="top"
@@ -24,7 +24,7 @@ export default class CommonInput extends React.Component {
           value={this.props.value}
           placeholder={this.props.placeholder}
           returnKeyType={this.props.returnKeyType}
-          keyboardType={this.props.keyBoardType}
+          KeyboardType={this.props.KeyboardType}
           onChangeText={(text) => this.props.onChangeText(text)}
         />
         {this.props.numberOfLines !== 1 && <Text style={styles.count}>{this.props.value.length}/250</Text>}

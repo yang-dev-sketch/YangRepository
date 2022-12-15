@@ -258,11 +258,11 @@ export default class HomeScreen extends React.Component {
               </VerticalLayout>
             </HorizontalLayout>
             <HorizontalLayout style={{ marginTop: 15, justifyContent: 'space-between' }}>
-              <TotalItem event={{}} amount={94} text="סה”כ מתאמנים" color="#43C7FF"></TotalItem>
-              <TotalItem event={{}} amount={5} text="סה”כ מאמנים" color="#0D65D9"></TotalItem>
+              <TotalItem amount={94} text="סה”כ מתאמנים" color="#43C7FF"></TotalItem>
+              <TotalItem amount={5} text="סה”כ מאמנים" color="#0D65D9"></TotalItem>
             </HorizontalLayout>
             <HorizontalLayout style={{ marginTop: 15, justifyContent: 'space-between' }}>
-              <TotalItem event={{}} amount={12} text="סה״כ הגיעו" color="#4399FF"></TotalItem>
+              <TotalItem amount={12} text="סה״כ הגיעו" color="#4399FF"></TotalItem>
               <TotalItem
                 event={() => {
                   this.setState({ showLeadPopup: true });

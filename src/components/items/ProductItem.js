@@ -37,7 +37,7 @@ class ProductItem extends React.Component {
               source={require('src/assets/image/ic_income_blue.png')}
               style={{ width: 16, height: 13, marginRight: 5 }}
             />
-            <Text style={{ fontSize: 20, lineHeight: 24, color: '#0D65D9' }}>{data.amount}</Text>
+            <Text style={{ fontSize: 20, lineHeight: 24, color: '#0D65D9' }}>{data.stock}</Text>
           </HorizontalLayout>
           <HorizontalLayout style={{ alignItems: 'center' }}>
             <Text style={{ fontSize: 16, lineHeight: 22, marginRight: 7 }}>{data.name}</Text>

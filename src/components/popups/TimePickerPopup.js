@@ -7,7 +7,7 @@ import GlobalState from '../../mobx/GlobalState';
 import { Button, HorizontalLayout, VerticalLayout, LocalImage, CheckBox } from '../controls';
 import EventBus from 'react-native-event-bus';
 import SwipeUpDownModal from 'react-native-swipe-modal-up-down';
-import { ActiveButton, InputWrapper, SearchInput, SetValueGroup } from '../common';
+import { ActiveButton, SearchInput, SetValueGroup } from '../common';
 import { ScrollView } from 'react-navigation';
 import NotiItem from '../items/NotiItem';
 import { SCREEN_WIDTH } from '../../constants/Constants';

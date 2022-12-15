@@ -6,13 +6,13 @@ import { Colors, Styles } from '../../constants';
 import { Button, HorizontalLayout, VerticalLayout, LocalImage } from '../controls';
 import EventBus from 'react-native-event-bus';
 import SwipeUpDownModal from 'react-native-swipe-modal-up-down';
-import { ActiveButton, DisactiveButton, InputWrapper, SetValueGroup } from '../common';
+import { ActiveButton, DisactiveButton, SetValueGroup } from '../common';
 import { ScrollView } from 'react-navigation';
 import CommonInput from '../common/CommonInput';
 import CheckBox from '@react-native-community/checkbox';
 import { requestUpload } from '../../utils/ApiUtils';
 import ImageCropPicker from 'react-native-image-crop-picker';
-import { API, API_RES_CODE } from '../../constants/Constants';
+import { API, API_RES_CODE, IMAGE_FOO_URL } from '../../constants/Constants';
 
 @observer
 class AddBranchPopup extends React.Component {
@@ -58,7 +58,7 @@ class AddBranchPopup extends React.Component {
     //   pay_method: this.state.pay_method,
     // }).then(async (result) => {
     //   if (result.code == API_RES_CODE.SUCCESS) {
-        this.props.onCancel();
+    this.props.onCancel();
     //   } else {
     //   }
     // });
@@ -70,7 +70,7 @@ class AddBranchPopup extends React.Component {
     //   time: this.state.trainDateTime,
     // }).then(async (result) => {
     //   if (result.code == API_RES_CODE.SUCCESS) {
-        this.props.onCancel();
+    this.props.onCancel();
     //   } else {
     //   }
     // });
@@ -144,20 +144,29 @@ class AddBranchPopup extends React.Component {
                   onPress={() => {
                     this.onGallery();
                   }}>
-                  <LocalImage
-                    source={require('src/assets/image/ic_add_image.png')}
-                    style={{ width: 70, height: 70, marginBottom: 10 }}
-                  />
+                  {(this.state.logo === '' && (
+                    <LocalImage
+                      source={require('src/assets/image/ic_add_image.png')}
+                      style={{ width: 70, height: 70, marginBottom: 10 }}
+                    />
+                  )) || (
+                    <FastImage
+                      source={{ uri: this.state.logo ? this.state.logo : IMAGE_FOO_URL }}
+                      resizeMode={FastImage.resizeMode.cover}
+                      style={{ width: 70, height: 70, marginBottom: 10, borderRadius: 35 }}
+                    />
+                  )}
                 </Button>
                 <Text style={{ fontSize: 16, lineHeight: 19 }}>לוגו של העסק</Text>
               </VerticalLayout>
               <SetValueGroup
-                style={[Styles.input_wrapper, { marginBottom: 15 }]}
+                style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#F5F5F5' }]}
                 title="כותרת הסניף"
                 image={require('src/assets/image/ic_branch.png')}
                 inputNode={
                   <CommonInput
                     numberOfLines={1}
+                    backgroundColor="white"
                     value={this.state.title}
                     onChangeText={(text) => {
                       this.setState({ title: text });
@@ -166,12 +175,13 @@ class AddBranchPopup extends React.Component {
                 }
               />
               <SetValueGroup
-                style={[Styles.input_wrapper, { marginBottom: 15 }]}
+                style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#F5F5F5' }]}
                 title="כמה מילים על העסק"
                 image={require('src/assets/image/ic_info.png')}
                 inputNode={
                   <CommonInput
                     numberOfLines={4}
+                    backgroundColor="white"
                     value={this.state.info}
                     onChangeText={(text) => {
                       this.setState({ info: text });
@@ -180,12 +190,13 @@ class AddBranchPopup extends React.Component {
                 }
               />
               <SetValueGroup
-                style={[Styles.input_wrapper, { marginBottom: 15 }]}
+                style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#F5F5F5' }]}
                 title="כתובת העסק"
                 image={require('src/assets/image/ic_address.png')}
                 inputNode={
                   <CommonInput
                     numberOfLines={1}
+                    backgroundColor="white"
                     value={this.state.address}
                     onChangeText={(text) => {
                       this.setState({ address: text });

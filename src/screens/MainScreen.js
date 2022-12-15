@@ -7,6 +7,7 @@ import {Langs, Styles} from '../constants';
 import AppScreen from '../components/controls/AppScreen';
 import {Button, HorizontalLayout, LocalImage, VerticalLayout} from '../components/controls';
 import HomeScreen from './home/HomeScreen';
+import ShopScreen from './home/ShopScreen';
 
 import Toast from 'react-native-root-toast';
 import { BottomMenu } from "../components/common";
@@ -89,7 +90,7 @@ export default class MainScreen extends AppScreen {
                         {GlobalState.getTabIndex == MAIN_TAB.HOME && this.myInfo.uid == 0 && <HomeScreen navigation={this.props.navigation} />}
                         {GlobalState.getTabIndex == MAIN_TAB.TRAIN && <HomeScreen navigation={this.props.navigation} />}
                         {GlobalState.getTabIndex == MAIN_TAB.CHAT && <HomeScreen navigation={this.props.navigation} />}
-                        {GlobalState.getTabIndex == MAIN_TAB.GYME && <HomeScreen navigation={this.props.navigation} />}
+                        {GlobalState.getTabIndex == MAIN_TAB.GYME && <ShopScreen navigation={this.props.navigation} />}
                         {GlobalState.getTabIndex == MAIN_TAB.MORE && <HomeScreen navigation={this.props.navigation} />}
                     </View>
 

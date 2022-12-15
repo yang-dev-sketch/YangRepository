@@ -16,7 +16,7 @@ export default class SearchInput extends React.Component {
 
   render() {
     return (
-      <View style={this.props.style}>
+      <View>
         <TextInput
           numberOfLines={1}
           value={this.state.search}
@@ -28,14 +28,14 @@ export default class SearchInput extends React.Component {
         />
         <LocalImage
           source={require('src/assets/image/ic_search.png')}
-          style={{ width: 13, height: 13, position: 'absolute', right: 30, top: 17.5 }}
+          style={{ width: 13, height: 13, position: 'absolute', right: 15, top: 17.5 }}
         />
         {this.state.search !== '' && (
           <Button
             onPress={() => {
               this.updateSearch('');
             }}
-            style={{ position: 'absolute', left: 30, top: 20 }}>
+            style={{ position: 'absolute', left: 15, top: 20 }}>
             <LocalImage
               source={require('src/assets/image/ic_delete.png')}
               style={{ width: 10, height: 10 }}

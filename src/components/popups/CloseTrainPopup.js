@@ -109,12 +109,13 @@ class CloseTrainPopup extends React.Component {
               </Button>
               <Text style={{ fontSize: 18, lineHeight: 22 }}>אימונים קרובים</Text>
             </HorizontalLayout>
-            <SearchInput
-              style={{ paddingHorizontal: 20, marginVertical: 15 }}
-              setSearch={(search) => {
-                this.props.setSearch(search);
-              }}
-            />
+            <View style={{ paddingHorizontal: 20, marginVertical: 15 }}>
+              <SearchInput
+                setSearch={(search) => {
+                  this.props.setSearch(search);
+                }}
+              />
+            </View>
             <HorizontalLayout
               style={{
                 alignItems: 'center',

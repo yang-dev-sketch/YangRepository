@@ -69,5 +69,9 @@ export const API = {
     get_branch: 'Home/get_branch',
     add_branch: 'Home/add_branch',
     delete_branch: 'Home/delete_branch',
+    get_product: 'home/get_product',
+    add_product: 'home/add_product',
+    update_product: 'home/update_product',
+    delete_product: 'home/delete_product',
   }
 };

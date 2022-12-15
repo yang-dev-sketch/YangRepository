@@ -9,11 +9,11 @@ export default class TotalItem extends React.Component {
   }
 
   render() {
-    const { event, amount, text, color } = this.props;
+    const { amount, text, color } = this.props;
     return (
       <Button
         onPress={() => {
-          if (event) event();
+          if (this.props.event) this.props.event();
         }}>
         <HorizontalLayout style={styles.total_item}>
           <View

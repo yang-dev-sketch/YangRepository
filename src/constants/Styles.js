@@ -14,7 +14,7 @@ export default StyleSheet.create({
   full: {
     width: '100%',
     height: '100%',
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#F5F5F5',
   },
   wrapper: {
     paddingHorizontal: 20,

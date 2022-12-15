@@ -72,12 +72,13 @@ class BranchPopup extends React.Component {
               </Button>
               <Text style={{ fontSize: 18, lineHeight: 22 }}>הסניפים שלנו</Text>
             </HorizontalLayout>
-            <SearchInput
-              style={{ paddingHorizontal: 20 }}
-              setSearch={(search) => {
-                this.props.setSearch(search);
-              }}
-            />
+            <View style={{ paddingHorizontal: 20 }}>
+              <SearchInput
+                setSearch={(search) => {
+                  this.props.setSearch(search);
+                }}
+              />
+            </View>
             <FlatList
               ref={(ref) => {
                 this._flContent = ref;

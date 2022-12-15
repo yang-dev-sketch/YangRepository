@@ -23,10 +23,14 @@ export const PREF_PARAMS = {
 };
 
 export const MAIN_TAB = {
-  HOME: 0,
-  CHALLENGE: 1,
-  OPEN: 2,
-  MYPAGE: 3,
+  SETTING: 0,
+  CHART: 1,
+  REPORT: 2,
+  HOME: 3,
+  TRAIN: 4,
+  CHAT: 5,
+  GYME: 6,
+  MORE: 7
 };
 
 export const API_RES_CODE = {

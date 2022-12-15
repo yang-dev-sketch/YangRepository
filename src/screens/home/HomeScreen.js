@@ -17,7 +17,13 @@ import FastImage from 'react-native-fast-image';
 import moment from 'moment';
 import { CommonUtils } from '../../utils';
 import { Langs, Styles } from '../../constants';
-import { API, API_RES_CODE, IMAGE_FOO_URL, SCREEN_WIDTH } from '../../constants/Constants';
+import {
+  API,
+  API_RES_CODE,
+  IMAGE_FOO_URL,
+  MAIN_TAB,
+  SCREEN_WIDTH,
+} from '../../constants/Constants';
 import {
   Button,
   HorizontalLayout,
@@ -37,7 +43,7 @@ import NotiPopup from '../../components/popups/NotiPopup';
 import TrainTimePopup from '../../components/popups/TrainTimePopup';
 import { AddBranchPopup, BranchPopup, DatePickerPopup, LeadPopup } from '../../components/popups';
 import TimePickerPopup from '../../components/popups/TimePickerPopup';
-import CloseTrainPopup from "../../components/popups/CloseTrainPopup";
+import CloseTrainPopup from '../../components/popups/CloseTrainPopup';
 
 @observer
 export default class HomeScreen extends React.Component {
@@ -173,30 +179,12 @@ export default class HomeScreen extends React.Component {
                 }}>
                 פרופיל
               </Text>
-              <View
-                style={{
-                  width: 39,
-                  height: 39,
-                  borderRadius: 37,
-                  borderWidth: 1,
-                  borderColor: '#0D65D9',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}>
-                <View
-                  style={{
-                    width: 33.75,
-                    height: 33.75,
-                    backgroundColor: '#0D65D9',
-                    borderRadius: 53,
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}>
-                  <Button>
-                    <Text style={{ color: 'white', fontSize: 10 }}>GYME</Text>
-                  </Button>
-                </View>
-              </View>
+              <Button onPress={() => {}}>
+                <LocalImage
+                  source={require('src/assets/image/ic_gyme.png')}
+                  style={{ width: 39, height: 39 }}
+                />
+              </Button>
             </HorizontalLayout>
             <HorizontalLayout
               style={{ alignItems: 'center', justifyContent: 'space-between', marginTop: 15 }}>
@@ -372,7 +360,9 @@ export default class HomeScreen extends React.Component {
               renderItem={({ item, index }) => {
                 return (
                   <Button
-                    onPress={() => {}}
+                    onPress={() => {
+                      index === 0 && GlobalState.setTabIndex(MAIN_TAB.GYME);
+                    }}
                     style={[
                       { width: (SCREEN_WIDTH - 64) / 2, height: 115, alignItems: 'center' },
                       index % 2 === 0 && { marginRight: 24 },

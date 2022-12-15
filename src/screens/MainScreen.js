@@ -80,13 +80,17 @@ export default class MainScreen extends AppScreen {
             <SafeAreaView>
                 <VerticalLayout style={Styles.full}>
                     <View style={{ flex: 1 }}>
-                        {GlobalState.getTabIndex == MAIN_TAB.HOME && <HomeScreen navigation={this.props.navigation} />}
-                        {GlobalState.getTabIndex == MAIN_TAB.CHALLENGE && this.myInfo.uid > 0 && <HomeScreen navigation={this.props.navigation} />}
-                        {GlobalState.getTabIndex == MAIN_TAB.CHALLENGE && this.myInfo.uid == 0 && <HomeScreen navigation={this.props.navigation} />}
-                        {GlobalState.getTabIndex == MAIN_TAB.OPEN && this.myInfo.uid > 0 && <HomeScreen navigation={this.props.navigation} />}
-                        {GlobalState.getTabIndex == MAIN_TAB.OPEN && this.myInfo.uid == 0 && <HomeScreen navigation={this.props.navigation} />}
-                        {GlobalState.getTabIndex == MAIN_TAB.MYPAGE &&  this.myInfo.uid > 0 && <HomeScreen navigation={this.props.navigation} />}
-                        {GlobalState.getTabIndex == MAIN_TAB.MYPAGE &&  this.myInfo.uid == 0 && <HomeScreen navigation={this.props.navigation} />}
+                        {GlobalState.getTabIndex == MAIN_TAB.SETTING && <HomeScreen navigation={this.props.navigation} />}
+                        {GlobalState.getTabIndex == MAIN_TAB.CHART && this.myInfo.uid > 0 && <HomeScreen navigation={this.props.navigation} />}
+                        {GlobalState.getTabIndex == MAIN_TAB.CHART && this.myInfo.uid == 0 && <HomeScreen navigation={this.props.navigation} />}
+                        {GlobalState.getTabIndex == MAIN_TAB.REPORT && this.myInfo.uid > 0 && <HomeScreen navigation={this.props.navigation} />}
+                        {GlobalState.getTabIndex == MAIN_TAB.REPORT && this.myInfo.uid == 0 && <HomeScreen navigation={this.props.navigation} />}
+                        {GlobalState.getTabIndex == MAIN_TAB.HOME && this.myInfo.uid > 0 && <HomeScreen navigation={this.props.navigation} />}
+                        {GlobalState.getTabIndex == MAIN_TAB.HOME && this.myInfo.uid == 0 && <HomeScreen navigation={this.props.navigation} />}
+                        {GlobalState.getTabIndex == MAIN_TAB.TRAIN && <HomeScreen navigation={this.props.navigation} />}
+                        {GlobalState.getTabIndex == MAIN_TAB.CHAT && <HomeScreen navigation={this.props.navigation} />}
+                        {GlobalState.getTabIndex == MAIN_TAB.GYME && <HomeScreen navigation={this.props.navigation} />}
+                        {GlobalState.getTabIndex == MAIN_TAB.MORE && <HomeScreen navigation={this.props.navigation} />}
                     </View>
 
                     {/*bottom menu*/}

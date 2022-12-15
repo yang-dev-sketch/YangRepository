@@ -43,7 +43,6 @@ const GlobalState = observable(
     },
 
     setTabIndex(idx) {
-      console.log('sdfsdfds')
         GlobalState.lastTabIndex = GlobalState.tabIndex;
         GlobalState.tabIndex = idx;
     }

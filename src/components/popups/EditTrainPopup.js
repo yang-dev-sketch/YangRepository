@@ -12,7 +12,7 @@ import { ScrollView } from 'react-navigation';
 import NotiItem from '../items/NotiItem';
 import { requestPost } from '../../utils/ApiUtils';
 import { API } from '../../constants/Constants';
-import TrainItem from "../items/TrainItem";
+import TrainItem from '../items/TrainItem';
 
 @observer
 class EditTrainPopup extends React.Component {
@@ -24,13 +24,9 @@ class EditTrainPopup extends React.Component {
     this.props.onCancel();
   };
 
-  onRemove = () => {
-    this.props.onRemove();
-  };
+  onRemove = () => {};
 
-  onKeep = () => {
-    this.onKeep();
-  };
+  onKeep = () => {};
 
   render() {
     const data = this.props.data;
@@ -91,6 +87,7 @@ class EditTrainPopup extends React.Component {
                 return (
                   <TrainItem
                     data={item}
+                    index={index}
                     key={index}
                     selectTrainId={this.props.selectTrainId}
                     selectTrain={() => {
@@ -110,27 +107,31 @@ class EditTrainPopup extends React.Component {
               }}>
               <LocalImage
                 source={require('src/assets/image/ic_plus_sign.png')}
-                style={{ width: 45, height: 45, marginBottom: 20, marginTop: 15, alignSelf: 'center' }}
+                style={{
+                  width: 45,
+                  height: 45,
+                  marginBottom: 20,
+                  marginTop: 15,
+                  alignSelf: 'center',
+                }}
               />
             </Button>
-            {this.props.selectTrainId != 0 && (
-              <VerticalLayout style={{ paddingHorizontal: 20 }}>
-                <DisactiveButton
-                  text="הסרה"
-                  style={{ marginBottom: 15 }}
-                  action={() => {
-                    this.onRemove();
-                  }}
-                />
-                <ActiveButton
-                  text="שמירה"
-                  style={{ marginBottom: 15 }}
-                  action={() => {
-                    this.onKeep();
-                  }}
-                />
-              </VerticalLayout>
-            )}
+            <VerticalLayout style={{ paddingHorizontal: 20 }}>
+              <DisactiveButton
+                text="הסרה"
+                style={{ marginBottom: 15 }}
+                action={() => {
+                  this.onRemove();
+                }}
+              />
+              <ActiveButton
+                text="שמירה"
+                style={{ marginBottom: 15 }}
+                action={() => {
+                  this.onKeep();
+                }}
+              />
+            </VerticalLayout>
           </VerticalLayout>
         }
         onClose={() => {

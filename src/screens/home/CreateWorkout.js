@@ -54,6 +54,7 @@ import TimeDropDown from '../../components/controls/TimeDropDown';
 import CheckBox from '@react-native-community/checkbox';
 import EditTrainPopup from '../../components/popups/EditTrainPopup';
 import ModalDropDown from '../../components/controls/ModalDropDown';
+import EditTraineePopup from '../../components/popups/EditTraineePopup';
 
 @observer
 export default class CreateWorkout extends React.Component {
@@ -72,6 +73,8 @@ export default class CreateWorkout extends React.Component {
       createSameWorkout: false,
       selectedTrainId: 0,
       selectedDropdownTrain: null,
+      showEditTraineePopup: false,
+      showAddTraineePopup: false,
     };
   }
 
@@ -247,7 +250,10 @@ export default class CreateWorkout extends React.Component {
               }
             />
             <HorizontalLayout style={{ alignItems: 'center', justifyContent: 'space-between' }}>
-              <Button onPress={() => {}}>
+              <Button
+                onPress={() => {
+                  this.setState({ showEditTraineePopup: true });
+                }}>
                 <LocalImage
                   source={require('src/assets/image/ic_edit.png')}
                   style={{ width: 15.93, height: 15.93 }}
@@ -304,10 +310,18 @@ export default class CreateWorkout extends React.Component {
           setSearch={() => {
             this.getTrain();
           }}
-          onRemove={() => {}}
-          onKeep={() => {}}
           onCancel={() => {
             this.setState({ showEditTrainPopup: false });
+          }}
+          addTrainType={() => {}}
+        />
+        <EditTraineePopup
+          visible={this.state.showEditTraineePopup}
+          onCancel={() => {
+            this.setState({ showEditTraineePopup: false });
+          }}
+          addTrainee={() => {
+            this.setState({ showEditTraineePopup: false, showAddTraineePopup: true });
           }}
         />
       </SafeAreaView>

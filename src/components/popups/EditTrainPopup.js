@@ -15,7 +15,7 @@ import { requestPost } from '../../utils/ApiUtils';
 import { API } from '../../constants/Constants';
 
 @observer
-class BranchPopup extends React.Component {
+class EditTrainPopup extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -70,7 +70,7 @@ class BranchPopup extends React.Component {
                   style={{ width: 31, height: 31 }}
                 />
               </Button>
-              <Text style={{ fontSize: 18, lineHeight: 22 }}>הסניפים שלנו</Text>
+              <Text style={{ fontSize: 18, lineHeight: 22 }}>עריכת סוגי אימון</Text>
             </HorizontalLayout>
             <View style={{ paddingHorizontal: 20 }}>
               <SearchInput
@@ -158,4 +158,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default BranchPopup;
+export default EditTrainPopup;

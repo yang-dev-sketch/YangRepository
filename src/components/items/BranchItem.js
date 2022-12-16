@@ -36,12 +36,12 @@ class BranchItem extends React.Component {
             </Text>
             {(data.id == this.props.selectBranchId && (
               <LocalImage
-                source={require('src/assets/image/ic_man_on.png')}
+                source={require('src/assets/image/ic_man_round_on.png')}
                 style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 7 }}
               />
             )) || (
               <LocalImage
-                source={require('src/assets/image/ic_man_off.png')}
+                source={require('src/assets/image/ic_man_round_off.png')}
                 style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 7 }}
               />
             )}

@@ -57,7 +57,7 @@ export default class HomeScreen extends React.Component {
       detailList: [
         { title: 'חנות', image: require('src/assets/image/ic_store.png') },
         { title: 'יצירת אימון', image: require('src/assets/image/ic_work.png') },
-        { title: 'מתאמנים באירגון', image: require('src/assets/image/ic_train.png') },
+        { title: 'מתאמנים באירגון', image: require('src/assets/image/ic_training.png') },
         { title: 'מאמנים באירגון', image: require('src/assets/image/ic_trainer.png') },
       ],
       //noti
@@ -189,7 +189,8 @@ export default class HomeScreen extends React.Component {
             <HorizontalLayout
               style={{ alignItems: 'center', justifyContent: 'space-between', marginTop: 15 }}>
               <Button
-                onPress={() => {``
+                onPress={() => {
+                  ``;
                   this.setState({ showBranchPopup: true });
                 }}
                 style={{
@@ -360,8 +361,10 @@ export default class HomeScreen extends React.Component {
               renderItem={({ item, index }) => {
                 return (
                   <Button
+                    key={index}
                     onPress={() => {
                       index === 0 && GlobalState.setTabIndex(MAIN_TAB.GYME);
+                      index === 1 && this.props.navigation.navigate('CreateWorkout');
                     }}
                     style={[
                       { width: (SCREEN_WIDTH - 64) / 2, height: 115, alignItems: 'center' },

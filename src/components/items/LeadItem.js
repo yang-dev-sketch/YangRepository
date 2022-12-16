@@ -54,7 +54,7 @@ export default class LeadItem extends React.Component {
             </Button>
           )}
           <LocalImage
-            source={require('src/assets/image/ic_edit.png')}
+            source={require('src/assets/image/ic_edit_round.png')}
             style={{ width: 28, height: 28 }}
           />
         </VerticalLayout>

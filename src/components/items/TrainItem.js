@@ -55,7 +55,7 @@ export default class TrainItem extends React.Component {
           <HorizontalLayout style={{ alignItems: 'center' }}>
             <Text style={{ fontSize: 16, lineHeight: 19, color: 'white' }}>{data.name}</Text>
             <LocalImage
-              source={require('src/assets/image/ic_coach.png')}
+              source={require('src/assets/image/ic_coach_off.png')}
               style={{ width: 19.68, height: 19.68, marginLeft: 5 }}
             />
           </HorizontalLayout>

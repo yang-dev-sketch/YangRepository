@@ -298,15 +298,5 @@ export default class AddProduct extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  total_item: {
-    width: (SCREEN_WIDTH - 64) / 2,
-    height: 59,
-    backgroundColor: 'white',
-    borderRadius: 11,
-    paddingHorizontal: 14,
-    borderWidth: 1,
-    borderColor: '#D8D8D8',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-  },
+  
 });

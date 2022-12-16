@@ -60,7 +60,7 @@ export default class ShopScreen extends React.Component {
           name: 'אבזר',
           description: 'description',
           stock: 99,
-          price: 100
+          price: 100,
         },
         {
           id: 2,
@@ -68,7 +68,7 @@ export default class ShopScreen extends React.Component {
           name: 'אבזר',
           description: 'description',
           stock: 99,
-          price: 100
+          price: 100,
         },
         {
           id: 3,
@@ -76,7 +76,7 @@ export default class ShopScreen extends React.Component {
           name: 'אבזר',
           description: 'description',
           stock: 99,
-          price: 100
+          price: 100,
         },
         {
           id: 4,
@@ -84,7 +84,7 @@ export default class ShopScreen extends React.Component {
           name: 'אבזר',
           description: 'description',
           stock: 99,
-          price: 100
+          price: 100,
         },
       ],
       showEditProductPopup: false,
@@ -92,7 +92,7 @@ export default class ShopScreen extends React.Component {
       name: '',
       description: '',
       stock: null,
-      price: null
+      price: null,
     };
   }
 
@@ -248,6 +248,7 @@ export default class ShopScreen extends React.Component {
                 return (
                   <ProductItem
                     data={item}
+                    key={index}
                     selectedId={this.state.selectedId}
                     selectProduct={() => {
                       this.setState({
@@ -307,11 +308,21 @@ export default class ShopScreen extends React.Component {
           description={this.state.description}
           stock={this.state.stock}
           price={this.state.price}
-          setLogo={(text) => {this.setState({logo: text})}}
-          setName={(text) => {this.setState({name: text})}}
-          setDescription={(text) => {this.setState({description: text})}}
-          setStock={(text) => {this.setState({stock: text})}}
-          setPrice={(text) => {this.setState({price: text})}}
+          setLogo={(text) => {
+            this.setState({ logo: text });
+          }}
+          setName={(text) => {
+            this.setState({ name: text });
+          }}
+          setDescription={(text) => {
+            this.setState({ description: text });
+          }}
+          setStock={(text) => {
+            this.setState({ stock: text });
+          }}
+          setPrice={(text) => {
+            this.setState({ price: text });
+          }}
           onCancel={() => {
             this.setState({ showEditProductPopup: false, selectedId: 0 });
           }}

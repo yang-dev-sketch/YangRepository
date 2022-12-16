@@ -119,6 +119,7 @@ class NotiPopup extends React.Component {
                   return (
                     <NotiItem
                       data={item}
+                      key={index}
                       setTrainingTime={() => {
                         this.props.setTrainingTime(item.id, item.date);
                       }}

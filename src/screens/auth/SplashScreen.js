@@ -19,7 +19,7 @@ export default class SplashScreen extends AppScreen {
   constructor(props) {
     super(props);
 
-    this.INTRO_TIME = 2000;  // delay time in millisecond
+    this.INTRO_TIME = 500;  // delay time in millisecond
     this.startTime = new Date().getTime();
     this.state = {};
   }

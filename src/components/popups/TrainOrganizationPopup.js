@@ -12,7 +12,7 @@ import { ScrollView } from 'react-navigation';
 import NotiItem from '../items/NotiItem';
 import { BranchItem } from '../items';
 import { requestPost } from '../../utils/ApiUtils';
-import { API } from '../../constants/Constants';
+import { API, MAIN_TAB } from '../../constants/Constants';
 import { SCREEN_WIDTH } from 'react-native-common-date-picker/src/contants';
 import CommonItem from '../items/CommonItem';
 
@@ -146,6 +146,10 @@ class TrainOrganizationPopup extends React.Component {
                     activeImage={item.avatar}
                     fastImage={true}
                     imageCut={true}
+                    select={() => {
+                      this.onCancel();
+                      GlobalState.setTabIndex(MAIN_TAB.PROFILE)
+                    }}
                   />
                 );
               }}

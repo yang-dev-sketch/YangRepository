@@ -19,58 +19,19 @@ class InvitateTraineePopup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      logo: '',
-      title: '',
-      info: '',
-      address: '',
-      pay_method: false,
+      phone_email: '',
+      firstName: '',
+      lastName: '',
     };
   }
 
-  onGallery = () => {
-    ImageCropPicker.openPicker({
-      cropping: true,
-    }).then((image) => {
-      this.uploadLogo(image.path);
-    });
-  };
-
-  uploadLogo = (filepath) => {
-    requestUpload(API.Upload.upload, filePath, '').then((result) => {
-      console.log(result);
-      if (result.code == API_RES_CODE.SUCCESS) {
-        this.setState({
-          profile_url: result.data.file_url,
-          profile: result.data.file_path,
-        });
-      } else {
-        Toast.show(result.msg);
-      }
-    });
-  };
-
-  addBranch = () => {
-    // requestPost(API.Home.add_branch, {
-    //   logo: this.state.logo,
-    //   title: this.state.title,
-    //   info: this.state.info,
-    //   address: this.state.address,
-    //   pay_method: this.state.pay_method,
+  sendInvitation = () => {
+    // requestPost(API.Home.send_invitation, {
+    //   phone_email: this.state.phone_email,
+    //   name: this.state.firstName + this.state.lastName,
     // }).then(async (result) => {
     //   if (result.code == API_RES_CODE.SUCCESS) {
-    this.props.onCancel();
-    //   } else {
-    //   }
-    // });
-  };
-
-  deleteBranch = () => {
-    // requestPost(API.Home.delete_branch, {
-    //   id: this.state.trainId,
-    //   time: this.state.trainDateTime,
-    // }).then(async (result) => {
-    //   if (result.code == API_RES_CODE.SUCCESS) {
-    this.props.onCancel();
+    this.props.onBack();
     //   } else {
     //   }
     // });
@@ -99,7 +60,6 @@ class InvitateTraineePopup extends React.Component {
             </View>
             <HorizontalLayout
               style={{
-                paddingHorizontal: 20,
                 alignItem: 'center',
                 justifyContent: 'space-between',
                 marginBottom: 16.94,
@@ -124,111 +84,59 @@ class InvitateTraineePopup extends React.Component {
                   />
                 </Button>
               </HorizontalLayout>
-              <Text style={{ fontSize: 18, lineHeight: 22 }}>הסניפים שלנו</Text>
+              <Text style={{ fontSize: 18, lineHeight: 22 }}>מתאמנים באירגון</Text>
             </HorizontalLayout>
-            <ScrollView style={{ paddingHorizontal: 20 }}>
-              <Text style={{ fontSize: 18, lineHeight: 22, textAlign: 'right', marginBottom: 15 }}>
-                הוספת סניף חדש
-              </Text>
-              <VerticalLayout
-                style={{
-                  alignSelf: 'center',
-                  borderRadius: 11,
-                  backgroundColor: '#F5F5F5',
-                  paddingVertical: 18,
-                  paddingHorizontal: 29,
-                  marginBottom: 15,
-                  alignItems: 'center',
-                }}>
-                <Button
-                  onPress={() => {
-                    this.onGallery();
-                  }}>
-                  {(this.state.logo === '' && (
-                    <LocalImage
-                      source={require('src/assets/image/ic_add_image.png')}
-                      style={{ width: 70, height: 70, marginBottom: 10 }}
-                    />
-                  )) || (
-                    <FastImage
-                      source={{ uri: this.state.logo ? this.state.logo : IMAGE_FOO_URL }}
-                      resizeMode={FastImage.resizeMode.cover}
-                      style={{ width: 70, height: 70, marginBottom: 10, borderRadius: 35 }}
-                    />
-                  )}
-                </Button>
-                <Text style={{ fontSize: 16, lineHeight: 19 }}>לוגו של העסק</Text>
-              </VerticalLayout>
-              <SetValueGroup
-                style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#F5F5F5' }]}
-                title="כותרת הסניף"
-                image={require('src/assets/image/ic_branch.png')}
-                inputNode={
-                  <CommonInput
-                    numberOfLines={1}
-                    backgroundColor="white"
-                    value={this.state.title}
-                    onChangeText={(text) => {
-                      this.setState({ title: text });
-                    }}
-                  />
-                }
-              />
-              <SetValueGroup
-                style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#F5F5F5' }]}
-                title="כמה מילים על העסק"
-                image={require('src/assets/image/ic_info.png')}
-                inputNode={
-                  <CommonInput
-                    numberOfLines={4}
-                    backgroundColor="white"
-                    value={this.state.info}
-                    onChangeText={(text) => {
-                      this.setState({ info: text });
-                    }}
-                  />
-                }
-              />
-              <SetValueGroup
-                style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#F5F5F5' }]}
-                title="כתובת העסק"
-                image={require('src/assets/image/ic_address.png')}
-                inputNode={
-                  <CommonInput
-                    numberOfLines={1}
-                    backgroundColor="white"
-                    value={this.state.address}
-                    onChangeText={(text) => {
-                      this.setState({ address: text });
-                    }}
-                  />
-                }
-              />
-              <HorizontalLayout style={{ alignItems: 'center', justifyContent: 'flex-end' }}>
-                <Text style={{ fontSize: 16, lineHeight: 19 }}>עריכת אמצעי תשלום</Text>
-                <CheckBox
-                  onFillColor="#0D65D9"
-                  value={this.state.pay_method}
-                  onChange={() => {
-                    this.setState({ pay_method: !this.state.pay_method });
+            <SetValueGroup
+              style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#F5F5F5' }]}
+              title="שם פרטי ושם משפחה"
+              image={require('src/assets/image/ic_email.png')}
+              inputNode={
+                <CommonInput
+                  numberOfLines={1}
+                  backgroundColor="white"
+                  value={this.state.phone_email}
+                  onChangeText={(text) => {
+                    this.setState({ phone_email: text });
                   }}
                 />
-              </HorizontalLayout>
-              <DisactiveButton
-                text="מחק סניף"
-                style={{ marginBottom: 15 }}
-                action={() => {
-                  this.deleteBranch();
-                }}
-              />
-              <ActiveButton
-                text="שמירה של הסניף החדש"
-                style={{ marginBottom: 15 }}
-                action={() => {
-                  this.addBranch();
-                }}
-              />
-            </ScrollView>
+              }
+            />
+            <SetValueGroup
+              style={[Styles.input_wrapper, { marginBottom: 55, backgroundColor: '#F5F5F5' }]}
+              title="כתובת העסק"
+              image={require('src/assets/image/ic_coach_on.png')}
+              inputNode={
+                <HorizontalLayout
+                  style={{
+                    width: '100%',
+                    height: 40,
+                    borderRadius: 43,
+                    alignItems: 'center',
+                    backgroundColor: 'white',
+                    justifyContent: 'space-between',
+                    paddingHorizontal: 20,
+                  }}>
+                  <TextInput
+                    style={{ width: '45%', textAlign: 'right' }}
+                    value={this.state.lastName}
+                    onChangeText={(text) => this.setState({ lastName: text })}
+                  />
+                  <Text>/</Text>
+                  <TextInput
+                    style={{ width: '45%', textAlign: 'right' }}
+                    value={this.state.firstName}
+                    onChangeText={(text) => this.setState({ firstName: text })}
+                  />
+                </HorizontalLayout>
+              }
+            />
+            <ActiveButton
+              text="שליחת הזמנה"
+              style={{ marginBottom: 15 }}
+              action={() => {
+                this.sendInvitation();
+              }}
+            />
           </VerticalLayout>
         }
         onClose={() => {
@@ -242,13 +150,13 @@ class InvitateTraineePopup extends React.Component {
 const styles = StyleSheet.create({
   Modal: {
     position: 'absolute',
+    paddingHorizontal: 20,
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
     backgroundColor: Colors.white,
     bottom: 0,
     left: 0,
     width: '100%',
-    height: '95%',
   },
 });
 

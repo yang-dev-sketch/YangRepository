@@ -11,6 +11,8 @@ import ShopScreen from './home/ShopScreen';
 
 import Toast from 'react-native-root-toast';
 import { BottomMenu } from "../components/common";
+import ProfileScreen from "./home/ProfileScreen";
+import AddProduct from "./home/AddProduct";
 
 @observer
 export default class MainScreen extends AppScreen {
@@ -82,16 +84,16 @@ export default class MainScreen extends AppScreen {
                 <VerticalLayout style={Styles.full}>
                     <View style={{ flex: 1 }}>
                         {GlobalState.getTabIndex == MAIN_TAB.SETTING && <HomeScreen navigation={this.props.navigation} />}
-                        {GlobalState.getTabIndex == MAIN_TAB.CHART && this.myInfo.uid > 0 && <HomeScreen navigation={this.props.navigation} />}
-                        {GlobalState.getTabIndex == MAIN_TAB.CHART && this.myInfo.uid == 0 && <HomeScreen navigation={this.props.navigation} />}
-                        {GlobalState.getTabIndex == MAIN_TAB.REPORT && this.myInfo.uid > 0 && <HomeScreen navigation={this.props.navigation} />}
-                        {GlobalState.getTabIndex == MAIN_TAB.REPORT && this.myInfo.uid == 0 && <HomeScreen navigation={this.props.navigation} />}
-                        {GlobalState.getTabIndex == MAIN_TAB.HOME && this.myInfo.uid > 0 && <HomeScreen navigation={this.props.navigation} />}
-                        {GlobalState.getTabIndex == MAIN_TAB.HOME && this.myInfo.uid == 0 && <HomeScreen navigation={this.props.navigation} />}
+                        {GlobalState.getTabIndex == MAIN_TAB.CHART && <HomeScreen navigation={this.props.navigation} />}
+                        {GlobalState.getTabIndex == MAIN_TAB.REPORT && <HomeScreen navigation={this.props.navigation} />}
+                        {GlobalState.getTabIndex == MAIN_TAB.HOME && <HomeScreen navigation={this.props.navigation} />}
                         {GlobalState.getTabIndex == MAIN_TAB.TRAIN && <HomeScreen navigation={this.props.navigation} />}
                         {GlobalState.getTabIndex == MAIN_TAB.CHAT && <HomeScreen navigation={this.props.navigation} />}
                         {GlobalState.getTabIndex == MAIN_TAB.GYME && <ShopScreen navigation={this.props.navigation} />}
                         {GlobalState.getTabIndex == MAIN_TAB.MORE && <HomeScreen navigation={this.props.navigation} />}
+                        {GlobalState.getTabIndex == MAIN_TAB.SHOP && <ShopScreen navigation={this.props.navigation} />}
+                        {GlobalState.getTabIndex == MAIN_TAB.PRODUCT && <AddProduct navigation={this.props.navigation} />}
+                        {GlobalState.getTabIndex == MAIN_TAB.PROFILE && <ProfileScreen navigation={this.props.navigation} />}
                     </View>
 
                     {/*bottom menu*/}

@@ -30,7 +30,10 @@ export const MAIN_TAB = {
   TRAIN: 4,
   CHAT: 5,
   GYME: 6,
-  MORE: 7
+  MORE: 7,
+  SHOP: 8,
+  PRODUCT: 9,
+  PROFILE: 10
 };
 
 export const API_RES_CODE = {
@@ -77,5 +80,6 @@ export const API = {
     add_trainee: 'home/add_trainee',
     get_trainee: 'home/get_trainee',
     delete_trainee: 'home/delete_trainee',
+    send_invitation: 'home/send_invitation',
   }
 };

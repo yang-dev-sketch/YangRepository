@@ -5,9 +5,10 @@ import Splash from '../screens/auth/SplashScreen';
 import Signup from '../screens/auth/SignupScreen';
 
 import Home from '../screens/home/HomeScreen';
-import Shop from '../screens/home/ShopScreen';
+import ShopScreen from '../screens/home/ShopScreen';
 import AddProduct from '../screens/home/AddProduct';
 import CreateWorkout from '../screens/home/CreateWorkout';
+import ProfileScreen from '../screens/home/ProfileScreen';
 
 const MainStackNavigator = createStackNavigator({
     Splash,
@@ -15,9 +16,10 @@ const MainStackNavigator = createStackNavigator({
     Login,
     Signup,
     Home,
-    Shop,
+    ShopScreen,
     AddProduct,
     CreateWorkout,
+    ProfileScreen,
 },
 {
     headerMode: 'screen ',

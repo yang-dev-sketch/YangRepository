@@ -124,7 +124,7 @@ export default class ShopScreen extends React.Component {
   onSort = () => {};
 
   addProduct = () => {
-    this.props.navigation.navigate('AddProduct');
+    GlobalState.setTabIndex(MAIN_TAB.PRODUCT);
   };
 
   editProduct = () => {

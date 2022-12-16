@@ -64,7 +64,10 @@ export default class BottomMenu extends React.Component {
         </Button>
 
         {((GlobalState.getTabIndex == MAIN_TAB.GYME ||
-          GlobalState.getTabIndex == MAIN_TAB.TRAIN) && (
+          GlobalState.getTabIndex == MAIN_TAB.TRAIN ||
+          GlobalState.getTabIndex == MAIN_TAB.PROFILE ||
+          GlobalState.getTabIndex == MAIN_TAB.SHOP ||
+          GlobalState.getTabIndex == MAIN_TAB.PRODUCT) && (
           <>
             <Button
               style={styles.menu}
@@ -152,7 +155,7 @@ export default class BottomMenu extends React.Component {
           </VerticalLayout>
         </Button>
 
-        {(GlobalState.getTabIndex != MAIN_TAB.GYME && (
+        {(GlobalState.getTabIndex == MAIN_TAB.MORE && (
           <Button
             style={styles.menu}
             onPress={() => {
@@ -173,28 +176,26 @@ export default class BottomMenu extends React.Component {
               ]}
             />
           </Button>
-        )) || (
-          <Button
-            onPress={() => {
-              if (GlobalState.getTabIndex != MAIN_TAB.GYME) {
-                GlobalState.setTabIndex(MAIN_TAB.GYME);
-              }
-            }}
-            style={styles.menu}>
-            <LocalImage
-              source={
-                GlobalState.getTabIndex == MAIN_TAB.GYME
-                  ? require('src/assets/image/ic_bottom_gyme_on.png')
-                  : require('src/assets/image/ic_bottom_gyme_on.png')
-              }
-              style={[
-                GlobalState.getTabIndex == MAIN_TAB.GYME
-                  ? { width: 41, height: 41 }
-                  : { width: 26, height: 26 },
-              ]}
-            />
-          </Button>
-        )}
+        )) ||
+          ((GlobalState.getTabIndex == MAIN_TAB.GYME ||
+            GlobalState.getTabIndex == MAIN_TAB.TRAIN ||
+            GlobalState.getTabIndex == MAIN_TAB.PROFILE ||
+            GlobalState.getTabIndex == MAIN_TAB.SHOP ||
+            GlobalState.getTabIndex == MAIN_TAB.PRODUCT) && (
+            <Button onPress={() => {}} style={styles.menu}>
+              <LocalImage
+                source={require('src/assets/image/ic_bottom_gyme_on.png')}
+                style={{ width: 41, height: 41 }}
+              />
+            </Button>
+          )) || (
+            <Button onPress={() => {}} style={styles.menu}>
+              <LocalImage
+                source={require('src/assets/image/ic_bottom_gyme_off.png')}
+                style={{ width: 26, height: 26 }}
+              />
+            </Button>
+          )}
       </HorizontalLayout>
     );
   }

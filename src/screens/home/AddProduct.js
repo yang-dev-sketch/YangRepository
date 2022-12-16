@@ -115,7 +115,7 @@ export default class AddProduct extends React.Component {
     //   price: this.state.price,
     // }).then(async (result) => {
     //   if (result.code == API_RES_CODE.SUCCESS) {
-    this.props.navigation.navigate('Shop');
+    GlobalState.setTabIndex(MAIN_TAB.SHOP);
     //   } else {
     //   }
     // });
@@ -129,7 +129,7 @@ export default class AddProduct extends React.Component {
             <HorizontalLayout style={{ alignItems: 'center', justifyContent: 'space-between' }}>
               <Button
                 onPress={() => {
-                  this.props.navigation.navigate('Shop');
+                  GlobalState.setTabIndex(MAIN_TAB.SHOP);
                 }}>
                 <LocalImage
                   source={require('src/assets/image/ic_close.png')}

@@ -10,9 +10,9 @@ import SwipeUpDownModal from 'react-native-swipe-modal-up-down';
 import { ActiveButton, SearchInput, DisactiveButton } from '../common';
 import { ScrollView } from 'react-navigation';
 import NotiItem from '../items/NotiItem';
-import { BranchItem } from '../items';
 import { requestPost } from '../../utils/ApiUtils';
 import { API } from '../../constants/Constants';
+import TrainItem from "../items/TrainItem";
 
 @observer
 class EditTrainPopup extends React.Component {
@@ -24,12 +24,12 @@ class EditTrainPopup extends React.Component {
     this.props.onCancel();
   };
 
-  deleteBranch = () => {
-    this.props.deleteBranch();
+  onRemove = () => {
+    this.props.onRemove();
   };
 
-  showDetail = () => {
-    this.onCancel();
+  onKeep = () => {
+    this.onKeep();
   };
 
   render() {
@@ -89,12 +89,12 @@ class EditTrainPopup extends React.Component {
               numColumns={1}
               renderItem={({ item, index }) => {
                 return (
-                  <BranchItem
+                  <TrainItem
                     data={item}
                     key={index}
-                    selectBranchId={this.props.selectBranchId}
-                    selectBranch={() => {
-                      this.props.selectBranch(item.id);
+                    selectTrainId={this.props.selectTrainId}
+                    selectTrain={() => {
+                      this.props.selectTrain(item.id);
                     }}
                   />
                 );
@@ -106,31 +106,27 @@ class EditTrainPopup extends React.Component {
             />
             <Button
               onPress={() => {
-                this.props.addBranch();
+                this.props.addTrainType();
               }}>
-              <HorizontalLayout
-                style={{ alignItems: 'center', justifyContent: 'center', paddingVertical: 15 }}>
-                <Text style={{ fontSize: 16, lineHeight: 19 }}>הוספת סניף חדש</Text>
-                <LocalImage
-                  source={require('src/assets/image/ic_plus_sign.png')}
-                  style={{ width: 24, height: 24, marginLeft: 6 }}
-                />
-              </HorizontalLayout>
+              <LocalImage
+                source={require('src/assets/image/ic_plus_sign.png')}
+                style={{ width: 45, height: 45, marginBottom: 20, marginTop: 15, alignSelf: 'center' }}
+              />
             </Button>
-            {this.props.selectBranchId != 0 && (
+            {this.props.selectTrainId != 0 && (
               <VerticalLayout style={{ paddingHorizontal: 20 }}>
-                <ActiveButton
-                  text="הראה פרטים"
+                <DisactiveButton
+                  text="הסרה"
                   style={{ marginBottom: 15 }}
                   action={() => {
-                    this.showDetail();
+                    this.onRemove();
                   }}
                 />
-                <DisactiveButton
-                  text="למחוק סניף"
+                <ActiveButton
+                  text="שמירה"
                   style={{ marginBottom: 15 }}
                   action={() => {
-                    this.deleteBranch();
+                    this.onKeep();
                   }}
                 />
               </VerticalLayout>

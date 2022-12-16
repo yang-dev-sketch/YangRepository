@@ -14,7 +14,7 @@ import { API } from '../../constants/Constants';
 import TotalItem from '../items/TotalItem';
 import Timeline from 'react-native-timeline-flatlist';
 import LeadItem from '../items/LeadItem';
-import TrainItem from '../items/TrainItem';
+import TrainingItem from '../items/TrainingItem';
 
 @observer
 class CloseTrainPopup extends React.Component {
@@ -65,7 +65,7 @@ class CloseTrainPopup extends React.Component {
   }
 
   renderDetail(rowData, sectionID, rowID) {
-    return <TrainItem data={rowData} even={sectionID % 2 === 0} />;
+    return <TrainingItem data={rowData} even={sectionID % 2 === 0} />;
   }
 
   render() {

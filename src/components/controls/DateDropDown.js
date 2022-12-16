@@ -43,7 +43,7 @@ export default class DateDropDown extends React.Component {
             </Text>
           </HorizontalLayout>
         </Button>
-        <DatePicker
+        {/* <DatePicker
           confirm={(date) => {
             console.warn(date);
           }}
@@ -66,7 +66,7 @@ export default class DateDropDown extends React.Component {
           onValueChange={(selectedDate) => {
             console.log(selectedDate);
           }}
-        />
+        /> */}
         {/* <CalendarList
           containerStyle={{ flex: 1 }}
           rows={3}

@@ -68,11 +68,21 @@ export default class CreateWorkout extends React.Component {
       trainList: [],
       branchList: ['צעדים לפריז', 'צעדים ללונדון', 'צעדים לפריז'],
       selectedBranch: 'צעדים לפריז',
+      payMethod: false,
+      createSameWorkout: false,
+      selectedTrainId: 0,
+      selectedDropdownTrain: null,
     };
   }
 
   getInfo = () => {
-    const trainType = ['בחרו סוג', 'אימון אישי', 'אימון קבוצתי', 'פילאטיס', 'יוגה', 'קיקבוקס'];
+    const trainType = [
+      { id: 1, name: 'אימון אישי' },
+      { id: 2, name: 'אימון קבוצתי' },
+      { id: 3, name: 'פילאטיס' },
+      { id: 4, name: 'יוגה' },
+      { id: 5, name: 'קיקבוקס' },
+    ];
     this.setState({ trainType: trainType });
     // requestGet(API.Home.get_product, {
     //   search: this.state.search,
@@ -86,8 +96,8 @@ export default class CreateWorkout extends React.Component {
     // });
   };
 
-  getBranch = () => {
-    // requestGet(API.Home.get_branch, {
+  getTrain = () => {
+    // requestGet(API.Home.get_train, {
     //   search: this.state.branchSearch,
     // }).then(async (result) => {
     //   if (result.code == API_RES_CODE.SUCCESS) {
@@ -104,12 +114,12 @@ export default class CreateWorkout extends React.Component {
   };
 
   componentDidMount() {
-    this.getBranch();
+    this.getTrain();
     this.getInfo();
   }
 
   delete = () => {
-    // requestPost(API.Home.delete_workout, {
+    // requestPost(API.Home.delete_train, {
     // }).then(async (result) => {
     //   if (result.code == API_RES_CODE.SUCCESS) {
     //   } else {
@@ -162,7 +172,7 @@ export default class CreateWorkout extends React.Component {
                     </HorizontalLayout>
                   }
                   onSelect={(value) => {
-                    this.setState({ selectedBranch: value });
+                    this.setState({ selectedBranch: value.name });
                   }}
                 />
               </HorizontalLayout>
@@ -186,6 +196,10 @@ export default class CreateWorkout extends React.Component {
                   data={this.state.trainType}
                   onEdit={() => {
                     this.setState({ showEditTrainPopup: true });
+                  }}
+                  selectedValue={this.state.selectedDropdownTrain}
+                  onSelect={(value) => {
+                    this.setState({ selectedDropdownTrain: value.name });
                   }}
                 />
               }
@@ -218,7 +232,7 @@ export default class CreateWorkout extends React.Component {
               inputNode={<DropDownPicker data={this.state.trainType} />}
             />
             <SetValueGroup
-              style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#F5F5F5' }]}
+              style={[Styles.input_wrapper, { marginBottom: 13, backgroundColor: '#F5F5F5' }]}
               title="כמות משתתפים"
               image={require('src/assets/image/ic_man_on.png')}
               inputNode={
@@ -232,7 +246,7 @@ export default class CreateWorkout extends React.Component {
                 />
               }
             />
-            <HorizontalLayout>
+            <HorizontalLayout style={{ alignItems: 'center', justifyContent: 'space-between' }}>
               <Button onPress={() => {}}>
                 <LocalImage
                   source={require('src/assets/image/ic_edit.png')}
@@ -244,20 +258,23 @@ export default class CreateWorkout extends React.Component {
             <HorizontalLayout style={{ alignItems: 'center', justifyContent: 'flex-end' }}>
               <Text style={{ fontSize: 16, lineHeight: 19 }}>יצירת אותו אימון</Text>
               <CheckBox
+                style={{ marginRight: -8 }}
                 onFillColor="#0D65D9"
-                value={this.state.pay_method}
+                value={this.state.createSameWorkout}
                 onChange={() => {
-                  this.setState({ pay_method: !this.state.pay_method });
+                  this.setState({ createSameWorkout: !this.state.createSameWorkout });
                 }}
               />
             </HorizontalLayout>
-            <HorizontalLayout style={{ alignItems: 'center', justifyContent: 'flex-end' }}>
+            <HorizontalLayout
+              style={{ alignItems: 'center', justifyContent: 'flex-end', marginBottom: 45 }}>
               <Text style={{ fontSize: 16, lineHeight: 19 }}>אימון שקוף</Text>
               <CheckBox
+                style={{ marginRight: -8 }}
                 onFillColor="#0D65D9"
-                value={this.state.pay_method}
+                value={this.state.payMethod}
                 onChange={() => {
-                  this.setState({ pay_method: !this.state.pay_method });
+                  this.setState({ payMethod: !this.state.payMethod });
                 }}
               />
             </HorizontalLayout>
@@ -279,20 +296,16 @@ export default class CreateWorkout extends React.Component {
         </ScrollView>
         <EditTrainPopup
           visible={this.state.showEditTrainPopup}
-          data={this.state.trainList}
-          selectBranchId={this.state.selectedBranchId}
-          selectBranch={(index) => {
-            this.setState({ selectedBranchId: index });
+          data={this.state.trainType}
+          selectTrainId={this.state.selectedTrainId}
+          selectTrain={(index) => {
+            this.setState({ selectedTrainId: index });
           }}
           setSearch={() => {
-            this.getBranch();
+            this.getTrain();
           }}
-          addBranch={() => {
-            this.setState({ showEditTrainPopup: false, showAddBranchPopup: true });
-          }}
-          deleteBranch={() => {
-            this.deleteBranch();
-          }}
+          onRemove={() => {}}
+          onKeep={() => {}}
           onCancel={() => {
             this.setState({ showEditTrainPopup: false });
           }}

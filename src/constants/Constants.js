@@ -73,5 +73,6 @@ export const API = {
     add_product: 'home/add_product',
     update_product: 'home/update_product',
     delete_product: 'home/delete_product',
+    get_train: 'home/get_train',
   }
 };

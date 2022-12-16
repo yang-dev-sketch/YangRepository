@@ -31,6 +31,9 @@ export default class DropDownPicker extends React.Component {
           borderColor: '#F3F3F3',
           borderRadius: 50,
         }}
+        rowTextForSelection={(item, index) => {
+          return item.name;
+        }}
         renderCustomizedButtonChild={(selectedItem: any, index: number) => {
           return (
             <HorizontalLayout
@@ -62,7 +65,7 @@ export default class DropDownPicker extends React.Component {
                   />
                 )}
               </HorizontalLayout>
-              <Text style={{ fontSize: 16, lineHeight: 19 }}>{selectedItem}</Text>
+              <Text style={{ fontSize: 16, lineHeight: 19 }}>{this.props.selectedValue}</Text>
             </HorizontalLayout>
           );
         }}
@@ -73,13 +76,14 @@ export default class DropDownPicker extends React.Component {
           paddingTop: 24,
           backgroundColor: 'white',
           paddingHorizontal: 15,
-          elevation: 0,
+          elevation: 1,
           marginTop: -1,
         }}
         rowStyle={{ height: 48, paddingVertical: 15, borderBottomColor: '#F5F5F5' }}
         rowTextStyle={{ fontSize: 16, lineHeight: 19, textAlign: 'right' }}
         onSelect={(selectedItem, index) => {
           console.log(selectedItem);
+          this.props.onSelect(selectedItem);
         }}
       />
     );

@@ -55,6 +55,7 @@ import CheckBox from '@react-native-community/checkbox';
 import EditTrainPopup from '../../components/popups/EditTrainPopup';
 import ModalDropDown from '../../components/controls/ModalDropDown';
 import EditTraineePopup from '../../components/popups/EditTraineePopup';
+import AddTraineePopup from '../../components/popups/AddTraineePopup';
 
 @observer
 export default class CreateWorkout extends React.Component {
@@ -67,6 +68,7 @@ export default class CreateWorkout extends React.Component {
       trainType: [],
       showEditTrainPopup: false,
       trainList: [],
+      traineeList: [],
       branchList: ['צעדים לפריז', 'צעדים ללונדון', 'צעדים לפריז'],
       selectedBranch: 'צעדים לפריז',
       payMethod: false,
@@ -79,6 +81,8 @@ export default class CreateWorkout extends React.Component {
   }
 
   getInfo = () => {
+    this.getTrain();
+    this.getTrainee();
     const trainType = [
       { id: 1, name: 'אימון אישי' },
       { id: 2, name: 'אימון קבוצתי' },
@@ -115,9 +119,26 @@ export default class CreateWorkout extends React.Component {
     ];
     this.setState({ trainList: trainList });
   };
+  getTrainee = () => {
+    // requestGet(API.Home.get_trainee, {
+    //   search: this.state.branchSearch,
+    // }).then(async (result) => {
+    //   if (result.code == API_RES_CODE.SUCCESS) {
+    //   } else {
+    //   }
+    // });
+    const traineeList = [
+      { id: 1, name: 'שם המתאמן.ת', image: '' },
+      { id: 2, name: 'שם המתאמן.ת', image: '' },
+      { id: 3, name: 'שם המתאמן.ת', image: '' },
+      { id: 4, name: 'שם המתאמן.ת', image: '' },
+      { id: 5, name: 'שם המתאמן.ת', image: '' },
+      { id: 6, name: 'שם המתאמן.ת', image: '' },
+    ];
+    this.setState({ traineeList: traineeList });
+  };
 
   componentDidMount() {
-    this.getTrain();
     this.getInfo();
   }
 
@@ -323,6 +344,26 @@ export default class CreateWorkout extends React.Component {
           addTrainee={() => {
             this.setState({ showEditTraineePopup: false, showAddTraineePopup: true });
           }}
+        />
+        <AddTraineePopup
+          visible={this.state.showAddTraineePopup}
+          data={this.state.traineeList}
+          onBack={() => {
+            this.setState({
+              showAddTraineePopup: false,
+              showEditTraineePopup: true,
+            });
+          }}
+          onCancel={() => {
+            this.setState({ showAddTraineePopup: false });
+          }}
+          setSearch={() => {
+            this.getTrainee();
+          }}
+          select={(value) => {
+            this.setState({ selectTrainee: value });
+          }}
+          selectId={this.state.selectTrainee}
         />
       </SafeAreaView>
     );

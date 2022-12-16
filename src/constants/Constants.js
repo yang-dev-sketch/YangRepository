@@ -74,5 +74,6 @@ export const API = {
     update_product: 'home/update_product',
     delete_product: 'home/delete_product',
     get_train: 'home/get_train',
+    get_trainee: 'home/get_trainee',
   }
 };

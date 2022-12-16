@@ -23,12 +23,8 @@ class AddTraineePopup extends React.Component {
   }
 
   addTrainee = () => {
-    // requestPost(API.Home.add_branch, {
-    //   logo: this.state.logo,
-    //   title: this.state.title,
-    //   info: this.state.info,
-    //   address: this.state.address,
-    //   pay_method: this.state.pay_method,
+    // requestPost(API.Home.add_trainee, {
+    //   id: this.props.selectId,
     // }).then(async (result) => {
     //   if (result.code == API_RES_CODE.SUCCESS) {
     this.props.onCancel();
@@ -38,12 +34,11 @@ class AddTraineePopup extends React.Component {
   };
 
   removeTrainee = () => {
-    // requestPost(API.Home.delete_branch, {
-    //   id: this.state.trainId,
-    //   time: this.state.trainDateTime,
+    // requestPost(API.Home.delete_trainee, {
+    //   id: this.props.selectId,
     // }).then(async (result) => {
     //   if (result.code == API_RES_CODE.SUCCESS) {
-    this.props.onCancel();
+    this.props.removeTrainee();
     //   } else {
     //   }
     // });

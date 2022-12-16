@@ -354,6 +354,14 @@ export default class CreateWorkout extends React.Component {
               showEditTraineePopup: true,
             });
           }}
+          removeTrainee={() => {
+            this.setState({
+              traineeList: this.state.traineeList.filter((item) => {
+                return item.id != this.state.selectTrainee;
+              }),
+              selectTrainee: 0,
+            });
+          }}
           onCancel={() => {
             this.setState({ showAddTraineePopup: false });
           }}

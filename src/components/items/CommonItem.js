@@ -17,7 +17,7 @@ class CommonItem extends React.Component {
     return (
       <Button
         onPress={() => {
-          this.props.select();
+          if (this.props.select) this.props.select();
         }}>
         <HorizontalLayout
           style={[
@@ -37,27 +37,47 @@ class CommonItem extends React.Component {
               {this.props.text}
             </Text>
             {(data.id == this.props.selectId &&
-              ((this.props.fastImage && (
-                <FastImage
-                  source={{ uri: this.props.activeImage ? this.props.activeImage : IMAGE_FOO_URL }}
-                  resizeMode={FastImage.resizeMode.cover}
-                  style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 7 }}
-                />
-              )) || (
+              ((this.props.fastImage &&
+                ((this.props.imageCut && (
+                  <View style={{ width: 29, height: 20, overflow: 'hidden', marginLeft: 6 }}>
+                    <FastImage
+                      source={{ uri: data.avatar ? data.avatar : IMAGE_FOO_URL }}
+                      resizeMode={FastImage.resizeMode.cover}
+                      style={{ width: 29, height: 29, marginTop: -4.5 }}
+                    />
+                  </View>
+                )) || (
+                  <FastImage
+                    source={{
+                      uri: this.props.activeImage ? this.props.activeImage : IMAGE_FOO_URL,
+                    }}
+                    resizeMode={FastImage.resizeMode.cover}
+                    style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 7 }}
+                  />
+                ))) || (
                 <LocalImage
                   source={this.props.activeImage}
                   style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 7 }}
                 />
               ))) ||
-              (this.props.fastImage && (
-                <FastImage
-                  source={{
-                    uri: this.props.disActiveImage ? this.props.disActiveImage : IMAGE_FOO_URL,
-                  }}
-                  resizeMode={FastImage.resizeMode.cover}
-                  style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 7 }}
-                />
-              )) || (
+              (this.props.fastImage &&
+                ((this.props.imageCut && (
+                  <View style={{ width: 29, height: 20, overflow: 'hidden', marginLeft: 6 }}>
+                    <FastImage
+                      source={{ uri: data.avatar ? data.avatar : IMAGE_FOO_URL }}
+                      resizeMode={FastImage.resizeMode.cover}
+                      style={{ width: 29, height: 29, marginTop: -4.5 }}
+                    />
+                  </View>
+                )) || (
+                  <FastImage
+                    source={{
+                      uri: this.props.disActiveImage ? this.props.disActiveImage : IMAGE_FOO_URL,
+                    }}
+                    resizeMode={FastImage.resizeMode.cover}
+                    style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 7 }}
+                  />
+                ))) || (
                 <LocalImage
                   source={this.props.disActiveImage}
                   style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 7 }}
@@ -75,7 +95,7 @@ export default CommonItem;
 const styles = StyleSheet.create({
   common_item: {
     width: '100%',
-    paddingVertical: 10,
+    height: 65,
     paddingHorizontal: 15,
     borderWidth: 1,
     backgroundColor: '#fff',

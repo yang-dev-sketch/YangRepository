@@ -63,22 +63,8 @@ export default class BottomMenu extends React.Component {
           </VerticalLayout>
         </Button>
 
-        {(GlobalState.getTabIndex != MAIN_TAB.GYME && (
-          <Button
-            style={styles.home}
-            onPress={() => {
-              if (GlobalState.getTabIndex != MAIN_TAB.HOME) {
-                GlobalState.setTabIndex(MAIN_TAB.HOME);
-              }
-            }}>
-            <VerticalLayout style={Styles.center}>
-              <LocalImage
-                source={require('src/assets/image/ic_plus_sign.png')}
-                style={{ width: 45, height: 45 }}
-              />
-            </VerticalLayout>
-          </Button>
-        )) || (
+        {((GlobalState.getTabIndex == MAIN_TAB.GYME ||
+          GlobalState.getTabIndex == MAIN_TAB.TRAIN) && (
           <>
             <Button
               style={styles.menu}
@@ -106,7 +92,9 @@ export default class BottomMenu extends React.Component {
             <Button
               style={styles.menu}
               onPress={() => {
-                console.log('sdfsdfsd');
+                if (GlobalState.getTabIndex != MAIN_TAB.TRAIN) {
+                  GlobalState.setTabIndex(MAIN_TAB.TRAIN);
+                }
               }}>
               <VerticalLayout style={Styles.center}>
                 <LocalImage
@@ -124,6 +112,21 @@ export default class BottomMenu extends React.Component {
               </VerticalLayout>
             </Button>
           </>
+        )) || (
+          <Button
+            style={styles.home}
+            onPress={() => {
+              if (GlobalState.getTabIndex != MAIN_TAB.HOME) {
+                GlobalState.setTabIndex(MAIN_TAB.HOME);
+              }
+            }}>
+            <VerticalLayout style={Styles.center}>
+              <LocalImage
+                source={require('src/assets/image/ic_plus_sign.png')}
+                style={{ width: 45, height: 45 }}
+              />
+            </VerticalLayout>
+          </Button>
         )}
 
         <Button

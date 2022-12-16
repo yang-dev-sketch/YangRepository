@@ -44,6 +44,8 @@ import TrainTimePopup from '../../components/popups/TrainTimePopup';
 import { AddBranchPopup, BranchPopup, DatePickerPopup, LeadPopup } from '../../components/popups';
 import TimePickerPopup from '../../components/popups/TimePickerPopup';
 import CloseTrainPopup from '../../components/popups/CloseTrainPopup';
+import TrainOrganizationPopup from '../../components/popups/TrainOrganizationPopup';
+import InvitateTraineePopup from '../../components/popups/InvitateTraineePopup';
 
 @observer
 export default class HomeScreen extends React.Component {
@@ -60,24 +62,22 @@ export default class HomeScreen extends React.Component {
         { title: 'מתאמנים באירגון', image: require('src/assets/image/ic_training.png') },
         { title: 'מאמנים באירגון', image: require('src/assets/image/ic_trainer.png') },
       ],
-      //noti
       showNotiPopup: false,
       trainId: 0,
       showTrainTimePopup: false,
       showDatePickerPopup: false,
       showTimePickerPopup: false,
       trainDateTime: new Date(),
-      //branch
       showBranchPopup: false,
       branchList: [],
       selectedBranchId: 0,
       branchSearch: '',
-      //addbranch
       showAddBranchPopup: false,
-      //total lead
       showLeadPopup: false,
-      //close train
       showCloseTrainPopup: false,
+      showTrainOrganizationPopup: false,
+      traineeList: [],
+      showInvitateTraineePopup: false,
     };
   }
 
@@ -150,6 +150,25 @@ export default class HomeScreen extends React.Component {
     // requestPost(API.Home.get_lead, {
     // }).then(async (result) => {
     //   if (result.code == API_RES_CODE.SUCCESS) {
+    //   } else {
+    //   }
+    // });
+  };
+
+  getTrainee = () => {
+    // requestGet(API.Home.get_trainee, {
+    // search: this.state.search,
+    // traineeType: this.state.traineeType
+    // }).then(async (result) => {
+    //   if (result.code == API_RES_CODE.SUCCESS) {
+    const traineeList = [
+      { id: 1, name: 'שם המתאמן.ת', avatar: '' },
+      { id: 2, name: 'שם המתאמן.ת', avatar: '' },
+      { id: 3, name: 'שם המתאמן.ת', avatar: '' },
+      { id: 4, name: 'שם המתאמן.ת', avatar: '' },
+      { id: 5, name: 'שם המתאמן.ת', avatar: '' },
+    ];
+    this.setState({ traineeList: traineeList });
     //   } else {
     //   }
     // });
@@ -365,6 +384,10 @@ export default class HomeScreen extends React.Component {
                     onPress={() => {
                       index === 0 && GlobalState.setTabIndex(MAIN_TAB.GYME);
                       index === 1 && this.props.navigation.navigate('CreateWorkout');
+                      index === 2 &&
+                        this.setState({ showTrainOrganizationPopup: true }, () => {
+                          this.getTrainee();
+                        });
                     }}
                     style={[
                       { width: (SCREEN_WIDTH - 64) / 2, height: 115, alignItems: 'center' },
@@ -503,6 +526,29 @@ export default class HomeScreen extends React.Component {
           }}
           onCancel={() => {
             this.setState({ showCloseTrainPopup: false });
+          }}
+        />
+        <TrainOrganizationPopup
+          visible={this.state.showTrainOrganizationPopup}
+          data={this.state.traineeList}
+          setSearch={() => {
+            this.getTrainee(search, traineeType);
+          }}
+          onCancel={() => {
+            this.setState({ showTrainOrganizationPopup: false });
+          }}
+          addTrainee={() => {
+            this.setState({ showTrainOrganizationPopup: false, showInvitateTraineePopup: true });
+          }}
+          onKeep={() => {}}
+        />
+        <InvitateTraineePopup
+          visible={this.state.showInvitateTraineePopup}
+          onBack={() => {
+            this.setState({ showInvitateTraineePopup: false, showTrainOrganizationPopup: true });
+          }}
+          onCancel={() => {
+            this.setState({ showInvitateTraineePopup: false });
           }}
         />
       </SafeAreaView>

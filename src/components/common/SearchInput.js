@@ -21,8 +21,6 @@ export default class SearchInput extends React.Component {
           numberOfLines={1}
           value={this.state.search}
           placeholder="חיפוש"
-          returnKeyType="done"
-          keyboardType="string"
           style={styles.search}
           onChangeText={(text) => this.updateSearch(text)}
         />

@@ -17,45 +17,8 @@ import LeadItem from '../items/LeadItem';
 import TaskItem from '../items/TaskItem';
 import LinearGradient from 'react-native-linear-gradient';
 import { SCREEN_WIDTH } from 'react-native-common-date-picker/src/contants';
-// import { Calendar, LocaleConfig } from 'react-native-calendars';
 import moment from 'moment';
 import CustomCalendar from "../controls/CustomCalendar";
-// import Calendar from 'react-native-swipe-calendar';
-
-LocaleConfig.locales['hebrew'] = {
-  monthNames: [
-    'יָנוּאָר',
-    'פֶבּרוּאָר',
-    'מַרס',
-    'אַפּרִיל',
-    'מַאִי',
-    'יוּנִי',
-    'יוּלִי',
-    'אוֹגוּסט',
-    'סֶפּטֶמבֶּר',
-    'אוֹקְטוֹבֶּר',
-    'נוֹבֶמבֶּר',
-    'דֵצֶמבֶּר',
-  ],
-  monthNamesShort: [
-    'יָנוּאָר',
-    'פֶבּרוּאָר',
-    'מַרס',
-    'אַפּרִיל',
-    'מַאִי',
-    'יוּנִי',
-    'יוּלִי',
-    'אוֹגוּסט',
-    'סֶפּטֶמבֶּר',
-    'אוֹקְטוֹבֶּר',
-    'נוֹבֶמבֶּר',
-    'דֵצֶמבֶּר',
-  ],
-  dayNames: ['א', 'ש', 'ו', 'ה', 'ד', 'ג', 'ב'],
-  dayNamesShort: ['א', 'ש', 'ו', 'ה', 'ד', 'ג', 'ב'],
-  today: 'הַיוֹם',
-};
-LocaleConfig.defaultLocale = 'hebrew';
 
 @observer
 class TaskPopup extends React.Component {
@@ -64,7 +27,7 @@ class TaskPopup extends React.Component {
     this.onEventPress = this.onEventPress.bind(this);
     this.renderSelected = this.renderSelected.bind(this);
     this.renderDetail = this.renderDetail.bind(this);
-    this.state = { selected: null, selectedDate: new Date() };
+    this.state = { selected: null };
   }
 
   onCancel = () => {
@@ -85,10 +48,6 @@ class TaskPopup extends React.Component {
   renderDetail(rowData, sectionID, rowID) {
     return <TaskItem data={rowData} index={sectionID} />;
   }
-
-  setSelectedDate = (value) => {
-    this.setState({ selectedDate: value });
-  };
 
   render() {
     const data = this.props.data;
@@ -140,83 +99,6 @@ class TaskPopup extends React.Component {
                   elevation: 3,
                   marginBottom: 10,
                 }}>
-                {/* <Calendar
-                  initialDate={this.state.selectedDate}
-                  minDate={'2022-12-16'}
-                  maxDate={'2023-05-30'}
-                  dayComponent={({ date, state }) => {
-                    return (
-                      <Button
-                        onPress={() => {
-                          this.setSelectedDate(date);
-                        }}
-                        style={[
-                          {
-                            width: 26,
-                            height: 26,
-                          },
-                          state === 'selected' && {
-                            width: 26,
-                            height: 26,
-                            borderRadius: 13,
-                            backgroundColor: '#5C9DF2',
-                            justifyContent: 'center',
-                          },
-                        ]}>
-                        <Text
-                          style={[
-                            { textAlign: 'center', fontSize: 16, color: '#1E6FD9' },
-                            state === 'today' && { color: 'red' },
-                            state === 'selected' && { color: 'white' },
-                            state === 'disabled' && { color: '#6F6F6F' },
-                            state === 'inactive' && { color: 'red' },
-                          ]}>
-                          {date.day}
-                        </Text>
-                      </Button>
-                    );
-                  }}
-                  renderArrow={(direction) =>
-                    direction === 'left' ? (
-                      <LocalImage
-                        source={require('src/assets/image/ic_left.png')}
-                        style={{ width: 9.17, height: 17.41 }}
-                      />
-                    ) : (
-                      <LocalImage
-                        source={require('src/assets/image/ic_right.png')}
-                        style={{ width: 9.17, height: 17.41 }}
-                      />
-                    )
-                  }
-                  firstDay={1}
-                  headerStyle={{ width: '100%' }}
-                  onPressArrowLeft={(subtractMonth) => subtractMonth()}
-                  onPressArrowRight={(addMonth) => addMonth()}
-                  disableArrowLeft={false}
-                  disableArrowRight={false}
-                  customHeader={() => {
-                    return (
-                      <HorizontalLayout>
-                        <Button
-                          onPress={() => {
-
-                          }}>
-                          <LocalImage
-                            source={require('src/assets/image/ic_left.png')}
-                            style={{ width: 9.17, height: 17.41 }}
-                          />
-                        </Button>
-                        <Text>2022</Text>
-                        <LocalImage
-                          source={require('src/assets/image/ic_right.png')}
-                          style={{ width: 9.17, height: 17.41 }}
-                        />
-                      </HorizontalLayout>
-                    );
-                  }}
-                  enableSwipeMonths={true}
-                /> */}
                 <CustomCalendar />
               </View>
               <SearchInput

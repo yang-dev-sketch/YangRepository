@@ -123,24 +123,27 @@ class LeadPopup extends React.Component {
               <TotalItem amount={5} text="נרשמו היום" color="#0D65D9"></TotalItem>
             </HorizontalLayout>
             <HorizontalLayout
-              style={{ marginTop: 15, justifyContent: 'space-between', paddingHorizontal: 20 }}>
-              <TotalItem
-                amount={12}
-                text="אחוז המרה ללקוחות"
-                color="#4399FF"></TotalItem>
+              style={{
+                marginVertical: 15,
+                justifyContent: 'space-between',
+                paddingHorizontal: 20,
+              }}>
+              <TotalItem amount={12} text="אחוז המרה ללקוחות" color="#4399FF"></TotalItem>
               <TotalItem amount={4} text="תזכורות לידים" color="#4E0DD9"></TotalItem>
             </HorizontalLayout>
-            <SearchInput
-              style={{ paddingHorizontal: 20, marginVertical: 15 }}
-              setSearch={(search) => {
-                this.props.setSearch(search);
-              }}
-            />
+            <View style={{ paddingHorizontal: 20 }}>
+              <SearchInput
+                setSearch={(search) => {
+                  this.props.setSearch(search);
+                }}
+              />
+            </View>
             <HorizontalLayout
               style={{
                 alignItems: 'center',
                 justifyContent: 'space-between',
                 paddingHorizontal: 20,
+                marginTop: 15,
                 marginBottom: 16.25,
               }}>
               <Button
@@ -167,8 +170,7 @@ class LeadPopup extends React.Component {
             </HorizontalLayout>
             <ScrollView style={{ paddingHorizontal: 20 }}>
               <Timeline
-                style={styles.list}
-                data={this.data}
+                data={data}
                 innerCircle="dot"
                 circleSize={20}
                 dotSize={12}

@@ -127,7 +127,6 @@ class CloseTrainPopup extends React.Component {
             </HorizontalLayout>
             <ScrollView style={{ paddingHorizontal: 20 }}>
               <Timeline
-                style={styles.list}
                 data={this.data}
                 innerCircle="dot"
                 circleSize={20}

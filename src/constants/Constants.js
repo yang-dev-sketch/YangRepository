@@ -81,5 +81,8 @@ export const API = {
     get_trainee: 'home/get_trainee',
     delete_trainee: 'home/delete_trainee',
     send_invitation: 'home/send_invitation',
+    get_task: 'home/get_task',
+    get_role: 'home/get_role',
+    set_role: 'home/set_role',
   }
 };

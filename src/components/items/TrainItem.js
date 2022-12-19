@@ -26,77 +26,78 @@ class TrainItem extends React.Component {
               borderColor: '#D8D8D8',
             },
           ]}>
-          {(data.id == this.props.selectTrainId && (
-            <LocalImage
-              source={require('src/assets/image/ic_check_on.png')}
-              style={{ width: 22, height: 22 }}
-            />
-          )) || <View></View>}
+          <HorizontalLayout>
+            {(data.id == this.props.selectTrainId && (
+              <LocalImage
+                source={require('src/assets/image/ic_check_on.png')}
+                style={{ width: 22, height: 22 }}
+              />
+            )) || <Text style={{ fontSize: 16, lineHeight: 22, color: '#979797' }}>{data.leftText}</Text>}
+          </HorizontalLayout>
           <HorizontalLayout style={{ alignItems: 'center' }}>
             <Text numberOfLines={1} style={{ fontSize: 16, lineHeight: 19 }}>
               {data.name}
             </Text>
-            {(data.id == this.props.selectTrainId &&
-              this.props.index === 0 && (
-                <LocalImage
-                  source={require('src/assets/image/ic_train_round_on.png')}
-                  style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 7 }}
-                />
-              ) ||
-              this.props.index === 1 && (
+            {(data.id == this.props.selectTrainId && this.props.index === 0 && (
+              <LocalImage
+                source={require('src/assets/image/ic_train_round_on.png')}
+                style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 7 }}
+              />
+            )) ||
+              (this.props.index === 1 && (
                 <LocalImage
                   source={require('src/assets/image/ic_man_round_off.png')}
                   style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 7 }}
                 />
-              ) ||
-              this.props.index === 2 && (
+              )) ||
+              (this.props.index === 2 && (
                 <LocalImage
                   source={require('src/assets/image/ic_boxing_round_off.png')}
                   style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 7 }}
                 />
-              ) ||
-              this.props.index === 3 && (
+              )) ||
+              (this.props.index === 3 && (
                 <LocalImage
                   source={require('src/assets/image/ic_zumba_round_off.png')}
                   style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 7 }}
                 />
-              ) ||
-              this.props.index === 4 && (
+              )) ||
+              (this.props.index === 4 && (
                 <LocalImage
                   source={require('src/assets/image/ic_yoga_round_off.png')}
                   style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 7 }}
                 />
               )) ||
               (this.props.index === 0 && (
-                  <LocalImage
-                    source={require('src/assets/image/ic_train_round_on.png')}
-                    style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 7 }}
-                  />
-                ) ||
-                this.props.index === 1 && (
-                  <LocalImage
-                    source={require('src/assets/image/ic_man_round_off.png')}
-                    style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 7 }}
-                  />
-                ) ||
-                this.props.index === 2 && (
-                  <LocalImage
-                    source={require('src/assets/image/ic_boxing_round_off.png')}
-                    style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 7 }}
-                  />
-                ) ||
-                this.props.index === 3 && (
-                  <LocalImage
-                    source={require('src/assets/image/ic_zumba_round_off.png')}
-                    style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 7 }}
-                  />
-                ) ||
-                this.props.index === 4 && (
-                  <LocalImage
-                    source={require('src/assets/image/ic_yoga_round_off.png')}
-                    style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 7 }}
-                  />
-                ))}
+                <LocalImage
+                  source={require('src/assets/image/ic_train_round_on.png')}
+                  style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 7 }}
+                />
+              )) ||
+              (this.props.index === 1 && (
+                <LocalImage
+                  source={require('src/assets/image/ic_man_round_off.png')}
+                  style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 7 }}
+                />
+              )) ||
+              (this.props.index === 2 && (
+                <LocalImage
+                  source={require('src/assets/image/ic_boxing_round_off.png')}
+                  style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 7 }}
+                />
+              )) ||
+              (this.props.index === 3 && (
+                <LocalImage
+                  source={require('src/assets/image/ic_zumba_round_off.png')}
+                  style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 7 }}
+                />
+              )) ||
+              (this.props.index === 4 && (
+                <LocalImage
+                  source={require('src/assets/image/ic_yoga_round_off.png')}
+                  style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 7 }}
+                />
+              ))}
           </HorizontalLayout>
         </HorizontalLayout>
       </Button>

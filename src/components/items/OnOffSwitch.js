@@ -9,7 +9,7 @@ export default class OnOffSwitch extends React.Component {
 
   render() {
     return (
-      <Touchable>
+      <View>
         {(this.props.state && (
           <LocalImage
             source={require('src/assets/image/ic_switch_on.png')}
@@ -21,24 +21,7 @@ export default class OnOffSwitch extends React.Component {
             style={{ width: 68, height: 34 }}
           />
         )}
-      </Touchable>
+      </View>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  setting_list: {
-    paddingRight: 22,
-    // height: 75,
-    borderBottomWidth: 1,
-    borderBottomColor: '#e4e0e054',
-    paddingVertical: 10,
-    alignItems: 'center',
-  },
-
-  switch: {
-    width: 40,
-    height: 25,
-    textAlign: 'right',
-  },
-});

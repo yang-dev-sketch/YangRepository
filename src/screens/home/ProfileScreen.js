@@ -53,7 +53,8 @@ import ImageCropPicker from 'react-native-image-crop-picker';
 import ProfileInfoItem from '../../components/items/ProfileInfoItem';
 import TaskPopup from '../../components/popups/TaskPopup';
 import { LeadPopup } from '../../components/popups';
-import AssignRolePopup from "../../components/popups/AssignRolePopup";
+import AssignRolePopup from '../../components/popups/AssignRolePopup';
+import FutureTrainPopup from '../../components/popups/FutureTrainPopup';
 
 @observer
 export default class ProfileScreen extends React.Component {
@@ -64,7 +65,16 @@ export default class ProfileScreen extends React.Component {
       showTaskPopup: false,
       taskList: [],
       showAssignRolePopup: false,
-      roleList: []
+      roleList: [
+        { id: 1, name: 'מנהל מערכת' },
+        { id: 2, name: 'להפוך משתמש' },
+        { id: 3, name: 'להפוך משתמש' },
+        { id: 4, name: 'להפוך משתמש' },
+      ],
+      sex: 1,
+      search_task: '',
+      search_future: '',
+      showFutureTrainPopup: false,
     };
   }
 
@@ -104,7 +114,7 @@ export default class ProfileScreen extends React.Component {
       },
     ];
     // requestGet(API.Home.get_task, {
-    //   search: this.state.search,
+    //   search: this.state.search_task,
     // }).then(async (result) => {
     //   if (result.code == API_RES_CODE.SUCCESS) {
     this.setState({
@@ -117,16 +127,6 @@ export default class ProfileScreen extends React.Component {
 
   getInfo = () => {
     this.getTaskList();
-    // requestGet(API.Home.get_product, {
-    //   search: this.state.search,
-    // }).then(async (result) => {
-    //   if (result.code == API_RES_CODE.SUCCESS) {
-    // this.setState({
-    //   productList: result.data
-    // });
-    //   } else {
-    //   }
-    // });
   };
 
   componentDidMount() {
@@ -143,22 +143,79 @@ export default class ProfileScreen extends React.Component {
 
   getRole = () => {
     const roleList = [
-      {id: 1, name: 'מנהל מערכת'},
-      {id: 2, name: 'להפוך משתמש'},
-      {id: 3, name: 'להפוך משתמש'},
-      {id: 4, name: 'להפוך משתמש'},
-    ]
+      { id: 1, name: 'מנהל מערכת' },
+      { id: 2, name: 'להפוך משתמש' },
+      { id: 3, name: 'להפוך משתמש' },
+      { id: 4, name: 'להפוך משתמש' },
+    ];
     // requestGet(API.Home.get_role, {
-    //   search: this.state.search,
     // }).then(async (result) => {
     //   if (result.code == API_RES_CODE.SUCCESS) {
-    this.setState({
-      roleList: roleList
-    });
+    this.setState(
+      {
+        roleList: roleList,
+      },
+      () => {
+        this.setState({ showAssignRolePopup: true });
+      },
+    );
     //   } else {
     //   }
     // });
-  }
+  };
+
+  setRole = () => {
+    // requesPost(API.Home.set_role, {
+    //   data: this.state.roleList,
+    // }).then(async (result) => {
+    //   if (result.code == API_RES_CODE.SUCCESS) {
+    this.setState({ showAssignRolePopup: false });
+    //   } else {
+    //   }
+    // });
+  };
+
+  getFutureTrain = () => {
+    const futureList = [
+      {
+        id: 1,
+        name: 'הכל',
+        image: require('src/assets/image/ic_train_round_on.png'),
+        startDate: '2022-10-06 09:00:00',
+        endDate: '2022-10-07 10:00:00',
+      },
+      {
+        id: 2,
+        name: 'אימון קבוצתי',
+        image: require('src/assets/image/ic_man_round_off.png'),
+        startDate: '2022-10-06 09:00:00',
+        endDate: '2022-10-06 10:00:00',
+      },
+      { id: 3, name: 'איגרוף', image: require('src/assets/image/ic_boxing_round_off.png'), startDate: '2022-10-06 09:00:00' },
+      {
+        id: 4,
+        name: 'איגרוף',
+        image: require('src/assets/image/ic_boxing_round_off.png'),
+        startDate: '2022-10-06 09:00:00',
+        endDate: '2022-10-06 10:00:00',
+      },
+    ];
+    // requestGet(API.Home.get_future_train, {
+    //   search: this.state.search_future,
+    // }).then(async (result) => {
+    //   if (result.code == API_RES_CODE.SUCCESS) {
+    this.setState(
+      {
+        futureList: futureList,
+      },
+      () => {
+        this.setState({ showFutureTrainPopup: true });
+      },
+    );
+    //   } else {
+    //   }
+    // });
+  };
 
   render() {
     return (
@@ -198,7 +255,11 @@ export default class ProfileScreen extends React.Component {
               }}>
               <HorizontalLayout style={{ alignItems: 'center' }}>
                 <LocalImage
-                  source={require('src/assets/image/ic_male.png')}
+                  source={
+                    this.state.sex === 1
+                      ? require('src/assets/image/ic_male.png')
+                      : require('src/assets/image/ic_female.png')
+                  }
                   style={{ width: 46, height: 46, marginRight: 15 }}
                 />
                 <View
@@ -336,7 +397,9 @@ export default class ProfileScreen extends React.Component {
                     <Text style={{ fontSize: 16, lineHeight: 19, color: 'white' }}>21</Text>
                   </View>
                 }
-                action={() => {}}
+                action={() => {
+                  this.getFutureTrain();
+                }}
               />
             </HorizontalLayout>
             <HorizontalLayout style={{ justifyContent: 'space-between', marginBottom: 10 }}>
@@ -356,7 +419,6 @@ export default class ProfileScreen extends React.Component {
                 height={58}
                 numberOfLines={2}
                 action={() => {
-                  this.getRole();
                   this.setState({ showAssignRolePopup: true });
                 }}
               />
@@ -469,10 +531,17 @@ export default class ProfileScreen extends React.Component {
           data={this.state.roleList}
           visible={this.state.showAssignRolePopup}
           onSelect={(data) => {
-            this.selectTask(data);
+            this.setRole(data);
           }}
           onCancel={() => {
             this.setState({ showAssignRolePopup: false });
+          }}
+        />
+        <FutureTrainPopup
+          data={this.state.futureList}
+          visible={this.state.showFutureTrainPopup}
+          onCancel={() => {
+            this.setState({ showFutureTrainPopup: false });
           }}
         />
       </SafeAreaView>

@@ -9,14 +9,14 @@ import EventBus from 'react-native-event-bus';
 import SwipeUpDownModal from 'react-native-swipe-modal-up-down';
 import { ActiveButton, SearchInput } from '../common';
 import { ScrollView } from 'react-navigation';
-import NotiItem from '../items/NotiItem';
+import SwitchItem from '../items/SwitchItem';
 
 @observer
 class AssignRolePopup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      roleList: this.props.roleList,
+      roleList: props.data,
     };
   }
 
@@ -66,10 +66,9 @@ class AssignRolePopup extends React.Component {
             </View>
             <HorizontalLayout
               style={{
-                paddingHorizontal: 20,
                 alignItem: 'center',
                 justifyContent: 'space-between',
-                marginBottom: 14.5,
+                marginBottom: 26.94,
               }}>
               <Button
                 onPress={() => {
@@ -92,7 +91,7 @@ class AssignRolePopup extends React.Component {
               numColumns={1}
               renderItem={({ item, index }) => {
                 return (
-                  <NotiItem
+                  <SwitchItem
                     data={item}
                     key={index}
                     onSelect={() => {
@@ -109,7 +108,7 @@ class AssignRolePopup extends React.Component {
                       width: '100%',
                       height: 1,
                       backgroundColor: '#F2F2F2',
-                      marginVertical: 15,
+                      marginVertical: 10,
                     }}
                   />
                 );

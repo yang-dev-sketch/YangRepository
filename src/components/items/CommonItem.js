@@ -26,12 +26,19 @@ class CommonItem extends React.Component {
               borderColor: '#D8D8D8',
             },
           ]}>
-          {(data.id == this.props.selectId && (
-            <LocalImage
-              source={require('src/assets/image/ic_check_on.png')}
-              style={{ width: 22, height: 22 }}
-            />
-          )) || <View></View>}
+          <HorizontalLayout style={{ width: '54%' }}>
+            {(data.id == this.props.selectId && (
+              <LocalImage
+                source={require('src/assets/image/ic_check_on.png')}
+                style={{ width: 22, height: 22 }}
+              />
+            )) || <View></View>}
+            {this.props.leftText != '' && (
+              <Text numberOfLines={2} style={{ fontSize: 16, lineHeight: 22, color: '#979797' }}>
+                {this.props.leftText}
+              </Text>
+            )}
+          </HorizontalLayout>
           <HorizontalLayout style={{ alignItems: 'center' }}>
             <Text numberOfLines={this.props.numberOfLines} style={{ fontSize: 16, lineHeight: 19 }}>
               {this.props.text}

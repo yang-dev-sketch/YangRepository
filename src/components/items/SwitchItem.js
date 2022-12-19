@@ -14,7 +14,7 @@ export default class SwitchItem extends React.Component {
     return (
       <Button
         onPress={() => {
-          if (this.props.event) this.props.event();
+          if (this.props.onSelect) this.props.onSelect();
         }}>
         <HorizontalLayout style={styles.switch_item}>
           <OnOffSwitch state={data.checked} />

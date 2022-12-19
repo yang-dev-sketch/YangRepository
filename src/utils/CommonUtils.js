@@ -258,4 +258,17 @@ export default {
     }
     return false;
   },
+
+  getTrainTypeDate(startDate, endDate) {
+    if(endDate) {
+      if(moment(startDate).format('YYYY-MM-DD') == moment(endDate).format('YYYY-MM-DD')) {
+        return moment(startDate).format('hh:mm') + ' - ' + moment(endDate).format('hh:mm') + ', ' + moment(startDate).format('DD.MM.YYYY');
+      }
+      else {
+        return moment(startDate).format('hh:mm, DD.MM.YYYY') + ' - ' + moment(endDate).format('hh:mm, DD.MM.YYYY');
+      }
+    } else {
+      return moment(startDate).format('hh:mm, DD.MM.YYYY')
+    }
+  }
 };

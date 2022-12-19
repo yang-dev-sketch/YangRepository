@@ -10,50 +10,15 @@ import SwipeUpDownModal from 'react-native-swipe-modal-up-down';
 import { SearchInput } from '../common';
 import { ScrollView } from 'react-navigation';
 import NotiItem from '../items/NotiItem';
+import CommonItem from '../items/CommonItem';
+import { CommonUtils } from '../../utils';
+import { SCREEN_WIDTH } from "../../constants/Constants";
 
 @observer
-class NotiPopup extends React.Component {
+class FutureTrainPopup extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      notiList: [
-        {
-          id: 1,
-          title: 'וחלקים מתוך הספרות הלטינית הקלאסית מאז 45 לפני',
-          date: '2022-12-14 08:50:10',
-          task: 'שם המשימה',
-          avatar: '',
-        },
-        {
-          id: 2,
-          title: 'וחלקים מתוך הספרות הלטינית הקלאסית מאז 45 לפני',
-          date: '2022-12-13 01:28:14',
-          task: 'שם המשימה',
-          avatar: '',
-        },
-        {
-          id: 3,
-          title: 'וחלקים מתוך הספרות הלטינית הקלאסית מאז 45 לפני',
-          date: '2022-12-13 01:28:14',
-          task: 'שם המשימה',
-          avatar: '',
-        },
-        {
-          id: 4,
-          title: 'וחלקים מתוך הספרות הלטינית הקלאסית מאז 45 לפני',
-          date: '2022-12-13 01:28:14',
-          task: 'שם המשימה',
-          avatar: '',
-        },
-        {
-          id: 5,
-          title: 'וחלקים מתוך הספרות הלטינית הקלאסית מאז 45 לפני',
-          date: '2022-12-13 01:28:14',
-          task: 'שם המשימה',
-          avatar: '',
-        },
-      ],
-    };
+    this.state = {};
   }
 
   onCancel = () => {
@@ -97,7 +62,7 @@ class NotiPopup extends React.Component {
                   style={{ width: 31, height: 31 }}
                 />
               </Button>
-              <Text style={{ fontSize: 18, lineHeight: 22 }}>התראות</Text>
+              <Text style={{ fontSize: 18, lineHeight: 22 }}>אימונים עתידיים</Text>
             </HorizontalLayout>
             <View style={{ paddingHorizontal: 20 }}>
               <SearchInput
@@ -106,23 +71,45 @@ class NotiPopup extends React.Component {
                 }}
               />
             </View>
-            <ScrollView style={{ paddingHorizontal: 20, marginTop: 20 }}>
+            <Button
+              onPress={() => {
+                this.onSort();
+              }}>
+              <HorizontalLayout style={{ paddingHorizontal: 20, marginVertical: 15 }}>
+                <Text
+                  style={{
+                    fontSize: 16,
+                    lineHeight: 19,
+                    color: '#5C9DF2',
+                    textDecorationLine: 'underline',
+                  }}>
+                  סינון
+                </Text>
+                <LocalImage
+                  source={require('src/assets/image/ic_sort.png')}
+                  style={{ width: 21, height: 21 }}
+                />
+              </HorizontalLayout>
+            </Button>
+            <ScrollView style={{ paddingHorizontal: 20 }}>
               <FlatList
                 ref={(ref) => {
                   this._flContent = ref;
                 }}
                 showsVerticalScrollIndicator={false}
                 style={{ marginTop: 15 }}
-                data={this.state.notiList}
+                data={this.props.data}
                 numColumns={1}
                 renderItem={({ item, index }) => {
                   return (
-                    <NotiItem
+                    <CommonItem
                       data={item}
-                      key={index}
-                      setTrainingTime={() => {
-                        this.props.setTrainingTime(item.id, item.date);
-                      }}
+                      select={() => {}}
+                      text={item.name}
+                      disActiveImage={item.image}
+                      fastImage={false}
+                      numberOfLines={2}
+                      leftText={CommonUtils.getTrainTypeDate(item.startDate, item.endDate)}
                     />
                   );
                 }}
@@ -132,6 +119,19 @@ class NotiPopup extends React.Component {
                 }}
               />
             </ScrollView>
+            <Button
+              onPress={() => {}}
+              style={{
+                alignItems: 'center',
+                position: 'absolute',
+                bottom: 34,
+                left: (SCREEN_WIDTH - 45) / 2,
+              }}>
+              <LocalImage
+                source={require('src/assets/image/ic_plus_sign.png')}
+                style={{ width: 45, height: 45 }}
+              />
+            </Button>
           </VerticalLayout>
         }
         onClose={() => {
@@ -155,4 +155,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default NotiPopup;
+export default FutureTrainPopup;

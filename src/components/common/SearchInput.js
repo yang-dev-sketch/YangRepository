@@ -16,7 +16,7 @@ export default class SearchInput extends React.Component {
 
   render() {
     return (
-      <View>
+      <View style={this.props.style}>
         <TextInput
           numberOfLines={1}
           value={this.state.search}

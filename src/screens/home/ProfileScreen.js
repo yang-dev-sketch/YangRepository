@@ -59,6 +59,9 @@ import TrackTypePopup from '../../components/popups/TrackTypePopup';
 import SelectMembershipPopup from '../../components/popups/SelectMembershipPopup';
 import SubscriptionPopup from '../../components/popups/SubscriptionPopup';
 import DisplayPurchasePopup from '../../components/popups/DisplayPurchasePopup';
+import SelectTrainPopup from '../../components/popups/SelectTrainPopup';
+import AdvancedSettingPopup from '../../components/popups/AdvancedSettingPopup';
+import AvailableStorePopup from '../../components/popups/AvailableStorePopup';
 
 @observer
 export default class ProfileScreen extends React.Component {
@@ -96,6 +99,11 @@ export default class ProfileScreen extends React.Component {
       selectedMembershipId: 1,
       showSubscriptionPopup: false,
       showDisplayPurchasePopup: false,
+      showSelectTrainPopup: false,
+      selectedTrainId: 0,
+      searchTrain: '',
+      showAdvancedSettingPopup: false,
+      showAvailableStorePopup: false,
     };
   }
 
@@ -672,6 +680,12 @@ export default class ProfileScreen extends React.Component {
           displayInPurchase={() => {
             this.setState({ showSubscriptionPopup: false, showDisplayPurchasePopup: true });
           }}
+          setTrain={() => {
+            this.setState({ showSubscriptionPopup: false, showSelectTrainPopup: true });
+          }}
+          setSetting={() => {
+            this.setState({ showSubscriptionPopup: false, showAdvancedSettingPopup: true });
+          }}
         />
         <DisplayPurchasePopup
           visible={this.state.showDisplayPurchasePopup}
@@ -683,6 +697,55 @@ export default class ProfileScreen extends React.Component {
           }}
           onCancel={() => {
             this.setState({ showDisplayPurchasePopup: false });
+          }}
+        />
+        <SelectTrainPopup
+          visible={this.state.showSelectTrainPopup}
+          onBack={() => {
+            this.setState({
+              showSelectTrainPopup: false,
+              showSubscriptionPopup: true,
+            });
+          }}
+          onCancel={() => {
+            this.setState({ showSelectTrainPopup: false });
+          }}
+          setSearch={(search) => {
+            this.setState({ searchTrain: search });
+          }}
+          selectTrain={(id) => {
+            this.setState({ selectedTrainId: id });
+          }}
+          selectedTrainId={this.state.selectedTrainId}
+        />
+        <AdvancedSettingPopup
+          visible={this.state.showAdvancedSettingPopup}
+          onBack={() => {
+            this.setState({
+              showAdvancedSettingPopup: false,
+              showSubscriptionPopup: true,
+            });
+          }}
+          onCancel={() => {
+            this.setState({ showAdvancedSettingPopup: false });
+          }}
+          setAvailableStore={() => {
+            this.setState({ showAvailableStorePopup: true, showAdvancedSettingPopup: false });
+          }}
+        />
+        <AvailableStorePopup
+          visible={this.state.showAvailableStorePopup}
+          onBack={() => {
+            this.setState({
+              showAvailableStorePopup: false,
+              showAdvancedSettingPopup: true,
+            });
+          }}
+          onCancel={() => {
+            this.setState({ showAvailableStorePopup: false });
+          }}
+          onNext={() => {
+            this.setState({ showAvailableStorePopup: false });
           }}
         />
       </SafeAreaView>

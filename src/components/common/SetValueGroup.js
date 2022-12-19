@@ -36,7 +36,7 @@ export default class SetValueGroup extends React.Component {
                     style={{ width: 17.41, height: 9.17, marginLeft: 23.29 }}
                   />
                 )
-              : this.props.leftTitle && (
+              : (this.props.leftTitle && (
                   <HorizontalLayout
                     style={{ width: '50%', justifyContent: 'flex-end', alignItems: 'center' }}>
                     <Text style={{ fontSize: 16, lineHeight: 19, color: '#6F6F6F' }}>
@@ -49,7 +49,7 @@ export default class SetValueGroup extends React.Component {
                       />
                     )}
                   </HorizontalLayout>
-                )}
+                )) || <View></View>}
             <HorizontalLayout>
               <Text style={{ fontSize: 16, lineHeight: 19, color: '#6F6F6F' }}>
                 {this.props.title}

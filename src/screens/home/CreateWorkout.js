@@ -84,11 +84,12 @@ export default class CreateWorkout extends React.Component {
     this.getTrain();
     this.getTrainee();
     const trainType = [
-      { id: 1, name: 'אימון אישי' },
+      { id: 1, name: 'הכל' },
       { id: 2, name: 'אימון קבוצתי' },
-      { id: 3, name: 'פילאטיס' },
-      { id: 4, name: 'יוגה' },
-      { id: 5, name: 'קיקבוקס' },
+      { id: 3, name: 'איגרוף' },
+      { id: 4, name: 'זומבה' },
+      { id: 5, name: 'יוגה' },
+      { id: 6, name: 'פונקציונאלי' },
     ];
     this.setState({ trainType: trainType });
     // requestGet(API.Home.get_product, {

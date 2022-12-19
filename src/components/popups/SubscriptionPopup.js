@@ -227,13 +227,17 @@ class SubscriptionPopup extends React.Component {
                   style={{ paddingVertical: 15 }}
                   data={{ name: 'מוצג בדף הרכישה', checked: this.state.displayInPurchase }}
                   onSelect={() => {
-                    this.props.displayInPurchase();
-                    this.setState({ displayInPurchase: !this.state.displayInPurchase });
+                    this.setState({ displayInPurchase: !this.state.displayInPurchase }, () => {
+                      this.state.displayInPurchase && this.props.displayInPurchase();
+                    });
                   }}
                 />
               )}
               {this.props.selectedMembershipId !== 1 && (
                 <Button
+                  onPress={() => {
+                    this.props.setTrain();
+                  }}
                   style={{
                     width: '100%',
                     height: 65,
@@ -258,7 +262,10 @@ class SubscriptionPopup extends React.Component {
                 <Text style={{ marginBottom: 45 }}>ברירת המחדל הינה לכל הסוגים</Text>
               )}
               {this.props.selectedMembershipId === 1 && (
-                <Button>
+                <Button
+                  onPress={() => {
+                    this.props.setSetting();
+                  }}>
                   <Text
                     style={{
                       fontSize: 16,

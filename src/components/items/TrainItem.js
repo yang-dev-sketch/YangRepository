@@ -38,63 +38,75 @@ class TrainItem extends React.Component {
             <Text numberOfLines={1} style={{ fontSize: 16, lineHeight: 19 }}>
               {data.name}
             </Text>
-            {(data.id == this.props.selectTrainId && this.props.index === 0 && (
+            {(data.id == this.props.selectTrainId && data.name === 'הכל' && (
               <LocalImage
                 source={require('src/assets/image/ic_train_round_on.png')}
                 style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 7 }}
               />
             )) ||
-              (this.props.index === 1 && (
+              (data.name === 'אימון קבוצתי' && (
                 <LocalImage
                   source={require('src/assets/image/ic_man_round_off.png')}
                   style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 7 }}
                 />
               )) ||
-              (this.props.index === 2 && (
+              (data.name === 'איגרוף' && (
                 <LocalImage
                   source={require('src/assets/image/ic_boxing_round_off.png')}
                   style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 7 }}
                 />
               )) ||
-              (this.props.index === 3 && (
+              (data.name === 'זומבה' && (
                 <LocalImage
                   source={require('src/assets/image/ic_zumba_round_off.png')}
                   style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 7 }}
                 />
               )) ||
-              (this.props.index === 4 && (
+              (data.name === 'יוגה' && (
                 <LocalImage
                   source={require('src/assets/image/ic_yoga_round_off.png')}
                   style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 7 }}
                 />
               )) ||
-              (this.props.index === 0 && (
+              (data.name === 'פונקציונאלי' && (
+                <LocalImage
+                  source={require('src/assets/image/ic_function_round_off.png')}
+                  style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 7 }}
+                />
+              )) ||
+              (data.name === 'הכל' && (
                 <LocalImage
                   source={require('src/assets/image/ic_train_round_on.png')}
                   style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 7 }}
                 />
               )) ||
-              (this.props.index === 1 && (
+              (data.name === 1 && (
                 <LocalImage
                   source={require('src/assets/image/ic_man_round_off.png')}
                   style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 7 }}
                 />
               )) ||
-              (this.props.index === 2 && (
+              (data.name === 'איגרוף' && (
                 <LocalImage
                   source={require('src/assets/image/ic_boxing_round_off.png')}
                   style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 7 }}
                 />
               )) ||
-              (this.props.index === 3 && (
+              (data.name === 'זומבה' && (
                 <LocalImage
                   source={require('src/assets/image/ic_zumba_round_off.png')}
                   style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 7 }}
                 />
               )) ||
-              (this.props.index === 4 && (
+              (data.name === 'הכל' && (
                 <LocalImage
                   source={require('src/assets/image/ic_yoga_round_off.png')}
+                  style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 7 }}
+                />
+              )) ||
+              (data.name === 'הכל' && (
+                <LocalImage
+                  source={require('src/assets/image/ic_function_round_off.png')}
                   style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 7 }}
                 />
               ))}

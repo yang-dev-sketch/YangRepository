@@ -67,7 +67,8 @@ export default class BottomMenu extends React.Component {
           GlobalState.getTabIndex == MAIN_TAB.TRAIN ||
           GlobalState.getTabIndex == MAIN_TAB.PROFILE ||
           GlobalState.getTabIndex == MAIN_TAB.SHOP ||
-          GlobalState.getTabIndex == MAIN_TAB.PRODUCT) && (
+          GlobalState.getTabIndex == MAIN_TAB.PRODUCT ||
+          GlobalState.getTabIndex == MAIN_TAB.PAYMENT) && (
           <>
             <Button
               style={styles.menu}

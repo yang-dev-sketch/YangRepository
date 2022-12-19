@@ -43,10 +43,12 @@ export default class SetValueGroup extends React.Component {
               <Text style={{ fontSize: 16, lineHeight: 19, color: '#6F6F6F' }}>
                 {this.props.title}
               </Text>
-              <LocalImage
-                source={this.props.image}
-                style={{ width: 16, height: 16, marginLeft: 5.5 }}
-              />
+              {this.props.image && (
+                <LocalImage
+                  source={this.props.image}
+                  style={{ width: 16, height: 16, marginLeft: 5.5 }}
+                />
+              )}
             </HorizontalLayout>
           </HorizontalLayout>
         </Button>

@@ -44,15 +44,17 @@ export default class DropDownPicker extends React.Component {
                 borderRadius: 50,
               }}>
               <HorizontalLayout style={{ alignItems: 'center' }}>
-                <Button
-                  onPress={() => {
-                    if (this.props.onEdit) this.props.onEdit();
-                  }}>
-                  <LocalImage
-                    source={require('src/assets/image/ic_edit_round.png')}
-                    style={{ width: 28, height: 28 }}
-                  />
-                </Button>
+                {this.props.editIcon && (
+                  <Button
+                    onPress={() => {
+                      if (this.props.onEdit) this.props.onEdit();
+                    }}>
+                    <LocalImage
+                      source={require('src/assets/image/ic_edit_round.png')}
+                      style={{ width: 28, height: 28 }}
+                    />
+                  </Button>
+                )}
                 {(this.state.typeOpen && (
                   <LocalImage
                     source={require('src/assets/image/ic_up.png')}

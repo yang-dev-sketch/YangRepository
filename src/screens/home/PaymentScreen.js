@@ -36,12 +36,14 @@ import MyInfo from '../../mobx/MyInfo';
 import { requestGet, requestPost } from '../../utils/ApiUtils';
 import { SearchInput } from '../../components/common';
 import PaymentItem from '../../components/items/PaymentItem';
+import ManualBillingPopup from "../../components/popups/ManualBillingPopup";
 
 @observer
 export default class PaymentScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      showManualBillingPopup: false,
       paymentList: [],
     };
   }
@@ -54,20 +56,38 @@ export default class PaymentScreen extends React.Component {
       { id: 4, state: 'שולם', method: 'אמצעי תשלום', date: '2022-06-10 22:45:00' },
       { id: 5, state: 'שולם', method: 'אמצעי תשלום', date: '2022-06-10 22:45:00' },
     ];
+    // requestGet(API.Home.get_payment, {
+    //   search: this.state.search,
+    // }).then(async (result) => {
+    //   if (result.code == API_RES_CODE.SUCCESS) {
     this.setState({
       paymentList: paymentList,
     });
+    //   } else {
+    //   }
+    // });
   };
 
   componentDidMount() {
     this.getInfo();
   }
 
+  search = (search) => {
+    this.setState({ search: search }, () => {
+      this.getInfo();
+    });
+  };
+
   render() {
     return (
       <SafeAreaView style={{ flex: 1 }}>
         <VerticalLayout
-          style={{ paddingVertical: 29, backgroundColor: '#F5F5F5', paddingHorizontal: 20, flex: 1 }}>
+          style={{
+            paddingVertical: 29,
+            backgroundColor: '#F5F5F5',
+            paddingHorizontal: 20,
+            flex: 1,
+          }}>
           <HorizontalLayout
             style={{
               alignItem: 'center',
@@ -76,17 +96,21 @@ export default class PaymentScreen extends React.Component {
             }}>
             <Button
               onPress={() => {
-                this.props.onCancel();
+                GlobalState.setTabIndex(MAIN_TAB.PROFILE);
               }}>
               <LocalImage
                 source={require('src/assets/image/ic_close.png')}
-                style={{ width: 31, height: 31 }}
+                style={{ width: 27.12, height: 27.12 }}
               />
             </Button>
             <Text style={{ fontSize: 18, lineHeight: 22 }}>תשלומים</Text>
           </HorizontalLayout>
-          <SearchInput setSearch={(search) => {}} />
-          <ScrollView style={{marginTop: 15}}>
+          <SearchInput
+            setSearch={(search) => {
+              this.search();
+            }}
+          />
+          <ScrollView style={{ marginTop: 15 }}>
             <FlatList
               ref={(ref) => {
                 this._flContent = ref;
@@ -103,7 +127,10 @@ export default class PaymentScreen extends React.Component {
               }}
             />
           </ScrollView>
-          <Button onPress={() => {}}>
+          <Button
+            onPress={() => {
+              this.setState({ showManualBillingPopup: true });
+            }}>
             <HorizontalLayout
               style={{ alignItems: 'center', justifyContent: 'center', paddingVertical: 15 }}>
               <Text style={{ fontSize: 16, lineHeight: 19 }}>חיוב ידני</Text>
@@ -114,6 +141,12 @@ export default class PaymentScreen extends React.Component {
             </HorizontalLayout>
           </Button>
         </VerticalLayout>
+        <ManualBillingPopup
+          visible={this.state.showManualBillingPopup}
+          onCancel={() => {
+            this.setState({ showManualBillingPopup: false });
+          }}
+        />
       </SafeAreaView>
     );
   }

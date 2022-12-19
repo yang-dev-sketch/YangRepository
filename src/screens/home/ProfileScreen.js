@@ -62,6 +62,7 @@ import DisplayPurchasePopup from '../../components/popups/DisplayPurchasePopup';
 import SelectTrainPopup from '../../components/popups/SelectTrainPopup';
 import AdvancedSettingPopup from '../../components/popups/AdvancedSettingPopup';
 import AvailableStorePopup from '../../components/popups/AvailableStorePopup';
+import RecurringStorePopup from '../../components/popups/RecurringstandingPopup';
 
 @observer
 export default class ProfileScreen extends React.Component {
@@ -745,7 +746,22 @@ export default class ProfileScreen extends React.Component {
             this.setState({ showAvailableStorePopup: false });
           }}
           onNext={() => {
-            this.setState({ showAvailableStorePopup: false });
+            this.setState({ showAvailableStorePopup: false, showRecurringStorePopup: true });
+          }}
+        />
+        <RecurringStorePopup
+          visible={this.state.showRecurringStorePopup}
+          onBack={() => {
+            this.setState({
+              showRecurringStorePopup: false,
+              showAvailableStorePopup: true,
+            });
+          }}
+          onCancel={() => {
+            this.setState({ showRecurringStorePopup: false });
+          }}
+          onNext={() => {
+            this.setState({ showRecurringStorePopup: false });
           }}
         />
       </SafeAreaView>

@@ -68,6 +68,7 @@ import AllowTrainPopup from '../../components/popups/AllowTrainPopup';
 import AllowBookingPopup from '../../components/popups/AllowBookingPopup';
 import HoursLimitPopup from '../../components/popups/HoursLimitPopup';
 import ReservationAvailabilityPopup from "../../components/popups/ReservationAvailabilityPopup";
+import AllowPenaltyPopup from "../../components/popups/AllowPenaltyPopup";
 
 @observer
 export default class ProfileScreen extends React.Component {
@@ -117,6 +118,7 @@ export default class ProfileScreen extends React.Component {
       showAllowBookingPopup: false,
       showHoursLimitPopup: false,
       showReservationAvailabilityPopup: false,
+      showAllowPenaltyPopup: false
     };
   }
 
@@ -874,7 +876,23 @@ export default class ProfileScreen extends React.Component {
             this.setState({ showReservationAvailabilityPopup: false });
           }}
           onNext={() => {
-            this.setState({ showReservationAvailabilityPopup: false });
+            this.setState({ showReservationAvailabilityPopup: false, showAllowPenaltyPopup: true });
+          }}
+        />
+        <AllowPenaltyPopup
+          // visible={this.state.showAllowPenaltyPopup}
+          visible={true}
+          onBack={() => {
+            this.setState({
+              showAllowPenaltyPopup: false,
+              showReservationAvailabilityPopup: true,
+            });
+          }}
+          onCancel={() => {
+            this.setState({ showAllowPenaltyPopup: false });
+          }}
+          onNext={() => {
+            this.setState({ showAllowPenaltyPopup: false });
           }}
         />
       </SafeAreaView>

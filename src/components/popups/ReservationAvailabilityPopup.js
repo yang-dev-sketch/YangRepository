@@ -29,21 +29,6 @@ class ReservationAvailabilityPopup extends React.Component {
     };
   }
 
-  getInfo = () => {
-    const invoiceType = [
-      { id: 1, name: 'כללי' },
-      { id: 2, name: 'כללי' },
-      { id: 3, name: 'כללי' },
-      { id: 4, name: 'כללי' },
-      { id: 5, name: 'כללי' },
-    ];
-    this.setState({ invoiceType: invoiceType });
-  };
-
-  componentDidMount = () => {
-    this.getInfo();
-  };
-
   render() {
     const data = this.props.data;
     return (
@@ -72,17 +57,37 @@ class ReservationAvailabilityPopup extends React.Component {
                 justifyContent: 'space-between',
                 marginBottom: 16.94,
               }}>
-              <Button
-                onPress={() => {
-                  this.props.onCancel();
-                }}>
-                <LocalImage
-                  source={require('src/assets/image/ic_close.png')}
-                  style={{ width: 31, height: 31 }}
-                />
-              </Button>
-              <Text style={{ fontSize: 18, lineHeight: 22 }}>חיוב ידני</Text>
+              <HorizontalLayout style={{ alignItems: 'center' }}>
+                <Button
+                  onPress={() => {
+                    this.props.onBack();
+                  }}>
+                  <LocalImage
+                    source={require('src/assets/image/ic_left.png')}
+                    style={{ width: 11.62, height: 20.73, marginRight: 20.93 }}
+                  />
+                </Button>
+                <Button
+                  onPress={() => {
+                    this.props.onCancel();
+                  }}>
+                  <LocalImage
+                    source={require('src/assets/image/ic_close.png')}
+                    style={{ width: 31, height: 31 }}
+                  />
+                </Button>
+              </HorizontalLayout>
+              <Text style={{ fontSize: 18, lineHeight: 22 }}>סוג מסלול:</Text>
             </HorizontalLayout>
+            <View
+              style={{
+                paddingBottom: 15,
+                borderBottomWidth: 1,
+                borderBottomColor: '#F2F2F2',
+                marginBottom: 20,
+              }}>
+              <Text style={{ fontSize: 16, lineHeight: 19.2 }}>הזמנה על בסיס מקום פנוי</Text>
+            </View>
             <SetValueGroup
               style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#F5F5F5' }]}
               title="כמות הפעמים שהוגדרה בהגבלת התדירות"

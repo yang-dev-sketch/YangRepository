@@ -11,6 +11,7 @@ import { ActiveButton, DisactiveButton, SearchInput } from '../common';
 import { ScrollView } from 'react-navigation';
 import NotiItem from '../items/NotiItem';
 import TrackItem from '../items/TrackItem';
+import { SCREEN_HEIGHT } from "../../constants/Constants";
 
 @observer
 class TrackTypePopup extends React.Component {
@@ -189,7 +190,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     width: '100%',
-    height: '95%',
+    maxHeight: SCREEN_HEIGHT * 0.8
   },
 });
 

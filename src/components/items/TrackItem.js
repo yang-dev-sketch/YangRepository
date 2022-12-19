@@ -31,12 +31,18 @@ class TrackItem extends React.Component {
               source={require('src/assets/image/ic_check_on.png')}
               style={{ width: 22, height: 22, marginRight: 21 }}
             />
-          )) || (
-            <LocalImage
-              source={require('src/assets/image/ic_edit_round.png')}
-              style={{ width: 28, height: 28 }}
-            />
-          )}
+          )) ||
+            (this.props.checkOffIcon && (
+              <LocalImage
+                source={require('src/assets/image/ic_check_off.png')}
+                style={{ width: 28, height: 28 }}
+              />
+            )) || (
+              <LocalImage
+                source={require('src/assets/image/ic_edit_round.png')}
+                style={{ width: 28, height: 28 }}
+              />
+            )}
           <HorizontalLayout
             style={{ alignItems: 'center', justifyContent: 'flex-end', width: '80%' }}>
             <Text numberOfLines={2} style={{ fontSize: 16, lineHeight: 22, marginRight: 7 }}>

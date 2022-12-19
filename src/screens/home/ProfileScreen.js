@@ -57,6 +57,7 @@ import AssignRolePopup from '../../components/popups/AssignRolePopup';
 import FutureTrainPopup from '../../components/popups/FutureTrainPopup';
 import TrackTypePopup from '../../components/popups/TrackTypePopup';
 import SelectMembershipPopup from '../../components/popups/SelectMembershipPopup';
+import SubscriptionPopup from "../../components/popups/SubscriptionPopup";
 
 @observer
 export default class ProfileScreen extends React.Component {
@@ -91,6 +92,8 @@ export default class ProfileScreen extends React.Component {
         { id: 1, name: 'מִנוּי' },
         { id: 2, name: 'כרטיסי ניקוב' },
       ],
+      selectedMembershipId: 0,
+      showSubscriptionPopup: false,
     };
   }
 
@@ -638,8 +641,30 @@ export default class ProfileScreen extends React.Component {
         <SelectMembershipPopup
           visible={this.state.showSelectMembershipPopup}
           data={this.state.membershipList}
+          onBack={() => {
+            this.setState({ showTrackTypePopup: true, showSelectMembershipPopup: false });
+          }}
           onCancel={() => {
             this.setState({ showSelectMembershipPopup: false });
+          }}
+          selectedMembershipId={this.state.selectedMembershipId}
+          selectMembership={(id) => {
+            this.setState({ selectedMembershipId: id });
+          }}
+          onNext={() => {
+            this.setState({ showSubscriptionPopup: true });
+          }}
+        />
+        <SubscriptionPopup
+          visible={this.state.showSubscriptionPopup}
+          onBack={() => {
+            this.setState({
+              showSubscriptionPopup: false,
+              showSelectMembershipPopup: true,
+            });
+          }}
+          onCancel={() => {
+            this.setState({ showSubscriptionPopup: false });
           }}
         />
       </SafeAreaView>

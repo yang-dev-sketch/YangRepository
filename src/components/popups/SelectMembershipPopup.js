@@ -16,30 +16,12 @@ import TrackItem from '../items/TrackItem';
 class SelectMembershipPopup extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      sortType: false,
-    };
+    this.state = {};
   }
 
   onCancel = () => {
-    this.setState({ sortType: false });
     this.props.onCancel();
   };
-
-  onRemove = () => {
-    // requestPost(API.Home.delete_track, {
-    //   id: this.props.selectedTrackId,
-    // }).then(async (result) => {
-    //   if (result.code == API_RES_CODE.SUCCESS) {
-    this.setState({ sortType: true });
-    this.props.deleteTrack();
-    this.props.selectTrack(0);
-    //   } else {
-    //   }
-    // });
-  };
-
-  onSort = () => {};
 
   render() {
     return (
@@ -66,50 +48,31 @@ class SelectMembershipPopup extends React.Component {
               style={{
                 alignItem: 'center',
                 justifyContent: 'space-between',
-                marginBottom: 16.94,
+                marginBottom: 11.94,
               }}>
-              <Button
-                onPress={() => {
-                  this.props.onCancel();
-                }}>
-                <LocalImage
-                  source={require('src/assets/image/ic_close.png')}
-                  style={{ width: 31, height: 31 }}
-                />
-              </Button>
-              <Text style={{ fontSize: 18, lineHeight: 22 }}>סוג מסלול:</Text>
-            </HorizontalLayout>
-            {(this.state.sortType && (
-              <VerticalLayout style={{ marginBottom: 20 }}>
-                <SearchInput
-                  setSearch={(search) => {
-                    this.props.searchTrack(search);
-                  }}
-                />
+              <HorizontalLayout style={{ alignItems: 'center' }}>
                 <Button
                   onPress={() => {
-                    this.onSort();
-                  }}
-                  style={{ marginTop: 15 }}>
-                  <HorizontalLayout>
-                    <Text
-                      style={{
-                        fontSize: 16,
-                        lineHeight: 19,
-                        color: '#5C9DF2',
-                        textDecorationLine: 'underline',
-                      }}>
-                      סינון
-                    </Text>
-                    <LocalImage
-                      source={require('src/assets/image/ic_sort.png')}
-                      style={{ width: 21, height: 21 }}
-                    />
-                  </HorizontalLayout>
+                    this.props.onBack();
+                  }}>
+                  <LocalImage
+                    source={require('src/assets/image/ic_left.png')}
+                    style={{ width: 11.62, height: 20.73, marginRight: 20.93 }}
+                  />
                 </Button>
-              </VerticalLayout>
-            )) ||
-              null}
+                <Button
+                  onPress={() => {
+                    this.props.onCancel();
+                  }}>
+                  <LocalImage
+                    source={require('src/assets/image/ic_close.png')}
+                    style={{ width: 31, height: 31 }}
+                  />
+                </Button>
+              </HorizontalLayout>
+              <Text style={{ fontSize: 18, lineHeight: 22 }}>סוג מסלול:</Text>
+            </HorizontalLayout>
+            <Text style={{ fontSize: 16, lineHeight: 19, marginBottom: 15 }}>בחר סוג חברות</Text>
             <ScrollView>
               <FlatList
                 ref={(ref) => {
@@ -117,16 +80,55 @@ class SelectMembershipPopup extends React.Component {
                 }}
                 showsVerticalScrollIndicator={false}
                 data={this.props.data}
+                style={{ marginBottom: 45 }}
                 numColumns={1}
                 renderItem={({ item, index }) => {
                   return (
-                    <TrackItem
-                      data={item}
-                      selectTrack={() => {
-                        this.props.selectTrack(item.id);
-                      }}
-                      selectedTrackId={this.props.selectedTrackId}
-                    />
+                    <Button
+                      onPress={() => {
+                        this.props.selectMembership(item.id);
+                      }}>
+                      <HorizontalLayout
+                        style={[
+                          styles.membership_item,
+                          this.props.selectedMembershipId === item.id && { borderColor: '#0D65D9' },
+                        ]}>
+                        {(this.props.selectedMembershipId === item.id && (
+                          <LocalImage
+                            source={require('src/assets/image/ic_check_on.png')}
+                            style={{ width: 22, height: 22, marginRight: 21 }}
+                          />
+                        )) || (
+                          <LocalImage
+                            source={require('src/assets/image/ic_check_off.png')}
+                            style={{ width: 22, height: 22 }}
+                          />
+                        )}
+                        <HorizontalLayout
+                          style={{
+                            alignItems: 'center',
+                            justifyContent: 'flex-end',
+                            width: '80%',
+                          }}>
+                          <Text
+                            numberOfLines={2}
+                            style={{ fontSize: 16, lineHeight: 22, marginRight: 7 }}>
+                            {item.name}
+                          </Text>
+                          {(this.props.selectedMembershipId === item.id && (
+                            <LocalImage
+                              source={require('src/assets/image/ic_track_round_on.png')}
+                              style={{ width: 45, height: 45 }}
+                            />
+                          )) || (
+                            <LocalImage
+                              source={require('src/assets/image/ic_track_round_off.png')}
+                              style={{ width: 45, height: 45 }}
+                            />
+                          )}
+                        </HorizontalLayout>
+                      </HorizontalLayout>
+                    </Button>
                   );
                 }}
                 keyExtractor={(item, idx) => idx.toString()}
@@ -135,40 +137,20 @@ class SelectMembershipPopup extends React.Component {
                 }}
               />
             </ScrollView>
-            <Button
-              onPress={() => {
-                this.props.addTrack();
-              }}>
-              <LocalImage
-                source={require('src/assets/image/ic_plus_sign.png')}
-                style={{
-                  width: 45,
-                  height: 45,
-                  marginBottom: 25,
-                  marginTop: 20,
-                  alignSelf: 'center',
-                }}
-              />
-            </Button>
-            {this.props.selectedTrackId != 0 && !this.state.sortType && (
-              <DisactiveButton
-                text="הסרה"
-                style={{ marginBottom: 15 }}
-                action={() => {
-                  this.onRemove();
-                }}
-              />
-            )}
-            <ActiveButton text="סגירה" style={{ marginBottom: 15 }} action={() => {}} />
-            {this.state.sortType && (
-              <DisactiveButton
-                text="לבטל"
-                style={{ marginBottom: 15 }}
-                action={() => {
-                  this.onCancel();
-                }}
-              />
-            )}
+            <ActiveButton
+              text="הבא"
+              style={{ marginBottom: 15 }}
+              action={() => {
+                this.props.onNext();
+              }}
+            />
+            <DisactiveButton
+              text="לבטל"
+              style={{ marginBottom: 40 }}
+              action={() => {
+                this.onCancel();
+              }}
+            />
           </VerticalLayout>
         }
         onClose={() => {
@@ -189,7 +171,17 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     width: '100%',
-    height: '95%',
+  },
+  membership_item: {
+    width: '100%',
+    borderRadius: 11,
+    paddingVertical: 12,
+    paddingHorizontal: 15,
+    backgroundColor: 'white',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    borderWidth: 1,
+    borderColor: '#D8D8D8',
   },
 });
 

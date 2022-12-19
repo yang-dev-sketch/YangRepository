@@ -33,7 +33,8 @@ export const MAIN_TAB = {
   MORE: 7,
   SHOP: 8,
   PRODUCT: 9,
-  PROFILE: 10
+  PROFILE: 10,
+  PAYMENT: 11
 };
 
 export const API_RES_CODE = {

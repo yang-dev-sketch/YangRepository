@@ -9,6 +9,7 @@ import ShopScreen from '../screens/home/ShopScreen';
 import AddProduct from '../screens/home/AddProduct';
 import CreateWorkout from '../screens/home/CreateWorkout';
 import ProfileScreen from '../screens/home/ProfileScreen';
+import PaymentScreen from '../screens/home/PaymentScreen';
 
 const MainStackNavigator = createStackNavigator({
     Splash,
@@ -20,6 +21,7 @@ const MainStackNavigator = createStackNavigator({
     AddProduct,
     CreateWorkout,
     ProfileScreen,
+    PaymentScreen,
 },
 {
     headerMode: 'screen ',

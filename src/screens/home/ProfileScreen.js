@@ -191,7 +191,12 @@ export default class ProfileScreen extends React.Component {
         startDate: '2022-10-06 09:00:00',
         endDate: '2022-10-06 10:00:00',
       },
-      { id: 3, name: 'איגרוף', image: require('src/assets/image/ic_boxing_round_off.png'), startDate: '2022-10-06 09:00:00' },
+      {
+        id: 3,
+        name: 'איגרוף',
+        image: require('src/assets/image/ic_boxing_round_off.png'),
+        startDate: '2022-10-06 09:00:00',
+      },
       {
         id: 4,
         name: 'איגרוף',
@@ -496,6 +501,9 @@ export default class ProfileScreen extends React.Component {
                 text="היסטוריית תשלומים"
                 height={57}
                 numberOfLines={2}
+                action={() => {
+                  GlobalState.setTabIndex(MAIN_TAB.PAYMENT);
+                }}
               />
             </HorizontalLayout>
             <DisactiveButton

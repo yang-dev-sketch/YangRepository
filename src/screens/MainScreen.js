@@ -13,6 +13,7 @@ import Toast from 'react-native-root-toast';
 import { BottomMenu } from "../components/common";
 import ProfileScreen from "./home/ProfileScreen";
 import AddProduct from "./home/AddProduct";
+import PaymentScreen from "./home/PaymentScreen";
 
 @observer
 export default class MainScreen extends AppScreen {
@@ -94,6 +95,7 @@ export default class MainScreen extends AppScreen {
                         {GlobalState.getTabIndex == MAIN_TAB.SHOP && <ShopScreen navigation={this.props.navigation} />}
                         {GlobalState.getTabIndex == MAIN_TAB.PRODUCT && <AddProduct navigation={this.props.navigation} />}
                         {GlobalState.getTabIndex == MAIN_TAB.PROFILE && <ProfileScreen navigation={this.props.navigation} />}
+                        {GlobalState.getTabIndex == MAIN_TAB.PAYMENT && <PaymentScreen navigation={this.props.navigation} />}
                     </View>
 
                     {/*bottom menu*/}

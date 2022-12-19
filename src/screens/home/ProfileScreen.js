@@ -64,9 +64,10 @@ import AdvancedSettingPopup from '../../components/popups/AdvancedSettingPopup';
 import AvailableStorePopup from '../../components/popups/AvailableStorePopup';
 import RecurringStorePopup from '../../components/popups/RecurringstandingPopup';
 import LimitTrainingTypePopup from '../../components/popups/LimitTrainingTypePopup';
-import AllowTrainPopup from "../../components/popups/AllowTrainPopup";
-import AllowBookingPopup from "../../components/popups/AllowBookingPopup";
-import HoursLimitPopup from "../../components/popups/HoursLimitPopup";
+import AllowTrainPopup from '../../components/popups/AllowTrainPopup';
+import AllowBookingPopup from '../../components/popups/AllowBookingPopup';
+import HoursLimitPopup from '../../components/popups/HoursLimitPopup';
+import ReservationAvailabilityPopup from "../../components/popups/ReservationAvailabilityPopup";
 
 @observer
 export default class ProfileScreen extends React.Component {
@@ -114,7 +115,8 @@ export default class ProfileScreen extends React.Component {
       selectedLimitTrainId: 0,
       showAllowTrainPopup: false,
       showAllowBookingPopup: false,
-      showHoursLimitPopup: false
+      showHoursLimitPopup: false,
+      showReservationAvailabilityPopup: false,
     };
   }
 
@@ -857,7 +859,22 @@ export default class ProfileScreen extends React.Component {
             this.setState({ showHoursLimitPopup: false });
           }}
           onNext={() => {
-            this.setState({ showHoursLimitPopup: false });
+            this.setState({ showHoursLimitPopup: false, showReservationAvailabilityPopup: true });
+          }}
+        />
+        <ReservationAvailabilityPopup
+          visible={this.state.showReservationAvailabilityPopup}
+          onBack={() => {
+            this.setState({
+              showReservationAvailabilityPopup: false,
+              showHoursLimitPopup: true,
+            });
+          }}
+          onCancel={() => {
+            this.setState({ showReservationAvailabilityPopup: false });
+          }}
+          onNext={() => {
+            this.setState({ showReservationAvailabilityPopup: false });
           }}
         />
       </SafeAreaView>

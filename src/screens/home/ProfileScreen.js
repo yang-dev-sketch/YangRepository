@@ -64,6 +64,7 @@ import AdvancedSettingPopup from '../../components/popups/AdvancedSettingPopup';
 import AvailableStorePopup from '../../components/popups/AvailableStorePopup';
 import RecurringStorePopup from '../../components/popups/RecurringstandingPopup';
 import LimitTrainingTypePopup from '../../components/popups/LimitTrainingTypePopup';
+import AllowTrainPopup from "../../components/popups/AllowTrainPopup";
 
 @observer
 export default class ProfileScreen extends React.Component {
@@ -106,9 +107,10 @@ export default class ProfileScreen extends React.Component {
       searchTrain: '',
       showAdvancedSettingPopup: false,
       showAvailableStorePopup: false,
-      showLimitTrainingType: false,
+      showLimitTrainingTypePopup: false,
       trainType: [],
       selectedLimitTrainId: 0,
+      showAllowTrainPopup: false,
     };
   }
 
@@ -783,23 +785,23 @@ export default class ProfileScreen extends React.Component {
             this.setState({ showRecurringStorePopup: false });
           }}
           onNext={() => {
-            this.setState({ showRecurringStorePopup: false, showLimitTrainingType: true });
+            this.setState({ showRecurringStorePopup: false, showLimitTrainingTypePopup: true });
           }}
         />
         <LimitTrainingTypePopup
-          visible={this.state.showLimitTrainingType}
+          visible={this.state.showLimitTrainingTypePopup}
           data={this.state.trainType}
           onBack={() => {
             this.setState({
-              showLimitTrainingType: false,
+              showLimitTrainingTypePopup: false,
               showRecurringStorePopup: true,
             });
           }}
           onCancel={() => {
-            this.setState({ showLimitTrainingType: false });
+            this.setState({ showLimitTrainingTypePopup: false });
           }}
           onNext={() => {
-            this.setState({ showLimitTrainingType: false });
+            this.setState({ showLimitTrainingTypePopup: false, showAllowTrainPopup: true });
           }}
           setSearch={(search) => {
             this.getTrain(search);
@@ -807,6 +809,21 @@ export default class ProfileScreen extends React.Component {
           selectedLimitTrainId={this.state.selectedLimitTrainId}
           selectTrain={(id) => {
             this.setState({ selectedLimitTrainId: id });
+          }}
+        />
+        <AllowTrainPopup
+          visible={this.state.showAllowTrainPopup}
+          onBack={() => {
+            this.setState({
+              showAllowTrainPopup: false,
+              showLimitTrainingTypePopup: true,
+            });
+          }}
+          onCancel={() => {
+            this.setState({ showAllowTrainPopup: false });
+          }}
+          onNext={() => {
+            this.setState({ showAllowTrainPopup: false });
           }}
         />
       </SafeAreaView>

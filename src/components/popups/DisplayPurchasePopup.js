@@ -166,7 +166,7 @@ class DisplayPurchasePopup extends React.Component {
                       <HorizontalLayout
                         style={{
                           flexDirection: 'row',
-                          alignitems: 'center',
+                          alignItems: 'center',
                           width: '33.3%',
                           justifyContent: 'flex-end',
                         }}>

@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react';
 import React from 'react';
-import { Pressable, SafeAreaView, StyleSheet, Text, View, TextInput, FlatList } from 'react-native';
+import { Pressable, SafeAreaView, StyleSheet, Text, View, TextInput } from 'react-native';
 import Modal from 'react-native-modal';
 import { Colors, Styles } from '../../constants';
 import { Button, HorizontalLayout, VerticalLayout, LocalImage } from '../controls';
@@ -12,37 +12,47 @@ import CommonInput from '../common/CommonInput';
 import CheckBox from '@react-native-community/checkbox';
 import { requestUpload } from '../../utils/ApiUtils';
 import ImageCropPicker from 'react-native-image-crop-picker';
-import { API, API_RES_CODE, IMAGE_FOO_URL, SCREEN_HEIGHT } from '../../constants/Constants';
-import DropDownPicker from '../controls/DropDownPicker';
+import { API, API_RES_CODE, IMAGE_FOO_URL } from '../../constants/Constants';
+import { FlatList } from 'react-native-gesture-handler';
 import CommonItem from '../items/CommonItem';
-import { SCREEN_WIDTH } from 'react-native-common-date-picker/src/contants';
+import FastImage from 'react-native-fast-image';
 
 @observer
-class AllowBookingPopup extends React.Component {
+class TrainerOrganizationPopup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      weekList: [
-        { id: 1, name: 'יום ראשון' },
-        { id: 2, name: 'יום שני' },
-        { id: 3, name: 'יום שלישי' },
-        { id: 4, name: 'יום חמישי' },
-        { id: 5, name: 'יום שישי' },
-        { id: 6, name: 'יום שבת' },
-        { id: 7, name: 'יום רביעי' },
-      ],
+      modifyState: false,
     };
   }
-  
-  onCheck = (id) => {
-    const weekList = this.state.weekList;
-    weekList.map((item, index) => {
-      if (id === item.id) item.checked = !item.checked;
-    });
-    this.setState({ weekList: weekList });
+
+  addTrainee = () => {
+    // requestPost(API.Home.add_trainee, {
+    //   id: this.props.selectId,
+    // }).then(async (result) => {
+    //   if (result.code == API_RES_CODE.SUCCESS) {
+    this.props.onCancel();
+    //   } else {
+    //   }
+    // });
   };
 
+  removeTrainee = () => {
+    // requestPost(API.Home.delete_trainee, {
+    //   id: this.props.selectId,
+    // }).then(async (result) => {
+    //   if (result.code == API_RES_CODE.SUCCESS) {
+    this.props.removeTrainee();
+    //   } else {
+    //   }
+    // });
+  };
+
+  onKeep = () => {
+  }
+
   render() {
+    const data = this.props.data;
     return (
       <SwipeUpDownModal
         ContentModalStyle={styles.Modal}
@@ -89,45 +99,38 @@ class AllowBookingPopup extends React.Component {
                   />
                 </Button>
               </HorizontalLayout>
-              <Text style={{ fontSize: 18, lineHeight: 22 }}>סוג מסלול:</Text>
+              <Text style={{ fontSize: 18, lineHeight: 22 }}>הסניפים שלנו</Text>
             </HorizontalLayout>
-            <View
-              style={{
-                paddingBottom: 15,
-                borderBottomWidth: 1,
-                borderBottomColor: '#F2F2F2',
-                marginBottom: 20,
-              }}>
-              <Text style={{ fontSize: 16, lineHeight: 19.2 }}>תכונות ייחודיות</Text>
-            </View>
-            <Text style={{ fontSize: 16, lineHeight: 19.2, marginBottom: 15 }}>
-              לאפשר הזמנה רק בימים ספציפיים
-            </Text>
+            <SearchInput
+              setSearch={(search) => {
+                this.props.setSearch(search);
+              }}
+            />
             <FlatList
               ref={(ref) => {
                 this._flContent = ref;
               }}
-              showsHorizontalScrollIndicator={false}
-              style={{ marginVertical: 15, width: '100%' }}
-              data={this.state.weekList}
-              numColumns={2}
+              style={{ marginVertical: 20 }}
+              showsVerticalScrollIndicator={false}
+              data={data}
+              numColumns={1}
               renderItem={({ item, index }) => {
                 return (
                   <Button
                     onPress={() => {
-                      this.onCheck(item.id);
+                      this.props.selectTrainer(item.id);
                     }}
                     style={{
                       flexDirection: 'row',
                       alignItems: 'center',
-                      width: (SCREEN_WIDTH - 63) / 2,
+                      width: '100%',
                       justifyContent: 'space-between',
                       borderWidth: 1,
-                      borderColor: '#D8D8D8',
+                      borderColor: item.checked ? '#0D65D9' : '#D8D8D8',
                       borderRadius: 11,
-                      paddingHorizontal: 15,
-                      paddingVertical: 11,
-                      marginRight: index % 2 !== 0 ? 0 : 23,
+                      paddingLeft: 21,
+                      paddingRight: 10,
+                      paddingVertical: 10,
                     }}>
                     {(item.checked && (
                       <LocalImage
@@ -140,9 +143,14 @@ class AllowBookingPopup extends React.Component {
                         style={{ width: 23, height: 23 }}
                       />
                     )}
-                    <Text style={{ fontSize: 16, lineHeight: 19.2 }}>
-                      {item.name}
-                    </Text>
+                    <HorizontalLayout style={{ alignItems: 'center' }}>
+                      <Text style={{ fontSize: 16, lineHeight: 19.2 }}>{item.name}</Text>
+                      <FastImage
+                        source={{ uri: data.avatar ? data.avatar : IMAGE_FOO_URL }}
+                        resizeMode={FastImage.resizeMode.cover}
+                        style={{ width: 45, height: 45, marginLeft: 7 }}
+                      />
+                    </HorizontalLayout>
                   </Button>
                 );
               }}
@@ -151,20 +159,48 @@ class AllowBookingPopup extends React.Component {
                 return <View style={{ height: 15 }} />;
               }}
             />
-            <ActiveButton
-              text="הבא"
-              style={{ marginBottom: 15 }}
-              action={() => {
-                this.props.onNext();
-              }}
-            />
-            <DisactiveButton
-              text="לבטל"
-              style={{ marginBottom: 15 }}
-              action={() => {
-                this.props.onCancel();
-              }}
-            />
+            {(!this.state.modifyState && (
+              <>
+                <Button
+                  onPress={() => {
+                    this.setState({ modifyState: true });
+                  }}>
+                  <LocalImage
+                    source={require('src/assets/image/ic_plus_sign.png')}
+                    style={{
+                      width: 39,
+                      height: 39,
+                      marginBottom: 25,
+                      alignSelf: 'center',
+                    }}
+                  />
+                </Button>
+                <ActiveButton
+                  text="שמירה"
+                  style={{ marginBottom: 15 }}
+                  action={() => {
+                    this.onKeep();
+                  }}
+                />
+              </>
+            )) || (
+              <>
+                <ActiveButton
+                  text="הוספה"
+                  style={{ marginBottom: 15 }}
+                  action={() => {
+                    this.addTrainee();
+                  }}
+                />
+                <DisactiveButton
+                  text="מחק את המאמן"
+                  style={{ marginBottom: 15 }}
+                  action={() => {
+                    this.removeTrainee();
+                  }}
+                />
+              </>
+            )}
           </VerticalLayout>
         }
         onClose={() => {
@@ -178,14 +214,15 @@ class AllowBookingPopup extends React.Component {
 const styles = StyleSheet.create({
   Modal: {
     position: 'absolute',
-    paddingHorizontal: 20,
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
     backgroundColor: Colors.white,
     bottom: 0,
     left: 0,
     width: '100%',
+    height: '95%',
+    paddingHorizontal: 20,
   },
 });
 
-export default AllowBookingPopup;
+export default TrainerOrganizationPopup;

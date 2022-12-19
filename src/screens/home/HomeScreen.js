@@ -46,6 +46,7 @@ import TimePickerPopup from '../../components/popups/TimePickerPopup';
 import CloseTrainPopup from '../../components/popups/CloseTrainPopup';
 import TrainOrganizationPopup from '../../components/popups/TrainOrganizationPopup';
 import InvitateTraineePopup from '../../components/popups/InvitateTraineePopup';
+import TrainerOrganizationPopup from '../../components/popups/TrainerOrganizationPopup';
 
 @observer
 export default class HomeScreen extends React.Component {
@@ -78,6 +79,7 @@ export default class HomeScreen extends React.Component {
       showTrainOrganizationPopup: false,
       traineeList: [],
       showInvitateTraineePopup: false,
+      showTrainerOrganizationPopup: false,
     };
   }
 
@@ -172,6 +174,14 @@ export default class HomeScreen extends React.Component {
     //   } else {
     //   }
     // });
+  };
+
+  selectTrainer = (id) => {
+    const traineeList = this.state.traineeList;
+    traineeList.map((item, index) => {
+      if (id === item.id) item.checked = !item.checked;
+    });
+    this.setState({ traineeList: traineeList });
   };
 
   render() {
@@ -388,6 +398,10 @@ export default class HomeScreen extends React.Component {
                         this.setState({ showTrainOrganizationPopup: true }, () => {
                           this.getTrainee();
                         });
+                      index === 3 &&
+                        this.setState({ showTrainerOrganizationPopup: true }, () => {
+                          this.getTrainee();
+                        });
                     }}
                     style={[
                       { width: (SCREEN_WIDTH - 64) / 2, height: 115, alignItems: 'center' },
@@ -549,6 +563,26 @@ export default class HomeScreen extends React.Component {
           }}
           onCancel={() => {
             this.setState({ showInvitateTraineePopup: false });
+          }}
+        />
+        <TrainerOrganizationPopup
+          visible={this.state.showTrainerOrganizationPopup}
+          data={this.state.traineeList}
+          setSearch={() => {
+            this.getTrainee(search, traineeType);
+          }}
+          selectTrainer={(id) => {
+            this.selectTrainer(id);
+          }}
+          onCancel={() => {
+            this.setState({ showTrainerOrganizationPopup: false });
+          }}
+          removeTrainee={() => {
+            this.setState({
+              traineeList: this.state.traineeList.filter((item) => {
+                return item.checked !== true;
+              }),
+            });
           }}
         />
       </SafeAreaView>

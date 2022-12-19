@@ -99,7 +99,7 @@ class AdditionalSettingPopup extends React.Component {
               }}
               style={{
                 flexDirection: 'row',
-                alignitems: 'center',
+                alignItems: 'center',
                 width: '100%',
                 justifyContent: 'space-between',
                 borderWidth: 1,
@@ -128,7 +128,7 @@ class AdditionalSettingPopup extends React.Component {
               }}
               style={{
                 flexDirection: 'row',
-                alignitems: 'center',
+                alignItems: 'center',
                 width: '100%',
                 justifyContent: 'space-between',
                 borderWidth: 1,

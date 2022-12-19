@@ -99,7 +99,11 @@ class AdvancedSettingPopup extends React.Component {
                   שם מוצר
                 </Text>
               </Button>
-              <Button style={styles.setting_item} onPress={() => {}}>
+              <Button
+                style={styles.setting_item}
+                onPress={() => {
+                  this.props.setRecurringStore();
+                }}>
                 <LocalImage
                   source={require('src/assets/image/ic_arrow_left.png')}
                   style={{ width: 23, height: 23 }}
@@ -108,7 +112,11 @@ class AdvancedSettingPopup extends React.Component {
                   תוכנית תשלומים חוזרים
                 </Text>
               </Button>
-              <Button style={styles.setting_item} onPress={() => {}}>
+              <Button
+                style={styles.setting_item}
+                onPress={() => {
+                  this.props.setLimitTrainingType();
+                }}>
                 <LocalImage
                   source={require('src/assets/image/ic_arrow_left.png')}
                   style={{ width: 23, height: 23 }}
@@ -117,7 +125,11 @@ class AdvancedSettingPopup extends React.Component {
                   הגבלת סוגי אימון
                 </Text>
               </Button>
-              <Button style={styles.setting_item} onPress={() => {}}>
+              <Button
+                style={styles.setting_item}
+                onPress={() => {
+                  this.props.setAllowTrain();
+                }}>
                 <LocalImage
                   source={require('src/assets/image/ic_arrow_left.png')}
                   style={{ width: 23, height: 23 }}
@@ -126,7 +138,11 @@ class AdvancedSettingPopup extends React.Component {
                   לאפשר לפי הגדרת התדירות אימונים
                 </Text>
               </Button>
-              <Button style={styles.setting_item} onPress={() => {}}>
+              <Button
+                style={styles.setting_item}
+                onPress={() => {
+                  this.setAllowBooking();
+                }}>
                 <LocalImage
                   source={require('src/assets/image/ic_arrow_left.png')}
                   style={{ width: 23, height: 23 }}
@@ -135,7 +151,11 @@ class AdvancedSettingPopup extends React.Component {
                   לאפשר הזמנה רק בימים ספציפיים
                 </Text>
               </Button>
-              <Button style={styles.setting_item} onPress={() => {}}>
+              <Button
+                style={styles.setting_item}
+                onPress={() => {
+                  this.props.setHourLimit();
+                }}>
                 <LocalImage
                   source={require('src/assets/image/ic_arrow_left.png')}
                   style={{ width: 23, height: 23 }}
@@ -144,7 +164,11 @@ class AdvancedSettingPopup extends React.Component {
                   הגבלת שעות
                 </Text>
               </Button>
-              <Button style={styles.setting_item} onPress={() => {}}>
+              <Button
+                style={styles.setting_item}
+                onPress={() => {
+                  this.props.setReservationAvailability();
+                }}>
                 <LocalImage
                   source={require('src/assets/image/ic_arrow_left.png')}
                   style={{ width: 23, height: 23 }}
@@ -153,7 +177,11 @@ class AdvancedSettingPopup extends React.Component {
                   הזמן על מקום פנוי
                 </Text>
               </Button>
-              <Button style={styles.setting_item} onPress={() => {}}>
+              <Button
+                style={styles.setting_item}
+                onPress={() => {
+                  this.props.setAllowPenalty();
+                }}>
                 <LocalImage
                   source={require('src/assets/image/ic_arrow_left.png')}
                   style={{ width: 23, height: 23 }}
@@ -162,7 +190,11 @@ class AdvancedSettingPopup extends React.Component {
                   לאפשר עונשים או הגבלות עקב מספר גבוה של היעדרויות
                 </Text>
               </Button>
-              <Button style={styles.setting_item} onPress={() => {}}>
+              <Button
+                style={styles.setting_item}
+                onPress={() => {
+                  this.props.setAdditionalSetting();
+                }}>
                 <LocalImage
                   source={require('src/assets/image/ic_arrow_left.png')}
                   style={{ width: 23, height: 23 }}

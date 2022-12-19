@@ -112,6 +112,7 @@ export default class ProfileScreen extends React.Component {
       searchTrain: '',
       showAdvancedSettingPopup: false,
       showAvailableStorePopup: false,
+      showRecurringStorePopup: false,
       showLimitTrainingTypePopup: false,
       trainType: [],
       selectedLimitTrainId: 0,
@@ -767,6 +768,30 @@ export default class ProfileScreen extends React.Component {
           setAvailableStore={() => {
             this.setState({ showAvailableStorePopup: true, showAdvancedSettingPopup: false });
           }}
+          setRecurringStore={() => {
+            this.setState({ showRecurringStorePopup: true, showAdvancedSettingPopup: false });
+          }}
+          setLimitTrainingType={() => {
+            this.setState({ showLimitTrainingTypePopup: true, showAdvancedSettingPopup: false });
+          }}
+          setAllowTrain={() => {
+            this.setState({ showAllowTrainPopup: true, showAdvancedSettingPopup: false });
+          }}
+          setAllowBooking={() => {
+            this.setState({ showAllowBookingPopup: true, showAdvancedSettingPopup: false });
+          }}
+          setHourLimit={() => {
+            this.setState({ showHoursLimitPopup: true, showAdvancedSettingPopup: false });
+          }}
+          setReservationAvailability={() => {
+            this.setState({ showReservationAvailabilityPopup: true, showAdvancedSettingPopup: false });
+          }}
+          setAllowPenalty={() => {
+            this.setState({ showAllowPenaltyPopup: true, showAdvancedSettingPopup: false });
+          }}
+          setAdditionalSetting={() => {
+            this.setState({ showAdditionalSettingPopup: true, showAdvancedSettingPopup: false });
+          }}
         />
         <AvailableStorePopup
           visible={this.state.showAvailableStorePopup}
@@ -897,8 +922,7 @@ export default class ProfileScreen extends React.Component {
           }}
         />
         <AdditionalSettingPopup
-          // visible={this.state.showAdditionalSettingPopup}
-          visible={true}
+          visible={this.state.showAdditionalSettingPopup}
           onBack={() => {
             this.setState({
               showAdditionalSettingPopup: false,

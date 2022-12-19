@@ -63,6 +63,7 @@ import SelectTrainPopup from '../../components/popups/SelectTrainPopup';
 import AdvancedSettingPopup from '../../components/popups/AdvancedSettingPopup';
 import AvailableStorePopup from '../../components/popups/AvailableStorePopup';
 import RecurringStorePopup from '../../components/popups/RecurringstandingPopup';
+import LimitTrainingTypePopup from '../../components/popups/LimitTrainingTypePopup';
 
 @observer
 export default class ProfileScreen extends React.Component {
@@ -105,6 +106,9 @@ export default class ProfileScreen extends React.Component {
       searchTrain: '',
       showAdvancedSettingPopup: false,
       showAvailableStorePopup: false,
+      showLimitTrainingType: false,
+      trainType: [],
+      selectedLimitTrainId: 0,
     };
   }
 
@@ -175,6 +179,7 @@ export default class ProfileScreen extends React.Component {
   getInfo = () => {
     this.getTaskList();
     this.getTrackList();
+    this.getTrain();
   };
 
   componentDidMount() {
@@ -265,6 +270,23 @@ export default class ProfileScreen extends React.Component {
         this.setState({ showFutureTrainPopup: true });
       },
     );
+    //   } else {
+    //   }
+    // });
+  };
+
+  getTrain = (search) => {
+    // requestGet(API.Home.get_train, {
+    //   search: this.state.branchSearch,
+    // }).then(async (result) => {
+    //   if (result.code == API_RES_CODE.SUCCESS) {
+    const trainType = [
+      { id: 1, name: 'שם הסוג', image: require('src/assets/image/ic_boxing_round_fill.png') },
+      { id: 2, name: 'שם הסוג', image: require('src/assets/image/ic_boxing_round_fill.png') },
+      { id: 3, name: 'שם מוצר', image: require('src/assets/image/ic_bottom_gyme_on.png') },
+      { id: 4, name: 'שם הסוג', image: require('src/assets/image/ic_bottom_gyme_on.png') },
+    ];
+    this.setState({ trainType: trainType });
     //   } else {
     //   }
     // });
@@ -761,7 +783,30 @@ export default class ProfileScreen extends React.Component {
             this.setState({ showRecurringStorePopup: false });
           }}
           onNext={() => {
-            this.setState({ showRecurringStorePopup: false });
+            this.setState({ showRecurringStorePopup: false, showLimitTrainingType: true });
+          }}
+        />
+        <LimitTrainingTypePopup
+          visible={this.state.showLimitTrainingType}
+          data={this.state.trainType}
+          onBack={() => {
+            this.setState({
+              showLimitTrainingType: false,
+              showRecurringStorePopup: true,
+            });
+          }}
+          onCancel={() => {
+            this.setState({ showLimitTrainingType: false });
+          }}
+          onNext={() => {
+            this.setState({ showLimitTrainingType: false });
+          }}
+          setSearch={(search) => {
+            this.getTrain(search);
+          }}
+          selectedLimitTrainId={this.state.selectedLimitTrainId}
+          selectTrain={(id) => {
+            this.setState({ selectedLimitTrainId: id });
           }}
         />
       </SafeAreaView>

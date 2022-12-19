@@ -30,6 +30,7 @@ export default class DropDownPicker extends React.Component {
           borderWidth: 1,
           borderColor: '#F3F3F3',
           borderRadius: 50,
+          height: 40//?????
         }}
         rowTextForSelection={(item, index) => {
           return item.name;

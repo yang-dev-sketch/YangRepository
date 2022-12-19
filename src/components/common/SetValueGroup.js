@@ -24,21 +24,32 @@ export default class SetValueGroup extends React.Component {
               },
               this.props.numberLine !== 1 && { marginBottom: 8.5 },
             ]}>
-            {this.props.expandable ? (
-              (this.props.numberLine === 1 && (
-                <LocalImage
-                  source={require('src/assets/image/ic_down.png')}
-                  style={{ width: 17.41, height: 9.17, marginLeft: 23.29 }}
-                />
-              )) || (
-                <LocalImage
-                  source={require('src/assets/image/ic_up.png')}
-                  style={{ width: 17.41, height: 9.17, marginLeft: 23.29 }}
-                />
-              )
-            ) : (
-              <View></View>
-            )}
+            {this.props.expandable
+              ? (this.props.numberLine === 1 && (
+                  <LocalImage
+                    source={require('src/assets/image/ic_down.png')}
+                    style={{ width: 17.41, height: 9.17, marginLeft: 23.29 }}
+                  />
+                )) || (
+                  <LocalImage
+                    source={require('src/assets/image/ic_up.png')}
+                    style={{ width: 17.41, height: 9.17, marginLeft: 23.29 }}
+                  />
+                )
+              : this.props.leftTitle && (
+                  <HorizontalLayout
+                    style={{ width: '50%', justifyContent: 'flex-end', alignItems: 'center' }}>
+                    <Text style={{ fontSize: 16, lineHeight: 19, color: '#6F6F6F' }}>
+                      {this.props.leftTitle}
+                    </Text>
+                    {this.props.leftImage && (
+                      <LocalImage
+                        source={this.props.leftImage}
+                        style={{ width: 16, height: 16, marginLeft: 5.5 }}
+                      />
+                    )}
+                  </HorizontalLayout>
+                )}
             <HorizontalLayout>
               <Text style={{ fontSize: 16, lineHeight: 19, color: '#6F6F6F' }}>
                 {this.props.title}

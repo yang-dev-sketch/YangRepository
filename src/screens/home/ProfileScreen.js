@@ -58,6 +58,7 @@ import FutureTrainPopup from '../../components/popups/FutureTrainPopup';
 import TrackTypePopup from '../../components/popups/TrackTypePopup';
 import SelectMembershipPopup from '../../components/popups/SelectMembershipPopup';
 import SubscriptionPopup from '../../components/popups/SubscriptionPopup';
+import DisplayPurchasePopup from '../../components/popups/DisplayPurchasePopup';
 
 @observer
 export default class ProfileScreen extends React.Component {
@@ -94,7 +95,7 @@ export default class ProfileScreen extends React.Component {
       ],
       selectedMembershipId: 1,
       showSubscriptionPopup: false,
-      showDisplayPurchasePopup: false
+      showDisplayPurchasePopup: false,
     };
   }
 
@@ -653,7 +654,7 @@ export default class ProfileScreen extends React.Component {
             this.setState({ selectedMembershipId: id });
           }}
           onNext={() => {
-            this.setState({ showSubscriptionPopup: true });
+            this.setState({ showSubscriptionPopup: true, showSelectMembershipPopup: false });
           }}
         />
         <SubscriptionPopup
@@ -670,6 +671,18 @@ export default class ProfileScreen extends React.Component {
           }}
           displayInPurchase={() => {
             this.setState({ showSubscriptionPopup: false, showDisplayPurchasePopup: true });
+          }}
+        />
+        <DisplayPurchasePopup
+          visible={this.state.showDisplayPurchasePopup}
+          onBack={() => {
+            this.setState({
+              showDisplayPurchasePopup: false,
+              showSubscriptionPopup: true,
+            });
+          }}
+          onCancel={() => {
+            this.setState({ showDisplayPurchasePopup: false });
           }}
         />
       </SafeAreaView>

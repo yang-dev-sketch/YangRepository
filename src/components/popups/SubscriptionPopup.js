@@ -27,7 +27,7 @@ class SubscriptionPopup extends React.Component {
       period: 1,
       expirationPeriod: false,
       displayInPurchase: false,
-      periodType: [{ name: 'חודשים' }, { name: 'שבועות' }, { name: 'ימים' }],
+      periodType: [{ name: 'חודשים' }, { name: 'שבועות' }, { name: 'יום' }],
       timePeriod: 'חודשים',
     };
   }

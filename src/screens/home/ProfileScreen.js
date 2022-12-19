@@ -65,6 +65,7 @@ import AvailableStorePopup from '../../components/popups/AvailableStorePopup';
 import RecurringStorePopup from '../../components/popups/RecurringstandingPopup';
 import LimitTrainingTypePopup from '../../components/popups/LimitTrainingTypePopup';
 import AllowTrainPopup from "../../components/popups/AllowTrainPopup";
+import AllowBookingPopup from "../../components/popups/AllowBookingPopup";
 
 @observer
 export default class ProfileScreen extends React.Component {
@@ -111,6 +112,7 @@ export default class ProfileScreen extends React.Component {
       trainType: [],
       selectedLimitTrainId: 0,
       showAllowTrainPopup: false,
+      showAllowBookingPopup: false
     };
   }
 
@@ -823,7 +825,22 @@ export default class ProfileScreen extends React.Component {
             this.setState({ showAllowTrainPopup: false });
           }}
           onNext={() => {
-            this.setState({ showAllowTrainPopup: false });
+            this.setState({ showAllowTrainPopup: false, showAllowBookingPopup: true });
+          }}
+        />
+        <AllowBookingPopup
+          visible={this.state.showAllowBookingPopup}
+          onBack={() => {
+            this.setState({
+              showAllowBookingPopup: false,
+              showAllowTrainPopup: true,
+            });
+          }}
+          onCancel={() => {
+            this.setState({ showAllowBookingPopup: false });
+          }}
+          onNext={() => {
+            this.setState({ showAllowBookingPopup: false });
           }}
         />
       </SafeAreaView>

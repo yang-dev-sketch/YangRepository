@@ -30,10 +30,10 @@ class AllowTrainPopup extends React.Component {
       selectedExclude: 'לא לכלול',
       limitRate: false,
       rateType: [{ name: 'פתח את GYM' }, { name: 'פתח את GYM' }, { name: 'פתח את GYM' }],
-      selectedRateType:'פתח את GYM',
+      selectedRateType: 'פתח את GYM',
       rateUpto: 2,
       timesB: [{ name: 'שנה' }, { name: 'שנה' }, { name: 'שנה' }],
-      selectedTimesB: 'שנה'
+      selectedTimesB: 'שנה',
     };
   }
 
@@ -95,223 +95,231 @@ class AllowTrainPopup extends React.Component {
               }}>
               <Text style={{ fontSize: 16, lineHeight: 19.2 }}>תכונות ייחודיות</Text>
             </View>
-            <Text style={{ fontSize: 16, lineHeight: 19.2, marginBottom: 15 }}>
-              לאפשר לפי הגדרת התדירות אימונים הבאה
-            </Text>
-            <HorizontalLayout style={{ alignItems: 'center', width: '100%', marginBottom: 15 }}>
-              <VerticalLayout
-                style={{
-                  padding: 10,
-                  borderWidth: 1,
-                  borderColor: '#D8D8D8',
-                  borderRadius: 11,
-                  width: SCREEN_WIDTH - 69,
-                }}>
+            <ScrollView>
+              <Text style={{ fontSize: 16, lineHeight: 19.2, marginBottom: 15 }}>
+                לאפשר לפי הגדרת התדירות אימונים הבאה
+              </Text>
+              <HorizontalLayout style={{ alignItems: 'center', width: '100%', marginBottom: 15 }}>
+                <VerticalLayout
+                  style={{
+                    padding: 10,
+                    borderWidth: 1,
+                    borderColor: '#D8D8D8',
+                    borderRadius: 11,
+                    width: SCREEN_WIDTH - 72,
+                  }}>
+                  <Button
+                    onPress={() => {
+                      this.setState({ limitRegist: !this.state.limitRegist });
+                    }}
+                    style={{
+                      width: '100%',
+                      paddingLeft: 18.29,
+                      paddingVertical: 12.5,
+                      paddingRight: 15,
+                      borderRadius: 50,
+                      backgroundColor: '#F5F5F5',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      flexDirection: 'row',
+                    }}>
+                    <LocalImage
+                      source={
+                        (this.state.limitRegist && require('src/assets/image/ic_up.png')) ||
+                        require('src/assets/image/ic_down.png')
+                      }
+                      style={{ width: 17.41, height: 9.17 }}
+                    />
+                    <Text>הגבל את תדירות הרישום</Text>
+                  </Button>
+                  {this.state.limitRegist && (
+                    <>
+                      <HorizontalLayout
+                        style={{
+                          width: '100%',
+                          marginTop: 10,
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                        }}>
+                        <CommonInput
+                          style={{ width: '60%' }}
+                          textAlign="center"
+                          numberOfLines={1}
+                          backgroundColor="#F5F5F5"
+                          value={this.state.upto}
+                          onChangeText={(text) => {
+                            this.setState({ upto: text });
+                          }}
+                        />
+                        <Text style={{ fontSize: 16, lineHeight: 19.2, color: '#6F6F6F' }}>
+                          עד ל
+                        </Text>
+                      </HorizontalLayout>
+                      <HorizontalLayout
+                        style={{
+                          width: '100%',
+                          marginTop: 10,
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                        }}>
+                        <DropDownPicker
+                          backgroundColor="#F5F5F5"
+                          style={{ width: '60%' }}
+                          data={this.state.timeType}
+                          selectedValue={this.state.selectedTimeType}
+                          onSelect={(value) => {
+                            this.setState({ selectedTimeType: value.name });
+                          }}
+                        />
+                        <Text style={{ fontSize: 16, lineHeight: 19.2, color: '#6F6F6F' }}>
+                          פעמים לכל
+                        </Text>
+                      </HorizontalLayout>
+                      <HorizontalLayout
+                        style={{
+                          width: '100%',
+                          marginTop: 10,
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                        }}>
+                        <DropDownPicker
+                          backgroundColor="#F5F5F5"
+                          style={{ width: '60%' }}
+                          data={this.state.excludingType}
+                          selectedValue={this.state.selectedExclude}
+                          onSelect={(value) => {
+                            this.setState({ selectedExclude: value.name });
+                          }}
+                        />
+                        <Text style={{ fontSize: 16, lineHeight: 19.2, color: '#6F6F6F' }}>
+                          לְמַעֵט
+                        </Text>
+                      </HorizontalLayout>
+                    </>
+                  )}
+                </VerticalLayout>
                 <Button
                   onPress={() => {
-                    this.setState({ limitRegist: !this.state.limitRegist });
-                  }}
-                  style={{
-                    width: '100%',
-                    paddingLeft: 18.29,
-                    paddingVertical: 12.5,
-                    paddingRight: 15,
-                    borderRadius: 50,
-                    backgroundColor: '#F5F5F5',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    flexDirection: 'row',
+                    this.setState({ limitRegist: false });
                   }}>
                   <LocalImage
-                    source={
-                      (this.state.limitRegist && require('src/assets/image/ic_up.png')) ||
-                      require('src/assets/image/ic_down.png')
-                    }
-                    style={{ width: 17.41, height: 9.17 }}
+                    source={require('src/assets/image/ic_close_red.png')}
+                    style={{ width: 17.5, height: 17.5, marginLeft: 16.17 }}
                   />
-                  <Text>הגבל את תדירות הרישום</Text>
                 </Button>
-                {this.state.limitRegist && (
-                  <>
-                    <HorizontalLayout
+              </HorizontalLayout>
+              {this.state.limitRegist && (
+                <HorizontalLayout style={{ alignItems: 'center', width: '100%', marginBottom: 15 }}>
+                  <VerticalLayout
+                    style={{
+                      padding: 10,
+                      borderWidth: 1,
+                      borderColor: '#D8D8D8',
+                      borderRadius: 11,
+                      width: SCREEN_WIDTH - 72,
+                    }}>
+                    <Button
+                      onPress={() => {
+                        this.setState({ limitRate: !this.state.limitRate });
+                      }}
                       style={{
                         width: '100%',
-                        marginTop: 10,
+                        paddingLeft: 18.29,
+                        paddingVertical: 12.5,
+                        paddingRight: 15,
+                        borderRadius: 50,
+                        backgroundColor: '#F5F5F5',
                         alignItems: 'center',
                         justifyContent: 'space-between',
+                        flexDirection: 'row',
                       }}>
-                      <CommonInput
-                        style={{ width: '60%' }}
-                        textAlign="center"
-                        numberOfLines={1}
-                        backgroundColor="#F5F5F5"
-                        value={this.state.upto}
-                        onChangeText={(text) => {
-                          this.setState({ upto: text });
-                        }}
+                      <LocalImage
+                        source={
+                          (this.state.limitRate && require('src/assets/image/ic_up.png')) ||
+                          require('src/assets/image/ic_down.png')
+                        }
+                        style={{ width: 17.41, height: 9.17 }}
                       />
-                      <Text style={{ fontSize: 16, lineHeight: 19.2, color: '#6F6F6F' }}>עד ל</Text>
-                    </HorizontalLayout>
-                    <HorizontalLayout
-                      style={{
-                        width: '100%',
-                        marginTop: 10,
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                      }}>
-                      <DropDownPicker
-                        backgroundColor="#F5F5F5"
-                        style={{ width: '60%' }}
-                        data={this.state.timeType}
-                        selectedValue={this.state.selectedTimeType}
-                        onSelect={(value) => {
-                          this.setState({ selectedTimeType: value.name });
-                        }}
-                      />
-                      <Text style={{ fontSize: 16, lineHeight: 19.2, color: '#6F6F6F' }}>
-                        פעמים לכל
-                      </Text>
-                    </HorizontalLayout>
-                    <HorizontalLayout
-                      style={{
-                        width: '100%',
-                        marginTop: 10,
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                      }}>
-                      <DropDownPicker
-                        backgroundColor="#F5F5F5"
-                        style={{ width: '60%' }}
-                        data={this.state.excludingType}
-                        selectedValue={this.state.selectedExclude}
-                        onSelect={(value) => {
-                          this.setState({ selectedExclude: value.name });
-                        }}
-                      />
-                      <Text style={{ fontSize: 16, lineHeight: 19.2, color: '#6F6F6F' }}>
-                        לְמַעֵט
-                      </Text>
-                    </HorizontalLayout>
-                  </>
-                )}
-              </VerticalLayout>
-              <Button
-                onPress={() => {
-                  this.setState({ limitRegist: false });
-                }}>
-                <LocalImage
-                  source={require('src/assets/image/ic_close_red.png')}
-                  style={{ width: 17.5, height: 17.5, marginLeft: 16.17 }}
-                />
-              </Button>
-            </HorizontalLayout>
-            <HorizontalLayout style={{ alignItems: 'center', width: '100%', marginBottom: 15 }}>
-              <VerticalLayout
-                style={{
-                  padding: 10,
-                  borderWidth: 1,
-                  borderColor: '#D8D8D8',
-                  borderRadius: 11,
-                  width: SCREEN_WIDTH - 69,
-                }}>
-                <Button
-                  onPress={() => {
-                    this.setState({ limitRate: !this.state.limitRate });
-                  }}
-                  style={{
-                    width: '100%',
-                    paddingLeft: 18.29,
-                    paddingVertical: 12.5,
-                    paddingRight: 15,
-                    borderRadius: 50,
-                    backgroundColor: '#F5F5F5',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    flexDirection: 'row',
-                  }}>
-                  <LocalImage
-                    source={
-                      (this.state.limitRate && require('src/assets/image/ic_up.png')) ||
-                      require('src/assets/image/ic_down.png')
-                    }
-                    style={{ width: 17.41, height: 9.17 }}
-                  />
-                  <Text>הגבלת רישום לפי שיעור ותדירות</Text>
-                </Button>
-                {this.state.limitRate && (
-                  <>
-                    <HorizontalLayout
-                      style={{
-                        width: '100%',
-                        marginTop: 10,
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                      }}>
-                      <DropDownPicker
-                        backgroundColor="#F5F5F5"
-                        style={{ width: '60%' }}
-                        data={this.state.rateType}
-                        selectedValue={this.state.selectedRateType}
-                        onSelect={(value) => {
-                          this.setState({ selectedRateType: value.name });
-                        }}
-                      />
-                      <Text style={{ fontSize: 16, lineHeight: 19.2, color: '#6F6F6F' }}>
-                        פעמים לכל
-                      </Text>
-                    </HorizontalLayout>
-                    <HorizontalLayout
-                      style={{
-                        width: '100%',
-                        marginTop: 10,
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                      }}>
-                      <CommonInput
-                        style={{ width: '60%' }}
-                        textAlign="center"
-                        numberOfLines={1}
-                        backgroundColor="#F5F5F5"
-                        value={this.state.rateUpto}
-                        onChangeText={(text) => {
-                          this.setState({ rateUpto: text });
-                        }}
-                      />
-                      <Text style={{ fontSize: 16, lineHeight: 19.2, color: '#6F6F6F' }}>עד ל</Text>
-                    </HorizontalLayout>
-                    <HorizontalLayout
-                      style={{
-                        width: '100%',
-                        marginTop: 10,
-                        alignItems: 'center',
-                        justifyContent: 'space-between',
-                      }}>
-                      <DropDownPicker
-                        backgroundColor="#F5F5F5"
-                        style={{ width: '60%' }}
-                        data={this.state.timesB}
-                        selectedValue={this.state.selectedTimesB}
-                        onSelect={(value) => {
-                          this.setState({ selectedTimesB: value.name });
-                        }}
-                      />
-                      <Text style={{ fontSize: 16, lineHeight: 19.2, color: '#6F6F6F' }}>
-                        לְמַעֵט
-                      </Text>
-                    </HorizontalLayout>
-                  </>
-                )}
-              </VerticalLayout>
-              <Button
-                onPress={() => {
-                  this.setState({ limitRate: false });
-                }}>
-                <LocalImage
-                  source={require('src/assets/image/ic_close_red.png')}
-                  style={{ width: 17.5, height: 17.5, marginLeft: 16.17 }}
-                />
-              </Button>
-            </HorizontalLayout>
+                      <Text>הגבלת רישום לפי שיעור ותדירות</Text>
+                    </Button>
+                    {this.state.limitRate && (
+                      <>
+                        <HorizontalLayout
+                          style={{
+                            width: '100%',
+                            marginTop: 10,
+                            alignItems: 'center',
+                            justifyContent: 'space-between',
+                          }}>
+                          <DropDownPicker
+                            backgroundColor="#F5F5F5"
+                            style={{ width: '60%' }}
+                            data={this.state.rateType}
+                            selectedValue={this.state.selectedRateType}
+                            onSelect={(value) => {
+                              this.setState({ selectedRateType: value.name });
+                            }}
+                          />
+                          <Text style={{ fontSize: 16, lineHeight: 19.2, color: '#6F6F6F' }}>
+                            פעמים לכל
+                          </Text>
+                        </HorizontalLayout>
+                        <HorizontalLayout
+                          style={{
+                            width: '100%',
+                            marginTop: 10,
+                            alignItems: 'center',
+                            justifyContent: 'space-between',
+                          }}>
+                          <CommonInput
+                            style={{ width: '60%' }}
+                            textAlign="center"
+                            numberOfLines={1}
+                            backgroundColor="#F5F5F5"
+                            value={this.state.rateUpto}
+                            onChangeText={(text) => {
+                              this.setState({ rateUpto: text });
+                            }}
+                          />
+                          <Text style={{ fontSize: 16, lineHeight: 19.2, color: '#6F6F6F' }}>
+                            עד ל
+                          </Text>
+                        </HorizontalLayout>
+                        <HorizontalLayout
+                          style={{
+                            width: '100%',
+                            marginTop: 10,
+                            alignItems: 'center',
+                            justifyContent: 'space-between',
+                          }}>
+                          <DropDownPicker
+                            backgroundColor="#F5F5F5"
+                            style={{ width: '60%' }}
+                            data={this.state.timesB}
+                            selectedValue={this.state.selectedTimesB}
+                            onSelect={(value) => {
+                              this.setState({ selectedTimesB: value.name });
+                            }}
+                          />
+                          <Text style={{ fontSize: 16, lineHeight: 19.2, color: '#6F6F6F' }}>
+                            לְמַעֵט
+                          </Text>
+                        </HorizontalLayout>
+                      </>
+                    )}
+                  </VerticalLayout>
+                  <Button
+                    onPress={() => {
+                      this.setState({ limitRate: false });
+                    }}>
+                    <LocalImage
+                      source={require('src/assets/image/ic_close_red.png')}
+                      style={{ width: 17.5, height: 17.5, marginLeft: 16.17 }}
+                    />
+                  </Button>
+                </HorizontalLayout>
+              )}
+            </ScrollView>
             <ActiveButton
               text="הבא"
               style={{ marginBottom: 15 }}

@@ -55,6 +55,8 @@ import TaskPopup from '../../components/popups/TaskPopup';
 import { LeadPopup } from '../../components/popups';
 import AssignRolePopup from '../../components/popups/AssignRolePopup';
 import FutureTrainPopup from '../../components/popups/FutureTrainPopup';
+import TrackTypePopup from '../../components/popups/TrackTypePopup';
+import SelectMembershipPopup from '../../components/popups/SelectMembershipPopup';
 
 @observer
 export default class ProfileScreen extends React.Component {
@@ -75,8 +77,39 @@ export default class ProfileScreen extends React.Component {
       search_task: '',
       search_future: '',
       showFutureTrainPopup: false,
+      showTrackTypePopup: false,
+      trackList: [
+        { id: 1, description: 'כרטיס ניקוב 10 מתוך 12, המנוי  מתחדש בעוד Y פעמים' },
+        { id: 2, description: 'כרטיס ניקוב 10 מתוך 12, המנוי  מתחדש בעוד Y פעמים' },
+        { id: 3, description: 'כרטיס ניקוב 10 מתוך 12, המנוי  מתחדש בעוד Y פעמים' },
+        { id: 4, description: 'כרטיס ניקוב 10 מתוך 12, המנוי  מתחדש בעוד Y פעמים' },
+      ],
+      selectedTrackId: 0,
+      trackSearch: '',
+      showSelectMembershipPopup: false,
+      membershipList: [
+        { id: 1, name: 'מִנוּי' },
+        { id: 2, name: 'כרטיסי ניקוב' },
+      ],
     };
   }
+
+  getTrackList = () => {
+    const trackList = [
+      { id: 1, description: 'כרטיס ניקוב 10 מתוך 12, המנוי  מתחדש בעוד Y פעמים' },
+      { id: 2, description: 'כרטיס ניקוב 10 מתוך 12, המנוי  מתחדש בעוד Y פעמים' },
+      { id: 3, description: 'כרטיס ניקוב 10 מתוך 12, המנוי  מתחדש בעוד Y פעמים' },
+      { id: 4, description: 'כרטיס ניקוב 10 מתוך 12, המנוי  מתחדש בעוד Y פעמים' },
+    ];
+    // requestPost(API.Home.get_track, {
+    //   search: this.state.trackSearch,
+    // }).then(async (result) => {
+    //   if (result.code == API_RES_CODE.SUCCESS) {
+    this.setState({ trackList: trackList });
+    //   } else {
+    //   }
+    // });
+  };
 
   getTaskList = () => {
     const taskList = [
@@ -127,6 +160,7 @@ export default class ProfileScreen extends React.Component {
 
   getInfo = () => {
     this.getTaskList();
+    this.getTrackList();
   };
 
   componentDidMount() {
@@ -436,33 +470,56 @@ export default class ProfileScreen extends React.Component {
                 borderRadius: 11,
                 marginBottom: 10,
               }}>
-              <HorizontalLayout
-                style={{
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  paddingBottom: 15,
-                  borderBottomWidth: 1,
-                  borderBottomColor: '#F3F3F3',
-                }}>
-                <LocalImage
-                  source={require('src/assets/image/ic_track.png')}
-                  style={{ width: 46, height: 46, marginRight: 15 }}
-                />
-                <VerticalLayout style={{ width: '70%' }}>
-                  <Text>סוג מסלול:</Text>
-                  <Text numberOfLines={2}>
-                    כרטיס ניקוב 10 מתוך 12, המנוי מופעל ב-X, מתחדש בעוד Y פעמים
-                  </Text>
-                </VerticalLayout>
-              </HorizontalLayout>
-              <HorizontalLayout style={{ width: '100%', justifyContent: 'flex-end' }}>
-                <VerticalLayout style={{ width: '70%', marginTop: 15, justifyContent: 'flex-end' }}>
-                  <Text>סוג מסלול:</Text>
-                  <Text numberOfLines={2}>
-                    כרטיס ניקוב 10 מתוך 12, המנוי מופעל ב-X, מתחדש בעוד Y פעמים
-                  </Text>
-                </VerticalLayout>
-              </HorizontalLayout>
+              <FlatList
+                ref={(ref) => {
+                  this._flContent = ref;
+                }}
+                showsVerticalScrollIndicator={false}
+                style={{ marginTop: 15 }}
+                data={this.state.trackList}
+                numColumns={1}
+                renderItem={({ item, index }) => {
+                  return (
+                    <HorizontalLayout
+                      style={{
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                      }}>
+                      {(index === 0 && (
+                        <Button
+                          onPress={() => {
+                            this.setState({ showTrackTypePopup: true });
+                          }}>
+                          <LocalImage
+                            source={require('src/assets/image/ic_track.png')}
+                            style={{ width: 46, height: 46, marginRight: 15 }}
+                          />
+                        </Button>
+                      )) || <View></View>}
+                      <VerticalLayout style={{ width: '70%' }}>
+                        <Text>סוג מסלול:</Text>
+                        <Text numberOfLines={2}>
+                          כרטיס ניקוב 10 מתוך 12, המנוי מופעל ב-X, מתחדש בעוד Y פעמים
+                        </Text>
+                      </VerticalLayout>
+                    </HorizontalLayout>
+                  );
+                }}
+                keyExtractor={(item, idx) => idx.toString()}
+                ItemSeparatorComponent={() => {
+                  return (
+                    <View
+                      style={{
+                        width: '100%',
+                        height: 0,
+                        borderWidth: 1,
+                        borderColor: '#F3F3F3',
+                        marginVertical: 15,
+                      }}
+                    />
+                  );
+                }}
+              />
             </VerticalLayout>
             <HorizontalLayout style={{ justifyContent: 'space-between', marginBottom: 10 }}>
               <ProfileInfoItem
@@ -550,6 +607,39 @@ export default class ProfileScreen extends React.Component {
           visible={this.state.showFutureTrainPopup}
           onCancel={() => {
             this.setState({ showFutureTrainPopup: false });
+          }}
+        />
+        <TrackTypePopup
+          visible={this.state.showTrackTypePopup}
+          data={this.state.trackList}
+          onCancel={() => {
+            this.setState({ showTrackTypePopup: false });
+          }}
+          selectTrack={(id) => {
+            this.setState({ selectedTrackId: id });
+          }}
+          selectedTrackId={this.state.selectedTrackId}
+          deleteTrack={() => {
+            this.setState({
+              trackList: this.state.trackList.filter((item) => {
+                return item.id != this.state.selectedTrackId;
+              }),
+            });
+          }}
+          searchTrack={(search) => {
+            this.setState({ trackSearch: search }, () => {
+              this.getTrackList();
+            });
+          }}
+          addTrack={() => {
+            this.setState({ showTrackTypePopup: false, showSelectMembershipPopup: true });
+          }}
+        />
+        <SelectMembershipPopup
+          visible={this.state.showSelectMembershipPopup}
+          data={this.state.membershipList}
+          onCancel={() => {
+            this.setState({ showSelectMembershipPopup: false });
           }}
         />
       </SafeAreaView>

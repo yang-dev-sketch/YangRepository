@@ -213,7 +213,7 @@ class AllowPenaltyPopup extends React.Component {
                   }}
                 />
               </HorizontalLayout>
-              <HorizontalLayout style={{ alignItems: 'center', justifyContent: 'flex-end' }}>
+              <HorizontalLayout style={{ alignItems: 'center', justifyContent: 'flex-end', marginBottom: 30 }}>
                 <Text style={{ fontSize: 16, lineHeight: 19 }}>היעדרות/ביטול מאוחר</Text>
                 <CheckBox
                   onFillColor="#0D65D9"

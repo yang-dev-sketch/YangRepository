@@ -67,8 +67,9 @@ import LimitTrainingTypePopup from '../../components/popups/LimitTrainingTypePop
 import AllowTrainPopup from '../../components/popups/AllowTrainPopup';
 import AllowBookingPopup from '../../components/popups/AllowBookingPopup';
 import HoursLimitPopup from '../../components/popups/HoursLimitPopup';
-import ReservationAvailabilityPopup from "../../components/popups/ReservationAvailabilityPopup";
-import AllowPenaltyPopup from "../../components/popups/AllowPenaltyPopup";
+import ReservationAvailabilityPopup from '../../components/popups/ReservationAvailabilityPopup';
+import AllowPenaltyPopup from '../../components/popups/AllowPenaltyPopup';
+import AdditionalSettingPopup from "../../components/popups/AdditionalSettingPopup";
 
 @observer
 export default class ProfileScreen extends React.Component {
@@ -118,7 +119,8 @@ export default class ProfileScreen extends React.Component {
       showAllowBookingPopup: false,
       showHoursLimitPopup: false,
       showReservationAvailabilityPopup: false,
-      showAllowPenaltyPopup: false
+      showAllowPenaltyPopup: false,
+      showAdditionalSettingPopup: false,
     };
   }
 
@@ -880,8 +882,7 @@ export default class ProfileScreen extends React.Component {
           }}
         />
         <AllowPenaltyPopup
-          // visible={this.state.showAllowPenaltyPopup}
-          visible={true}
+          visible={this.state.showAllowPenaltyPopup}
           onBack={() => {
             this.setState({
               showAllowPenaltyPopup: false,
@@ -892,7 +893,23 @@ export default class ProfileScreen extends React.Component {
             this.setState({ showAllowPenaltyPopup: false });
           }}
           onNext={() => {
-            this.setState({ showAllowPenaltyPopup: false });
+            this.setState({ showAllowPenaltyPopup: false, showAdditionalSettingPopup: true });
+          }}
+        />
+        <AdditionalSettingPopup
+          // visible={this.state.showAdditionalSettingPopup}
+          visible={true}
+          onBack={() => {
+            this.setState({
+              showAdditionalSettingPopup: false,
+              showAllowPenaltyPopup: true,
+            });
+          }}
+          onCancel={() => {
+            this.setState({ showAdditionalSettingPopup: false });
+          }}
+          onNext={() => {
+            this.setState({ showAdditionalSettingPopup: false });
           }}
         />
       </SafeAreaView>

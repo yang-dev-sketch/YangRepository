@@ -343,6 +343,7 @@ export default class SubscriptionScreen extends React.Component {
         <BranchPopup
           visible={this.state.showBranchPopup}
           data={this.state.branchList}
+          selectable={true}
           selectBranchId={this.state.selectedBranchId}
           selectBranch={(index) => {
             this.setState({ selectedBranchId: index });

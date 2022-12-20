@@ -33,7 +33,13 @@ import {
 import GlobalState from '../../mobx/GlobalState';
 import MyInfo from '../../mobx/MyInfo';
 import { requestGet, requestPost } from '../../utils/ApiUtils';
-import { DatePickerPopup, NotiPopup, TrainTimePopup } from '../../components/popups';
+import {
+  AddBranchPopup,
+  BranchPopup,
+  DatePickerPopup,
+  NotiPopup,
+  TrainTimePopup,
+} from '../../components/popups';
 import TimePickerPopup from '../../components/popups/TimePickerPopup';
 import { SearchInput } from '../../components/common';
 
@@ -61,16 +67,38 @@ export default class SettingScreen extends React.Component {
         { id: 6, name: 'ניהול הרשאות', image: require('src/assets/image/ic_permission.png') },
         { id: 7, name: 'הגדרות אימון', image: require('src/assets/image/ic_setting.png') },
       ],
-      showOurBranchPopup: false,
+      showBranchPopup: false,
+      showAddBranchPopup: false,
       pushState: true,
+      selectedBranchId: 0,
+      search_branch: '',
     };
   }
 
-  getInfo = () => {};
+  getInfo = () => {
+    this.getBranch();
+  };
 
   componentDidMount() {
     this.getInfo();
   }
+
+  getBranch = () => {
+    // requestGet(API.Home.get_branch, {
+    //   search: this.state.search_branch,
+    // }).then(async (result) => {
+    //   if (result.code == API_RES_CODE.SUCCESS) {
+    //   } else {
+    //   }
+    // });
+    const branchList = [
+      { id: 1, name: 'צעדים לונדון' },
+      { id: 2, name: 'צעדים פריז' },
+      { id: 3, name: 'צעדים קייב' },
+      { id: 4, name: 'צעדים קייב' },
+    ];
+    this.setState({ branchList: branchList });
+  };
 
   render() {
     return (
@@ -99,7 +127,7 @@ export default class SettingScreen extends React.Component {
                   letterSpacing: 1,
                   color: '#000',
                 }}>
-                הגדרות 
+                הגדרות
               </Text>
               <Button onPress={() => {}}>
                 <LocalImage
@@ -124,7 +152,7 @@ export default class SettingScreen extends React.Component {
                     onPress={() => {
                       item.id == 1 && GlobalState.setTabIndex(MAIN_TAB.BUSINESS);
                       item.id == 2 && GlobalState.setTabIndex(MAIN_TAB.SUBSCRIPTION);
-                      item.id == 3 && this.setState({ showOurBranchPopup: true });
+                      item.id == 3 && this.setState({ showBranchPopup: true });
                       item.id == 4 && console.log('no design');
                       item.id == 5 && this.setState({ pushState: !this.state.pushState });
                       item.id == 6 && GlobalState.setTabIndex(MAIN_TAB.PERMISSION);
@@ -227,6 +255,38 @@ export default class SettingScreen extends React.Component {
           }}
           onCancel={() => {
             this.setState({ showTimePickerPopup: false });
+          }}
+        />
+        <BranchPopup
+          visible={this.state.showBranchPopup}
+          data={this.state.branchList}
+          selectable={false}
+          selectBranchId={this.state.selectedBranchId}
+          setSearch={(search) => {
+            this.setState({ search_branch: search }, () => {
+              this.getBranch();
+            });
+          }}
+          addBranch={() => {
+            this.setState({ showBranchPopup: false, showAddBranchPopup: true });
+          }}
+          deleteBranch={() => {
+            this.deleteBranch();
+          }}
+          onCancel={() => {
+            this.setState({ showBranchPopup: false });
+          }}
+        />
+        <AddBranchPopup
+          visible={this.state.showAddBranchPopup}
+          onBack={() => {
+            this.setState({
+              showAddBranchPopup: false,
+              showBranchPopup: true,
+            });
+          }}
+          onCancel={() => {
+            this.setState({ showAddBranchPopup: false });
           }}
         />
       </SafeAreaView>

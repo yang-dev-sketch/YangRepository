@@ -13,7 +13,7 @@ import NotiItem from '../items/NotiItem';
 import { BranchItem } from '../items';
 import { requestPost } from '../../utils/ApiUtils';
 import { API } from '../../constants/Constants';
-import { SCREEN_HEIGHT } from "react-native-common-date-picker/src/contants";
+import { SCREEN_HEIGHT } from 'react-native-common-date-picker/src/contants';
 
 @observer
 class BranchPopup extends React.Component {
@@ -57,7 +57,6 @@ class BranchPopup extends React.Component {
             </View>
             <HorizontalLayout
               style={{
-                paddingHorizontal: 20,
                 alignItem: 'center',
                 justifyContent: 'space-between',
                 marginBottom: 16.94,
@@ -73,18 +72,16 @@ class BranchPopup extends React.Component {
               </Button>
               <Text style={{ fontSize: 18, lineHeight: 22 }}>הסניפים שלנו</Text>
             </HorizontalLayout>
-            <View style={{ paddingHorizontal: 20 }}>
-              <SearchInput
-                setSearch={(search) => {
-                  this.props.setSearch(search);
-                }}
-              />
-            </View>
+            <SearchInput
+              setSearch={(search) => {
+                this.props.setSearch(search);
+              }}
+            />
             <FlatList
               ref={(ref) => {
                 this._flContent = ref;
               }}
-              style={{ paddingHorizontal: 20, marginTop: 20 }}
+              style={{ marginTop: 20 }}
               showsVerticalScrollIndicator={false}
               data={data}
               numColumns={1}
@@ -92,11 +89,9 @@ class BranchPopup extends React.Component {
                 return (
                   <BranchItem
                     data={item}
+                    selectable={this.props.selectable}
                     key={index}
                     selectBranchId={this.props.selectBranchId}
-                    selectBranch={() => {
-                      this.props.selectBranch(item.id);
-                    }}
                   />
                 );
               }}
@@ -105,20 +100,46 @@ class BranchPopup extends React.Component {
                 return <View style={{ height: 15 }} />;
               }}
             />
-            <Button
-              onPress={() => {
-                this.props.addBranch();
-              }}>
-              <HorizontalLayout
-                style={{ alignItems: 'center', justifyContent: 'center', paddingVertical: 15, marginBottom: 15 }}>
-                <Text style={{ fontSize: 16, lineHeight: 19 }}>הוספת סניף חדש</Text>
-                <LocalImage
-                  source={require('src/assets/image/ic_plus_sign.png')}
-                  style={{ width: 24, height: 24, marginLeft: 6 }}
+            {(this.props.selectable && (
+              <Button
+                onPress={() => {
+                  this.props.addBranch();
+                }}>
+                <HorizontalLayout
+                  style={{
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    paddingVertical: 15,
+                    marginBottom: 15,
+                  }}>
+                  <Text style={{ fontSize: 16, lineHeight: 19 }}>הוספת סניף חדש</Text>
+                  <LocalImage
+                    source={require('src/assets/image/ic_plus_sign.png')}
+                    style={{ width: 24, height: 24, marginLeft: 6 }}
+                  />
+                </HorizontalLayout>
+              </Button>
+            )) || (
+              <>
+                <Button
+                  onPress={() => {
+                    this.props.addBranch();
+                  }}>
+                  <LocalImage
+                    source={require('src/assets/image/ic_plus_sign.png')}
+                    style={{ width: 39, height: 39, alignSelf: 'center', marginVertical: 20 }}
+                  />
+                </Button>
+                <DisactiveButton
+                  text="הקודם"
+                  style={{ marginBottom: 15 }}
+                  action={() => {
+                    this.deleteBranch();
+                  }}
                 />
-              </HorizontalLayout>
-            </Button>
-            {this.props.selectBranchId != 0 && (
+              </>
+            )}
+            {this.props.selectable && this.props.selectBranchId != 0 && (
               <VerticalLayout style={{ paddingHorizontal: 20 }}>
                 <ActiveButton
                   text="הראה פרטים"
@@ -149,13 +170,14 @@ class BranchPopup extends React.Component {
 const styles = StyleSheet.create({
   Modal: {
     position: 'absolute',
+    paddingHorizontal: 20,
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
     backgroundColor: Colors.white,
     bottom: 0,
     left: 0,
     width: '100%',
-    maxHeight: SCREEN_HEIGHT * 0.9
+    maxHeight: SCREEN_HEIGHT * 0.9,
   },
 });
 

@@ -204,7 +204,7 @@ class AddBranchPopup extends React.Component {
                   />
                 }
               />
-              <HorizontalLayout style={{ alignItems: 'center', justifyContent: 'flex-end' }}>
+              <HorizontalLayout style={{ alignItems: 'center', justifyContent: 'flex-end', marginBottom: 40 }}>
                 <Text style={{ fontSize: 16, lineHeight: 19 }}>עריכת אמצעי תשלום</Text>
                 <CheckBox
                   onFillColor="#0D65D9"

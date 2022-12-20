@@ -17,19 +17,26 @@ class BranchItem extends React.Component {
     return (
       <Button
         onPress={() => {
-          this.props.selectBranch();
+          if (this.props.selectBranch) this.props.selectBranch();
         }}>
         <HorizontalLayout
           style={[
             styles.branch_item,
-            (data.id == this.props.selectBranchId && { borderColor: '#0D65D9' }) || { borderColor: '#D8D8D8' },
+            (data.id == this.props.selectBranchId && { borderColor: '#0D65D9' }) || {
+              borderColor: '#D8D8D8',
+            },
           ]}>
           {(data.id == this.props.selectBranchId && (
             <LocalImage
               source={require('src/assets/image/ic_check_on.png')}
               style={{ width: 22, height: 22 }}
             />
-          )) || <View></View>}
+          )) || (
+            <LocalImage
+              source={require('src/assets/image/ic_bottom_setting_on.png')}
+              style={{ width: 35, height: 35 }}
+            />
+          )}
           <HorizontalLayout style={{ alignItems: 'center' }}>
             <Text numberOfLines={1} style={{ fontSize: 16, lineHeight: 19 }}>
               {data.name}

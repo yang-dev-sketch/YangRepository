@@ -83,7 +83,9 @@ export default class BusinessScreen extends React.Component {
     });
   };
 
-  onNext = () => {}
+  onNext = () => {
+    GlobalState.setTabIndex(MAIN_TAB.PAYMETHOD);
+  };
 
   render() {
     return (
@@ -98,7 +100,7 @@ export default class BusinessScreen extends React.Component {
               }}>
               <Button
                 onPress={() => {
-                  this.setState({ showNotiPopup: true });
+                  GlobalState.setTabIndex(MAIN_TAB.SETTING);
                 }}>
                 <LocalImage
                   source={require('src/assets/image/ic_close.png')}
@@ -263,7 +265,8 @@ export default class BusinessScreen extends React.Component {
                 </HorizontalLayout>
               }
             />
-            <HorizontalLayout style={{ alignItems: 'center', justifyContent: 'flex-end', marginBottom: 40 }}>
+            <HorizontalLayout
+              style={{ alignItems: 'center', justifyContent: 'flex-end', marginBottom: 40 }}>
               <Text style={{ fontSize: 16, lineHeight: 19 }}>אין ברשותי מקום אימונים קבוע</Text>
               <CheckBox
                 onFillColor="#0D65D9"

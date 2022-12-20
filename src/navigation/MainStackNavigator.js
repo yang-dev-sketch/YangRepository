@@ -16,6 +16,7 @@ import TrainScreen from '../screens/workout/TrainScreen';
 import SettingScreen from '../screens/setting/SettingScreen';
 import BusinessScreen from '../screens/setting/BusinessScreen';
 import AddBusinessScreen from '../screens/setting/AddBusinessScreen';
+import PaymentMethodScreen from '../screens/setting/PaymentMethodScreen';
 
 const MainStackNavigator = createStackNavigator({
     Splash,
@@ -34,6 +35,7 @@ const MainStackNavigator = createStackNavigator({
     SettingScreen,
     BusinessScreen,
     AddBusinessScreen,
+    PaymentMethodScreen,
 },
 {
     headerMode: 'screen ',

@@ -34,7 +34,7 @@ import GlobalState from '../../mobx/GlobalState';
 import MyInfo from '../../mobx/MyInfo';
 import { requestGet, requestPost, requestUpload } from '../../utils/ApiUtils';
 import ImageCropPicker from 'react-native-image-crop-picker';
-import { CommonInput, DisactiveButton, SetValueGroup } from '../../components/common';
+import { ActiveButton, CommonInput, DisactiveButton, SetValueGroup } from '../../components/common';
 import DropDownPicker from '../../components/controls/DropDownPicker';
 import CheckBox from '@react-native-community/checkbox';
 
@@ -45,16 +45,11 @@ export default class AddBusinessScreen extends React.Component {
     this.state = {
       businessLogo: '',
       title: '',
-      type: 'סוג העסק',
       description: '',
       address: '',
       firstPhone: '',
       secondPhone: '',
       permanentPlace: false,
-      businessType: [
-        { id: 1, name: 'סוג העסק' },
-        { id: 2, name: 'סוג העסק' },
-      ],
     };
   }
 
@@ -83,7 +78,13 @@ export default class AddBusinessScreen extends React.Component {
     });
   };
 
-  onNext = () => {}
+  onDelete = () => {
+    GlobalState.setTabIndex(MAIN_TAB.BUSINESS);
+  };
+
+  onSave = () => {
+    GlobalState.setTabIndex(MAIN_TAB.BUSINESS);
+  };
 
   render() {
     return (
@@ -98,7 +99,7 @@ export default class AddBusinessScreen extends React.Component {
               }}>
               <Button
                 onPress={() => {
-                  this.setState({ showNotiPopup: true });
+                  GlobalState.setTabIndex(MAIN_TAB.BUSINESS);
                 }}>
                 <LocalImage
                   source={require('src/assets/image/ic_close.png')}
@@ -121,59 +122,39 @@ export default class AddBusinessScreen extends React.Component {
                 />
               </Button>
             </HorizontalLayout>
-            <HorizontalLayout
-              style={{ width: '100%', justifyContent: 'space-between', marginBottom: 10 }}>
-              <VerticalLayout
-                style={{
-                  width: (SCREEN_WIDTH - 65) / 2,
-                  borderRadius: 11,
-                  backgroundColor: 'white',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  paddingVertical: 18,
+            <Text style={{ fontSize: 18, lineHeight: 22, marginBottom: 15 }}>הוספת סניף חדש</Text>
+            <VerticalLayout
+              style={{
+                width: (SCREEN_WIDTH - 65) / 2,
+                borderRadius: 11,
+                backgroundColor: 'white',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                paddingVertical: 18,
+                alignSelf: 'center',
+                marginBottom: 15,
+              }}>
+              <Button
+                onPress={() => {
+                  this.onGallery();
                 }}>
-                <Button
-                  onPress={() => {
-                    GlobalState.setTabIndex(MAIN_TAB.ADDBUSINESS);
-                  }}>
+                {(this.state.businessLogo === '' && (
                   <LocalImage
-                    source={require('src/assets/image/ic_add_branch.png')}
+                    source={require('src/assets/image/ic_add_image.png')}
                     style={{ width: 70, height: 70 }}
                   />
-                </Button>
-                <Text style={{ fontSize: 16, lineHeight: 19, marginTop: 10 }}>הוספת סניף חדש</Text>
-              </VerticalLayout>
-              <VerticalLayout
-                style={{
-                  width: (SCREEN_WIDTH - 65) / 2,
-                  borderRadius: 11,
-                  backgroundColor: 'white',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  paddingVertical: 18,
-                }}>
-                <Button
-                  onPress={() => {
-                    this.onGallery();
-                  }}>
-                  {(this.state.businessLogo === '' && (
-                    <LocalImage
-                      source={require('src/assets/image/ic_add_image.png')}
-                      style={{ width: 70, height: 70 }}
-                    />
-                  )) || (
-                    <FastImage
-                      source={{
-                        uri: this.state.businessLogo ? this.state.businessLogo : IMAGE_FOO_URL,
-                      }}
-                      resizeMode={FastImage.resizeMode.cover}
-                      style={{ width: 70, height: 70, borderRadius: 35 }}
-                    />
-                  )}
-                </Button>
-                <Text style={{ fontSize: 16, lineHeight: 19, marginTop: 10 }}>לוגו של העסק</Text>
-              </VerticalLayout>
-            </HorizontalLayout>
+                )) || (
+                  <FastImage
+                    source={{
+                      uri: this.state.businessLogo ? this.state.businessLogo : IMAGE_FOO_URL,
+                    }}
+                    resizeMode={FastImage.resizeMode.cover}
+                    style={{ width: 70, height: 70, borderRadius: 35 }}
+                  />
+                )}
+              </Button>
+              <Text style={{ fontSize: 16, lineHeight: 19, marginTop: 10 }}>לוגו של העסק</Text>
+            </VerticalLayout>
             <SetValueGroup
               style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: 'white' }]}
               title="כותרת"
@@ -185,21 +166,6 @@ export default class AddBusinessScreen extends React.Component {
                   value={this.state.title}
                   onChangeText={(text) => {
                     this.setState({ title: text });
-                  }}
-                />
-              }
-            />
-            <SetValueGroup
-              style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: 'white' }]}
-              title="סוג העסק"
-              image={require('src/assets/image/ic_branch.png')}
-              inputNode={
-                <DropDownPicker
-                  backgroundColor="#F5F5F5"
-                  data={this.state.businessType}
-                  selectedValue={this.state.type}
-                  onSelect={(value) => {
-                    this.setState({ type: value.name });
                   }}
                 />
               }
@@ -263,7 +229,8 @@ export default class AddBusinessScreen extends React.Component {
                 </HorizontalLayout>
               }
             />
-            <HorizontalLayout style={{ alignItems: 'center', justifyContent: 'flex-end', marginBottom: 40 }}>
+            <HorizontalLayout
+              style={{ alignItems: 'center', justifyContent: 'flex-end', marginBottom: 40 }}>
               <Text style={{ fontSize: 16, lineHeight: 19 }}>אין ברשותי מקום אימונים קבוע</Text>
               <CheckBox
                 onFillColor="#0D65D9"
@@ -274,10 +241,17 @@ export default class AddBusinessScreen extends React.Component {
               />
             </HorizontalLayout>
             <DisactiveButton
-              text="הבא"
+              text="מחק סניף"
               style={{ marginBottom: 15 }}
               action={() => {
-                this.onNext();
+                this.onDelete();
+              }}
+            />
+            <ActiveButton
+              text="שמירה של הסניף החדש"
+              style={{ marginBottom: 15 }}
+              action={() => {
+                this.onSave();
               }}
             />
           </VerticalLayout>

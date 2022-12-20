@@ -51,7 +51,8 @@ export default class SetValueGroup extends React.Component {
                   </HorizontalLayout>
                 )) || <View></View>}
             <HorizontalLayout>
-              <Text style={{ fontSize: 16, lineHeight: 19, color: '#6F6F6F' }}>
+              <Text
+                style={[{ fontSize: 16, lineHeight: 19, color: '#6F6F6F' }, this.props.textStyle]}>
                 {this.props.title}
               </Text>
               {this.props.image && (

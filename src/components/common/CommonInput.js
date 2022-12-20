@@ -10,14 +10,15 @@ export default class CommonInput extends React.Component {
     return (
       <View style={[this.props.style]}>
         <TextInput
+          style={this.props.inputStyle}
           backgroundColor={this.props.backgroundColor}
           borderRadius={this.props.numberOfLines === 1 ? 43 : 8}
           textAlign={this.props.textAlign == 'center' ? 'center' : 'right'}
           textAlignVertical="top"
           paddingHorizontal={10}
           paddingBottom={this.props.numberOfLines === 1 ? 0 : 30}
-          fontSize={16}
-          lineHeight={19}
+          fontSize={(this.props.fontSize && this.props.fontSize) || 16}
+          lineHeight={(this.props.lineHeight && this.props.lineHeight) || 19}
           maxLength={this.props.numberOfLines === 1 ? 40 : 250}
           multiline={this.props.numberOfLines === 1 ? false : true}
           numberOfLines={this.props.numberOfLines}

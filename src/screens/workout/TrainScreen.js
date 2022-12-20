@@ -41,6 +41,10 @@ import TaskItem from '../../components/items/TaskItem';
 import TrainingItem from '../../components/items/TrainingItem';
 import FilterByPopup from '../../components/popups/FilterByPopup';
 import TrainTypePopup from '../../components/popups/TrainTypePopup';
+import FilterByCoachPopup from '../../components/popups/FilterByCoachPopup';
+import FilterByHourPopup from '../../components/popups/FilterByHourPopup';
+import FilterByTrainingPopup from '../../components/popups/FilterByTrainingPopup';
+import FilterByBranchPopup from '../../components/popups/FilterByBranchPopup';
 
 @observer
 export default class TrainScreen extends React.Component {
@@ -95,10 +99,10 @@ export default class TrainScreen extends React.Component {
       showFilterByPopup: false,
       filterList: [
         { id: 1, name: 'שם המתאמן.ת' },
-        { id: 2, name: 'שם המתאמן.ת' },
-        { id: 3, name: 'שם המתאמן.ת' },
-        { id: 4, name: 'שם המתאמן.ת' },
-        { id: 5, name: 'שם המתאמן.ת' },
+        { id: 2, name: 'מאמן' },
+        { id: 3, name: 'מתאמן' },
+        { id: 4, name: 'שעה' },
+        { id: 5, name: 'סניף' },
       ],
       showTrainTypePopup: false,
       trainType: [
@@ -111,8 +115,23 @@ export default class TrainScreen extends React.Component {
         { id: 7, name: 'כדורגל' },
       ],
       selectedTrainId: this.props.selectedTrainId,
-      showFilterByCoach: false,
-      coachList: []
+      showFilterByCoachPopup: false,
+      coachList: [
+        { id: 1, name: 'שם המתאמן.ת', avatar: '' },
+        { id: 2, name: 'שם המתאמן.ת', avatar: '' },
+        { id: 3, name: 'שם המתאמן.ת', avatar: '' },
+        { id: 4, name: 'שם המתאמן.ת', avatar: '' },
+        { id: 5, name: 'שם המתאמן.ת', avatar: '' },
+      ],
+      showFilterByTrainingPopup: false,
+      showFilterByHourPopup: false,
+      showFilterByBranchPopup: false,
+      branchList: [
+        { id: 1, name: 'שם הסניף' },
+        { id: 2, name: 'שם הסניף' },
+        { id: 3, name: 'שם הסניף' },
+        { id: 4, name: 'שם הסניף' },
+      ],
     };
   }
 
@@ -178,7 +197,15 @@ export default class TrainScreen extends React.Component {
     this.getInfo();
   }
 
-  onFilter = () => {}
+  onFilter = () => {};
+
+  coachSelect = (id) => {
+    const coachList = this.state.coachList;
+    coachList.map((item, index) => {
+      if (id == item.id) item.checked = !item.checked;
+    });
+    this.setState({ coachList: coachList });
+  };
 
   render() {
     return (
@@ -409,7 +436,16 @@ export default class TrainScreen extends React.Component {
             this.setState({ showTrainTypePopup: true, showFilterByPopup: false });
           }}
           setFilterByCoach={() => {
-            this.setState({ showFilterByCoach: true, showFilterByPopup: false });
+            this.setState({ showFilterByCoachPopup: true, showFilterByPopup: false });
+          }}
+          setFilterByTraining={() => {
+            this.setState({ showFilterByTrainingPopup: true, showFilterByPopup: false });
+          }}
+          setFilterByHour={() => {
+            this.setState({ showFilterByHourPopup: true, showFilterByPopup: false });
+          }}
+          setFilterBranch={() => {
+            this.setState({ showFilterByBranchPopup: true, showFilterByPopup: false });
           }}
         />
         <TrainTypePopup
@@ -433,21 +469,71 @@ export default class TrainScreen extends React.Component {
             this.onFilter();
           }}
         />
-        <TrainTypePopup
-          visible={this.state.showFilterByCoach}
+        <FilterByCoachPopup
+          visible={this.state.showFilterByCoachPopup}
           data={this.state.coachList}
           onCancel={() => {
-            this.setState({ showFilterByCoach: false });
+            this.setState({ showFilterByCoachPopup: false });
           }}
           onBack={() => {
             this.setState({
-              showFilterByCoach: false,
+              showFilterByCoachPopup: false,
               showFilterByPopup: true,
             });
           }}
           onFilter={() => {
             this.onFilter();
           }}
+          onSelect={(id) => {
+            this.coachSelect(id);
+          }}
+        />
+        <FilterByTrainingPopup
+          visible={this.state.showFilterByTrainingPopup}
+          onCancel={() => {
+            this.setState({ showFilterByTrainingPopup: false });
+          }}
+          onBack={() => {
+            this.setState({
+              showFilterByTrainingPopup: false,
+              showFilterByPopup: true,
+            });
+          }}
+          onFilter={() => {
+            this.onFilter();
+          }}
+        />
+        <FilterByHourPopup
+          visible={this.state.showFilterByHourPopup}
+          onCancel={() => {
+            this.setState({ showFilterByHourPopup: false });
+          }}
+          onBack={() => {
+            this.setState({
+              showFilterByHourPopup: false,
+              showFilterByPopup: true,
+            });
+          }}
+          onFilter={() => {
+            this.onFilter();
+          }}
+        />
+        <FilterByBranchPopup
+          visible={this.state.showFilterByBranchPopup}
+          data={this.state.branchList}
+          onCancel={() => {
+            this.setState({ showFilterByBranchPopup: false });
+          }}
+          onBack={() => {
+            this.setState({
+              showFilterByBranchPopup: false,
+              showFilterByPopup: true,
+            });
+          }}
+          onFilter={() => {
+            this.onFilter();
+          }}
+          setSearch={() => {}}
         />
       </SafeAreaView>
     );

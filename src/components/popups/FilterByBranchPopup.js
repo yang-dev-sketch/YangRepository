@@ -15,9 +15,10 @@ import { requestPost } from '../../utils/ApiUtils';
 import { API, MAIN_TAB, SCREEN_HEIGHT } from '../../constants/Constants';
 import { SCREEN_WIDTH } from 'react-native-common-date-picker/src/contants';
 import CommonItem from '../items/CommonItem';
+import TrainItem from '../items/TrainItem';
 
 @observer
-class FilterByPopup extends React.Component {
+class FilterByBranchPopup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -25,6 +26,10 @@ class FilterByPopup extends React.Component {
 
   onCancel = () => {
     this.props.onCancel();
+  };
+
+  onFilter = () => {
+    this.props.onFilter();
   };
 
   render() {
@@ -53,64 +58,67 @@ class FilterByPopup extends React.Component {
               style={{
                 alignItem: 'center',
                 justifyContent: 'space-between',
-                marginBottom: 22,
+                marginBottom: 16.94,
               }}>
-              <Button
-                onPress={() => {
-                  this.props.onCancel();
-                }}>
-                <LocalImage
-                  source={require('src/assets/image/ic_close.png')}
-                  style={{ width: 31, height: 31 }}
-                />
-              </Button>
+              <HorizontalLayout style={{ alignItems: 'center' }}>
+                <Button
+                  onPress={() => {
+                    this.props.onBack();
+                  }}>
+                  <LocalImage
+                    source={require('src/assets/image/ic_left.png')}
+                    style={{ width: 11.62, height: 20.73, marginRight: 20.93 }}
+                  />
+                </Button>
+                <Button
+                  onPress={() => {
+                    this.props.onCancel();
+                  }}>
+                  <LocalImage
+                    source={require('src/assets/image/ic_close.png')}
+                    style={{ width: 31, height: 31 }}
+                  />
+                </Button>
+              </HorizontalLayout>
               <HorizontalLayout>
-                <Text style={{ fontSize: 18, lineHeight: 22 }}>סינון לפי</Text>
+                <Text style={{ fontSize: 18, lineHeight: 22 }}>סינון לפי: סניף</Text>
                 <LocalImage
                   source={require('src/assets/image/ic_sort_black.png')}
                   style={{ width: 24, height: 24 }}
                 />
               </HorizontalLayout>
             </HorizontalLayout>
-            <FlatList
-              ref={(ref) => {
-                this._flContent = ref;
-              }}
-              style={{ marginBottom: 40 }}
-              showsVerticalScrollIndicator={false}
-              data={data}
-              numColumns={1}
-              renderItem={({ item, index }) => {
-                return (
-                  <Button
-                    onPress={() => {
-                      if (index === 0) this.props.setTrainTypePopup();
-                      if (index === 1) this.props.setFilterByCoach();
-                      if (index === 2) this.props.setFilterByTraining();
-                      if (index === 3) this.props.setFilterByHour();
-                      if (index === 4) this.props.setFilterBranch();
-                    }}
-                    style={styles.filter_item}>
-                    <LocalImage
-                      source={require('src/assets/image/ic_arrow_left.png')}
-                      style={{ width: 27, height: 27 }}
-                    />
-                    <Text>{item.name}</Text>
-                  </Button>
-                );
-              }}
-              keyExtractor={(item, idx) => idx.toString()}
-              ItemSeparatorComponent={() => {
-                return <View style={{ height: 15 }} />;
+            <SearchInput
+              setSearch={(search) => {
+                this.props.setSearch(search);
               }}
             />
-            <DisactiveButton
-              text="נקה סינון"
-              style={{ marginBottom: 15 }}
-              action={() => {
-                this.onClear();
-              }}
-            />
+            <ScrollView>
+              <FlatList
+                ref={(ref) => {
+                  this._flContent = ref;
+                }}
+                style={{ marginVertical: 15 }}
+                showsVerticalScrollIndicator={false}
+                data={data}
+                numColumns={1}
+                renderItem={({ item, index }) => {
+                  return (
+                    <Button style={styles.branch_item}>
+                      <Text>{item.name}</Text>
+                      <LocalImage
+                        source={require('src/assets/image/ic_location.png')}
+                        style={{ width: 27, height: 27, marginLeft: 13.48 }}
+                      />
+                    </Button>
+                  );
+                }}
+                keyExtractor={(item, idx) => idx.toString()}
+                ItemSeparatorComponent={() => {
+                  return <View style={{ height: 15 }} />;
+                }}
+              />
+            </ScrollView>
             <ActiveButton
               text="סנן"
               style={{ marginBottom: 15 }}
@@ -137,21 +145,19 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     width: '100%',
-    // maxHeight: SCREEN_HEIGHT * 0.9,
+    maxHeight: SCREEN_HEIGHT * 0.9,
     paddingHorizontal: 20,
   },
-  filter_item: {
+  branch_item: {
     width: '100%',
-    paddingHorizontal: 15,
-    paddingVertical: 19,
-    backgroundColor: 'white',
-    borderRadius: 11,
+    padding: 19,
     borderWidth: 1,
     borderColor: '#D8D8D8',
+    borderRadius: 8,
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-end',
     flexDirection: 'row',
   },
 });
 
-export default FilterByPopup;
+export default FilterByBranchPopup;

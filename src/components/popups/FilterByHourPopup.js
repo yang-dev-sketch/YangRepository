@@ -7,7 +7,7 @@ import GlobalState from '../../mobx/GlobalState';
 import { Button, HorizontalLayout, VerticalLayout, LocalImage, CheckBox } from '../controls';
 import EventBus from 'react-native-event-bus';
 import SwipeUpDownModal from 'react-native-swipe-modal-up-down';
-import { ActiveButton, SearchInput, DisactiveButton } from '../common';
+import { ActiveButton, SearchInput, DisactiveButton, SetValueGroup, CommonInput } from '../common';
 import { ScrollView } from 'react-navigation';
 import NotiItem from '../items/NotiItem';
 import { BranchItem } from '../items';
@@ -15,18 +15,25 @@ import { requestPost } from '../../utils/ApiUtils';
 import { API, MAIN_TAB, SCREEN_HEIGHT } from '../../constants/Constants';
 import { SCREEN_WIDTH } from 'react-native-common-date-picker/src/contants';
 import CommonItem from '../items/CommonItem';
-import TrainItem from "../items/TrainItem";
+import TrainItem from '../items/TrainItem';
+import DatePicker from 'react-native-date-picker';
 
 @observer
-class TrainTypePopup extends React.Component {
+class FilterByHourPopup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      startTime: '',
+      endTime: '',
     };
   }
 
   onCancel = () => {
     this.props.onCancel();
+  };
+
+  onFilter = () => {
+    this.props.onFilter();
   };
 
   render() {
@@ -78,49 +85,61 @@ class TrainTypePopup extends React.Component {
                 </Button>
               </HorizontalLayout>
               <HorizontalLayout>
-                <Text style={{ fontSize: 18, lineHeight: 22 }}>סינון לפי: סוג אימון</Text>
+                <Text style={{ fontSize: 18, lineHeight: 22 }}>סינון לפי: שעה</Text>
                 <LocalImage
                   source={require('src/assets/image/ic_sort_black.png')}
                   style={{ width: 24, height: 24 }}
                 />
               </HorizontalLayout>
             </HorizontalLayout>
-            <SearchInput
-              setSearch={(search) => {
-                this.props.setSearch(search);
-              }}
+            <SetValueGroup
+              style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#F5F5F5' }]}
+              title="שעת התחלה"
+              image={require('src/assets/image/ic_clock.png')}
+              inputNode={
+                <DatePicker
+                  open={false}
+                  fadeToColor="#F5F5F5"
+                  minuteInterval={60}
+                  is24hourSource="device"
+                  style={{
+                    backgroundColor: '#F5F5F5',
+                    width: SCREEN_WIDTH - 60,
+                    borderRadius: 8
+                  }}
+                  date={new Date()}
+                  mode="time"
+                  onDateChange={(time) => {
+                    this.setState({ startTime: time });
+                  }}
+                />
+              }
             />
-            <FlatList
-              ref={(ref) => {
-                this._flContent = ref;
-              }}
-              style={{ marginVertical: 15 }}
-              showsVerticalScrollIndicator={false}
-              data={data}
-              numColumns={1}
-              renderItem={({ item, index }) => {
-                return (
-                  <TrainItem
-                    data={item}
-                    index={index}
-                    key={index}
-                    selectTrainId={this.props.selectTrainId}
-                    selectTrain={() => {
-                      this.props.selectTrain(item.id);
-                    }}
-                  />
-                );
-              }}
-              keyExtractor={(item, idx) => idx.toString()}
-              ItemSeparatorComponent={() => {
-                return <View style={{ height: 15 }} />;
-              }}
+            <SetValueGroup
+              style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#F5F5F5' }]}
+              title="שעת התחלה"
+              image={require('src/assets/image/ic_clock.png')}
+              inputNode={
+                <DatePicker
+                  open={false}
+                  style={{
+                    backgroundColor: '#F5F5F5',
+                    width: SCREEN_WIDTH - 60,
+                    borderRadius: 8
+                  }}
+                  date={new Date()}
+                  mode="time"
+                  onDateChange={(time) => {
+                    this.setState({ endTime: time });
+                  }}
+                />
+              }
             />
             <ActiveButton
               text="סנן"
               style={{ marginBottom: 15 }}
               action={() => {
-                this.props.onFilter();
+                this.onFilter();
               }}
             />
           </VerticalLayout>
@@ -147,4 +166,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default TrainTypePopup;
+export default FilterByHourPopup;

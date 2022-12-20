@@ -596,7 +596,7 @@ export default class ProfileScreen extends React.Component {
             <HorizontalLayout style={{ justifyContent: 'space-between', marginBottom: 45 }}>
               <ProfileInfoItem
                 border={true}
-                leftIcon={require('src/assets/image/ic_message.png')}
+                leftIcon={require('src/assets/image/ic_chat.png')}
                 text="שלח הודעה"
                 height={57}
                 numberOfLines={1}

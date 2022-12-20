@@ -34,7 +34,10 @@ export const MAIN_TAB = {
   SHOP: 8,
   PRODUCT: 9,
   PROFILE: 10,
-  PAYMENT: 11
+  PAYMENT: 11,
+  BUSINESS: 12,
+  SUBSCRIPTION: 13,
+  PERMISSION: 14,
 };
 
 export const API_RES_CODE = {

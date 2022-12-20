@@ -15,6 +15,7 @@ import ProfileScreen from "./home/ProfileScreen";
 import AddProduct from "./home/AddProduct";
 import PaymentScreen from "./home/PaymentScreen";
 import TrainScreen from "./workout/TrainScreen";
+import SettingScreen from "./setting/SettingScreen";
 
 @observer
 export default class MainScreen extends AppScreen {
@@ -85,7 +86,7 @@ export default class MainScreen extends AppScreen {
             <SafeAreaView>
                 <VerticalLayout style={Styles.full}>
                     <View style={{ flex: 1 }}>
-                        {GlobalState.getTabIndex == MAIN_TAB.SETTING && <HomeScreen navigation={this.props.navigation} />}
+                        {GlobalState.getTabIndex == MAIN_TAB.SETTING && <SettingScreen navigation={this.props.navigation} />}
                         {GlobalState.getTabIndex == MAIN_TAB.CHART && <HomeScreen navigation={this.props.navigation} />}
                         {GlobalState.getTabIndex == MAIN_TAB.REPORT && <HomeScreen navigation={this.props.navigation} />}
                         {GlobalState.getTabIndex == MAIN_TAB.HOME && <HomeScreen navigation={this.props.navigation} />}

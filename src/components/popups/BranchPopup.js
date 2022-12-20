@@ -13,6 +13,7 @@ import NotiItem from '../items/NotiItem';
 import { BranchItem } from '../items';
 import { requestPost } from '../../utils/ApiUtils';
 import { API } from '../../constants/Constants';
+import { SCREEN_HEIGHT } from "react-native-common-date-picker/src/contants";
 
 @observer
 class BranchPopup extends React.Component {
@@ -109,7 +110,7 @@ class BranchPopup extends React.Component {
                 this.props.addBranch();
               }}>
               <HorizontalLayout
-                style={{ alignItems: 'center', justifyContent: 'center', paddingVertical: 15 }}>
+                style={{ alignItems: 'center', justifyContent: 'center', paddingVertical: 15, marginBottom: 15 }}>
                 <Text style={{ fontSize: 16, lineHeight: 19 }}>הוספת סניף חדש</Text>
                 <LocalImage
                   source={require('src/assets/image/ic_plus_sign.png')}
@@ -154,7 +155,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     width: '100%',
-    height: '90%',
+    maxHeight: SCREEN_HEIGHT * 0.9
   },
 });
 

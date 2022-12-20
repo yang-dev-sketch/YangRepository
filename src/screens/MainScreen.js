@@ -19,6 +19,7 @@ import SettingScreen from "./setting/SettingScreen";
 import BusinessScreen from "./setting/BusinessScreen";
 import AddBusinessScreen from "./setting/AddBusinessScreen";
 import PaymentMethodScreen from "./setting/PaymentMethodScreen";
+import SubscriptionScreen from "./setting/SubscriptionScreen";
 
 @observer
 export default class MainScreen extends AppScreen {
@@ -104,6 +105,7 @@ export default class MainScreen extends AppScreen {
                         {GlobalState.getTabIndex == MAIN_TAB.BUSINESS && <BusinessScreen navigation={this.props.navigation} />}
                         {GlobalState.getTabIndex == MAIN_TAB.ADDBUSINESS && <AddBusinessScreen navigation={this.props.navigation} />}
                         {GlobalState.getTabIndex == MAIN_TAB.PAYMETHOD && <PaymentMethodScreen navigation={this.props.navigation} />}
+                        {GlobalState.getTabIndex == MAIN_TAB.SUBSCRIPTION && <SubscriptionScreen navigation={this.props.navigation} />}
                     </View>
 
                     {/*bottom menu*/}

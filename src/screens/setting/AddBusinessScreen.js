@@ -37,6 +37,7 @@ import ImageCropPicker from 'react-native-image-crop-picker';
 import { ActiveButton, CommonInput, DisactiveButton, SetValueGroup } from '../../components/common';
 import DropDownPicker from '../../components/controls/DropDownPicker';
 import CheckBox from '@react-native-community/checkbox';
+import BranchDetailPopup from '../../components/popups/BranchDetailPopup';
 
 @observer
 export default class AddBusinessScreen extends React.Component {
@@ -50,6 +51,7 @@ export default class AddBusinessScreen extends React.Component {
       firstPhone: '',
       secondPhone: '',
       permanentPlace: false,
+      showBranchDetailPopup: false,
     };
   }
 
@@ -236,7 +238,9 @@ export default class AddBusinessScreen extends React.Component {
                 onFillColor="#0D65D9"
                 value={this.state.permanentPlace}
                 onChange={() => {
-                  this.setState({ permanentPlace: !this.state.permanentPlace });
+                  this.setState({ permanentPlace: !this.state.permanentPlace }, () => {
+                    this.state.permanentPlace && this.setState({ showBranchDetailPopup: true });
+                  });
                 }}
               />
             </HorizontalLayout>
@@ -256,6 +260,13 @@ export default class AddBusinessScreen extends React.Component {
             />
           </VerticalLayout>
         </ScrollView>
+        <BranchDetailPopup
+          visible={this.state.showBranchDetailPopup}
+          onCancel={() => {
+            this.setState({ showBranchDetailPopup: false });
+          }}
+          onSave={() => {}}
+        />
       </SafeAreaView>
     );
   }

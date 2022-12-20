@@ -27,12 +27,12 @@ export default class BottomMenu extends React.Component {
           <VerticalLayout style={Styles.center}>
             <LocalImage
               source={
-                GlobalState.getTabIndex == MAIN_TAB.SETTING
+                GlobalState.getTabIndex == MAIN_TAB.SETTING || GlobalState.getTabIndex == MAIN_TAB.BUSINESS
                   ? require('src/assets/image/ic_bottom_setting_on.png')
                   : require('src/assets/image/ic_bottom_setting_off.png')
               }
               style={[
-                GlobalState.getTabIndex == MAIN_TAB.SETTING
+                GlobalState.getTabIndex == MAIN_TAB.SETTING || GlobalState.getTabIndex == MAIN_TAB.BUSINESS
                   ? { width: 41, height: 41 }
                   : { width: 26, height: 26 },
               ]}
@@ -68,7 +68,8 @@ export default class BottomMenu extends React.Component {
           GlobalState.getTabIndex == MAIN_TAB.PROFILE ||
           GlobalState.getTabIndex == MAIN_TAB.SHOP ||
           GlobalState.getTabIndex == MAIN_TAB.PRODUCT ||
-          GlobalState.getTabIndex == MAIN_TAB.PAYMENT) && (
+          GlobalState.getTabIndex == MAIN_TAB.PAYMENT ||
+          GlobalState.getTabIndex == MAIN_TAB.BUSINESS) && (
           <>
             <Button
               style={styles.menu}
@@ -183,7 +184,8 @@ export default class BottomMenu extends React.Component {
             GlobalState.getTabIndex == MAIN_TAB.PROFILE ||
             GlobalState.getTabIndex == MAIN_TAB.SHOP ||
             GlobalState.getTabIndex == MAIN_TAB.PRODUCT ||
-            GlobalState.getTabIndex == MAIN_TAB.PAYMENT) && (
+            GlobalState.getTabIndex == MAIN_TAB.PAYMENT ||
+            GlobalState.getTabIndex == MAIN_TAB.BUSINESS) && (
             <Button onPress={() => {}} style={styles.menu}>
               <LocalImage
                 source={require('src/assets/image/ic_bottom_gyme_on.png')}

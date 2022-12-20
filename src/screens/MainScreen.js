@@ -16,6 +16,8 @@ import AddProduct from "./home/AddProduct";
 import PaymentScreen from "./home/PaymentScreen";
 import TrainScreen from "./workout/TrainScreen";
 import SettingScreen from "./setting/SettingScreen";
+import BusinessScreen from "./setting/BusinessScreen";
+import AddBusinessScreen from "./setting/AddBusinessScreen";
 
 @observer
 export default class MainScreen extends AppScreen {
@@ -98,6 +100,8 @@ export default class MainScreen extends AppScreen {
                         {GlobalState.getTabIndex == MAIN_TAB.PRODUCT && <AddProduct navigation={this.props.navigation} />}
                         {GlobalState.getTabIndex == MAIN_TAB.PROFILE && <ProfileScreen navigation={this.props.navigation} />}
                         {GlobalState.getTabIndex == MAIN_TAB.PAYMENT && <PaymentScreen navigation={this.props.navigation} />}
+                        {GlobalState.getTabIndex == MAIN_TAB.BUSINESS && <BusinessScreen navigation={this.props.navigation} />}
+                        {GlobalState.getTabIndex == MAIN_TAB.ADDBUSINESS && <AddBusinessScreen navigation={this.props.navigation} />}
                     </View>
 
                     {/*bottom menu*/}

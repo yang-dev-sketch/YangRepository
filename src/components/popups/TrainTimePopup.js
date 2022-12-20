@@ -86,7 +86,8 @@ class TrainTimePopup extends React.Component {
               </HorizontalLayout>
               <Text style={{ fontSize: 18, lineHeight: 22 }}>התראות</Text>
             </HorizontalLayout>
-            <HorizontalLayout style={[Styles.input_wrapper, { marginBottom: 45 }]}>
+            <HorizontalLayout
+              style={[Styles.input_wrapper, { marginBottom: 45, justifyContent: 'space-between' }]}>
               <View style={{ width: (SCREEN_WIDTH - 85) / 2 }}>
                 <SetValueGroup
                   title="תאריך האימון"

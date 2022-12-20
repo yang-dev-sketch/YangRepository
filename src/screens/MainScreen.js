@@ -14,6 +14,7 @@ import { BottomMenu } from "../components/common";
 import ProfileScreen from "./home/ProfileScreen";
 import AddProduct from "./home/AddProduct";
 import PaymentScreen from "./home/PaymentScreen";
+import TrainScreen from "./workout/TrainScreen";
 
 @observer
 export default class MainScreen extends AppScreen {
@@ -88,7 +89,7 @@ export default class MainScreen extends AppScreen {
                         {GlobalState.getTabIndex == MAIN_TAB.CHART && <HomeScreen navigation={this.props.navigation} />}
                         {GlobalState.getTabIndex == MAIN_TAB.REPORT && <HomeScreen navigation={this.props.navigation} />}
                         {GlobalState.getTabIndex == MAIN_TAB.HOME && <HomeScreen navigation={this.props.navigation} />}
-                        {GlobalState.getTabIndex == MAIN_TAB.TRAIN && <HomeScreen navigation={this.props.navigation} />}
+                        {GlobalState.getTabIndex == MAIN_TAB.TRAIN && <TrainScreen navigation={this.props.navigation} />}
                         {GlobalState.getTabIndex == MAIN_TAB.CHAT && <HomeScreen navigation={this.props.navigation} />}
                         {GlobalState.getTabIndex == MAIN_TAB.GYME && <ShopScreen navigation={this.props.navigation} />}
                         {GlobalState.getTabIndex == MAIN_TAB.MORE && <HomeScreen navigation={this.props.navigation} />}

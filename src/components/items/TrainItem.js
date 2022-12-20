@@ -32,7 +32,11 @@ class TrainItem extends React.Component {
                 source={require('src/assets/image/ic_check_on.png')}
                 style={{ width: 22, height: 22 }}
               />
-            )) || <Text style={{ fontSize: 16, lineHeight: 22, color: '#979797' }}>{data.leftText}</Text>}
+            )) || (
+              <Text style={{ fontSize: 16, lineHeight: 22, color: '#979797' }}>
+                {data.leftText}
+              </Text>
+            )}
           </HorizontalLayout>
           <HorizontalLayout style={{ alignItems: 'center' }}>
             <Text numberOfLines={1} style={{ fontSize: 16, lineHeight: 19 }}>
@@ -74,6 +78,12 @@ class TrainItem extends React.Component {
                   style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 7 }}
                 />
               )) ||
+              (data.name === 'כדורגל' && (
+                <LocalImage
+                  source={require('src/assets/image/ic_football_round_off.png')}
+                  style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 7 }}
+                />
+              )) ||
               (data.name === 'הכל' && (
                 <LocalImage
                   source={require('src/assets/image/ic_train_round_on.png')}
@@ -107,6 +117,12 @@ class TrainItem extends React.Component {
               (data.name === 'הכל' && (
                 <LocalImage
                   source={require('src/assets/image/ic_function_round_off.png')}
+                  style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 7 }}
+                />
+              )) ||
+              (data.name === 'כדורגל' && (
+                <LocalImage
+                  source={require('src/assets/image/ic_football_round_off.png')}
                   style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 7 }}
                 />
               ))}

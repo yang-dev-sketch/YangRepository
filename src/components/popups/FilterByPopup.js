@@ -12,33 +12,19 @@ import { ScrollView } from 'react-navigation';
 import NotiItem from '../items/NotiItem';
 import { BranchItem } from '../items';
 import { requestPost } from '../../utils/ApiUtils';
-import { API } from '../../constants/Constants';
-import TrainItem from '../items/TrainItem';
+import { API, MAIN_TAB, SCREEN_HEIGHT } from '../../constants/Constants';
+import { SCREEN_WIDTH } from 'react-native-common-date-picker/src/contants';
+import CommonItem from '../items/CommonItem';
 
 @observer
-class SelectTrainPopup extends React.Component {
+class FilterByPopup extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      trainType: [
-        { id: 1, name: 'הכל' },
-        { id: 2, name: 'אימון קבוצתי' },
-        { id: 3, name: 'איגרוף' },
-        { id: 4, name: 'זומבה' },
-        { id: 5, name: 'יוגה' },
-        { id: 6, name: 'פונקציונאלי' },
-      ],
-      selectedTrainId: this.props.selectedTrainId,
-    };
+    this.state = {};
   }
 
   onCancel = () => {
     this.props.onCancel();
-    this.setState({ selectedTrainId: this.props.selectedTrainId });
-  };
-
-  onKeep = () => {
-    this.props.selectTrain(this.state.selectedTrainId);
   };
 
   render() {
@@ -67,61 +53,47 @@ class SelectTrainPopup extends React.Component {
               style={{
                 alignItem: 'center',
                 justifyContent: 'space-between',
-                marginBottom: 16.94,
+                marginBottom: 22,
               }}>
-              <HorizontalLayout style={{ alignItems: 'center' }}>
-                <Button
-                  onPress={() => {
-                    this.setState({ selectedTrainId: this.props.selectedTrainId });
-                    this.props.onBack();
-                  }}>
-                  <LocalImage
-                    source={require('src/assets/image/ic_left.png')}
-                    style={{ width: 11.62, height: 20.73, marginRight: 20.93 }}
-                  />
-                </Button>
-                <Button
-                  onPress={() => {
-                    this.props.onCancel();
-                  }}>
-                  <LocalImage
-                    source={require('src/assets/image/ic_close.png')}
-                    style={{ width: 31, height: 31 }}
-                  />
-                </Button>
-              </HorizontalLayout>
+              <Button
+                onPress={() => {
+                  this.props.onCancel();
+                }}>
+                <LocalImage
+                  source={require('src/assets/image/ic_close.png')}
+                  style={{ width: 31, height: 31 }}
+                />
+              </Button>
               <HorizontalLayout>
-                <Text style={{ fontSize: 18, lineHeight: 22 }}>סוג אימון</Text>
+                <Text style={{ fontSize: 18, lineHeight: 22 }}>סינון לפי</Text>
                 <LocalImage
                   source={require('src/assets/image/ic_sort_black.png')}
                   style={{ width: 24, height: 24 }}
                 />
               </HorizontalLayout>
             </HorizontalLayout>
-            <SearchInput
-              setSearch={(search) => {
-                this.props.setSearch(search);
-              }}
-            />
             <FlatList
               ref={(ref) => {
                 this._flContent = ref;
               }}
-              style={{ marginVertical: 20 }}
+              style={{ marginBottom: 40 }}
               showsVerticalScrollIndicator={false}
-              data={this.state.trainType}
+              data={data}
               numColumns={1}
               renderItem={({ item, index }) => {
                 return (
-                  <TrainItem
-                    data={item}
-                    index={index}
-                    key={index}
-                    selectTrainId={this.props.selectTrainId}
-                    selectTrain={() => {
-                      this.props.selectTrain(item.id);
+                  <Button
+                    onPress={() => {
+                      if (index === 0) this.props.setTrainTypePopup();
+                      if (index === 0) this.props.setFilterByCoach();
                     }}
-                  />
+                    style={styles.filter_item}>
+                    <LocalImage
+                      source={require('src/assets/image/ic_arrow_left.png')}
+                      style={{ width: 27, height: 27 }}
+                    />
+                    <Text>{item.name}</Text>
+                  </Button>
                 );
               }}
               keyExtractor={(item, idx) => idx.toString()}
@@ -129,11 +101,18 @@ class SelectTrainPopup extends React.Component {
                 return <View style={{ height: 15 }} />;
               }}
             />
-            <ActiveButton
-              text="שמירה"
+            <DisactiveButton
+              text="נקה סינון"
               style={{ marginBottom: 15 }}
               action={() => {
-                this.onKeep();
+                this.onClear();
+              }}
+            />
+            <ActiveButton
+              text="סנן"
+              style={{ marginBottom: 15 }}
+              action={() => {
+                this.onFilter();
               }}
             />
           </VerticalLayout>
@@ -149,15 +128,27 @@ class SelectTrainPopup extends React.Component {
 const styles = StyleSheet.create({
   Modal: {
     position: 'absolute',
-    paddingHorizontal: 20,
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
     backgroundColor: Colors.white,
     bottom: 0,
     left: 0,
     width: '100%',
-    height: '90%',
+    // maxHeight: SCREEN_HEIGHT * 0.9,
+    paddingHorizontal: 20,
+  },
+  filter_item: {
+    width: '100%',
+    paddingHorizontal: 15,
+    paddingVertical: 19,
+    backgroundColor: 'white',
+    borderRadius: 11,
+    borderWidth: 1,
+    borderColor: '#D8D8D8',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    flexDirection: 'row',
   },
 });
 
-export default SelectTrainPopup;
+export default FilterByPopup;

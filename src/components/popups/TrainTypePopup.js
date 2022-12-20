@@ -12,33 +12,31 @@ import { ScrollView } from 'react-navigation';
 import NotiItem from '../items/NotiItem';
 import { BranchItem } from '../items';
 import { requestPost } from '../../utils/ApiUtils';
-import { API } from '../../constants/Constants';
-import TrainItem from '../items/TrainItem';
+import { API, MAIN_TAB, SCREEN_HEIGHT } from '../../constants/Constants';
+import { SCREEN_WIDTH } from 'react-native-common-date-picker/src/contants';
+import CommonItem from '../items/CommonItem';
+import TrainItem from "../items/TrainItem";
 
 @observer
-class SelectTrainPopup extends React.Component {
+class TrainTypePopup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      trainType: [
-        { id: 1, name: 'הכל' },
-        { id: 2, name: 'אימון קבוצתי' },
-        { id: 3, name: 'איגרוף' },
-        { id: 4, name: 'זומבה' },
-        { id: 5, name: 'יוגה' },
-        { id: 6, name: 'פונקציונאלי' },
-      ],
-      selectedTrainId: this.props.selectedTrainId,
+      traineeType: 'waiting',
+      search: '',
     };
   }
 
   onCancel = () => {
     this.props.onCancel();
-    this.setState({ selectedTrainId: this.props.selectedTrainId });
   };
 
   onKeep = () => {
-    this.props.selectTrain(this.state.selectedTrainId);
+    this.props.onKeep();
+  };
+
+  addTrainee = () => {
+    this.addTrainee();
   };
 
   render() {
@@ -72,7 +70,6 @@ class SelectTrainPopup extends React.Component {
               <HorizontalLayout style={{ alignItems: 'center' }}>
                 <Button
                   onPress={() => {
-                    this.setState({ selectedTrainId: this.props.selectedTrainId });
                     this.props.onBack();
                   }}>
                   <LocalImage
@@ -91,7 +88,7 @@ class SelectTrainPopup extends React.Component {
                 </Button>
               </HorizontalLayout>
               <HorizontalLayout>
-                <Text style={{ fontSize: 18, lineHeight: 22 }}>סוג אימון</Text>
+                <Text style={{ fontSize: 18, lineHeight: 22 }}>סינון לפי: סוג אימון</Text>
                 <LocalImage
                   source={require('src/assets/image/ic_sort_black.png')}
                   style={{ width: 24, height: 24 }}
@@ -100,16 +97,17 @@ class SelectTrainPopup extends React.Component {
             </HorizontalLayout>
             <SearchInput
               setSearch={(search) => {
-                this.props.setSearch(search);
+                this.setState({ search: search });
+                this.props.setSearch(search, this.state.traineeType);
               }}
             />
             <FlatList
               ref={(ref) => {
                 this._flContent = ref;
               }}
-              style={{ marginVertical: 20 }}
+              style={{ marginVertical: 15 }}
               showsVerticalScrollIndicator={false}
-              data={this.state.trainType}
+              data={data}
               numColumns={1}
               renderItem={({ item, index }) => {
                 return (
@@ -130,10 +128,10 @@ class SelectTrainPopup extends React.Component {
               }}
             />
             <ActiveButton
-              text="שמירה"
+              text="סנן"
               style={{ marginBottom: 15 }}
               action={() => {
-                this.onKeep();
+                this.onFilter();
               }}
             />
           </VerticalLayout>
@@ -149,15 +147,15 @@ class SelectTrainPopup extends React.Component {
 const styles = StyleSheet.create({
   Modal: {
     position: 'absolute',
-    paddingHorizontal: 20,
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
     backgroundColor: Colors.white,
     bottom: 0,
     left: 0,
     width: '100%',
-    height: '90%',
+    maxHeight: SCREEN_HEIGHT * 0.9,
+    paddingHorizontal: 20,
   },
 });
 
-export default SelectTrainPopup;
+export default TrainTypePopup;

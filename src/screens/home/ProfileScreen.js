@@ -442,7 +442,7 @@ export default class ProfileScreen extends React.Component {
             <HorizontalLayout style={{ justifyContent: 'space-between', marginBottom: 10 }}>
               <ProfileInfoItem
                 border={true}
-                leftIcon={require('src/assets/image/ic_arrow_left.png')}
+                leftIcon={require('src/assets/image/ic_round_left.png')}
                 leftIconStyle={{ width: 27, height: 27 }}
                 text="אימונים קודמים"
                 numberOfLines={2}
@@ -465,7 +465,7 @@ export default class ProfileScreen extends React.Component {
               />
               <ProfileInfoItem
                 border={true}
-                leftIcon={require('src/assets/image/ic_arrow_left.png')}
+                leftIcon={require('src/assets/image/ic_round_left.png')}
                 leftIconStyle={{ width: 27, height: 27 }}
                 text="אימונים עתידיים"
                 numberOfLines={2}
@@ -573,7 +573,7 @@ export default class ProfileScreen extends React.Component {
             <HorizontalLayout style={{ justifyContent: 'space-between', marginBottom: 10 }}>
               <ProfileInfoItem
                 border={true}
-                leftIcon={require('src/assets/image/ic_arrow_left.png')}
+                leftIcon={require('src/assets/image/ic_round_left.png')}
                 rightIcon={require('src/assets/image/ic_alarm.png')}
                 rightIconStyle={{ width: 16, height: 16 }}
                 text="משימות(34)"
@@ -585,7 +585,7 @@ export default class ProfileScreen extends React.Component {
               />
               <ProfileInfoItem
                 border={true}
-                leftIcon={require('src/assets/image/ic_arrow_left.png')}
+                leftIcon={require('src/assets/image/ic_round_left.png')}
                 rightIcon={require('src/assets/image/ic_alarm.png')}
                 rightIconStyle={{ width: 16, height: 16 }}
                 text="יומן פעילות"

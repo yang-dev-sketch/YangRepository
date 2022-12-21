@@ -92,7 +92,7 @@ class AdvancedSettingPopup extends React.Component {
                   this.props.setAvailableStore();
                 }}>
                 <LocalImage
-                  source={require('src/assets/image/ic_arrow_left.png')}
+                  source={require('src/assets/image/ic_round_left.png')}
                   style={{ width: 23, height: 23 }}
                 />
                 <Text style={{ fontSize: 16, lineHeight: 19, width: '90%' }} numberOfLines={2}>
@@ -105,7 +105,7 @@ class AdvancedSettingPopup extends React.Component {
                   this.props.setRecurringStore();
                 }}>
                 <LocalImage
-                  source={require('src/assets/image/ic_arrow_left.png')}
+                  source={require('src/assets/image/ic_round_left.png')}
                   style={{ width: 23, height: 23 }}
                 />
                 <Text style={{ fontSize: 16, lineHeight: 19, width: '90%' }} numberOfLines={2}>
@@ -118,7 +118,7 @@ class AdvancedSettingPopup extends React.Component {
                   this.props.setLimitTrainingType();
                 }}>
                 <LocalImage
-                  source={require('src/assets/image/ic_arrow_left.png')}
+                  source={require('src/assets/image/ic_round_left.png')}
                   style={{ width: 23, height: 23 }}
                 />
                 <Text style={{ fontSize: 16, lineHeight: 19, width: '90%' }} numberOfLines={2}>
@@ -131,7 +131,7 @@ class AdvancedSettingPopup extends React.Component {
                   this.props.setAllowTrain();
                 }}>
                 <LocalImage
-                  source={require('src/assets/image/ic_arrow_left.png')}
+                  source={require('src/assets/image/ic_round_left.png')}
                   style={{ width: 23, height: 23 }}
                 />
                 <Text style={{ fontSize: 16, lineHeight: 19, width: '90%' }} numberOfLines={2}>
@@ -144,7 +144,7 @@ class AdvancedSettingPopup extends React.Component {
                   this.setAllowBooking();
                 }}>
                 <LocalImage
-                  source={require('src/assets/image/ic_arrow_left.png')}
+                  source={require('src/assets/image/ic_round_left.png')}
                   style={{ width: 23, height: 23 }}
                 />
                 <Text style={{ fontSize: 16, lineHeight: 19, width: '90%' }} numberOfLines={2}>
@@ -157,7 +157,7 @@ class AdvancedSettingPopup extends React.Component {
                   this.props.setHourLimit();
                 }}>
                 <LocalImage
-                  source={require('src/assets/image/ic_arrow_left.png')}
+                  source={require('src/assets/image/ic_round_left.png')}
                   style={{ width: 23, height: 23 }}
                 />
                 <Text style={{ fontSize: 16, lineHeight: 19, width: '90%' }} numberOfLines={2}>
@@ -170,7 +170,7 @@ class AdvancedSettingPopup extends React.Component {
                   this.props.setReservationAvailability();
                 }}>
                 <LocalImage
-                  source={require('src/assets/image/ic_arrow_left.png')}
+                  source={require('src/assets/image/ic_round_left.png')}
                   style={{ width: 23, height: 23 }}
                 />
                 <Text style={{ fontSize: 16, lineHeight: 19, width: '90%' }} numberOfLines={2}>
@@ -183,7 +183,7 @@ class AdvancedSettingPopup extends React.Component {
                   this.props.setAllowPenalty();
                 }}>
                 <LocalImage
-                  source={require('src/assets/image/ic_arrow_left.png')}
+                  source={require('src/assets/image/ic_round_left.png')}
                   style={{ width: 23, height: 23 }}
                 />
                 <Text style={{ fontSize: 16, lineHeight: 19, width: '90%' }} numberOfLines={2}>
@@ -196,7 +196,7 @@ class AdvancedSettingPopup extends React.Component {
                   this.props.setAdditionalSetting();
                 }}>
                 <LocalImage
-                  source={require('src/assets/image/ic_arrow_left.png')}
+                  source={require('src/assets/image/ic_round_left.png')}
                   style={{ width: 23, height: 23 }}
                 />
                 <Text style={{ fontSize: 16, lineHeight: 19, width: '90%' }} numberOfLines={2}>

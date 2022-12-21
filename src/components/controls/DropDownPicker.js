@@ -80,7 +80,7 @@ export default class DropDownPicker extends React.Component {
             paddingTop: 24,
             backgroundColor: 'white',
             paddingHorizontal: 15,
-            elevation: 1,
+            elevation: 3,
             marginTop: -1,
           }}
           rowStyle={{ height: 48, paddingVertical: 15, borderBottomColor: '#F5F5F5' }}

@@ -50,15 +50,22 @@ class CommonItem extends React.Component {
             </Text>
             {(data.id == this.props.selectId &&
               ((this.props.fastImage &&
-                ((this.props.imageCut && (
-                  <View style={{ width: 29, height: 20, overflow: 'hidden', marginLeft: 6 }}>
+                ((this.props.imageCut &&
+                  ((this.props.imageCutDisable && (
                     <FastImage
                       source={{ uri: data.avatar ? data.avatar : IMAGE_FOO_URL }}
                       resizeMode={FastImage.resizeMode.cover}
-                      style={{ width: 29, height: 29, marginTop: -4.5 }}
+                      style={{ width: 45, height: 45, marginLeft: 6 }}
                     />
-                  </View>
-                )) || (
+                  )) || (
+                    <View style={{ width: 45, height: 30, overflow: 'hidden' }}>
+                      <FastImage
+                        source={{ uri: data.avatar ? data.avatar : IMAGE_FOO_URL }}
+                        resizeMode={FastImage.resizeMode.cover}
+                        style={{ width: 45, height: 45, marginTop: -7.5, marginLeft: 6 }}
+                      />
+                    </View>
+                  ))) || (
                   <FastImage
                     source={{
                       uri: this.props.activeImage ? this.props.activeImage : IMAGE_FOO_URL,
@@ -74,11 +81,11 @@ class CommonItem extends React.Component {
               ))) ||
               (this.props.fastImage &&
                 ((this.props.imageCut && (
-                  <View style={{ width: 29, height: 20, overflow: 'hidden', marginLeft: 6 }}>
+                  <View style={{ width: 45, height: 30, overflow: 'hidden', marginLeft: 6 }}>
                     <FastImage
                       source={{ uri: data.avatar ? data.avatar : IMAGE_FOO_URL }}
                       resizeMode={FastImage.resizeMode.cover}
-                      style={{ width: 29, height: 29, marginTop: -4.5 }}
+                      style={{ width: 45, height: 45, marginTop: -7.5 }}
                     />
                   </View>
                 )) || (

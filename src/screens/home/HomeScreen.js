@@ -361,7 +361,7 @@ export default class HomeScreen extends React.Component {
                   marginTop: 15,
                 }}>
                 <LocalImage
-                  source={require('src/assets/image/ic_arrow_left.png')}
+                  source={require('src/assets/image/ic_round_left.png')}
                   style={{ width: 27, height: 27, marginRight: 2 }}
                 />
                 <HorizontalLayout>

@@ -156,7 +156,7 @@ export default class SettingScreen extends React.Component {
                       item.id == 4 && console.log('no design');
                       item.id == 5 && this.setState({ pushState: !this.state.pushState });
                       item.id == 6 && GlobalState.setTabIndex(MAIN_TAB.PERMISSION);
-                      item.id == 7 && GlobalState.setTabIndex(MAIN_TAB.BUSINESS);
+                      item.id == 7 && console.log('no design');
                     }}
                     style={styles.setting_item}>
                     {(item.id === 5 &&
@@ -172,7 +172,7 @@ export default class SettingScreen extends React.Component {
                         />
                       ))) || (
                       <LocalImage
-                        source={require('src/assets/image/ic_arrow_left.png')}
+                        source={require('src/assets/image/ic_round_left.png')}
                         style={{ width: 27, height: 27 }}
                       />
                     )}

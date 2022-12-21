@@ -38,7 +38,8 @@ import { ActiveButton, DisactiveButton, SearchInput } from '../../components/com
 import AddRolePopup from '../../components/popups/AddRolePopup';
 import EditUserPopup from '../../components/popups/EditUserPopup';
 import AddTraineeRolePopup from '../../components/popups/AddTraineeRolePopup';
-import SelectRolePopup from "../../components/popups/SelectRolePopup";
+import SelectRolePopup from '../../components/popups/SelectRolePopup';
+import SwitchItem from '../../components/items/SwitchItem';
 
 @observer
 export default class PermissionScreen extends React.Component {
@@ -49,14 +50,13 @@ export default class PermissionScreen extends React.Component {
       manageList: [],
       descList: [],
       showAddRolePopup: false,
-      selectedRole: 0,
       selectedUser: 0,
       showEditUserPopup: false,
       userType: 'all',
       showAddTraineeRolePopup: false,
       selectedAddRole: 0,
       selectedAddUser: 0,
-      showSelectRolePopup: false
+      showSelectRolePopup: false,
     };
   }
 
@@ -70,6 +70,11 @@ export default class PermissionScreen extends React.Component {
           { id: 2, name: 'שם המתאמן.ת', train: 'Steps-London', avatar: '' },
           { id: 3, name: 'שם המתאמן.ת', train: 'Steps-London', avatar: '' },
         ],
+        report: true,
+        training: false,
+        payment: false,
+        task: false,
+        lead: false,
       },
       {
         id: 2,
@@ -79,6 +84,11 @@ export default class PermissionScreen extends React.Component {
           { id: 2, name: 'שם המתאמן.ת', train: 'Steps-London', avatar: '' },
           { id: 3, name: 'שם המתאמן.ת', train: 'Steps-London', avatar: '' },
         ],
+        report: true,
+        training: false,
+        payment: false,
+        task: false,
+        lead: false,
       },
       {
         id: 3,
@@ -88,6 +98,11 @@ export default class PermissionScreen extends React.Component {
           { id: 2, name: 'שם המתאמן.ת', train: 'Steps-London', avatar: '' },
           { id: 3, name: 'שם המתאמן.ת', train: 'Steps-London', avatar: '' },
         ],
+        report: true,
+        training: false,
+        payment: false,
+        task: false,
+        lead: false,
       },
       {
         id: 4,
@@ -97,6 +112,11 @@ export default class PermissionScreen extends React.Component {
           { id: 2, name: 'שם המתאמן.ת', train: 'Steps-London', avatar: '' },
           { id: 3, name: 'שם המתאמן.ת', train: 'Steps-London', avatar: '' },
         ],
+        report: true,
+        training: false,
+        payment: false,
+        task: false,
+        lead: false,
       },
     ];
     this.setState({ manageList: roleList, descList: roleList });
@@ -157,9 +177,30 @@ export default class PermissionScreen extends React.Component {
     this.setState({ descList: descList });
   };
 
+  changeJob = (id, type) => {
+    // requestPost(API.Setting.change_role, {
+    //   type: type,
+    // }).then(async (result) => {
+    //   if (result.code == API_RES_CODE.SUCCESS) {
+    const descList = this.state.descList;
+    descList.map((item, index) => {
+      if (item.id === id) {
+        if (type === 'report') item.report = !item.report;
+        if (type === 'training') item.training = !item.training;
+        if (type === 'payment') item.payment = !item.payment;
+        if (type === 'task') item.task = !item.report;
+        if (type === 'lead') item.lead = !item.lead;
+      }
+    });
+    this.setState({ descList: descList });
+    //   } else {
+    //   }
+    // });
+  };
+
   render() {
     return (
-      <SafeAreaView>
+      <SafeAreaView style={Styles.full}>
         <ScrollView style={Styles.wrapper}>
           <VerticalLayout style={{ paddingVertical: 29 }}>
             <HorizontalLayout
@@ -242,7 +283,6 @@ export default class PermissionScreen extends React.Component {
                             key={index}
                             onPress={() => {
                               this.selectManage(item.id);
-                              this.setState({ selectedRole: item.id });
                             }}
                             style={[
                               (item.checked && { borderColor: '#0D65D9' }) || {
@@ -373,21 +413,6 @@ export default class PermissionScreen extends React.Component {
                       return <View style={{ height: 15 }} />;
                     }}
                   />
-                  <Button
-                    onPress={() => {
-                      this.setState({ showAddRolePopup: true });
-                    }}
-                    style={{
-                      alignSelf: 'center',
-                      flexDirection: 'row',
-                      alignItems: 'center',
-                    }}>
-                    <Text>הוסף תפקיד חדש</Text>
-                    <LocalImage
-                      source={require('src/assets/image/ic_plus_sign.png')}
-                      style={{ width: 27, height: 27, marginLeft: 6 }}
-                    />
-                  </Button>
                 </VerticalLayout>
               </ScrollView>
             )}
@@ -395,61 +420,115 @@ export default class PermissionScreen extends React.Component {
               <ScrollView>
                 <VerticalLayout>
                   <FlatList
-                    ref={(ref) => {
-                      this._flContent = ref;
-                    }}
                     showsVerticalScrollIndicator={false}
                     style={{ marginBottom: 15, marginTop: 20 }}
                     data={this.state.descList}
                     numRows={1}
                     renderItem={({ item, index }) => {
                       return (
-                        <Button
-                          onPress={() => {
-                            this.selectDesc(item.id);
-                          }}
-                          key={index}
-                          onPress={() => {}}
-                          style={[
-                            (item.checked && { borderColor: '#0D65D9' }) || {
-                              borderColor: '#D8D8D8',
-                            },
-                            styles.user_item,
-                          ]}>
-                          {(item.checked && (
-                            <LocalImage
-                              source={require('src/assets/image/ic_round_up_on.png')}
-                              style={{ width: 27, height: 27 }}
-                            />
-                          )) || (
-                            <LocalImage
-                              source={require('src/assets/image/ic_round_down.png')}
-                              style={{ width: 27, height: 27 }}
-                            />
+                        <>
+                          <Button
+                            onPress={() => {
+                              this.setState({ selectedDesc: item.id });
+                              this.selectDesc(item.id);
+                            }}
+                            key={index}
+                            style={[
+                              (item.checked && { borderColor: '#0D65D9' }) || {
+                                borderColor: '#D8D8D8',
+                              },
+                              styles.user_item,
+                            ]}>
+                            {(item.checked && (
+                              <LocalImage
+                                source={require('src/assets/image/ic_round_up_on.png')}
+                                style={{ width: 27, height: 27 }}
+                              />
+                            )) || (
+                              <LocalImage
+                                source={require('src/assets/image/ic_round_down.png')}
+                                style={{ width: 27, height: 27 }}
+                              />
+                            )}
+                            <HorizontalLayout style={{ alignItems: 'center' }}>
+                              <Text style={{ fontSize: 16, lineHeight: 19 }}>{item.name}</Text>
+                              <View
+                                style={[
+                                  index === 0 && { backgroundColor: '#75A6E4' },
+                                  index === 1 && { backgroundColor: '#0D65D9' },
+                                  index === 2 && { backgroundColor: '#43C7FF' },
+                                  index === 3 && { backgroundColor: '#688EF8' },
+                                  {
+                                    width: 45,
+                                    height: 45,
+                                    borderRadius: 22.5,
+                                    marginLeft: 7,
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                  },
+                                ]}>
+                                <Text style={{ fontSize: 18, lineHeight: 22, color: 'white' }}>
+                                  {item.member.length}
+                                </Text>
+                              </View>
+                            </HorizontalLayout>
+                          </Button>
+                          {item.checked && (
+                            <VerticalLayout>
+                              {item.member.length > 0 && <SearchInput style={{ marginTop: 10 }} />}
+                              <SwitchItem
+                                style={styles.switch_item}
+                                data={{
+                                  name: 'דיווחים',
+                                  checked: item.report,
+                                }}
+                                onSelect={() => {
+                                  this.changeJob(item.id, 'report');
+                                }}
+                              />
+                              <SwitchItem
+                                style={styles.switch_item}
+                                data={{
+                                  name: 'אימונים',
+                                  checked: item.training,
+                                }}
+                                onSelect={() => {
+                                  this.changeJob(item.id, 'training');
+                                }}
+                              />
+                              <SwitchItem
+                                style={styles.switch_item}
+                                data={{
+                                  name: 'תשלומים',
+                                  checked: item.payment,
+                                }}
+                                onSelect={() => {
+                                  this.changeJob(item.id, 'payment');
+                                }}
+                              />
+                              <SwitchItem
+                                style={styles.switch_item}
+                                data={{
+                                  name: 'משימות',
+                                  checked: item.task,
+                                }}
+                                onSelect={() => {
+                                  this.changeJob(item.id, 'task');
+                                }}
+                              />
+                              <SwitchItem
+                                style={styles.switch_item}
+                                data={{
+                                  name: 'לידים',
+                                  checked: item.lead,
+                                }}
+                                onSelect={() => {
+                                  this.changeJob(item.id, 'lead');
+                                }}
+                              />
+                            </VerticalLayout>
                           )}
-                          <HorizontalLayout style={{ alignItems: 'center' }}>
-                            <Text style={{ fontSize: 16, lineHeight: 19 }}>{item.name}</Text>
-                            <View
-                              style={[
-                                index === 0 && { backgroundColor: '#75A6E4' },
-                                index === 1 && { backgroundColor: '#0D65D9' },
-                                index === 2 && { backgroundColor: '#43C7FF' },
-                                index === 3 && { backgroundColor: '#688EF8' },
-                                {
-                                  width: 45,
-                                  height: 45,
-                                  borderRadius: 22.5,
-                                  marginLeft: 7,
-                                  alignItems: 'center',
-                                  justifyContent: 'center',
-                                },
-                              ]}>
-                              <Text style={{ fontSize: 18, lineHeight: 22, color: 'white' }}>
-                                {item.member.length}
-                              </Text>
-                            </View>
-                          </HorizontalLayout>
-                        </Button>
+                        </>
                       );
                     }}
                     keyExtractor={(item, idx) => idx.toString()}
@@ -460,6 +539,21 @@ export default class PermissionScreen extends React.Component {
                 </VerticalLayout>
               </ScrollView>
             )}
+            <Button
+              onPress={() => {
+                this.setState({ showAddRolePopup: true });
+              }}
+              style={{
+                alignSelf: 'center',
+                flexDirection: 'row',
+                alignItems: 'center',
+              }}>
+              <Text>הוסף תפקיד חדש</Text>
+              <LocalImage
+                source={require('src/assets/image/ic_plus_sign.png')}
+                style={{ width: 27, height: 27, marginLeft: 6 }}
+              />
+            </Button>
           </VerticalLayout>
           {this.state.selectedUser !== 0 && (
             <>
@@ -581,5 +675,13 @@ const styles = StyleSheet.create({
     marginTop: 10,
     flexDirection: 'row',
     borderWidth: 1,
+  },
+  switch_item: {
+    width: '100%',
+    paddingBottom: 15,
+    borderBottomWidth: 1,
+    borderBottomColor: '#F2F2F2',
+    marginTop: 15,
+    backgroundColor: '#F5F5F5',
   },
 });

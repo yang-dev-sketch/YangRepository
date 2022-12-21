@@ -24,8 +24,8 @@ export const PREF_PARAMS = {
 
 export const MAIN_TAB = {
   SETTING: 0,
-  CHART: 1,
-  REPORT: 2,
+  REPORT: 1,
+  CARD: 2,
   HOME: 3,
   TRAIN: 4,
   CHAT: 5,

@@ -19,7 +19,7 @@ export default class SwitchItem extends React.Component {
         style={[this.props.style]}>
         <HorizontalLayout style={styles.switch_item}>
           <OnOffSwitch state={data.checked} />
-          <Text>{data.name}</Text>
+          <Text style={{ fontSize: 16, lineHeight: 19 }}>{data.name}</Text>
         </HorizontalLayout>
       </Button>
     );
@@ -29,7 +29,7 @@ export default class SwitchItem extends React.Component {
 const styles = StyleSheet.create({
   switch_item: {
     width: '100%',
-    backgroundColor: 'white',
+    backgroundColor: 'transparent',
     alignItems: 'center',
     justifyContent: 'space-between',
   },

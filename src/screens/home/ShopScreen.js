@@ -232,7 +232,7 @@ export default class ShopScreen extends React.Component {
                   סינון
                 </Text>
                 <LocalImage
-                  source={require('src/assets/image/ic_arrow_down.png')}
+                  source={require('src/assets/image/ic_arrow_up.png')}
                   style={{ width: 13.06, height: 6.88, marginLeft: 4.47 }}
                 />
               </HorizontalLayout>

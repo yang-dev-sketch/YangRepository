@@ -39,6 +39,7 @@ export default class CustomCalendar extends React.Component {
   render() {
     return (
       <Calendar
+        style={this.props.style}
         markingType={'period'}
         markedDates={{
           '2022-12-21': { startingDay: true, color: '#50cebb', textColor: 'white' },

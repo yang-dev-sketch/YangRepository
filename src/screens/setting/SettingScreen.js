@@ -117,7 +117,7 @@ export default class SettingScreen extends React.Component {
                 }}>
                 <LocalImage
                   source={require('src/assets/image/ic_nofitication.png')}
-                  style={{ width: 19.87, height: 19.44 }}
+                  style={{ width: 24, height: 24 }}
                 />
               </Button>
               <Text

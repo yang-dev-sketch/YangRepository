@@ -21,6 +21,7 @@ import AddBusinessScreen from "./setting/AddBusinessScreen";
 import PaymentMethodScreen from "./setting/PaymentMethodScreen";
 import SubscriptionScreen from "./setting/SubscriptionScreen";
 import PermissionScreen from "./setting/PermissionScreen";
+import ReportScreen from "./report/ReportScreen";
 
 @observer
 export default class MainScreen extends AppScreen {
@@ -92,8 +93,8 @@ export default class MainScreen extends AppScreen {
                 <VerticalLayout style={Styles.full}>
                     <View style={{ flex: 1 }}>
                         {GlobalState.getTabIndex == MAIN_TAB.SETTING && <SettingScreen navigation={this.props.navigation} />}
-                        {GlobalState.getTabIndex == MAIN_TAB.CHART && <HomeScreen navigation={this.props.navigation} />}
-                        {GlobalState.getTabIndex == MAIN_TAB.REPORT && <HomeScreen navigation={this.props.navigation} />}
+                        {GlobalState.getTabIndex == MAIN_TAB.REPORT && <ReportScreen navigation={this.props.navigation} />}
+                        {GlobalState.getTabIndex == MAIN_TAB.CARD && <HomeScreen navigation={this.props.navigation} />}
                         {GlobalState.getTabIndex == MAIN_TAB.HOME && <HomeScreen navigation={this.props.navigation} />}
                         {GlobalState.getTabIndex == MAIN_TAB.TRAIN && <TrainScreen navigation={this.props.navigation} />}
                         {GlobalState.getTabIndex == MAIN_TAB.CHAT && <HomeScreen navigation={this.props.navigation} />}

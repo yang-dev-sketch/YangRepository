@@ -50,7 +50,7 @@ export default class SetValueGroup extends React.Component {
                     )}
                   </HorizontalLayout>
                 )) || <View></View>}
-            <HorizontalLayout>
+            <HorizontalLayout style={{ alignItems: 'center' }}>
               <Text
                 style={[{ fontSize: 16, lineHeight: 19, color: '#6F6F6F' }, this.props.textStyle]}>
                 {this.props.title}

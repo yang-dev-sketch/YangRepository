@@ -43,19 +43,19 @@ export default class BottomMenu extends React.Component {
         <Button
           style={styles.menu}
           onPress={() => {
-            if (GlobalState.getTabIndex != MAIN_TAB.CHART) {
-              GlobalState.setTabIndex(MAIN_TAB.CHART);
+            if (GlobalState.getTabIndex != MAIN_TAB.REPORT) {
+              GlobalState.setTabIndex(MAIN_TAB.REPORT);
             }
           }}>
           <VerticalLayout style={Styles.center}>
             <LocalImage
               source={
-                GlobalState.getTabIndex == MAIN_TAB.CHART
-                  ? require('src/assets/image/ic_bottom_chart_on.png')
-                  : require('src/assets/image/ic_bottom_chart_off.png')
+                GlobalState.getTabIndex == MAIN_TAB.REPORT
+                  ? require('src/assets/image/ic_bottom_report_on.png')
+                  : require('src/assets/image/ic_bottom_report_off.png')
               }
               style={[
-                GlobalState.getTabIndex == MAIN_TAB.CHART
+                GlobalState.getTabIndex == MAIN_TAB.REPORT
                   ? { width: 41, height: 41 }
                   : { width: 26, height: 26 },
               ]}
@@ -74,19 +74,19 @@ export default class BottomMenu extends React.Component {
             <Button
               style={styles.menu}
               onPress={() => {
-                if (GlobalState.getTabIndex != MAIN_TAB.REPORT) {
-                  GlobalState.setTabIndex(MAIN_TAB.REPORT);
+                if (GlobalState.getTabIndex != MAIN_TAB.CARD) {
+                  GlobalState.setTabIndex(MAIN_TAB.CARD);
                 }
               }}>
               <VerticalLayout style={Styles.center}>
                 <LocalImage
                   source={
-                    GlobalState.getTabIndex == MAIN_TAB.REPORT
-                      ? require('src/assets/image/ic_bottom_report.png')
-                      : require('src/assets/image/ic_bottom_report.png')
+                    GlobalState.getTabIndex == MAIN_TAB.CARD
+                      ? require('src/assets/image/ic_bottom_card.png')
+                      : require('src/assets/image/ic_bottom_card.png')
                   }
                   style={[
-                    GlobalState.getTabIndex == MAIN_TAB.REPORT
+                    GlobalState.getTabIndex == MAIN_TAB.CARD
                       ? { width: 41, height: 41 }
                       : { width: 26, height: 26 },
                   ]}

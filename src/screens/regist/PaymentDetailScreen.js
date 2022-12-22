@@ -42,10 +42,10 @@ export default class PaymentDetailScreen extends AppScreen {
   constructor(props) {
     super(props);
     this.state = {
-      creditCardNumber: '0000 0000 0000 0000 0000',
+      creditCardNumber: null,
       validity: '04/45',
       cvv: '488',
-      id: '0000 0000 0000 0000 0000',
+      id: null,
     };
   }
 
@@ -108,9 +108,10 @@ export default class PaymentDetailScreen extends AppScreen {
                       inputStyle={{ height: 40 }}
                       fontSize={20}
                       lineHeight={24}
+                      maxLength={24}
                       numberOfLines={1}
                       backgroundColor="white"
-                      value={this.state.creditCardNumber}
+                      value={CommonUtils.formatCreditCard(this.state.creditCardNumber)}
                       onChangeText={(text) => {
                         this.setState({ creditCardNumber: text });
                       }}
@@ -172,9 +173,10 @@ export default class PaymentDetailScreen extends AppScreen {
                       inputStyle={{ height: 40 }}
                       fontSize={20}
                       lineHeight={24}
+                      maxLength={24}
                       numberOfLines={1}
                       backgroundColor="white"
-                      value={this.state.id}
+                      value={CommonUtils.formatCreditCard(this.state.id)}
                       onChangeText={(text) => {
                         this.setState({ id: text });
                       }}
@@ -191,7 +193,7 @@ export default class PaymentDetailScreen extends AppScreen {
               text="הוספת כרטיס"
               style={{ width: '100%', marginBottom: 15 }}
               action={() => {
-                this.props.navigation.navigate('BankDetail')
+                this.props.navigation.navigate('BankDetail');
               }}
             />
           </VerticalLayout>

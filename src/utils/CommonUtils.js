@@ -260,15 +260,63 @@ export default {
   },
 
   getTrainTypeDate(startDate, endDate) {
-    if(endDate) {
-      if(moment(startDate).format('YYYY-MM-DD') == moment(endDate).format('YYYY-MM-DD')) {
-        return moment(startDate).format('hh:mm') + ' - ' + moment(endDate).format('hh:mm') + ', ' + moment(startDate).format('DD.MM.YYYY');
-      }
-      else {
-        return moment(startDate).format('hh:mm, DD.MM.YYYY') + ' - ' + moment(endDate).format('hh:mm, DD.MM.YYYY');
+    if (endDate) {
+      if (moment(startDate).format('YYYY-MM-DD') == moment(endDate).format('YYYY-MM-DD')) {
+        return (
+          moment(startDate).format('hh:mm') +
+          ' - ' +
+          moment(endDate).format('hh:mm') +
+          ', ' +
+          moment(startDate).format('DD.MM.YYYY')
+        );
+      } else {
+        return (
+          moment(startDate).format('hh:mm, DD.MM.YYYY') +
+          ' - ' +
+          moment(endDate).format('hh:mm, DD.MM.YYYY')
+        );
       }
     } else {
-      return moment(startDate).format('hh:mm, DD.MM.YYYY')
+      return moment(startDate).format('hh:mm, DD.MM.YYYY');
     }
-  }
+  },
+
+  formatCreditCard(value) {
+    if (!value) {
+      return '';
+    }
+
+    let valueNum = value.replace(new RegExp('[^\\d-]', 'g'), '');
+    if (valueNum.length >= 5 && valueNum[4] !== '-') {
+      valueNum = valueNum.substr(0, 4) + ' ' + valueNum.substr(4);
+    }
+    if (valueNum.length >= 10 && valueNum[9] !== '-') {
+      valueNum = valueNum.substr(0, 9) + ' ' + valueNum.substr(9);
+    }
+    if (valueNum.length >= 15 && valueNum[14] !== '-') {
+      valueNum = valueNum.substr(0, 14) + ' ' + valueNum.substr(14);
+    }
+    if (valueNum.length >= 20 && valueNum[19] !== '-') {
+      valueNum = valueNum.substr(0, 19) + ' ' + valueNum.substr(19);
+    }
+    return valueNum;
+  },
+
+  formatAccountNumber(value) {
+    if (!value) {
+      return '';
+    }
+
+    let valueNum = value.replace(new RegExp('[^\\d-]', 'g'), '');
+    if (valueNum.length >= 5 && valueNum[4] !== '-') {
+      valueNum = valueNum.substr(0, 4) + ' ' + valueNum.substr(4);
+    }
+    if (valueNum.length >= 10 && valueNum[9] !== '-') {
+      valueNum = valueNum.substr(0, 9) + ' ' + valueNum.substr(9);
+    }
+    if (valueNum.length >= 15 && valueNum[14] !== '-') {
+      valueNum = valueNum.substr(0, 14) + ' ' + valueNum.substr(14);
+    }
+    return valueNum;
+  },
 };

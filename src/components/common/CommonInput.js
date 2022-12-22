@@ -19,7 +19,7 @@ export default class CommonInput extends React.Component {
           paddingBottom={this.props.numberOfLines === 1 ? 0 : 30}
           fontSize={(this.props.fontSize && this.props.fontSize) || 16}
           lineHeight={(this.props.lineHeight && this.props.lineHeight) || 19}
-          maxLength={this.props.numberOfLines === 1 ? 40 : 250}
+          maxLength={this.props.numberOfLines === 1 ? (this.props.maxLength || 40) : 250}
           multiline={this.props.numberOfLines === 1 ? false : true}
           numberOfLines={this.props.numberOfLines}
           value={this.props.value}

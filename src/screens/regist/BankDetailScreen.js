@@ -82,8 +82,9 @@ export default class BankDetailScreen extends AppScreen {
               inputNode={
                 <CommonInput
                   numberOfLines={1}
+                  maxLength={19}
                   backgroundColor="#F5F5F5"
-                  value={this.state.accountNumber}
+                  value={CommonUtils.formatAccountNumber(this.state.accountNumber)}
                   onChangeText={(text) => {
                     this.setState({ accountNumber: text });
                   }}
@@ -111,6 +112,7 @@ export default class BankDetailScreen extends AppScreen {
                 <CommonInput
                   numberOfLines={1}
                   backgroundColor="#F5F5F5"
+                  maxLength={9}
                   value={this.state.branchNumber}
                   onChangeText={(text) => {
                     this.setState({ branchNumber: text });
@@ -125,6 +127,7 @@ export default class BankDetailScreen extends AppScreen {
                 <CommonInput
                   numberOfLines={1}
                   backgroundColor="#F5F5F5"
+                  maxLength={9}
                   value={this.state.accountName}
                   onChangeText={(text) => {
                     this.setState({ accountName: text });

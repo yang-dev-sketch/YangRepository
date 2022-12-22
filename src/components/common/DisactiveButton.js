@@ -19,6 +19,13 @@ export default class DisactiveButton extends React.Component {
           this.action();
         }}>
         <Text style={styles.text}>{this.props.text}</Text>
+        {this.props.image && (
+          <LocalImage
+            source={require('src/assets/image/ic_mark.png')}
+            style={[{ width: 20, height: 20, marginLeft: 10 }]}
+            resizeMode="cover"
+          />
+        )}
       </Button>
     );
   }
@@ -33,6 +40,7 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     alignItems: 'center',
     justifyContent: 'center',
+    flexDirection: 'row',
   },
 
   text: {

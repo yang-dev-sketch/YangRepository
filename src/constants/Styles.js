@@ -7,7 +7,7 @@ export default StyleSheet.create({
   container: {
     width: '100%',
     height: '100%',
-    backgroundColor: Colors.white,
+    backgroundColor: '#F5F5F5',
     fontFamily: FontFamily.danidin,
     direction: 'rtl',
   },

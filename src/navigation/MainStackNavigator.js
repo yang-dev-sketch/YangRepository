@@ -1,8 +1,9 @@
 import { createStackNavigator, TransitionPresets } from 'react-navigation-stack';
 import Main from '../screens/MainScreen'
-import Login from '../screens/auth/LoginScreen';
-import Splash from '../screens/auth/SplashScreen';
-import Signup from '../screens/auth/SignupScreen';
+import Login from '../screens/regist/LoginScreen';
+import Splash from '../screens/regist/SplashScreen';
+import Signup from '../screens/regist/SignupScreen';
+import Coach from '../screens/regist/RegisterCoachScreen';
 
 import Home from '../screens/home/HomeScreen';
 import ShopScreen from '../screens/home/ShopScreen';
@@ -23,6 +24,8 @@ const MainStackNavigator = createStackNavigator({
     Main,
     Login,
     Signup,
+    Coach,
+
     Home,
     ShopScreen,
     AddProduct,

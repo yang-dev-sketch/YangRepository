@@ -3,7 +3,16 @@ import Main from '../screens/MainScreen'
 import Login from '../screens/regist/LoginScreen';
 import Splash from '../screens/regist/SplashScreen';
 import Signup from '../screens/regist/SignupScreen';
-import Coach from '../screens/regist/RegisterCoachScreen';
+import Facial from '../screens/regist/FacialRecogScreen';
+import RegistCoach from '../screens/regist/RegistCoachScreen';
+import RegistBusinessOne from '../screens/regist/RegistBusinessOneScreen';
+import RegistBusinessTwo from '../screens/regist/RegistBusinessTwoScreen';
+import RegistBusinessThree from '../screens/regist/RegistBusinessThreeScreen';
+import FaceApproval from '../screens/regist/FaceApprovalScreen';
+import SelectProgram from '../screens/regist/SelectProgramScreen';
+import PaymentDetail from '../screens/regist/PaymentDetailScreen';
+import BankDetail from '../screens/regist/BankDetailScreen';
+import SuccessRegist from '../screens/regist/SuccessRegistScreen';
 
 import Home from '../screens/home/HomeScreen';
 import ShopScreen from '../screens/home/ShopScreen';
@@ -22,9 +31,18 @@ import PaymentMethodScreen from '../screens/setting/PaymentMethodScreen';
 const MainStackNavigator = createStackNavigator({
     Splash,
     Main,
-    Login,
     Signup,
-    Coach,
+    Login,
+    Facial,
+    RegistCoach,
+    RegistBusinessOne,
+    RegistBusinessTwo,
+    RegistBusinessThree,
+    FaceApproval,
+    SelectProgram,
+    PaymentDetail,
+    BankDetail,
+    SuccessRegist,
 
     Home,
     ShopScreen,

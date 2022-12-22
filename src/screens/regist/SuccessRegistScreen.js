@@ -28,65 +28,37 @@ export default class SplashScreen extends AppScreen {
   constructor(props) {
     super(props);
 
-    this.INTRO_TIME = 3000; // delay time in millisecond
-    this.startTime = new Date().getTime();
-    this.state = { showButton: false };
+    this.state = {};
   }
 
-  componentDidMount() {
-    if (Platform.OS == 'android') {
-      this.checkPermission();
-    } else {
-      this.autoLogin();
-    }
-  }
+  componentDidMount() {}
 
   render() {
     return (
       <SafeAreaView
         style={[
-          Styles.container,
           {
             position: 'relative',
             alignItems: 'center',
             justifyContent: 'center',
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'white'
           },
         ]}>
         <LocalImage
           source={require('src/assets/image/ic_splash.png')}
-          style={[{ width: '100%', height: '100%' }]}
+          style={[{ width: '100%', height: '80%', position: 'absolute', top: 0 }]}
           resizeMode="cover"
         />
-        {this.state.showButton && (
-          <>
-            <ActiveButton
-              text="הרשמה/כניסה"
-              style={{ width: SCREEN_WIDTH - 122, position: 'absolute', bottom: 137 }}
-              action={() => {
-                this.props.navigation.navigate({
-                  routeName: 'Login',
-                  params: {
-                    type: 'coach',
-                  },
-                  key: 'RegistCoach',
-                });
-              }}
-            />
-            <DisactiveButton
-              text="הרשמה/כניסה לעסקים"
-              style={{ width: SCREEN_WIDTH - 122, position: 'absolute', bottom: 72 }}
-              action={() => {
-                this.props.navigation.navigate({
-                  routeName: 'Login',
-                  params: {
-                    type: 'business',
-                  },
-                  key: 'RegistBusiness',
-                });
-              }}
-            />
-          </>
-        )}
+        <Text style={{ width: SCREEN_WIDTH - 124, fontSize: 24, lineHeight: 29, position: 'absolute', top: 465, textAlign: 'center' }}>נרשמת בהצלחה, אנו שמחים לראות אותך</Text>
+        <ActiveButton
+          text="הַתחָלָה"
+          style={{ width: SCREEN_WIDTH - 124, position: 'absolute', bottom: 55 }}
+          action={() => {
+            this.props.navigation.navigate('Main');
+          }}
+        />
       </SafeAreaView>
     );
   }

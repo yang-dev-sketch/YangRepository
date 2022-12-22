@@ -104,7 +104,7 @@ class TrainOrganizationPopup extends React.Component {
               <Button
                 onPress={() => {
                   this.setState({ traineeType: 'practicing' }, () => {
-                    this.props.setSearch();
+                    this.props.setSearch(this.state.search, this.state.traineeType);
                   });
                 }}
                 style={[

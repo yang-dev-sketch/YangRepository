@@ -22,39 +22,41 @@ class LeadPopup extends React.Component {
     this.onEventPress = this.onEventPress.bind(this);
     this.renderSelected = this.renderSelected.bind(this);
     this.renderDetail = this.renderDetail.bind(this);
-    this.data = [
-      {
-        time: '08:00',
-        name: 'שם הליד',
-        avatar: '',
-        type: 'fail',
-        phone: '052 - 000000000',
-        gmail: 'nastya1106@gmail.com',
-        createdAt: '13:34, 11.06.2022',
-        updatedAt: '14.08.2022',
-      },
-      {
-        time: '09:00',
-        name: 'שם הליד',
-        avatar: '',
-        type: 'treatment',
-        phone: '052 - 000000000',
-        gmail: 'nastya1106@gmail.com',
-        createdAt: '13:34, 11.06.2022',
-        updatedAt: '14.08.2022',
-      },
-      {
-        time: '10:00',
-        name: 'שם הליד',
-        avatar: '',
-        type: 'noreply',
-        phone: '052 - 000000000',
-        gmail: 'nastya1106@gmail.com',
-        createdAt: '13:34, 11.06.2022',
-        updatedAt: '14.08.2022',
-      },
-    ];
-    this.state = { selected: null };
+    this.state = {
+      selected: null,
+      data: [
+        {
+          time: '08:00',
+          name: 'שם הליד',
+          avatar: '',
+          type: 'fail',
+          phone: '052 - 000000000',
+          gmail: 'nastya1106@gmail.com',
+          createdAt: '13:34, 11.06.2022',
+          updatedAt: '14.08.2022',
+        },
+        {
+          time: '09:00',
+          name: 'שם הליד',
+          avatar: '',
+          type: 'treatment',
+          phone: '052 - 000000000',
+          gmail: 'nastya1106@gmail.com',
+          createdAt: '13:34, 11.06.2022',
+          updatedAt: '14.08.2022',
+        },
+        {
+          time: '10:00',
+          name: 'שם הליד',
+          avatar: '',
+          type: 'noreply',
+          phone: '052 - 000000000',
+          gmail: 'nastya1106@gmail.com',
+          createdAt: '13:34, 11.06.2022',
+          updatedAt: '14.08.2022',
+        },
+      ],
+    };
   }
 
   onCancel = () => {
@@ -170,7 +172,7 @@ class LeadPopup extends React.Component {
             </HorizontalLayout>
             <ScrollView style={{ paddingHorizontal: 20 }}>
               <Timeline
-                data={data}
+                data={this.state.data}
                 innerCircle="dot"
                 circleSize={20}
                 dotSize={12}

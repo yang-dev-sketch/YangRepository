@@ -21,7 +21,7 @@ export default class DisactiveButton extends React.Component {
         <Text style={styles.text}>{this.props.text}</Text>
         {this.props.image && (
           <LocalImage
-            source={require('src/assets/image/ic_mark.png')}
+            source={require('src/assets/image/ic_mark_small.png')}
             style={[{ width: 20, height: 20, marginLeft: 10 }]}
             resizeMode="cover"
           />

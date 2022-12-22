@@ -36,7 +36,7 @@ export default class PaymentMethodCard extends React.Component {
               style={{ width: 33, height: 26 }}
             />
             <LocalImage
-              source={require('src/assets/image/ic_double_round.png')}
+              source={require('src/assets/image/ic_punch.png')}
               style={{ width: 42.29, height: 26.12 }}
             />
           </HorizontalLayout>

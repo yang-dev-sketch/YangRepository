@@ -13,6 +13,7 @@ import CheckBox from '@react-native-community/checkbox';
 import { requestUpload } from '../../utils/ApiUtils';
 import ImageCropPicker from 'react-native-image-crop-picker';
 import { API, API_RES_CODE, IMAGE_FOO_URL } from '../../constants/Constants';
+import FastImage from 'react-native-fast-image';
 
 @observer
 class AddBranchPopup extends React.Component {

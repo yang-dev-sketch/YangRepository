@@ -77,7 +77,6 @@ export default class DropDownPicker extends React.Component {
           dropdownStyle={{
             height: 'auto',
             borderRadius: 21,
-            paddingTop: 24,
             backgroundColor: 'white',
             paddingHorizontal: 15,
             elevation: 3,

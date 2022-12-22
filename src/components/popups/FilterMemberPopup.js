@@ -28,8 +28,8 @@ class FilterMemberPopup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      sexType: [{ name: '', name: '' }],
-      selectedSex: '',
+      sexType: [{ name: 'איש', name: 'אִשָׁה' }],
+      selectedSex: 'איש',
       kind: [{ name: '', name: '' }],
       selectedKind: '',
       routeType: [{ name: '', name: '' }],

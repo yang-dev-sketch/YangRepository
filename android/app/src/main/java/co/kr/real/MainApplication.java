@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
+import com.reactnativecommunity.art.ARTPackage;
 import com.reactnativecommunity.checkbox.ReactCheckBoxPackage;
 import com.BV.LinearGradient.LinearGradientPackage;
 import com.facebook.react.ReactInstanceManager;
@@ -13,6 +14,7 @@ import com.facebook.soloader.SoLoader;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import com.eko.RNBackgroundDownloaderPackage;
+import com.reactnativecommunity.art.ARTPackage;
 // import com.facebook.react.modules.i18nmanager.I18nUtil; //<== AmerllicA config
 
 public class MainApplication extends Application implements ReactApplication {
@@ -31,6 +33,7 @@ public class MainApplication extends Application implements ReactApplication {
       // example:
       // packages.add(new RNBackgroundDownloaderPackage());
       packages.add(new RealPackage());
+      packages.add(new ARTPackage());
       return packages;
     }
 

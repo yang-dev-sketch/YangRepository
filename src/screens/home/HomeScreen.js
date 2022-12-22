@@ -47,6 +47,7 @@ import CloseTrainPopup from '../../components/popups/CloseTrainPopup';
 import TrainOrganizationPopup from '../../components/popups/TrainOrganizationPopup';
 import InvitateTraineePopup from '../../components/popups/InvitateTraineePopup';
 import TrainerOrganizationPopup from '../../components/popups/TrainerOrganizationPopup';
+import PieChart from 'react-native-pie-chart';
 
 @observer
 export default class HomeScreen extends React.Component {
@@ -185,6 +186,10 @@ export default class HomeScreen extends React.Component {
   };
 
   render() {
+    const widthAndHeight = 100;
+    const series = [20, 30, 15, 10, 40, 20];
+    const sliceColor = ['#43C7FF', '#1E6FD9', '#0019FF', '#5C9DF2', '#004765', '000E88'];
+
     return (
       <SafeAreaView>
         <ScrollView style={Styles.wrapper}>
@@ -219,7 +224,6 @@ export default class HomeScreen extends React.Component {
               style={{ alignItems: 'center', justifyContent: 'space-between', marginTop: 15 }}>
               <Button
                 onPress={() => {
-                  ``;
                   this.setState({ showBranchPopup: true });
                 }}
                 style={{
@@ -237,7 +241,7 @@ export default class HomeScreen extends React.Component {
               </Button>
               <VerticalLayout style={{ alignItems: 'flex-end', justifyContent: 'space-between' }}>
                 <Text style={{ fontSize: 18, lineHeight: 22, letterSpacing: 1 }}>שלום STEPS,</Text>
-                <Text style={{ fontSize: 14, lineHeight: 17, letterSpacing: 1 }}>
+                <Text style={{ fontSize: 14, lineHeight: 17, letterSpacing: 1, color: '#6F6F6F' }}>
                   נתונים ליום חמישי 01.09.2022
                 </Text>
               </VerticalLayout>
@@ -254,7 +258,14 @@ export default class HomeScreen extends React.Component {
                   paddingVertical: 20,
                   justifyContent: 'space-between',
                 }}>
-                <View></View>
+                <PieChart
+                  widthAndHeight={widthAndHeight}
+                  series={series}
+                  sliceColor={sliceColor}
+                  doughnut={true}
+                  coverRadius={0.8}
+                  coverFill={'#FFF'}
+                />
                 <VerticalLayout style={{ alignItems: 'flex-end' }}>
                   {this.state.trainType.map((item, index) => {
                     return (
@@ -279,7 +290,7 @@ export default class HomeScreen extends React.Component {
                   })}
                 </VerticalLayout>
               </HorizontalLayout>
-              <VerticalLayout>
+              <VerticalLayout style={{ alignItems: 'center', width: SCREEN_WIDTH - 260 }}>
                 <Text style={{ fontSize: 14, lineHeight: 17, letterSpacing: 1 }}>סה”כ אימונים</Text>
                 <Text
                   style={{ fontSize: 70, lineHeight: 84, color: '#0D65D9', fontFamily: 'Danidin' }}>

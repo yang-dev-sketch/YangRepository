@@ -1,7 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, TextInput, View } from 'react-native';
+import { StyleSheet, Text } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import { Button, HorizontalLayout, LocalImage, VerticalLayout } from '../controls';
+import { Button } from '../controls';
 
 export default class ActiveButton extends React.Component {
   constructor(props) {

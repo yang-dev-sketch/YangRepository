@@ -1,11 +1,9 @@
 import { observer } from 'mobx-react';
 import React from 'react';
-import { BackHandler, SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 
-import { Langs, Styles } from '../../constants';
+import { Styles } from '../../constants';
 import { Button, HorizontalLayout, LocalImage, VerticalLayout } from '../controls';
-import { CommonUtils } from '../../utils';
-import MyInfo from '../../mobx/MyInfo';
 import GlobalState from '../../mobx/GlobalState';
 import { MAIN_TAB, SCREEN_WIDTH } from '../../constants/Constants';
 
@@ -27,12 +25,14 @@ export default class BottomMenu extends React.Component {
           <VerticalLayout style={Styles.center}>
             <LocalImage
               source={
-                GlobalState.getTabIndex == MAIN_TAB.SETTING || GlobalState.getTabIndex == MAIN_TAB.BUSINESS
+                GlobalState.getTabIndex == MAIN_TAB.SETTING ||
+                GlobalState.getTabIndex == MAIN_TAB.BUSINESS
                   ? require('src/assets/image/ic_bottom_setting_on.png')
                   : require('src/assets/image/ic_bottom_setting_off.png')
               }
               style={[
-                GlobalState.getTabIndex == MAIN_TAB.SETTING || GlobalState.getTabIndex == MAIN_TAB.BUSINESS
+                GlobalState.getTabIndex == MAIN_TAB.SETTING ||
+                GlobalState.getTabIndex == MAIN_TAB.BUSINESS
                   ? { width: 41, height: 41 }
                   : { width: 26, height: 26 },
               ]}
@@ -218,7 +218,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     elevation: 1,
-    zIndex: 99
+    zIndex: 99,
   },
 
   menu: {

@@ -1,6 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, TextInput, View } from 'react-native';
-import { Button, HorizontalLayout, LocalImage, VerticalLayout } from '../controls';
+import { StyleSheet, Text } from 'react-native';
+import { Button, LocalImage } from '../controls';
 
 export default class DisactiveButton extends React.Component {
   constructor(props) {

@@ -1,6 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, TextInput, View } from 'react-native';
-import { Button, HorizontalLayout, LocalImage, VerticalLayout } from '../controls';
+import { StyleSheet, TextInput, View } from 'react-native';
+import { Button, LocalImage } from '../controls';
 
 export default class SearchInput extends React.Component {
   constructor(props) {

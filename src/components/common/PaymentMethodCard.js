@@ -1,11 +1,11 @@
 import React from 'react';
-import { StyleSheet, Text, TextInput, View } from 'react-native';
-import { Button, HorizontalLayout, LocalImage, VerticalLayout } from '../controls';
+import { StyleSheet } from 'react-native';
+import { HorizontalLayout, LocalImage, VerticalLayout } from '../controls';
 import LinearGradient from 'react-native-linear-gradient';
 import CommonInput from './CommonInput';
 import SetValueGroup from './SetValueGroup';
 import { SCREEN_WIDTH } from 'react-native-common-date-picker/src/contants';
-import { CommonUtils } from "../../utils";
+import { CommonUtils } from '../../utils';
 
 export default class PaymentMethodCard extends React.Component {
   constructor(props) {

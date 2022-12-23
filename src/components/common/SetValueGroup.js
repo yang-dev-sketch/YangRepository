@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, TextInput, View } from 'react-native';
+import { Text, View } from 'react-native';
 import { Button, HorizontalLayout, LocalImage, VerticalLayout } from '../controls';
 
 export default class SetValueGroup extends React.Component {
@@ -69,5 +69,3 @@ export default class SetValueGroup extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({});

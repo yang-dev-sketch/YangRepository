@@ -70,7 +70,7 @@ export default class ReportScreen extends React.Component {
     return (
       <SafeAreaView>
         <ScrollView style={Styles.wrapper}>
-          <VerticalLayout style={{ paddingVertical: 29 }}>
+          <VerticalLayout style={{ paddingVertical: 29, paddingBottom: 90 }}>
             <HorizontalLayout
               style={{
                 alignItems: 'center',

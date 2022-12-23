@@ -25,7 +25,7 @@ export default class CommonInput extends React.Component {
           value={this.props.value}
           placeholder={this.props.placeholder}
           returnKeyType={this.props.returnKeyType}
-          KeyboardType={this.props.KeyboardType}
+          keyboardType={this.props.keyboardType}
           onChangeText={(text) => this.props.onChangeText(text)}
         />
         {this.props.numberOfLines !== 1 && (

@@ -132,6 +132,7 @@ export default class LoginScreen extends AppScreen {
                     style={{ width: 70 }}
                     numberOfLines={1}
                     backgroundColor="#F5F5F5"
+                    maxLength={3}
                     value={this.state.firstPhone}
                     onChangeText={(text) => {
                       this.setState({ firstPhone: text });
@@ -143,6 +144,7 @@ export default class LoginScreen extends AppScreen {
                     style={{ width: 230 }}
                     numberOfLines={1}
                     backgroundColor="#F5F5F5"
+                    maxLength={10}
                     value={this.state.secondPhone}
                     onChangeText={(text) => {
                       this.setState({ secondPhone: text });
@@ -214,6 +216,7 @@ export default class LoginScreen extends AppScreen {
                     <CommonInput
                       numberOfLines={1}
                       backgroundColor="#F5F5F5"
+                      maxLength={10}
                       value={this.state.code}
                       onChangeText={(text) => {
                         this.setState({ code: text });

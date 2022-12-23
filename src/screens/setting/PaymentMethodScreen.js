@@ -60,7 +60,7 @@ export default class PaymentMethodScreen extends React.Component {
   render() {
     return (
       <SafeAreaView style={{ flex: 1, paddingHorizontal: 20 }}>
-        <VerticalLayout style={{ paddingVertical: 29 }}>
+        <VerticalLayout style={{ paddingVertical: 29, paddingBottom: 90 }}>
           <HorizontalLayout
             style={{
               alignItems: 'center',

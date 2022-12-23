@@ -28,17 +28,8 @@ class AddBranchPopup extends React.Component {
     };
   }
 
-  onGallery = () => {
-    ImageCropPicker.openPicker({
-      cropping: true,
-    }).then((image) => {
-      this.uploadLogo(image.path);
-    });
-  };
-
   uploadLogo = (filepath) => {
     requestUpload(API.Upload.upload, filePath, '').then((result) => {
-      console.log(result);
       if (result.code == API_RES_CODE.SUCCESS) {
         this.setState({
           profile_url: result.data.file_url,
@@ -47,6 +38,14 @@ class AddBranchPopup extends React.Component {
       } else {
         Toast.show(result.msg);
       }
+    });
+  };
+
+  onGallery = () => {
+    ImageCropPicker.openPicker({
+      cropping: true,
+    }).then((image) => {
+      this.uploadLogo(image.path);
     });
   };
 
@@ -205,7 +204,8 @@ class AddBranchPopup extends React.Component {
                   />
                 }
               />
-              <HorizontalLayout style={{ alignItems: 'center', justifyContent: 'flex-end', marginBottom: 40 }}>
+              <HorizontalLayout
+                style={{ alignItems: 'center', justifyContent: 'flex-end', marginBottom: 40 }}>
                 <Text style={{ fontSize: 16, lineHeight: 19 }}>עריכת אמצעי תשלום</Text>
                 <CheckBox
                   onFillColor="#0D65D9"

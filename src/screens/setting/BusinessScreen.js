@@ -91,7 +91,7 @@ export default class BusinessScreen extends React.Component {
     return (
       <SafeAreaView>
         <ScrollView style={Styles.wrapper}>
-          <VerticalLayout style={{ paddingVertical: 29 }}>
+          <VerticalLayout style={{ paddingVertical: 29, paddingBottom: 90 }}>
             <HorizontalLayout
               style={{
                 alignItems: 'center',
@@ -246,6 +246,7 @@ export default class BusinessScreen extends React.Component {
                     style={{ width: 70 }}
                     numberOfLines={1}
                     backgroundColor="#F5F5F5"
+                    maxLength={3}
                     value={this.state.firstPhone}
                     onChangeText={(text) => {
                       this.setState({ firstPhone: text });
@@ -257,6 +258,7 @@ export default class BusinessScreen extends React.Component {
                     style={{ width: 230 }}
                     numberOfLines={1}
                     backgroundColor="#F5F5F5"
+                    maxLength={10}
                     value={this.state.secondPhone}
                     onChangeText={(text) => {
                       this.setState({ secondPhone: text });

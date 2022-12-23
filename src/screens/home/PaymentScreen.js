@@ -36,7 +36,7 @@ import MyInfo from '../../mobx/MyInfo';
 import { requestGet, requestPost } from '../../utils/ApiUtils';
 import { SearchInput } from '../../components/common';
 import PaymentItem from '../../components/items/PaymentItem';
-import ManualBillingPopup from "../../components/popups/ManualBillingPopup";
+import ManualBillingPopup from '../../components/popups/ManualBillingPopup';
 
 @observer
 export default class PaymentScreen extends React.Component {
@@ -87,6 +87,7 @@ export default class PaymentScreen extends React.Component {
             backgroundColor: '#F5F5F5',
             paddingHorizontal: 20,
             flex: 1,
+            paddingBottom: 90,
           }}>
           <HorizontalLayout
             style={{

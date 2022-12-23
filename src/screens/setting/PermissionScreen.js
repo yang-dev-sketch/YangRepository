@@ -202,7 +202,7 @@ export default class PermissionScreen extends React.Component {
     return (
       <SafeAreaView style={Styles.full}>
         <ScrollView style={Styles.wrapper}>
-          <VerticalLayout style={{ paddingVertical: 29 }}>
+          <VerticalLayout style={{ paddingVertical: 29, paddingBottom: 90 }}>
             <HorizontalLayout
               style={{
                 alignItems: 'center',

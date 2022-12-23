@@ -309,7 +309,7 @@ export default class ProfileScreen extends React.Component {
     return (
       <SafeAreaView style={{ flex: 1 }}>
         <ScrollView style={Styles.wrapper}>
-          <VerticalLayout style={{ paddingVertical: 29 }}>
+          <VerticalLayout style={{ paddingVertical: 29, paddingBottom: 90 }}>
             <HorizontalLayout
               style={{ alignItems: 'center', justifyContent: 'space-between', marginBottom: 20 }}>
               <Button

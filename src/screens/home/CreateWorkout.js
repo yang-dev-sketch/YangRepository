@@ -170,7 +170,7 @@ export default class CreateWorkout extends React.Component {
               <HorizontalLayout style={{ alignItems: 'center' }}>
                 <Button
                   onPress={() => {
-                    this.props.navigation.navigate('Shop');
+                    this.props.navigation.navigate('Main');
                   }}>
                   <LocalImage
                     source={require('src/assets/image/ic_close.png')}
@@ -219,6 +219,7 @@ export default class CreateWorkout extends React.Component {
               inputNode={
                 <DropDownPicker
                   data={this.state.trainType}
+                  editIcon={true}
                   onEdit={() => {
                     this.setState({ showEditTrainPopup: true });
                   }}
@@ -254,7 +255,7 @@ export default class CreateWorkout extends React.Component {
               ]}
               title="שם המאמן"
               image={require('src/assets/image/ic_coach_on.png')}
-              inputNode={<DropDownPicker data={this.state.trainType} />}
+              inputNode={<DropDownPicker data={this.state.trainType} editIcon={true} />}
             />
             <SetValueGroup
               style={[Styles.input_wrapper, { marginBottom: 13, backgroundColor: '#F5F5F5' }]}
@@ -264,6 +265,7 @@ export default class CreateWorkout extends React.Component {
                 <CommonInput
                   numberOfLines={1}
                   backgroundColor="white"
+                  keyboardType="numeric"
                   value={this.state.participant}
                   onChangeText={(text) => {
                     this.setState({ participant: text });

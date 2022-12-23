@@ -158,7 +158,7 @@ export default class HomeScreen extends React.Component {
     // });
   };
 
-  getTrainee = () => {
+  getTrainee = (search, traineeType) => {
     // requestGet(API.Home.get_trainee, {
     // search: this.state.search,
     // traineeType: this.state.traineeType
@@ -193,7 +193,7 @@ export default class HomeScreen extends React.Component {
     return (
       <SafeAreaView>
         <ScrollView style={Styles.wrapper}>
-          <VerticalLayout style={{ paddingVertical: 29 }}>
+          <VerticalLayout style={{ paddingVertical: 29, paddingBottom: 90 }}>
             <HorizontalLayout style={{ alignItems: 'center', justifyContent: 'space-between' }}>
               <Button
                 onPress={() => {

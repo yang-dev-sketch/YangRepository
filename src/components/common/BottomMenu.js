@@ -212,18 +212,13 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     backgroundColor: '#fff',
     borderRadius: 20,
-    shadowOffset: {
-      width: 0,
-      height: -10,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 16,
-    shadowColor: '#ccc',
-    elevation: 24,
-    position: 'relative',
+    position: 'absolute',
+    bottom: 0,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
+    elevation: 1,
+    zIndex: 99
   },
 
   menu: {

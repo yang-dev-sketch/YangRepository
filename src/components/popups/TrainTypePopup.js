@@ -15,14 +15,13 @@ import { requestPost } from '../../utils/ApiUtils';
 import { API, MAIN_TAB, SCREEN_HEIGHT } from '../../constants/Constants';
 import { SCREEN_WIDTH } from 'react-native-common-date-picker/src/contants';
 import CommonItem from '../items/CommonItem';
-import TrainItem from "../items/TrainItem";
+import TrainItem from '../items/TrainItem';
 
 @observer
 class TrainTypePopup extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-    };
+    this.state = {};
   }
 
   onCancel = () => {

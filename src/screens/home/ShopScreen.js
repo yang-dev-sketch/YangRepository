@@ -53,6 +53,7 @@ export default class ShopScreen extends React.Component {
     this.state = {
       search: '',
       selectedId: 0,
+      selectedIndex: 0,
       productList: [
         {
           id: 1,
@@ -93,6 +94,7 @@ export default class ShopScreen extends React.Component {
       description: '',
       stock: null,
       price: null,
+      toastState: false,
     };
   }
 
@@ -128,7 +130,14 @@ export default class ShopScreen extends React.Component {
   };
 
   editProduct = () => {
-    this.setState({ showEditProductPopup: true });
+    this.setState({
+      showEditProductPopup: true,
+      logo: this.state.productList[this.state.selectedIndex].logo,
+      name: this.state.productList[this.state.selectedIndex].name,
+      description: this.state.productList[this.state.selectedIndex].description,
+      stock: this.state.productList[this.state.selectedIndex].stock,
+      price: this.state.productList[this.state.selectedIndex].price,
+    });
   };
 
   deleteProduct = () => {
@@ -143,6 +152,31 @@ export default class ShopScreen extends React.Component {
       }),
       selectedId: 0,
     });
+
+    //   } else {
+    //   }
+    // });
+  };
+  updateProduct = () => {
+    // requestPost(API.Home.update_product, {
+    //   id: this.state.selectedId,
+    //   logo: this.state.logo,
+    //   name: this.state.name,
+    //   description: this.state.description,
+    //   stock: this.state.stock,
+    //   price: this.state.price,
+    // }).then(async (result) => {
+    //   if (result.code == API_RES_CODE.SUCCESS) {
+    const productList = this.state.productList;
+    productList[this.state.selectedIndex].logo = this.state.logo;
+    productList[this.state.selectedIndex].name = this.state.name;
+    productList[this.state.selectedIndex].description = this.state.description;
+    productList[this.state.selectedIndex].stock = this.state.stock;
+    productList[this.state.selectedIndex].price = this.state.price;
+    this.setState({ productList: productList, showEditProductPopup: false, toastState: true });
+    setTimeout(() => {
+      this.setState({ toastState: false });
+    }, 3000);
     //   } else {
     //   }
     // });
@@ -152,7 +186,7 @@ export default class ShopScreen extends React.Component {
     return (
       <SafeAreaView>
         <ScrollView style={Styles.wrapper}>
-          <VerticalLayout style={{ paddingVertical: 29 }}>
+          <VerticalLayout style={{ paddingVertical: 29, paddingBottom: 90 }}>
             <HorizontalLayout style={{ alignItems: 'center', justifyContent: 'space-between' }}>
               <Button
                 onPress={() => {
@@ -253,6 +287,7 @@ export default class ShopScreen extends React.Component {
                     selectProduct={() => {
                       this.setState({
                         selectedId: item.id,
+                        selectedIndex: index,
                         logo: item.logo,
                         name: item.name,
                         description: item.description,
@@ -301,6 +336,28 @@ export default class ShopScreen extends React.Component {
             )}
           </VerticalLayout>
         </ScrollView>
+        {this.state.toastState && (
+          <HorizontalLayout
+            style={{
+              marginHorizontal: 20,
+              width: SCREEN_WIDTH - 40,
+              height: 60,
+              borderRadius: 30,
+              backgroundColor: 'blue',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              position: 'absolute',
+              top: 30,
+              paddingHorizontal: 20,
+            }}>
+            <LocalImage
+              source={require('src/assets/image/ic_close.png')}
+              style={[{ width: 20, height: 20 }]}
+              resizeMode="cover"
+            />
+            <Text style={{ fontSize: 16, lineHeight: 19, color: 'white' }}>this is the toast.</Text>
+          </HorizontalLayout>
+        )}
         <EditProductPopup
           visible={this.state.showEditProductPopup}
           logo={this.state.logo}
@@ -323,8 +380,11 @@ export default class ShopScreen extends React.Component {
           setPrice={(text) => {
             this.setState({ price: text });
           }}
+          updateProduct={() => {
+            this.updateProduct();
+          }}
           onCancel={() => {
-            this.setState({ showEditProductPopup: false, selectedId: 0 });
+            this.setState({ showEditProductPopup: false });
           }}
         />
       </SafeAreaView>

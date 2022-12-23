@@ -19,6 +19,7 @@ export default class SearchInput extends React.Component {
       <View style={this.props.style}>
         <TextInput
           numberOfLines={1}
+          keyboardType="numeric"
           value={this.state.search}
           placeholder="חיפוש"
           style={styles.search}

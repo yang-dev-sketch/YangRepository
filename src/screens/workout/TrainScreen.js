@@ -114,7 +114,7 @@ export default class TrainScreen extends React.Component {
         { id: 6, name: 'פונקציונאלי' },
         { id: 7, name: 'כדורגל' },
       ],
-      selectedTrainId: this.props.selectedTrainId,
+      selectedTrainId: 0,
       showFilterByCoachPopup: false,
       coachList: [
         { id: 1, name: 'שם המתאמן.ת', avatar: '' },
@@ -211,7 +211,7 @@ export default class TrainScreen extends React.Component {
     return (
       <SafeAreaView>
         <ScrollView style={Styles.wrapper}>
-          <VerticalLayout style={{ paddingVertical: 29 }}>
+          <VerticalLayout style={{ paddingVertical: 29, paddingBottom: 90 }}>
             <HorizontalLayout
               style={{
                 alignItems: 'center',
@@ -461,9 +461,9 @@ export default class TrainScreen extends React.Component {
             });
           }}
           selectTrainId={this.state.selectedTrainId}
-          selectTrain={(index) => {
-            console.log(index);
-            this.setState({ selectedTrainId: index });
+          selectTrain={(id) => {
+            console.log(id)
+            this.setState({ selectedTrainId: id });
           }}
           onFilter={() => {
             this.onFilter();

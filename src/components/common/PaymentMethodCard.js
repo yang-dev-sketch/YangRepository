@@ -5,15 +5,16 @@ import LinearGradient from 'react-native-linear-gradient';
 import CommonInput from './CommonInput';
 import SetValueGroup from './SetValueGroup';
 import { SCREEN_WIDTH } from 'react-native-common-date-picker/src/contants';
+import { CommonUtils } from "../../utils";
 
 export default class PaymentMethodCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      ticketNumber: '0000 0000 0000 0000 0000',
+      ticketNumber: null,
       validity: '04/45',
       cvv: '488',
-      id: '0000 0000 0000 0000 0000',
+      id: null,
     };
   }
 
@@ -51,7 +52,7 @@ export default class PaymentMethodCard extends React.Component {
                 lineHeight={24}
                 numberOfLines={1}
                 backgroundColor="white"
-                value={this.state.ticketNumber}
+                value={CommonUtils.formatCreditCard(this.state.ticketNumber)}
                 onChangeText={(text) => {
                   this.setState({ ticketNumber: text });
                 }}
@@ -115,7 +116,7 @@ export default class PaymentMethodCard extends React.Component {
                 lineHeight={24}
                 numberOfLines={1}
                 backgroundColor="white"
-                value={this.state.id}
+                value={commonUtils.formatCreditCard(this.state.id)}
                 onChangeText={(text) => {
                   this.setState({ id: text });
                 }}

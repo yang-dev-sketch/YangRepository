@@ -136,6 +136,7 @@ class SubscriptionPopup extends React.Component {
                     <CommonInput
                       numberOfLines={1}
                       backgroundColor="white"
+                      keyboardType="numeric"
                       value={this.state.sku}
                       onChangeText={(text) => {
                         this.setState({ sku: text });
@@ -157,6 +158,7 @@ class SubscriptionPopup extends React.Component {
                     <CommonInput
                       numberOfLines={1}
                       backgroundColor="white"
+                      keyboardType="numeric"
                       value={this.state.price}
                       onChangeText={(text) => {
                         this.setState({ price: text });
@@ -212,6 +214,7 @@ class SubscriptionPopup extends React.Component {
                           textAlign={'center'}
                           numberOfLines={1}
                           backgroundColor="white"
+                          keyboardType="numeric"
                           value={this.state.period}
                           onChangeText={(text) => {
                             this.setState({ period: text });

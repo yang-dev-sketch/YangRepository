@@ -10,46 +10,39 @@ import SwipeUpDownModal from 'react-native-swipe-modal-up-down';
 import { ActiveButton, CommonInput, SearchInput, SetValueGroup } from '../common';
 import { ScrollView } from 'react-navigation';
 import NotiItem from '../items/NotiItem';
-import { API_RES_CODE, IMAGE_FOO_URL, SCREEN_WIDTH } from '../../constants/Constants';
+import { API, API_RES_CODE, IMAGE_FOO_URL, SCREEN_WIDTH } from '../../constants/Constants';
 import DisactiveButton from '../common/DisactiveButton';
 import DatePicker from 'react-native-date-picker';
 import FastImage from 'react-native-fast-image';
 import ImageCropPicker from 'react-native-image-crop-picker';
+import { requestUpload } from '../../utils/ApiUtils';
 
 @observer
 class EditProductPopup extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      logo: '',
-      name: '',
-      description: '',
-      stock: null,
-      price: null,
-    };
   }
 
   onCancel = () => {
     this.props.onCancel();
   };
 
-  onGallery = () => {
-    ImageCropPicker.openPicker({
-      cropping: true,
-    }).then((image) => {
-      this.uploadLogo(image.path);
-    });
+  uploadLogo = (filepath) => {
+    // requestUpload(API.Upload.upload, filepath, '').then((result) => {
+    // if (result.code == API_RES_CODE.SUCCESS) {
+    this.props.setLogo(filepath);
+    // } else {
+    //   Toast.show(result.msg);
+    // }
+    // });
   };
 
-  uploadLogo = (filepath) => {
-    requestUpload(API.Upload.upload, filePath, '').then((result) => {
-      console.log(result);
-      if (result.code == API_RES_CODE.SUCCESS) {
-        this.props.setLogo();
-      } else {
-        Toast.show(result.msg);
-      }
-    });
+  onGallery = () => {
+    // ImageCropPicker.openPicker({
+    //   cropping: true,
+    // }).then((image) => {
+    //   this.uploadLogo(image.path);
+    // });
   };
 
   updateProduct = () => {
@@ -62,7 +55,7 @@ class EditProductPopup extends React.Component {
     //   price: this.props.price
     // }).then(async (result) => {
     //   if (result.code == API_RES_CODE.SUCCESS) {
-        this.onCancel();
+    this.props.updateProduct();
     //   } else {
     //   }
     // });

@@ -143,6 +143,7 @@ export default class RegistBusinessOneScreen extends AppScreen {
                     style={{ width: 70 }}
                     numberOfLines={1}
                     backgroundColor="#F5F5F5"
+                    maxLength={3}
                     value={this.state.firstPhone}
                     onChangeText={(text) => {
                       this.setState({ firstPhone: text });
@@ -154,6 +155,7 @@ export default class RegistBusinessOneScreen extends AppScreen {
                     style={{ width: 230 }}
                     numberOfLines={1}
                     backgroundColor="#F5F5F5"
+                    maxLength={10}
                     value={this.state.secondPhone}
                     onChangeText={(text) => {
                       this.setState({ secondPhone: text });

@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { SCREEN_WIDTH } from '../../constants/Constants';
-import { Button, LocalImage, HorizontalLayout, VerticalLayout } from '../controls';
+import { Button, HorizontalLayout } from '../controls';
 
 export default class TotalItem extends React.Component {
   constructor(props) {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import FastImage from "react-native-fast-image";
-import { IMAGE_FOO_URL, SCREEN_WIDTH } from '../../constants/Constants';
+import FastImage from 'react-native-fast-image';
+import { IMAGE_FOO_URL } from '../../constants/Constants';
 import { Button, LocalImage, HorizontalLayout, VerticalLayout } from '../controls';
 
 export default class LeadItem extends React.Component {

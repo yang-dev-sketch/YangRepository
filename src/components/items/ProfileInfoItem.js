@@ -1,11 +1,7 @@
 import React from 'react';
-import { Text, TextInput, StyleSheet, View } from 'react-native';
-import { Colors, Dimens, FontFamily, Langs } from '../../constants';
+import { Text, StyleSheet } from 'react-native';
 import { Button, HorizontalLayout, LocalImage, VerticalLayout } from '../controls';
-import Styles from '../../constants/Styles';
-import { CommonUtils } from '../../utils';
-import FastImage from 'react-native-fast-image';
-import { IMAGE_FOO_URL, SCREEN_WIDTH } from '../../constants/Constants';
+import { SCREEN_WIDTH } from '../../constants/Constants';
 
 class ProfileInfoItem extends React.Component {
   constructor(props) {

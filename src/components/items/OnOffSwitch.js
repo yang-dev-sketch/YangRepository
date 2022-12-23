@@ -1,6 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, Touchable, View } from 'react-native';
-import { Button, LocalImage, HorizontalLayout, VerticalLayout } from '../controls';
+import { View } from 'react-native';
+import { LocalImage } from '../controls';
 
 export default class OnOffSwitch extends React.Component {
   constructor(props) {

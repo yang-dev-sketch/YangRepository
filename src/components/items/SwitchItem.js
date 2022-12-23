@@ -1,7 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { SCREEN_WIDTH } from '../../constants/Constants';
-import { Button, LocalImage, HorizontalLayout, VerticalLayout } from '../controls';
+import { StyleSheet, Text } from 'react-native';
+import { Button, HorizontalLayout } from '../controls';
 import OnOffSwitch from './OnOffSwitch';
 
 export default class SwitchItem extends React.Component {

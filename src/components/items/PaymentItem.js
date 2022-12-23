@@ -1,11 +1,7 @@
 import React from 'react';
-import { Text, TextInput, StyleSheet, View } from 'react-native';
-import { Colors, Dimens, FontFamily, Langs } from '../../constants';
-import { Button, HorizontalLayout, LocalImage, VerticalLayout } from '../controls';
-import Styles from '../../constants/Styles';
+import { Text, StyleSheet, View } from 'react-native';
+import { HorizontalLayout, LocalImage, VerticalLayout } from '../controls';
 import { CommonUtils } from '../../utils';
-import FastImage from 'react-native-fast-image';
-import { IMAGE_FOO_URL } from '../../constants/Constants';
 
 class PaymentItem extends React.Component {
   constructor(props) {
@@ -19,17 +15,18 @@ class PaymentItem extends React.Component {
         <HorizontalLayout style={{ alignItems: 'center' }}>
           <View
             style={[
-              data.state === 'נכשל' && {backgroundColor: '#E81C00'},
-              data.state === 'שולם' && {backgroundColor: '#00AF3C'},
+              data.state === 'נכשל' && { backgroundColor: '#E81C00' },
+              data.state === 'שולם' && { backgroundColor: '#00AF3C' },
               {
-              width: 69,
-              height: 27,
-              borderRadius: 13.5,
-              alignItems: 'center',
-              justifyContent: 'center',
-              marginRight: 10,
-            }]}>
-            <Text style={{fontSize: 14, lineHeight: 22, color: 'white'}}>{data.state}</Text>
+                width: 69,
+                height: 27,
+                borderRadius: 13.5,
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginRight: 10,
+              },
+            ]}>
+            <Text style={{ fontSize: 14, lineHeight: 22, color: 'white' }}>{data.state}</Text>
           </View>
           <LocalImage
             source={require('src/assets/image/ic_download.png')}
@@ -64,6 +61,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     borderRadius: 11,
     elevation: 1,
-    borderWidth: 0
+    borderWidth: 0,
   },
 });

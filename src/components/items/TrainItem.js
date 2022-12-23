@@ -1,11 +1,6 @@
 import React from 'react';
-import { Text, TextInput, StyleSheet, View } from 'react-native';
-import { Colors, Dimens, FontFamily, Langs } from '../../constants';
-import { Button, HorizontalLayout, LocalImage, VerticalLayout } from '../controls';
-import Styles from '../../constants/Styles';
-import { CommonUtils } from '../../utils';
-import FastImage from 'react-native-fast-image';
-import { IMAGE_FOO_URL } from '../../constants/Constants';
+import { Text, StyleSheet } from 'react-native';
+import { Button, HorizontalLayout, LocalImage } from '../controls';
 
 class TrainItem extends React.Component {
   constructor(props) {

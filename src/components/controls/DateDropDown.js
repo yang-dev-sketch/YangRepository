@@ -1,12 +1,11 @@
 import React from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { Text, View } from 'react-native';
 import SelectDropdown from 'react-native-select-dropdown';
 import { Button, HorizontalLayout, LocalImage, VerticalLayout } from '.';
 // import DatePicker from 'react-native-date-picker';
 import { CommonUtils } from '../../utils';
 import { SCREEN_WIDTH } from '../../constants/Constants';
 import { DatePicker, CalendarList } from 'react-native-common-date-picker';
-import { ScrollView } from 'react-native-gesture-handler';
 
 export default class DateDropDown extends React.Component {
   constructor(props) {

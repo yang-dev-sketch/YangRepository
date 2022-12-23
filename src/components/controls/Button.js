@@ -9,8 +9,6 @@ export default class Button extends React.Component {
   render() {
     const props = this.props;
     const opacity = 0.8; // default is 0.2
-    return (
-      <TouchableOpacity {...props} activeOpacity={props.opacity ? props.opacity : opacity}/>
-    )
+    return <TouchableOpacity {...props} activeOpacity={props.opacity ? props.opacity : opacity} />;
   }
 }

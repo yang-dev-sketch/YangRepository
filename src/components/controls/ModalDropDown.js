@@ -1,7 +1,5 @@
 import React from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
-import SelectDropdown from 'react-native-select-dropdown';
-import { Button, HorizontalLayout, LocalImage, VerticalLayout } from '.';
+import { View } from 'react-native';
 import ModalDropdown from 'react-native-modal-dropdown';
 
 export default class ModalDropDown extends React.Component {

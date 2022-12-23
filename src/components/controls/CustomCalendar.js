@@ -1,6 +1,6 @@
 import React from 'react';
-import { Text, TouchableOpacity } from 'react-native';
-import { Calendar, CalendarList, LocaleConfig } from 'react-native-calendars';
+import { Text } from 'react-native';
+import { Calendar, LocaleConfig } from 'react-native-calendars';
 import { Button, HorizontalLayout, LocalImage, VerticalLayout } from '.';
 
 LocaleConfig.locales['hebrew'] = {

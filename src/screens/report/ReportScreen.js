@@ -5,15 +5,8 @@ import FastImage from 'react-native-fast-image';
 import moment from 'moment';
 import { CommonUtils } from '../../utils';
 import { Styles } from '../../constants';
-import {
-  API,
-  API_RES_CODE,
-  IMAGE_FOO_URL,
-  MAIN_TAB,
-  SCREEN_WIDTH,
-} from '../../constants/Constants';
+import { API, API_RES_CODE, IMAGE_FOO_URL, SCREEN_WIDTH } from '../../constants/Constants';
 import { Button, HorizontalLayout, LocalImage, VerticalLayout } from '../../components/controls';
-import MyInfo from '../../mobx/MyInfo';
 import { requestGet, requestPost } from '../../utils/ApiUtils';
 import { DatePickerPopup, NotiPopup, TrainTimePopup } from '../../components/popups';
 import TimePickerPopup from '../../components/popups/TimePickerPopup';

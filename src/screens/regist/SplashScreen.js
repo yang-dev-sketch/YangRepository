@@ -150,7 +150,7 @@ export default class SplashScreen extends AppScreen {
 
   go2Main = () => {
     setTimeout(() => {
-      // this.props.navigation.navigate('Main');
+      this.props.navigation.navigate('Main');
       this.setState({ showButton: true });
     }, Math.max(0, this.INTRO_TIME - (new Date().getTime() - this.startTime)));
   };

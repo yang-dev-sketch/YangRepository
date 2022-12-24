@@ -1,11 +1,12 @@
 import { observer } from 'mobx-react';
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { Image, StyleSheet, Text, View } from 'react-native';
 
 import { Styles } from '../../constants';
 import { Button, HorizontalLayout, LocalImage, VerticalLayout } from '../controls';
 import GlobalState from '../../mobx/GlobalState';
 import { MAIN_TAB, SCREEN_WIDTH } from '../../constants/Constants';
+import { ExpandableFabMenu } from '../controls/ExpandableFabMenu';
 
 export default class BottomMenu extends React.Component {
   constructor(props) {
@@ -117,22 +118,7 @@ export default class BottomMenu extends React.Component {
               </VerticalLayout>
             </Button>
           </>
-        )) || (
-          <Button
-            style={styles.home}
-            onPress={() => {
-              if (GlobalState.getTabIndex != MAIN_TAB.HOME) {
-                GlobalState.setTabIndex(MAIN_TAB.HOME);
-              }
-            }}>
-            <VerticalLayout style={Styles.center}>
-              <LocalImage
-                source={require('src/assets/image/ic_plus_sign.png')}
-                style={{ width: 45, height: 45 }}
-              />
-            </VerticalLayout>
-          </Button>
-        )}
+        )) || <ExpandableFabMenu menuItemClicked={(index) => console.log(index)} />}
 
         <Button
           style={styles.menu}

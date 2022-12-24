@@ -18,6 +18,8 @@ target 'made' do
 
   pod 'ReactNativeART', :path => '../node_modules/@react-native-community/art'
 
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
   target 'madeTests' do
     inherit! :complete
     # Pods for testing

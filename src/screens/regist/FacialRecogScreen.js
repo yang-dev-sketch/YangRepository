@@ -1,28 +1,7 @@
 import React from 'react';
-import {
-  BackHandler,
-  Platform,
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  View,
-  ScrollView,
-} from 'react-native';
-import {
-  checkMultiple,
-  openSettings,
-  PERMISSIONS,
-  requestMultiple,
-  RESULTS,
-} from 'react-native-permissions';
+import { SafeAreaView, StyleSheet, Text, View, ScrollView } from 'react-native';
 import { Langs, Styles } from '../../constants';
-import {
-  API,
-  API_RES_CODE,
-  PREF_PARAMS,
-  SCREEN_HEIGHT,
-  SCREEN_WIDTH,
-} from '../../constants/Constants';
+import { API, API_RES_CODE, SCREEN_WIDTH } from '../../constants/Constants';
 import {
   AppScreen,
   Button,
@@ -30,12 +9,9 @@ import {
   LocalImage,
   VerticalLayout,
 } from '../../components/controls';
-import { CommonUtils, PrefUtils } from '../../utils';
 import { requestPost } from '../../utils/ApiUtils';
-import GlobalState from '../../mobx/GlobalState';
-import EventBus from 'react-native-event-bus';
 import LinearGradient from 'react-native-linear-gradient';
-import { ActiveButton, CommonInput, DisactiveButton, SetValueGroup } from '../../components/common';
+import { ActiveButton, DisactiveButton } from '../../components/common';
 
 export default class FacialRecogScreen extends AppScreen {
   constructor(props) {
@@ -70,7 +46,9 @@ export default class FacialRecogScreen extends AppScreen {
               source={require('src/assets/image/ic_mark.png')}
               style={{ width: 73, height: 73 }}
             />
-            <Text style={{ fontSize: 24, lineHeight: 29, letterSpacing: -0.17, marginTop: 14 }}>Face ID</Text>
+            <Text style={{ fontSize: 24, lineHeight: 29, letterSpacing: -0.17, marginTop: 14 }}>
+              Face ID
+            </Text>
           </LinearGradient>
           <Text
             style={{ fontSize: 16, lineHeight: 22, marginHorizontal: 20, letterSpacing: -0.17 }}>
@@ -96,7 +74,7 @@ export default class FacialRecogScreen extends AppScreen {
                 image={true}
                 style={{ width: '100%', marginBottom: 40 }}
                 action={() => {
-                  this.props.navigation.navigate('FaceApproval')
+                  this.props.navigation.navigate('FaceApproval');
                 }}
               />
             </View>

@@ -1,20 +1,8 @@
 import React from 'react';
 import { BackHandler, Platform, SafeAreaView, StyleSheet, Text, View } from 'react-native';
-import {
-  checkMultiple,
-  openSettings,
-  PERMISSIONS,
-  requestMultiple,
-  RESULTS,
-} from 'react-native-permissions';
+import { checkMultiple, PERMISSIONS, requestMultiple, RESULTS } from 'react-native-permissions';
 import { Langs, Styles } from '../../constants';
-import {
-  API,
-  API_RES_CODE,
-  PREF_PARAMS,
-  SCREEN_HEIGHT,
-  SCREEN_WIDTH,
-} from '../../constants/Constants';
+import { API, API_RES_CODE, PREF_PARAMS, SCREEN_WIDTH } from '../../constants/Constants';
 import { AppScreen, LocalImage } from '../../components/controls';
 import { CommonUtils, PrefUtils } from '../../utils';
 import { requestPost } from '../../utils/ApiUtils';

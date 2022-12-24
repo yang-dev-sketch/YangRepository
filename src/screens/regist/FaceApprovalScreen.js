@@ -1,28 +1,7 @@
 import React from 'react';
-import {
-  BackHandler,
-  Platform,
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  View,
-  ScrollView,
-} from 'react-native';
-import {
-  checkMultiple,
-  openSettings,
-  PERMISSIONS,
-  requestMultiple,
-  RESULTS,
-} from 'react-native-permissions';
-import { Langs, Styles } from '../../constants';
-import {
-  API,
-  API_RES_CODE,
-  PREF_PARAMS,
-  SCREEN_HEIGHT,
-  SCREEN_WIDTH,
-} from '../../constants/Constants';
+import { SafeAreaView, StyleSheet, Text, View, ScrollView } from 'react-native';
+import { Styles } from '../../constants';
+import { API, API_RES_CODE } from '../../constants/Constants';
 import {
   AppScreen,
   Button,
@@ -30,18 +9,13 @@ import {
   LocalImage,
   VerticalLayout,
 } from '../../components/controls';
-import { CommonUtils, PrefUtils } from '../../utils';
 import { requestPost } from '../../utils/ApiUtils';
-import GlobalState from '../../mobx/GlobalState';
-import EventBus from 'react-native-event-bus';
 import LinearGradient from 'react-native-linear-gradient';
-import { ActiveButton, CommonInput, DisactiveButton, SetValueGroup } from '../../components/common';
+import { ActiveButton, CommonInput, SetValueGroup } from '../../components/common';
 
 export default class FaceApprovalScreen extends AppScreen {
   constructor(props) {
     super(props);
-    this.state = {
-    };
   }
 
   render() {

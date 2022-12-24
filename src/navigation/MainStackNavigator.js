@@ -2,7 +2,6 @@ import { createStackNavigator, TransitionPresets } from 'react-navigation-stack'
 import Main from '../screens/MainScreen'
 import Login from '../screens/regist/LoginScreen';
 import Splash from '../screens/regist/SplashScreen';
-import Signup from '../screens/regist/SignupScreen';
 import Facial from '../screens/regist/FacialRecogScreen';
 import RegistCoach from '../screens/regist/RegistCoachScreen';
 import RegistBusinessOne from '../screens/regist/RegistBusinessOneScreen';
@@ -31,7 +30,6 @@ import PaymentMethodScreen from '../screens/setting/PaymentMethodScreen';
 const MainStackNavigator = createStackNavigator({
     Splash,
     Main,
-    Signup,
     Login,
     Facial,
     RegistCoach,

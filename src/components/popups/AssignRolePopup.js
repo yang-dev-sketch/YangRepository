@@ -1,14 +1,11 @@
 import { observer } from 'mobx-react';
 import React from 'react';
-import { FlatList, Pressable, SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
 import Modal from 'react-native-modal';
-import { Langs, Colors, Dimens, FontFamily, Styles } from '../../constants';
-import GlobalState from '../../mobx/GlobalState';
-import { Button, HorizontalLayout, VerticalLayout, LocalImage, CheckBox } from '../controls';
-import EventBus from 'react-native-event-bus';
+import { Colors } from '../../constants';
+import { Button, HorizontalLayout, VerticalLayout, LocalImage } from '../controls';
 import SwipeUpDownModal from 'react-native-swipe-modal-up-down';
-import { ActiveButton, SearchInput } from '../common';
-import { ScrollView } from 'react-navigation';
+import { ActiveButton } from '../common';
 import SwitchItem from '../items/SwitchItem';
 
 @observer

@@ -1,18 +1,12 @@
 import { observer } from 'mobx-react';
 import React from 'react';
-import { FlatList, Pressable, SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import Modal from 'react-native-modal';
-import { Langs, Colors, Dimens, FontFamily, Styles } from '../../constants';
-import GlobalState from '../../mobx/GlobalState';
-import { Button, HorizontalLayout, VerticalLayout, LocalImage, CheckBox } from '../controls';
-import EventBus from 'react-native-event-bus';
+import { Colors } from '../../constants';
+import { Button, HorizontalLayout, VerticalLayout, LocalImage } from '../controls';
 import SwipeUpDownModal from 'react-native-swipe-modal-up-down';
-import { ActiveButton, SearchInput, DisactiveButton, SetValueGroup } from '../common';
-import { ScrollView } from 'react-navigation';
-import NotiItem from '../items/NotiItem';
-import { requestPost } from '../../utils/ApiUtils';
-import { API, MAIN_TAB, SCREEN_HEIGHT } from '../../constants/Constants';
-import { SCREEN_WIDTH } from 'react-native-common-date-picker/src/contants';
+import { ActiveButton, SetValueGroup } from '../common';
+import { API, SCREEN_HEIGHT, SCREEN_WIDTH } from '../../constants/Constants';
 import PaymentMethodCard from '../common/PaymentMethodCard';
 import DropDownPicker from '../controls/DropDownPicker';
 
@@ -22,10 +16,10 @@ class BranchDetailPopup extends React.Component {
     super(props);
     this.state = {
       billingType: [
-        {id: 1, name: 'שיטת חיוב'},
-        {id: 1, name: 'שיטת חיוב'},
+        { id: 1, name: 'שיטת חיוב' },
+        { id: 1, name: 'שיטת חיוב' },
       ],
-      type: 'שיטת חיוב'
+      type: 'שיטת חיוב',
     };
   }
 

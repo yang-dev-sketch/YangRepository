@@ -1,19 +1,12 @@
 import { observer } from 'mobx-react';
 import React from 'react';
-import { FlatList, Image, Pressable, SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import Modal from 'react-native-modal';
-import { Langs, Colors, Dimens, FontFamily, Styles } from '../../constants';
-import GlobalState from '../../mobx/GlobalState';
+import { Colors } from '../../constants';
 import { Button, HorizontalLayout, VerticalLayout, LocalImage } from '../controls';
 import SwipeUpDownModal from 'react-native-swipe-modal-up-down';
-import { ActiveButton, DisactiveButton, SearchInput } from '../common';
-import { ScrollView } from 'react-navigation';
-import { BranchItem } from '../items';
-import { requestPost } from '../../utils/ApiUtils';
+import { ActiveButton, DisactiveButton } from '../common';
 import { API } from '../../constants/Constants';
-import TotalItem from '../items/TotalItem';
-import Timeline from 'react-native-timeline-flatlist';
-import LeadItem from '../items/LeadItem';
 
 @observer
 class EditTraineePopup extends React.Component {

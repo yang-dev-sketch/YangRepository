@@ -1,24 +1,16 @@
 import { observer } from 'mobx-react';
 import React from 'react';
-import { FlatList, Image, Pressable, SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import Modal from 'react-native-modal';
-import { Langs, Colors, Dimens, FontFamily, Styles } from '../../constants';
-import GlobalState from '../../mobx/GlobalState';
+import { Colors } from '../../constants';
 import { Button, HorizontalLayout, VerticalLayout, LocalImage } from '../controls';
 import SwipeUpDownModal from 'react-native-swipe-modal-up-down';
-import { ActiveButton, SearchInput } from '../common';
+import { SearchInput } from '../common';
 import { ScrollView } from 'react-navigation';
-import { BranchItem } from '../items';
-import { requestPost } from '../../utils/ApiUtils';
-import { API } from '../../constants/Constants';
-import TotalItem from '../items/TotalItem';
+import { API, SCREEN_WIDTH } from '../../constants/Constants';
 import Timeline from 'react-native-timeline-flatlist';
-import LeadItem from '../items/LeadItem';
 import TaskItem from '../items/TaskItem';
-import LinearGradient from 'react-native-linear-gradient';
-import { SCREEN_WIDTH } from 'react-native-common-date-picker/src/contants';
-import moment from 'moment';
-import CustomCalendar from "../controls/CustomCalendar";
+import CustomCalendar from '../controls/CustomCalendar';
 
 @observer
 class TaskPopup extends React.Component {

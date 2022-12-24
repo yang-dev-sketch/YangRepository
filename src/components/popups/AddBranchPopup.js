@@ -1,7 +1,6 @@
 import { observer } from 'mobx-react';
 import React from 'react';
-import { Pressable, SafeAreaView, StyleSheet, Text, View, TextInput } from 'react-native';
-import Modal from 'react-native-modal';
+import { StyleSheet, Text, View } from 'react-native';
 import { Colors, Styles } from '../../constants';
 import { Button, HorizontalLayout, VerticalLayout, LocalImage } from '../controls';
 import EventBus from 'react-native-event-bus';

@@ -1,17 +1,13 @@
 import { observer } from 'mobx-react';
 import React from 'react';
-import { FlatList, Pressable, SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
 import Modal from 'react-native-modal';
-import { Langs, Colors, Dimens, FontFamily, Styles } from '../../constants';
-import GlobalState from '../../mobx/GlobalState';
-import { Button, HorizontalLayout, VerticalLayout, LocalImage, CheckBox } from '../controls';
-import EventBus from 'react-native-event-bus';
+import { Colors } from '../../constants';
+import { Button, HorizontalLayout, VerticalLayout, LocalImage } from '../controls';
 import SwipeUpDownModal from 'react-native-swipe-modal-up-down';
 import { ActiveButton, DisactiveButton, SearchInput } from '../common';
 import { ScrollView } from 'react-navigation';
-import NotiItem from '../items/NotiItem';
-import TrackItem from '../items/TrackItem';
-import { SCREEN_HEIGHT } from "../../constants/Constants";
+import { SCREEN_HEIGHT } from '../../constants/Constants';
 
 @observer
 class TrackTypePopup extends React.Component {
@@ -190,7 +186,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     width: '100%',
-    maxHeight: SCREEN_HEIGHT * 0.8
+    maxHeight: SCREEN_HEIGHT * 0.8,
   },
 });
 

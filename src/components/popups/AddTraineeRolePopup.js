@@ -1,18 +1,14 @@
 import { observer } from 'mobx-react';
 import React from 'react';
-import { Pressable, SafeAreaView, StyleSheet, Text, View, TextInput, FlatList } from 'react-native';
+import { StyleSheet, Text, View, TextInput, FlatList } from 'react-native';
 import Modal from 'react-native-modal';
 import { Colors, Styles } from '../../constants';
 import { Button, HorizontalLayout, VerticalLayout, LocalImage } from '../controls';
-import EventBus from 'react-native-event-bus';
 import SwipeUpDownModal from 'react-native-swipe-modal-up-down';
-import { ActiveButton, DisactiveButton, SetValueGroup } from '../common';
+import { ActiveButton, SetValueGroup } from '../common';
 import { ScrollView } from 'react-navigation';
 import CommonInput from '../common/CommonInput';
-import CheckBox from '@react-native-community/checkbox';
-import { requestUpload } from '../../utils/ApiUtils';
-import ImageCropPicker from 'react-native-image-crop-picker';
-import { API, API_RES_CODE, IMAGE_FOO_URL, SCREEN_HEIGHT } from '../../constants/Constants';
+import { API, API_RES_CODE, SCREEN_HEIGHT } from '../../constants/Constants';
 import DropDownPicker from '../controls/DropDownPicker';
 
 @observer

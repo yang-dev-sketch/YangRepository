@@ -1,20 +1,13 @@
 import { observer } from 'mobx-react';
 import React from 'react';
-import { Pressable, SafeAreaView, StyleSheet, Text, View, TextInput } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import Modal from 'react-native-modal';
-import { Colors, Styles } from '../../constants';
+import { Colors } from '../../constants';
 import { Button, HorizontalLayout, VerticalLayout, LocalImage } from '../controls';
-import EventBus from 'react-native-event-bus';
 import SwipeUpDownModal from 'react-native-swipe-modal-up-down';
-import { ActiveButton, DisactiveButton, SearchInput, SetValueGroup } from '../common';
-import { ScrollView } from 'react-navigation';
-import CommonInput from '../common/CommonInput';
-import CheckBox from '@react-native-community/checkbox';
-import { requestUpload } from '../../utils/ApiUtils';
-import ImageCropPicker from 'react-native-image-crop-picker';
+import { ActiveButton, DisactiveButton, SearchInput } from '../common';
 import { API, API_RES_CODE, IMAGE_FOO_URL } from '../../constants/Constants';
 import { FlatList } from 'react-native-gesture-handler';
-import CommonItem from '../items/CommonItem';
 import FastImage from 'react-native-fast-image';
 
 @observer
@@ -48,8 +41,7 @@ class TrainerOrganizationPopup extends React.Component {
     // });
   };
 
-  onKeep = () => {
-  }
+  onKeep = () => {};
 
   render() {
     const data = this.props.data;

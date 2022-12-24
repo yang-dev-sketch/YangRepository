@@ -1,21 +1,12 @@
 import { observer } from 'mobx-react';
 import React from 'react';
-import { FlatList, Pressable, SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import Modal from 'react-native-modal';
-import { Langs, Colors, Dimens, FontFamily, Styles } from '../../constants';
-import GlobalState from '../../mobx/GlobalState';
-import { Button, HorizontalLayout, VerticalLayout, LocalImage, CheckBox } from '../controls';
-import EventBus from 'react-native-event-bus';
+import { Colors } from '../../constants';
+import { Button, HorizontalLayout, VerticalLayout, LocalImage } from '../controls';
 import SwipeUpDownModal from 'react-native-swipe-modal-up-down';
-import { ActiveButton, SearchInput, DisactiveButton, SetValueGroup, CommonInput } from '../common';
-import { ScrollView } from 'react-navigation';
-import NotiItem from '../items/NotiItem';
-import { BranchItem } from '../items';
-import { requestPost } from '../../utils/ApiUtils';
-import { API, MAIN_TAB, SCREEN_HEIGHT } from '../../constants/Constants';
-import { SCREEN_WIDTH } from 'react-native-common-date-picker/src/contants';
-import CommonItem from '../items/CommonItem';
-import TrainItem from '../items/TrainItem';
+import { ActiveButton, SetValueGroup } from '../common';
+import { API, SCREEN_HEIGHT, SCREEN_WIDTH } from '../../constants/Constants';
 import DatePicker from 'react-native-date-picker';
 
 @observer
@@ -105,7 +96,7 @@ class FilterByHourPopup extends React.Component {
                   style={{
                     backgroundColor: '#F5F5F5',
                     width: SCREEN_WIDTH - 60,
-                    borderRadius: 8
+                    borderRadius: 8,
                   }}
                   date={new Date()}
                   mode="time"
@@ -125,7 +116,7 @@ class FilterByHourPopup extends React.Component {
                   style={{
                     backgroundColor: '#F5F5F5',
                     width: SCREEN_WIDTH - 60,
-                    borderRadius: 8
+                    borderRadius: 8,
                   }}
                   date={new Date()}
                   mode="time"

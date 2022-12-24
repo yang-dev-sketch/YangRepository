@@ -1,37 +1,11 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-import {
-  Dimensions,
-  FlatList,
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableWithoutFeedback,
-  View,
-  RefreshControl,
-  Touchable,
-} from 'react-native';
-import FastImage from 'react-native-fast-image';
+import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
 import moment from 'moment';
 import { CommonUtils } from '../../utils';
-import { Langs, Styles } from '../../constants';
-import {
-  API,
-  API_RES_CODE,
-  IMAGE_FOO_URL,
-  MAIN_TAB,
-  SCREEN_WIDTH,
-} from '../../constants/Constants';
-import {
-  Button,
-  HorizontalLayout,
-  LocalImage,
-  ScaledFastImage,
-  VerticalLayout,
-} from '../../components/controls';
-import GlobalState from '../../mobx/GlobalState';
-import MyInfo from '../../mobx/MyInfo';
+import { Styles } from '../../constants';
+import { API, API_RES_CODE } from '../../constants/Constants';
+import { Button, HorizontalLayout, LocalImage, VerticalLayout } from '../../components/controls';
 import { requestGet, requestPost } from '../../utils/ApiUtils';
 import { DatePickerPopup, NotiPopup, TrainTimePopup } from '../../components/popups';
 import TimePickerPopup from '../../components/popups/TimePickerPopup';
@@ -462,7 +436,7 @@ export default class TrainScreen extends React.Component {
           }}
           selectTrainId={this.state.selectedTrainId}
           selectTrain={(id) => {
-            console.log(id)
+            console.log(id);
             this.setState({ selectedTrainId: id });
           }}
           onFilter={() => {

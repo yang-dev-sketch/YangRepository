@@ -2,7 +2,7 @@ import { observer } from 'mobx-react';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Modal from 'react-native-modal';
-import { Colors } from '../../constants';
+import { Colors, Dimens, FontFamily } from '../../constants';
 import GlobalState from '../../mobx/GlobalState';
 import { Button, HorizontalLayout, CheckBox } from '../controls';
 
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     lineHeight: 22,
     paddingVertical: 36,
-    fontFamily: FontFamily.korean_gd_12_r,
+    fontFamily: FontFamily.danidin,
     includeFontPadding: false,
     borderBottomColor: '#eeeeee',
     borderBottomWidth: 1,

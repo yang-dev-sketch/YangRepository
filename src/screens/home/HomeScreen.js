@@ -516,6 +516,7 @@ export default class HomeScreen extends React.Component {
           onCancel={() => {
             this.setState({ showLeadPopup: false });
           }}
+          addBranch={() => {}}
         />
         <CloseTrainPopup
           visible={this.state.showCloseTrainPopup}
@@ -529,7 +530,7 @@ export default class HomeScreen extends React.Component {
         <TrainOrganizationPopup
           visible={this.state.showTrainOrganizationPopup}
           data={this.state.traineeList}
-          setSearch={() => {
+          setSearch={(search, traineeType) => {
             this.getTrainee(search, traineeType);
           }}
           onCancel={() => {

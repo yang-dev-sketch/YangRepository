@@ -91,7 +91,7 @@ class TaskPopup extends React.Component {
                   elevation: 3,
                   marginBottom: 10,
                 }}>
-                <CustomCalendar />
+                <CustomCalendar style={{ marginBottom: 10, borderRadius: 11, elevation: 1 }} />
               </View>
               <SearchInput
                 setSearch={(search) => {

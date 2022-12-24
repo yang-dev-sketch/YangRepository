@@ -27,6 +27,7 @@ import HoursLimitPopup from '../../components/popups/HoursLimitPopup';
 import ReservationAvailabilityPopup from '../../components/popups/ReservationAvailabilityPopup';
 import AllowPenaltyPopup from '../../components/popups/AllowPenaltyPopup';
 import AdditionalSettingPopup from '../../components/popups/AdditionalSettingPopup';
+import ProfileInfoItem from "../../components/items/ProfileInfoItem";
 
 @observer
 export default class ProfileScreen extends React.Component {

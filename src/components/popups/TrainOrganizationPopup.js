@@ -8,6 +8,7 @@ import SwipeUpDownModal from 'react-native-swipe-modal-up-down';
 import { ActiveButton, SearchInput } from '../common';
 import { API, MAIN_TAB, SCREEN_WIDTH } from '../../constants/Constants';
 import CommonItem from '../items/CommonItem';
+import GlobalState from "../../mobx/GlobalState";
 
 @observer
 class TrainOrganizationPopup extends React.Component {

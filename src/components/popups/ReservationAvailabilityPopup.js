@@ -2,7 +2,7 @@ import { observer } from 'mobx-react';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Modal from 'react-native-modal';
-import { Colors } from '../../constants';
+import { Colors, Styles } from '../../constants';
 import { Button, HorizontalLayout, VerticalLayout, LocalImage } from '../controls';
 import SwipeUpDownModal from 'react-native-swipe-modal-up-down';
 import { ActiveButton, DisactiveButton, SetValueGroup } from '../common';

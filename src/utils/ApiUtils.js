@@ -5,7 +5,6 @@ import { API, API_RES_CODE, API_URL, IS_OFFLINE_MODE } from '../constants/Consta
 import { Langs } from '../constants';
 import CommonUtils from './CommonUtils';
 import GlobalState from '../mobx/GlobalState';
-import MyInfo from '../mobx/MyInfo';
 
 
 async function request(options, showLoading = true) {

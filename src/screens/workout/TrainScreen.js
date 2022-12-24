@@ -19,6 +19,7 @@ import FilterByCoachPopup from '../../components/popups/FilterByCoachPopup';
 import FilterByHourPopup from '../../components/popups/FilterByHourPopup';
 import FilterByTrainingPopup from '../../components/popups/FilterByTrainingPopup';
 import FilterByBranchPopup from '../../components/popups/FilterByBranchPopup';
+import CustomCalendar from "../../components/controls/CustomCalendar";
 
 @observer
 export default class TrainScreen extends React.Component {
@@ -217,43 +218,7 @@ export default class TrainScreen extends React.Component {
                 />
               </Button>
             </HorizontalLayout>
-            <View
-              style={{
-                width: '100%',
-                height: 242,
-                backgroundColor: '#FFF',
-                borderRadius: 11,
-                padding: 15,
-              }}>
-              <HorizontalLayout style={{ alignItems: 'center', justifyContent: 'space-between' }}>
-                <Button
-                  onPress={() => {
-                    this.setState({ showFilterByPopup: true });
-                  }}
-                  style={{ alignItems: 'center', flexDirection: 'row' }}>
-                  <Text style={{ fontSize: 16, lineHeight: 19 }}>סינון לפי</Text>
-                  <LocalImage
-                    source={require('src/assets/image/ic_sort_black.png')}
-                    style={{ width: 24, height: 24 }}
-                  />
-                </Button>
-                <HorizontalLayout>
-                  <Button style={{ alignItems: 'center', flexDirection: 'row' }}>
-                    <LocalImage
-                      source={require('src/assets/image/ic_left.png')}
-                      style={{ width: 9.17, height: 17.41, marginRight: 21.53 }}
-                    />
-                  </Button>
-                  <Text style={{ fontSize: 18, lineHeight: 22 }}>ספטמבר 2022</Text>
-                  <Button style={{ alignItems: 'center', flexDirection: 'row' }}>
-                    <LocalImage
-                      source={require('src/assets/image/ic_right.png')}
-                      style={{ width: 9.17, height: 17.41, marginLeft: 21.53 }}
-                    />
-                  </Button>
-                </HorizontalLayout>
-              </HorizontalLayout>
-            </View>
+            <CustomCalendar style={{ marginBottom: 10, borderRadius: 11, elevation: 1 }} />
             <HorizontalLayout style={{ justifyContent: 'space-between', marginVertical: 15 }}>
               <Button
                 style={{

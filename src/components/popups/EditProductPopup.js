@@ -5,7 +5,7 @@ import Modal from 'react-native-modal';
 import { Styles, Colors } from '../../constants';
 import { Button, HorizontalLayout, VerticalLayout, LocalImage } from '../controls';
 import SwipeUpDownModal from 'react-native-swipe-modal-up-down';
-import { ActiveButton, CommonInput } from '../common';
+import { ActiveButton, CommonInput, SetValueGroup } from '../common';
 import { API, API_RES_CODE, SCREEN_WIDTH } from '../../constants/Constants';
 import FastImage from 'react-native-fast-image';
 import ImageCropPicker from 'react-native-image-crop-picker';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Styles } from '../../constants';
 import { API, API_RES_CODE } from '../../constants/Constants';
 import { Button, HorizontalLayout, LocalImage, VerticalLayout } from '../../components/controls';
@@ -11,6 +11,9 @@ import EditTrainPopup from '../../components/popups/EditTrainPopup';
 import ModalDropDown from '../../components/controls/ModalDropDown';
 import EditTraineePopup from '../../components/popups/EditTraineePopup';
 import AddTraineePopup from '../../components/popups/AddTraineePopup';
+import DropDownPicker from "../../components/controls/DropDownPicker";
+import DateDropDown from "../../components/controls/DateDropDown";
+import TimeDropDown from "../../components/controls/TimeDropDown";
 
 @observer
 export default class CreateWorkout extends React.Component {

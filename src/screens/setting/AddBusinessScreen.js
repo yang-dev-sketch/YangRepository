@@ -1,21 +1,8 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-import {
-  Dimensions,
-  FlatList,
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableWithoutFeedback,
-  View,
-  RefreshControl,
-  Touchable,
-} from 'react-native';
+import { FlatList, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
 import FastImage from 'react-native-fast-image';
-import moment from 'moment';
-import { CommonUtils } from '../../utils';
-import { Langs, Styles } from '../../constants';
+import { Styles } from '../../constants';
 import {
   API,
   API_RES_CODE,
@@ -23,15 +10,8 @@ import {
   MAIN_TAB,
   SCREEN_WIDTH,
 } from '../../constants/Constants';
-import {
-  Button,
-  HorizontalLayout,
-  LocalImage,
-  ScaledFastImage,
-  VerticalLayout,
-} from '../../components/controls';
+import { Button, HorizontalLayout, LocalImage, VerticalLayout } from '../../components/controls';
 import GlobalState from '../../mobx/GlobalState';
-import MyInfo from '../../mobx/MyInfo';
 import { requestGet, requestPost, requestUpload } from '../../utils/ApiUtils';
 import ImageCropPicker from 'react-native-image-crop-picker';
 import { ActiveButton, CommonInput, DisactiveButton, SetValueGroup } from '../../components/common';
@@ -273,13 +253,3 @@ export default class AddBusinessScreen extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  setting_item: {
-    width: '100%',
-    paddingVertical: 26,
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    flexDirection: 'row',
-  },
-});

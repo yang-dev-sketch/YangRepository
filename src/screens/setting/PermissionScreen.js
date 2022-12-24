@@ -1,38 +1,11 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-import {
-  Dimensions,
-  FlatList,
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-  RefreshControl,
-  Touchable,
-  Animated,
-} from 'react-native';
+import { FlatList, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
 import FastImage from 'react-native-fast-image';
-import moment from 'moment';
-import { CommonUtils } from '../../utils';
-import { Langs, Styles } from '../../constants';
-import {
-  API,
-  API_RES_CODE,
-  IMAGE_FOO_URL,
-  MAIN_TAB,
-  SCREEN_WIDTH,
-} from '../../constants/Constants';
-import {
-  Button,
-  HorizontalLayout,
-  LocalImage,
-  ScaledFastImage,
-  VerticalLayout,
-} from '../../components/controls';
+import { Styles } from '../../constants';
+import { API, API_RES_CODE, IMAGE_FOO_URL, MAIN_TAB } from '../../constants/Constants';
+import { Button, HorizontalLayout, LocalImage, VerticalLayout } from '../../components/controls';
 import GlobalState from '../../mobx/GlobalState';
-import MyInfo from '../../mobx/MyInfo';
 import { requestGet, requestPost } from '../../utils/ApiUtils';
 import { ActiveButton, DisactiveButton, SearchInput } from '../../components/common';
 import AddRolePopup from '../../components/popups/AddRolePopup';

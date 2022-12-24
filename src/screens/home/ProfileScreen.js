@@ -1,56 +1,13 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-import {
-  Dimensions,
-  FlatList,
-  SafeAreaView,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableWithoutFeedback,
-  View,
-  RefreshControl,
-  Touchable,
-} from 'react-native';
-import Swiper from 'react-native-swiper';
+import { FlatList, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
 import FastImage from 'react-native-fast-image';
-import moment from 'moment';
-import { CommonUtils } from '../../utils';
-import { Langs, Styles } from '../../constants';
-import {
-  API,
-  API_RES_CODE,
-  IMAGE_FOO_URL,
-  MAIN_TAB,
-  SCREEN_WIDTH,
-} from '../../constants/Constants';
-import {
-  Button,
-  HorizontalLayout,
-  LocalImage,
-  ScaledFastImage,
-  VerticalLayout,
-} from '../../components/controls';
+import { Styles } from '../../constants';
+import { API, API_RES_CODE, IMAGE_FOO_URL, MAIN_TAB } from '../../constants/Constants';
+import { Button, HorizontalLayout, LocalImage, VerticalLayout } from '../../components/controls';
 import GlobalState from '../../mobx/GlobalState';
-import MyInfo from '../../mobx/MyInfo';
 import { requestGet, requestPost } from '../../utils/ApiUtils';
-import Toast from 'react-native-root-toast';
-import EventBus from 'react-native-event-bus';
-import TotalItem from '../../components/items/TotalItem';
-import LinearGradient from 'react-native-linear-gradient';
-import NumberFormat from 'react-number-format';
-import {
-  ActiveButton,
-  BottomMenu,
-  CommonInput,
-  DisactiveButton,
-  SearchInput,
-  SetValueGroup,
-} from '../../components/common';
-import ProductItem from '../../components/items/ProductItem';
-import { RESULTS } from 'react-native-permissions';
-import ImageCropPicker from 'react-native-image-crop-picker';
-import ProfileInfoItem from '../../components/items/ProfileInfoItem';
+import { ActiveButton, CommonInput, DisactiveButton } from '../../components/common';
 import TaskPopup from '../../components/popups/TaskPopup';
 import { LeadPopup } from '../../components/popups';
 import AssignRolePopup from '../../components/popups/AssignRolePopup';
@@ -69,7 +26,7 @@ import AllowBookingPopup from '../../components/popups/AllowBookingPopup';
 import HoursLimitPopup from '../../components/popups/HoursLimitPopup';
 import ReservationAvailabilityPopup from '../../components/popups/ReservationAvailabilityPopup';
 import AllowPenaltyPopup from '../../components/popups/AllowPenaltyPopup';
-import AdditionalSettingPopup from "../../components/popups/AdditionalSettingPopup";
+import AdditionalSettingPopup from '../../components/popups/AdditionalSettingPopup';
 
 @observer
 export default class ProfileScreen extends React.Component {
@@ -784,7 +741,10 @@ export default class ProfileScreen extends React.Component {
             this.setState({ showHoursLimitPopup: true, showAdvancedSettingPopup: false });
           }}
           setReservationAvailability={() => {
-            this.setState({ showReservationAvailabilityPopup: true, showAdvancedSettingPopup: false });
+            this.setState({
+              showReservationAvailabilityPopup: true,
+              showAdvancedSettingPopup: false,
+            });
           }}
           setAllowPenalty={() => {
             this.setState({ showAllowPenaltyPopup: true, showAdvancedSettingPopup: false });

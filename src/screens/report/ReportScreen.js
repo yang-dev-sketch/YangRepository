@@ -149,7 +149,7 @@ export default class ReportScreen extends React.Component {
               <Text style={{ fontSize: 16, lineHeight: 19 }}>חברות פעילה</Text>
             </HorizontalLayout>
             {this.state.customDate && (
-              <CustomCalendar style={{ marginBottom: 10, borderRadius: 11, elevation: 1 }} />
+              <CustomCalendar style={{ marginBottom: 10 }} selectedType="single-range" />
             )}
             <HorizontalLayout style={styles.info_item}>
               <HorizontalLayout style={{ alignItems: 'center' }}>

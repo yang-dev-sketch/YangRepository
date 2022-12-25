@@ -219,7 +219,8 @@ export default class TrainScreen extends React.Component {
               </Button>
             </HorizontalLayout>
             <CustomCalendar
-              style={{ marginBottom: 10, borderRadius: 11, elevation: 1 }}
+              style={{ marginBottom: 10 }}
+              selectedType="single-range"
               sort={() => {
                 this.setState({ showFilterByPopup: true });
               }}

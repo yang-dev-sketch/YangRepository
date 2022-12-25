@@ -8,14 +8,15 @@ import SwipeUpDownModal from 'react-native-swipe-modal-up-down';
 import { ActiveButton, SetValueGroup } from '../common';
 import { API, SCREEN_HEIGHT, SCREEN_WIDTH } from '../../constants/Constants';
 import DatePicker from 'react-native-date-picker';
+import TimePicker from '../controls/TimePicker';
 
 @observer
 class FilterByHourPopup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      startTime: '',
-      endTime: '',
+      startTime: 8,
+      endTime: 9,
     };
   }
 
@@ -25,6 +26,7 @@ class FilterByHourPopup extends React.Component {
 
   onFilter = () => {
     this.props.onFilter();
+    this.onCancel();
   };
 
   render() {
@@ -88,21 +90,13 @@ class FilterByHourPopup extends React.Component {
               title="שעת התחלה"
               image={require('src/assets/image/ic_clock.png')}
               inputNode={
-                <DatePicker
-                  open={false}
-                  fadeToColor="#F5F5F5"
-                  minuteInterval={60}
-                  is24hourSource="device"
-                  style={{
-                    backgroundColor: '#F5F5F5',
-                    width: SCREEN_WIDTH - 60,
-                    borderRadius: 8,
+                <TimePicker
+                  selectedValue={this.state.startTime}
+                  onValueChange={(value) => {
+                    this.setState({ startTime: value });
                   }}
-                  date={new Date()}
-                  mode="time"
-                  onDateChange={(time) => {
-                    this.setState({ startTime: time });
-                  }}
+                  minValue={this.state.startTime}
+                  maxValue={this.state.endTime}
                 />
               }
             />
@@ -111,18 +105,13 @@ class FilterByHourPopup extends React.Component {
               title="שעת התחלה"
               image={require('src/assets/image/ic_clock.png')}
               inputNode={
-                <DatePicker
-                  open={false}
-                  style={{
-                    backgroundColor: '#F5F5F5',
-                    width: SCREEN_WIDTH - 60,
-                    borderRadius: 8,
+                <TimePicker
+                  selectedValue={this.state.endTime}
+                  onValueChange={(value) => {
+                    this.setState({ endTime: value });
                   }}
-                  date={new Date()}
-                  mode="time"
-                  onDateChange={(time) => {
-                    this.setState({ endTime: time });
-                  }}
+                  minValue={this.state.startTime}
+                  maxValue={this.state.endTime}
                 />
               }
             />
@@ -130,7 +119,7 @@ class FilterByHourPopup extends React.Component {
               text="סנן"
               style={{ marginBottom: 15 }}
               action={() => {
-                this.onFilter();
+                this.state.startTime > this.state.endTime && this.onFilter();
               }}
             />
           </VerticalLayout>

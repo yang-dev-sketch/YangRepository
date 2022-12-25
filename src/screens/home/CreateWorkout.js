@@ -11,9 +11,9 @@ import EditTrainPopup from '../../components/popups/EditTrainPopup';
 import ModalDropDown from '../../components/controls/ModalDropDown';
 import EditTraineePopup from '../../components/popups/EditTraineePopup';
 import AddTraineePopup from '../../components/popups/AddTraineePopup';
-import DropDownPicker from "../../components/controls/DropDownPicker";
-import DateDropDown from "../../components/controls/DateDropDown";
-import TimeDropDown from "../../components/controls/TimeDropDown";
+import DropDownPicker from '../../components/controls/DropDownPicker';
+import DateDropDown from '../../components/controls/DateDropDown';
+import TimePicker from '../../components/controls/TimePicker';
 
 @observer
 export default class CreateWorkout extends React.Component {
@@ -24,6 +24,7 @@ export default class CreateWorkout extends React.Component {
       selectedTrain: '',
       participant: 12,
       trainType: [],
+      trainingTime: 3,
       showEditTrainPopup: false,
       trainList: [],
       traineeList: [],
@@ -204,7 +205,14 @@ export default class CreateWorkout extends React.Component {
               ]}
               title="שעת האימון"
               image={require('src/assets/image/ic_clock.png')}
-              inputNode={<TimeDropDown />}
+              inputNode={
+                <TimePicker
+                  selectedValue={this.state.trainingTime}
+                  onValueChange={(value) => {
+                    this.setState({ trainingTime: value });
+                  }}
+                />
+              }
             />
             <SetValueGroup
               style={[

@@ -8,6 +8,8 @@ import SwipeUpDownModal from 'react-native-swipe-modal-up-down';
 import { ActiveButton, DisactiveButton, SearchInput } from '../common';
 import { FlatList } from 'react-native-gesture-handler';
 import CommonItem from '../items/CommonItem';
+import Toast from "react-native-root-toast";
+import ToastContainer from "../controls/ToastContainer";
 
 @observer
 class AddTraineePopup extends React.Component {
@@ -20,6 +22,11 @@ class AddTraineePopup extends React.Component {
     //   id: this.props.selectId,
     // }).then(async (result) => {
     //   if (result.code == API_RES_CODE.SUCCESS) {
+    Toast.show(<ToastContainer title="רשימת המשתתפים עודכנה" />, {
+      duration: 3000,
+      position: 20,
+      containerStyle: { backgroundColor: 'transparent', opacity: 1 },
+    });
     this.props.onCancel();
     //   } else {
     //   }

@@ -10,6 +10,8 @@ import { ScrollView } from 'react-navigation';
 import CommonInput from '../common/CommonInput';
 import { API, API_RES_CODE, SCREEN_HEIGHT } from '../../constants/Constants';
 import DropDownPicker from '../controls/DropDownPicker';
+import Toast from "react-native-root-toast";
+import ToastContainer from "../controls/ToastContainer";
 
 @observer
 class AddTraineeRolePopup extends React.Component {
@@ -32,6 +34,11 @@ class AddTraineeRolePopup extends React.Component {
     // }).then(async (result) => {
     //   if (result.code == API_RES_CODE.SUCCESS) {
     this.props.onBack();
+    Toast.show(<ToastContainer title="מוצר התווסף לחנות" />, {
+      duration: 3000,
+      position: 20,
+      containerStyle: { backgroundColor: 'transparent', opacity: 1 },
+    });
     //   } else {
     //   }
     // });

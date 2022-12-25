@@ -18,6 +18,8 @@ import { ActiveButton, CommonInput, DisactiveButton, SetValueGroup } from '../..
 import DropDownPicker from '../../components/controls/DropDownPicker';
 import CheckBox from '@react-native-community/checkbox';
 import BranchDetailPopup from '../../components/popups/BranchDetailPopup';
+import Toast from "react-native-root-toast";
+import ToastContainer from "../../components/controls/ToastContainer";
 
 @observer
 export default class AddBusinessScreen extends React.Component {
@@ -66,6 +68,11 @@ export default class AddBusinessScreen extends React.Component {
 
   onSave = () => {
     GlobalState.setTabIndex(MAIN_TAB.BUSINESS);
+    Toast.show(<ToastContainer title="הפרטים נשמרו בהצלחה" />, {
+      duration: 3000,
+      position: 20,
+      containerStyle: { backgroundColor: 'transparent', opacity: 1 },
+    });
   };
 
   render() {

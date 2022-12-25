@@ -7,6 +7,7 @@ import { Button, HorizontalLayout, VerticalLayout, LocalImage } from '../control
 import SwipeUpDownModal from 'react-native-swipe-modal-up-down';
 import { ActiveButton, SearchInput } from '../common';
 import { API, SCREEN_HEIGHT } from '../../constants/Constants';
+import TrainItem from "../items/TrainItem";
 
 @observer
 class TrainTypePopup extends React.Component {

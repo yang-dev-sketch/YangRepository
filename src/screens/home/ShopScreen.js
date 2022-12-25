@@ -10,6 +10,8 @@ import TotalItem from '../../components/items/TotalItem';
 import { ActiveButton, DisactiveButton, SearchInput } from '../../components/common';
 import ProductItem from '../../components/items/ProductItem';
 import EditProductPopup from '../../components/popups/EditProductPopup';
+import Toast from 'react-native-root-toast';
+import ToastContainer from '../../components/controls/ToastContainer';
 
 @observer
 export default class ShopScreen extends React.Component {
@@ -60,7 +62,6 @@ export default class ShopScreen extends React.Component {
       description: '',
       stock: null,
       price: null,
-      toastState: false,
     };
   }
 
@@ -138,10 +139,12 @@ export default class ShopScreen extends React.Component {
     productList[this.state.selectedIndex].description = this.state.description;
     productList[this.state.selectedIndex].stock = this.state.stock;
     productList[this.state.selectedIndex].price = this.state.price;
-    this.setState({ productList: productList, showEditProductPopup: false, toastState: true });
-    setTimeout(() => {
-      this.setState({ toastState: false });
-    }, 3000);
+    this.setState({ productList: productList, showEditProductPopup: false });
+    Toast.show(<ToastContainer title="מוצר התווסף לחנות" />, {
+      duration: 3000,
+      position: 20,
+      containerStyle: { backgroundColor: 'transparent', opacity: 1 },
+    });
     //   } else {
     //   }
     // });
@@ -301,28 +304,6 @@ export default class ShopScreen extends React.Component {
             )}
           </VerticalLayout>
         </ScrollView>
-        {this.state.toastState && (
-          <HorizontalLayout
-            style={{
-              marginHorizontal: 20,
-              width: SCREEN_WIDTH - 40,
-              height: 60,
-              borderRadius: 30,
-              backgroundColor: 'blue',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              position: 'absolute',
-              top: 30,
-              paddingHorizontal: 20,
-            }}>
-            <LocalImage
-              source={require('src/assets/image/ic_close.png')}
-              style={[{ width: 20, height: 20 }]}
-              resizeMode="cover"
-            />
-            <Text style={{ fontSize: 16, lineHeight: 19, color: 'white' }}>this is the toast.</Text>
-          </HorizontalLayout>
-        )}
         <EditProductPopup
           visible={this.state.showEditProductPopup}
           logo={this.state.logo}

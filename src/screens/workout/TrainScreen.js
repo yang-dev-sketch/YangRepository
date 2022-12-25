@@ -19,7 +19,7 @@ import FilterByCoachPopup from '../../components/popups/FilterByCoachPopup';
 import FilterByHourPopup from '../../components/popups/FilterByHourPopup';
 import FilterByTrainingPopup from '../../components/popups/FilterByTrainingPopup';
 import FilterByBranchPopup from '../../components/popups/FilterByBranchPopup';
-import CustomCalendar from "../../components/controls/CustomCalendar";
+import CustomCalendar from '../../components/controls/CustomCalendar';
 
 @observer
 export default class TrainScreen extends React.Component {
@@ -218,7 +218,12 @@ export default class TrainScreen extends React.Component {
                 />
               </Button>
             </HorizontalLayout>
-            <CustomCalendar style={{ marginBottom: 10, borderRadius: 11, elevation: 1 }} />
+            <CustomCalendar
+              style={{ marginBottom: 10, borderRadius: 11, elevation: 1 }}
+              sort={() => {
+                this.setState({ showFilterByPopup: true });
+              }}
+            />
             <HorizontalLayout style={{ justifyContent: 'space-between', marginVertical: 15 }}>
               <Button
                 style={{

@@ -64,14 +64,14 @@ export default class PaymentMethodScreen extends React.Component {
             את פרטי אמצעי התשלום
           </Text>
           <PaymentMethodCard />
+          <ActiveButton
+            text="שמירת פרטים"
+            style={{ position: 'absolute', bottom: 0 }}
+            action={() => {
+              this.onSave();
+            }}
+          />
         </VerticalLayout>
-        <ActiveButton
-          text="שמירת פרטים"
-          style={{ position: 'absolute', bottom: 30, left: 20 }}
-          action={() => {
-            this.onSave();
-          }}
-        />
       </SafeAreaView>
     );
   }

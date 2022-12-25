@@ -20,6 +20,8 @@ import TrainOrganizationPopup from '../../components/popups/TrainOrganizationPop
 import InvitateTraineePopup from '../../components/popups/InvitateTraineePopup';
 import TrainerOrganizationPopup from '../../components/popups/TrainerOrganizationPopup';
 import PieChart from 'react-native-pie-chart';
+import Toast from "react-native-root-toast";
+import ToastContainer from "../../components/controls/ToastContainer";
 
 @observer
 export default class HomeScreen extends React.Component {
@@ -155,6 +157,31 @@ export default class HomeScreen extends React.Component {
       if (id === item.id) item.checked = !item.checked;
     });
     this.setState({ traineeList: traineeList });
+  };
+
+  unSelectAll = () => {
+    const traineeList = this.state.traineeList;
+    traineeList.map((item, index) => {
+      item.checked = false;
+    });
+    this.setState({ traineeList: traineeList });
+  };
+
+  addTrainee = () => {};
+
+  addTrainer = (data) => {
+    // requestPost(API.Home.add_trainee, {
+    // data: data
+    // }).then(async (result) => {
+    //   if (result.code == API_RES_CODE.SUCCESS) {
+    Toast.show(<ToastContainer title="נוספו מאמנים" />, {
+      duration: 3000,
+      position: 20,
+      containerStyle: { backgroundColor: 'transparent', opacity: 1 },
+    });
+    //   } else {
+    //   }
+    // });
   };
 
   render() {
@@ -559,6 +586,9 @@ export default class HomeScreen extends React.Component {
           selectTrainer={(id) => {
             this.selectTrainer(id);
           }}
+          unSelectAll={() => {
+            this.unSelectAll();
+          }}
           onCancel={() => {
             this.setState({ showTrainerOrganizationPopup: false });
           }}
@@ -568,6 +598,13 @@ export default class HomeScreen extends React.Component {
                 return item.checked !== true;
               }),
             });
+          }}
+          onBack={() => {
+            this.setState({ showTrainerOrganizationPopup: false });
+          }}
+          addTrainer={(data) => {
+            this.setState({ showTrainerOrganizationPopup: false });
+            this.addTrainer(data);
           }}
         />
       </SafeAreaView>

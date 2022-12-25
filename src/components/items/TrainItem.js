@@ -22,7 +22,6 @@ class TrainItem extends React.Component {
             },
           ]}>
           <HorizontalLayout>
-            <Text>{this.props.selectTrainId}dd</Text>
             {(data.id == this.props.selectTrainId && (
               <LocalImage
                 source={require('src/assets/image/ic_check_on.png')}

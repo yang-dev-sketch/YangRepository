@@ -1,6 +1,6 @@
 import React from 'react';
 import { observer } from 'mobx-react';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import { Styles } from '../../constants';
 import {
@@ -16,6 +16,7 @@ import { requestGet, requestPost } from '../../utils/ApiUtils';
 import Toast from 'react-native-root-toast';
 import { ActiveButton, CommonInput, SetValueGroup } from '../../components/common';
 import ImageCropPicker from 'react-native-image-crop-picker';
+import ToastContainer from "../../components/controls/ToastContainer";
 
 @observer
 export default class AddProduct extends React.Component {
@@ -82,6 +83,11 @@ export default class AddProduct extends React.Component {
     // }).then(async (result) => {
     //   if (result.code == API_RES_CODE.SUCCESS) {
     GlobalState.setTabIndex(MAIN_TAB.SHOP);
+    Toast.show(<ToastContainer title="שינויים נשמרו" />, {
+      duration: 3000,
+      position: 20,
+      containerStyle: { backgroundColor: 'transparent', opacity: 1 },
+    });
     //   } else {
     //   }
     // });

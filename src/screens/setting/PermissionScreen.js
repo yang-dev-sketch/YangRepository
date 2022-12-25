@@ -13,6 +13,8 @@ import EditUserPopup from '../../components/popups/EditUserPopup';
 import AddTraineeRolePopup from '../../components/popups/AddTraineeRolePopup';
 import SelectRolePopup from '../../components/popups/SelectRolePopup';
 import SwitchItem from '../../components/items/SwitchItem';
+import Toast from 'react-native-root-toast';
+import ToastContainer from '../../components/controls/ToastContainer';
 
 @observer
 export default class PermissionScreen extends React.Component {
@@ -169,6 +171,15 @@ export default class PermissionScreen extends React.Component {
     //   } else {
     //   }
     // });
+  };
+
+  addRole = () => {
+    this.setState({ showAddRolePopup: false });
+    Toast.show(<ToastContainer title="תפקיד חדש נוסף" />, {
+      duration: 3000,
+      position: 20,
+      containerStyle: { backgroundColor: 'transparent', opacity: 1 },
+    });
   };
 
   render() {
@@ -552,7 +563,9 @@ export default class PermissionScreen extends React.Component {
           onCancel={() => {
             this.setState({ showAddRolePopup: false });
           }}
-          onKeep={() => {}}
+          onKeep={() => {
+            this.addRole();
+          }}
         />
         <EditUserPopup
           visible={this.state.showEditUserPopup}

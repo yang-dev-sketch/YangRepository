@@ -106,7 +106,10 @@ export default class CustomCalendar extends React.Component {
             <VerticalLayout>
               <HorizontalLayout
                 style={{ alignItems: 'center', justifyContent: 'space-between', padding: 15 }}>
-                <Button onPress={() => {}}>
+                <Button
+                  onPress={() => {
+                    this.props.sort();
+                  }}>
                   <HorizontalLayout style={{ alignItems: 'center' }}>
                     <Text>סינון לפי</Text>
                     <LocalImage

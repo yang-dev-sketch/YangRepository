@@ -20,14 +20,14 @@ class TrainerOrganizationPopup extends React.Component {
   }
 
   addTrainee = () => {
-    // requestPost(API.Home.add_trainee, {
-    //   id: this.props.selectId,
-    // }).then(async (result) => {
-    //   if (result.code == API_RES_CODE.SUCCESS) {
-    this.props.onCancel();
-    //   } else {
-    //   }
-    // });
+    const data = this.props.data.filter((item) => {
+      return item.checked;
+    });
+    if(data.length > 0) {
+      this.setState({ modifyState: false }, () => {
+        this.props.addTrainer(data);
+      });
+    }
   };
 
   removeTrainee = () => {
@@ -72,17 +72,21 @@ class TrainerOrganizationPopup extends React.Component {
                 marginBottom: 16.94,
               }}>
               <HorizontalLayout style={{ alignItems: 'center' }}>
+                {this.state.modifyState && (
+                  <Button
+                    onPress={() => {
+                      this.setState({ modifyState: false });
+                      this.props.unSelectAll();
+                    }}>
+                    <LocalImage
+                      source={require('src/assets/image/ic_left.png')}
+                      style={{ width: 11.62, height: 20.73, marginRight: 20.93 }}
+                    />
+                  </Button>
+                )}
                 <Button
                   onPress={() => {
-                    this.props.onBack();
-                  }}>
-                  <LocalImage
-                    source={require('src/assets/image/ic_left.png')}
-                    style={{ width: 11.62, height: 20.73, marginRight: 20.93 }}
-                  />
-                </Button>
-                <Button
-                  onPress={() => {
+                    this.setState({ modifyState: false });
                     this.props.onCancel();
                   }}>
                   <LocalImage
@@ -110,38 +114,47 @@ class TrainerOrganizationPopup extends React.Component {
                 return (
                   <Button
                     onPress={() => {
-                      this.props.selectTrainer(item.id);
+                      this.state.modifyState && this.props.selectTrainer(item.id);
                     }}
-                    style={{
-                      flexDirection: 'row',
-                      alignItems: 'center',
-                      width: '100%',
-                      justifyContent: 'space-between',
-                      borderWidth: 1,
-                      borderColor: item.checked ? '#0D65D9' : '#D8D8D8',
-                      borderRadius: 11,
-                      paddingLeft: 21,
-                      paddingRight: 10,
-                      paddingVertical: 10,
-                    }}>
+                    style={[
+                      (this.state.modifyState && { paddingVertical: 10 }) || {
+                        paddingVertical: 17.5,
+                      },
+                      {
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        width: '100%',
+                        justifyContent: 'space-between',
+                        borderWidth: 1,
+                        borderColor: item.checked ? '#0D65D9' : '#D8D8D8',
+                        borderRadius: 11,
+                        paddingLeft: 21,
+                        paddingRight: 10,
+                      },
+                    ]}>
                     {(item.checked && (
                       <LocalImage
                         source={require('src/assets/image/ic_check_on.png')}
                         style={{ width: 23, height: 23 }}
                       />
-                    )) || (
-                      <LocalImage
-                        source={require('src/assets/image/ic_check_off.png')}
-                        style={{ width: 23, height: 23 }}
-                      />
-                    )}
+                    )) || <View></View>}
                     <HorizontalLayout style={{ alignItems: 'center' }}>
                       <Text style={{ fontSize: 16, lineHeight: 19.2 }}>{item.name}</Text>
-                      <FastImage
-                        source={{ uri: data.avatar ? data.avatar : IMAGE_FOO_URL }}
-                        resizeMode={FastImage.resizeMode.cover}
-                        style={{ width: 45, height: 45, marginLeft: 7 }}
-                      />
+                      {(this.state.modifyState && (
+                        <FastImage
+                          source={{ uri: data.avatar ? data.avatar : IMAGE_FOO_URL }}
+                          resizeMode={FastImage.resizeMode.cover}
+                          style={{ width: 45, height: 45, marginLeft: 7 }}
+                        />
+                      )) || (
+                        <View style={{ width: 45, height: 30, overflow: 'hidden', marginLeft: 7 }}>
+                          <FastImage
+                            source={{ uri: data.avatar ? data.avatar : IMAGE_FOO_URL }}
+                            resizeMode={FastImage.resizeMode.cover}
+                            style={{ width: 45, height: 45, marginTop: -7.5 }}
+                          />
+                        </View>
+                      )}
                     </HorizontalLayout>
                   </Button>
                 );

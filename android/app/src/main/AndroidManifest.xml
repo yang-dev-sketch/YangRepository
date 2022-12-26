@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="co.kr.real">
+  package="com.astraderves.gyme">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
@@ -12,9 +12,9 @@
 
     <application
       android:name=".MainApplication"
-      android:label="@string/app_name"
-      android:icon="@mipmap/ic_launcher"
-      android:roundIcon="@mipmap/ic_launcher_round"
+      android:label="gyme"
+      android:icon="@mipmap/gyme"
+      android:roundIcon="@mipmap/gyme_foreground"
       android:allowBackup="false"
       android:theme="@style/AppTheme"
       android:largeHeap="true"
@@ -22,7 +22,7 @@
       android:requestLegacyExternalStorage="true">
       <activity
         android:name=".MainActivity"
-        android:label="@string/app_name"
+        android:label="gyme"
         android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
         android:launchMode="singleTask"
         android:screenOrientation="portrait">

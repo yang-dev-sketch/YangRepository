@@ -7,6 +7,6 @@
 # Homeward Library
 **/node_modules/
 
-android
+android/app/build
 
 local.properties

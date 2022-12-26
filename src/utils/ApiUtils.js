@@ -130,7 +130,7 @@ export async function requestUpload(url, file_uri, category = '') {
   let headers = {
     'Content-Type': 'multipart/form-data',
     'Accept': 'application/json',
-    'App-Package': IS_OFFLINE_MODE ? 'com.real' : DeviceInfo.getInstallerPackageName(),
+    'App-Package': IS_OFFLINE_MODE ? 'com.astraderves.gyme' : DeviceInfo.getInstallerPackageName(),
     'App-Version-Name': DeviceInfo.getVersion(),
     'App-Version-Code': DeviceInfo.getBuildNumber(),
     'App-Device': Platform.OS === 'android' ? 'android' : 'ios',

@@ -129,7 +129,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "co.kr.real"
+        applicationId "com.astraderves.gyme"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

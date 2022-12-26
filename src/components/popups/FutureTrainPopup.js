@@ -22,6 +22,8 @@ class FutureTrainPopup extends React.Component {
     this.props.onCancel();
   };
 
+  onSort = () => {}
+
   render() {
     return (
       <SwipeUpDownModal
@@ -46,7 +48,7 @@ class FutureTrainPopup extends React.Component {
             <HorizontalLayout
               style={{
                 paddingHorizontal: 20,
-                alignItem: 'center',
+                alignItems: 'center',
                 justifyContent: 'space-between',
                 marginBottom: 16.94,
               }}>

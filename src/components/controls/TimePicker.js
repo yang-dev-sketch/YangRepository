@@ -3,7 +3,7 @@ import { Component, View, StyleSheet, Text } from 'react-native';
 import Button from './Button';
 import { HorizontalLayout } from '.';
 import { SCREEN_WIDTH } from '../../constants/Constants';
-import ScrollPicker from "./ScrollPicker";
+import ScrollPicker from './ScrollPicker';
 
 export default class TimePicker extends React.Component {
   constructor(props) {
@@ -79,6 +79,11 @@ export default class TimePicker extends React.Component {
                 );
               }}
               onValueChange={(data, selectedIndex) => {
+                this.setState({ modifyState: true });
+                clearTimeout(this.timeOut);
+                this.timeOut = setTimeout(() => {
+                  this.setState({ modifyState: false });
+                }, 5000);
                 this.onValueChange(Number(this.state.options[selectedIndex].value));
               }}
             />

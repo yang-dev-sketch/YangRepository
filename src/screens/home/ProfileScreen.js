@@ -263,6 +263,8 @@ export default class ProfileScreen extends React.Component {
     // });
   };
 
+  addProduct = () => {}
+
   render() {
     return (
       <SafeAreaView style={{ flex: 1 }}>

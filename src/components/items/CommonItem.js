@@ -23,7 +23,7 @@ class CommonItem extends React.Component {
               borderColor: '#D8D8D8',
             },
           ]}>
-          <HorizontalLayout style={{ width: '54%' }}>
+          <HorizontalLayout style={{ width: '54%', alignItems: 'center' }}>
             {(data.id == this.props.selectId && (
               <LocalImage
                 source={require('src/assets/image/ic_check_on.png')}

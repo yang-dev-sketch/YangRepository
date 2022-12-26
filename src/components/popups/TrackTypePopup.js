@@ -8,6 +8,7 @@ import SwipeUpDownModal from 'react-native-swipe-modal-up-down';
 import { ActiveButton, DisactiveButton, SearchInput } from '../common';
 import { ScrollView } from 'react-navigation';
 import { SCREEN_HEIGHT } from '../../constants/Constants';
+import TrackItem from "../items/TrackItem";
 
 @observer
 class TrackTypePopup extends React.Component {

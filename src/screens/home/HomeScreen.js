@@ -292,7 +292,7 @@ export default class HomeScreen extends React.Component {
               <VerticalLayout style={{ alignItems: 'center', width: SCREEN_WIDTH - 260 }}>
                 <Text style={{ fontSize: 14, lineHeight: 17, letterSpacing: 1 }}>סה”כ אימונים</Text>
                 <Text
-                  style={{ fontSize: 70, lineHeight: 84, color: '#0D65D9', fontFamily: 'Danidin' }}>
+                  style={{ fontSize: 70, lineHeight: 84, color: '#0D65D9', fontWeight: '700' }}>
                   70
                 </Text>
               </VerticalLayout>

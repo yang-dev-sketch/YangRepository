@@ -8,6 +8,13 @@
 **/node_modules/
 
 android/app/build
+
 android/.gradle
 
 local.properties
+
+*.iml
+
+*.hprof
+
+

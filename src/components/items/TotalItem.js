@@ -54,11 +54,13 @@ const styles = StyleSheet.create({
     fontSize: 20,
     lineHeight: 24,
     letterSpacing: 1,
+    fontWeight: '700'
   },
   text: {
     fontSize: 14,
     lineHeight: 17,
     letterSpacing: 1,
     width: '53%',
+    color: '#000'
   },
 });

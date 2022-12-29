@@ -224,7 +224,9 @@ export default class PermissionScreen extends React.Component {
                 onPress={() => {
                   this.setState({ tabIndex: 0 });
                 }}>
-                <Text>ניהול משתמשים</Text>
+                <Text style={{ fontSize: 16, lineHeight: 19, color: '#000', fontWeight: '600' }}>
+                  ניהול משתמשים
+                </Text>
                 {this.state.tabIndex === 0 && <View style={styles.tab_active}></View>}
               </Button>
               <Button
@@ -232,7 +234,9 @@ export default class PermissionScreen extends React.Component {
                 onPress={() => {
                   this.setState({ tabIndex: 1 });
                 }}>
-                <Text>הגדרות תפקיד</Text>
+                <Text style={{ fontSize: 16, lineHeight: 19, color: '#000', fontWeight: '600' }}>
+                  הגדרות תפקיד
+                </Text>
                 {this.state.tabIndex === 1 && <View style={styles.tab_active}></View>}
               </Button>
             </HorizontalLayout>
@@ -286,7 +290,15 @@ export default class PermissionScreen extends React.Component {
                               />
                             )}
                             <HorizontalLayout style={{ alignItems: 'center' }}>
-                              <Text style={{ fontSize: 16, lineHeight: 19 }}>{item.name}</Text>
+                              <Text
+                                style={{
+                                  fontSize: 16,
+                                  lineHeight: 19,
+                                  color: '#000',
+                                  fontWeight: '600',
+                                }}>
+                                {item.name}
+                              </Text>
                               <View
                                 style={[
                                   index === 0 && { backgroundColor: '#75A6E4' },
@@ -333,12 +345,12 @@ export default class PermissionScreen extends React.Component {
                                           style={{ width: 22, height: 22, marginRight: 11 }}
                                         />
                                       )}
-                                      <Text style={{ fontSize: 16, lineHeight: 19 }}>
+                                      <Text style={{ fontSize: 18, lineHeight: 22, color: '#000' }}>
                                         {sub_item.train}
                                       </Text>
                                     </HorizontalLayout>
                                     <HorizontalLayout style={{ alignItems: 'center' }}>
-                                      <Text style={{ fontSize: 16, lineHeight: 19 }}>
+                                      <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>
                                         {sub_item.name}
                                       </Text>
                                       {(this.state.selectedUser === sub_item.id && (
@@ -532,7 +544,7 @@ export default class PermissionScreen extends React.Component {
                 flexDirection: 'row',
                 alignItems: 'center',
               }}>
-              <Text>הוסף תפקיד חדש</Text>
+              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>הוסף תפקיד חדש</Text>
               <LocalImage
                 source={require('src/assets/image/ic_plus_sign.png')}
                 style={{ width: 27, height: 27, marginLeft: 6 }}

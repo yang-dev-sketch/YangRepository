@@ -33,7 +33,7 @@ export default class BankDetailScreen extends AppScreen {
               alignItems: 'center',
               justifyContent: 'center',
             }}>
-            <Text style={{ fontSize: 24, lineHeight: 29, position: 'absolute', top: 80 }}>
+            <Text style={{ fontSize: 24, lineHeight: 29, position: 'absolute', top: 80, color: '#000', fontWeight: '700' }}>
               פרטי בנק
             </Text>
             <LocalImage
@@ -42,7 +42,7 @@ export default class BankDetailScreen extends AppScreen {
             />
           </LinearGradient>
           <VerticalLayout style={{ paddingHorizontal: 20, marginTop: -36, alignItems: 'center' }}>
-            <Text style={{ fontSize: 16, lineHeight: 19, marginBottom: 35 }}>
+            <Text style={{ fontSize: 16, lineHeight: 19, marginBottom: 35, textAlign: 'center', color: '#000', marginHorizontal:  18 }}>
               Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
               has been the industry's.
             </Text>

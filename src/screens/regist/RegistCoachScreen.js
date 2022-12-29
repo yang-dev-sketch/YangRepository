@@ -77,7 +77,7 @@ export default class RegistCoachScreen extends AppScreen {
                 this.props.navigation.goBack();
               }}
               style={{ alignSelf: 'center', position: 'absolute', top: 60, left: 21 }}>
-              <Text style={{ fontSize: 14, lineHeight: 17, textDecorationLine: 'underline' }}>
+              <Text style={{ fontSize: 14, lineHeight: 17, textDecorationLine: 'underline', color: '#000' }}>
                 הקודם
               </Text>
             </Button>
@@ -111,7 +111,7 @@ export default class RegistCoachScreen extends AppScreen {
                   />
                 )}
               </Button>
-              <Text style={{ fontSize: 16, lineHeight: 19 }}>לוגו של העסק</Text>
+              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>לוגו של העסק</Text>
             </VerticalLayout>
             <SetValueGroup
               style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#FFF' }]}

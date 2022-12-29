@@ -43,8 +43,8 @@ export default class PaymentMethodCard extends React.Component {
           </HorizontalLayout>
           <SetValueGroup
             style={{ marginBottom: 12, backgroundColor: 'transparent' }}
-            title="כותרת הסניף"
-            textStyle={{ fontSize: 14, lineHeight: 16.8, color: 'white' }}
+            title="מספר כרטיס"
+            textStyle={{ fontSize: 14, lineHeight: 17, color: 'white' }}
             inputNode={
               <CommonInput
                 inputStyle={{ height: 40 }}

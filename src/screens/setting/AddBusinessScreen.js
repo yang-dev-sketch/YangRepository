@@ -101,6 +101,7 @@ export default class AddBusinessScreen extends React.Component {
                   lineHeight: 22,
                   letterSpacing: 1,
                   color: '#000',
+                  fontWeight: '700'
                 }}>
                 הגדרות
               </Text>
@@ -111,7 +112,7 @@ export default class AddBusinessScreen extends React.Component {
                 />
               </Button>
             </HorizontalLayout>
-            <Text style={{ fontSize: 18, lineHeight: 22, marginBottom: 15 }}>הוספת סניף חדש</Text>
+            <Text style={{ fontSize: 18, lineHeight: 22, marginBottom: 15, fontWeight: '600', color: '#000' }}>הוספת סניף חדש</Text>
             <VerticalLayout
               style={{
                 width: (SCREEN_WIDTH - 65) / 2,
@@ -142,7 +143,7 @@ export default class AddBusinessScreen extends React.Component {
                   />
                 )}
               </Button>
-              <Text style={{ fontSize: 16, lineHeight: 19, marginTop: 10 }}>לוגו של העסק</Text>
+              <Text style={{ fontSize: 16, lineHeight: 19, marginTop: 10, color: '#000' }}>לוגו של העסק</Text>
             </VerticalLayout>
             <SetValueGroup
               style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: 'white' }]}

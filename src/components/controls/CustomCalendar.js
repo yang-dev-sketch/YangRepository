@@ -39,7 +39,7 @@ const CustomHeaderComponent = ({ onPressLeft, title, onPressRight, sort }) => {
           sort();
         }}>
         <HorizontalLayout style={{ alignItems: 'center' }}>
-          <Text>סינון לפי</Text>
+          <Text style={{ color: '#000', fontSize: 16, lineHeight: 19 }}>סינון לפי</Text>
           <LocalImage
             source={require('src/assets/image/ic_sort_black.png')}
             style={{ width: 24, height: 24 }}
@@ -56,10 +56,10 @@ const CustomHeaderComponent = ({ onPressLeft, title, onPressRight, sort }) => {
             style={{ width: 9.17, height: 17.41, marginRight: 21.54 }}
           />
         </Button>
-        <Text style={{ fontSize: 18, lineHeight: 22, width: 50, textAlign: 'left' }}>
+        <Text style={{ fontSize: 18, lineHeight: 22, width: 50, textAlign: 'left', color: '#000' }}>
           {customYear(title)}
         </Text>
-        <Text style={{ fontSize: 18, lineHeight: 22, width: 70 }}>{customTitle(title)}</Text>
+        <Text style={{ fontSize: 18, lineHeight: 22, width: 70, color: '#000' }}>{customTitle(title)}</Text>
         <Button
           onPress={() => {
             onPressRight();
@@ -208,6 +208,8 @@ export default class CustomCalendar extends React.Component {
         weekdayStyle={{
           fontSize: 16,
           lineHeight: 19,
+          color: '#000',
+          fontWeight: '700'
         }}
         dayContainerStyle={{ alignItems: 'center' }}
         selectedType={this.props.selectedType} //'single' | 'range' | 'single-range'

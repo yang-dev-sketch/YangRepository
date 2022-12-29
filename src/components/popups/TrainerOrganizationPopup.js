@@ -95,7 +95,7 @@ class TrainerOrganizationPopup extends React.Component {
                   />
                 </Button>
               </HorizontalLayout>
-              <Text style={{ fontSize: 18, lineHeight: 22 }}>הסניפים שלנו</Text>
+              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>הסניפים שלנו</Text>
             </HorizontalLayout>
             <SearchInput
               setSearch={(search) => {

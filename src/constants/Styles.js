@@ -10,6 +10,7 @@ export default StyleSheet.create({
     backgroundColor: '#F5F5F5',
     fontFamily: FontFamily.danidin,
     direction: 'rtl',
+    color: '#000'
   },
   full: {
     width: '100%',

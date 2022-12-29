@@ -34,7 +34,7 @@ class TrainItem extends React.Component {
             )}
           </HorizontalLayout>
           <HorizontalLayout style={{ alignItems: 'center' }}>
-            <Text numberOfLines={1} style={{ fontSize: 16, lineHeight: 19 }}>
+            <Text numberOfLines={1} style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>
               {data.name}
             </Text>
             {(data.id == this.props.selectTrainId && data.name === 'הכל' && (

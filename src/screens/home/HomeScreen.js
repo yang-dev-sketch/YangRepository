@@ -209,6 +209,7 @@ export default class HomeScreen extends React.Component {
                   lineHeight: 22,
                   letterSpacing: 1,
                   color: '#000',
+                  fontWeight: '700'
                 }}>
                 פרופיל
               </Text>
@@ -239,7 +240,7 @@ export default class HomeScreen extends React.Component {
                 />
               </Button>
               <VerticalLayout style={{ alignItems: 'flex-end', justifyContent: 'space-between' }}>
-                <Text style={{ fontSize: 18, lineHeight: 22, letterSpacing: 1 }}>שלום STEPS,</Text>
+                <Text style={{ fontSize: 18, lineHeight: 22, letterSpacing: 1, fontWeight: '600', color: '#000' }}>שלום STEPS,</Text>
                 <Text style={{ fontSize: 14, lineHeight: 17, letterSpacing: 1, color: '#6F6F6F' }}>
                   נתונים ליום חמישי 01.09.2022
                 </Text>
@@ -290,7 +291,7 @@ export default class HomeScreen extends React.Component {
                 </VerticalLayout>
               </HorizontalLayout>
               <VerticalLayout style={{ alignItems: 'center', width: SCREEN_WIDTH - 260 }}>
-                <Text style={{ fontSize: 14, lineHeight: 17, letterSpacing: 1 }}>סה”כ אימונים</Text>
+                <Text style={{ fontSize: 14, lineHeight: 17, color:'#000' }}>סה”כ אימונים</Text>
                 <Text
                   style={{ fontSize: 70, lineHeight: 84, color: '#0D65D9', fontWeight: '700' }}>
                   70
@@ -349,11 +350,11 @@ export default class HomeScreen extends React.Component {
                   displayType={'text'}
                   thousandSeparator={true}
                   renderText={(formattedValue) => (
-                    <Text style={{ fontSize: 24, lineHeight: 29 }}>{formattedValue}</Text>
+                    <Text style={{ fontSize: 24, lineHeight: 29, fontWeight: '700', color: '#000' }}>{formattedValue}</Text>
                   )}
                 />
               </HorizontalLayout>
-              <Text style={{ fontSize: 14, lineHeight: 17 }}>ההכנסה היומית שלי</Text>
+              <Text style={{ fontSize: 14, lineHeight: 17, color: '#000' }}>ההכנסה היומית שלי</Text>
             </HorizontalLayout>
             <Button
               onPress={() => {
@@ -385,7 +386,7 @@ export default class HomeScreen extends React.Component {
                       </Text>
                     )}
                   />
-                  <Text style={{ fontSize: 16, lineHeight: 19 }}>אימונים קרובים</Text>
+                  <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>אימונים קרובים</Text>
                 </HorizontalLayout>
               </HorizontalLayout>
             </Button>
@@ -431,7 +432,7 @@ export default class HomeScreen extends React.Component {
                         justifyContent: 'flex-end',
                         paddingBottom: 13,
                       }}>
-                      <Text style={{ fontSize: 16, lineHeight: 19 }}>{item.title}</Text>
+                      <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>{item.title}</Text>
                     </View>
                   </Button>
                 );

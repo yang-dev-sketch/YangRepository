@@ -101,6 +101,7 @@ export default class SettingScreen extends React.Component {
                   lineHeight: 22,
                   letterSpacing: 1,
                   color: '#000',
+                  fontWeight: '700'
                 }}>
                 הגדרות
               </Text>
@@ -152,7 +153,7 @@ export default class SettingScreen extends React.Component {
                       />
                     )}
                     <HorizontalLayout style={{ alignItems: 'center' }}>
-                      <Text style={{ fontSize: 16, lineHeight: 19, marginRight: 7 }}>
+                      <Text style={{ fontSize: 16, lineHeight: 19, marginRight: 7, color: '#000' }}>
                         {item.name}
                       </Text>
                       {item.id !== 5 && (

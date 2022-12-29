@@ -27,7 +27,7 @@ import HoursLimitPopup from '../../components/popups/HoursLimitPopup';
 import ReservationAvailabilityPopup from '../../components/popups/ReservationAvailabilityPopup';
 import AllowPenaltyPopup from '../../components/popups/AllowPenaltyPopup';
 import AdditionalSettingPopup from '../../components/popups/AdditionalSettingPopup';
-import ProfileInfoItem from "../../components/items/ProfileInfoItem";
+import ProfileInfoItem from '../../components/items/ProfileInfoItem';
 
 @observer
 export default class ProfileScreen extends React.Component {
@@ -263,7 +263,7 @@ export default class ProfileScreen extends React.Component {
     // });
   };
 
-  addProduct = () => {}
+  addProduct = () => {};
 
   render() {
     return (
@@ -287,6 +287,7 @@ export default class ProfileScreen extends React.Component {
                   lineHeight: 22,
                   letterSpacing: 1,
                   color: '#000',
+                  fontWeight: '600',
                 }}>
                 הפרופיל של X
               </Text>
@@ -330,14 +331,16 @@ export default class ProfileScreen extends React.Component {
                 </View>
               </HorizontalLayout>
               <VerticalLayout>
-                <Text style={{ fontSize: 14, lineHeight: 17, marginBottom: 5 }}>
+                <Text style={{ fontSize: 14, lineHeight: 17, marginBottom: 5, color: '#000' }}>
                   052 - 000000000
                 </Text>
-                <Text style={{ fontSize: 14, lineHeight: 17, marginBottom: 10 }}>
+                <Text style={{ fontSize: 14, lineHeight: 17, marginBottom: 10, color: '#000' }}>
                   nastya1106@gmail.com
                 </Text>
                 <HorizontalLayout>
-                  <Text>11.06.1998 ,24 שנים</Text>
+                  <Text style={{ fontSize: 14, lineHeight: 17, color: '#000' }}>
+                    11.06.1998 ,24 שנים
+                  </Text>
                   <LocalImage
                     source={require('src/assets/image/ic_birthday.png')}
                     style={{ width: 16, height: 16, marginLeft: 5 }}
@@ -350,7 +353,12 @@ export default class ProfileScreen extends React.Component {
                 elevation={true}
                 firstLineText="שולם"
                 secondLineText="549.9"
-                secondLineTextStyle={{ fontSize: 20, lineHeight: 24, color: '#0D65D9' }}
+                secondLineTextStyle={{
+                  fontSize: 20,
+                  lineHeight: 24,
+                  color: '#0D65D9',
+                  fontWeight: '700',
+                }}
                 secondLineImage={require('src/assets/image/ic_income_blue.png')}
                 complex={true}
                 height={66}
@@ -419,7 +427,10 @@ export default class ProfileScreen extends React.Component {
                       alignItems: 'center',
                       justifyContent: 'center',
                     }}>
-                    <Text style={{ fontSize: 16, lineHeight: 19, color: 'white' }}>21</Text>
+                    <Text
+                      style={{ fontSize: 16, lineHeight: 19, color: 'white', fontWeight: '600' }}>
+                      21
+                    </Text>
                   </View>
                 }
               />
@@ -442,7 +453,10 @@ export default class ProfileScreen extends React.Component {
                       alignItems: 'center',
                       justifyContent: 'center',
                     }}>
-                    <Text style={{ fontSize: 16, lineHeight: 19, color: 'white' }}>21</Text>
+                    <Text
+                      style={{ fontSize: 16, lineHeight: 19, color: 'white', fontWeight: '600' }}>
+                      21
+                    </Text>
                   </View>
                 }
                 action={() => {
@@ -506,8 +520,18 @@ export default class ProfileScreen extends React.Component {
                         </Button>
                       )) || <View></View>}
                       <VerticalLayout style={{ width: '70%' }}>
-                        <Text>סוג מסלול:</Text>
-                        <Text numberOfLines={2}>
+                        <Text
+                          style={{
+                            fontSize: 16,
+                            lineHeight: 19,
+                            color: '#000',
+                            fontWeight: '600',
+                          }}>
+                          סוג מסלול:
+                        </Text>
+                        <Text
+                          numberOfLines={2}
+                          style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>
                           כרטיס ניקוב 10 מתוך 12, המנוי מופעל ב-X, מתחדש בעוד Y פעמים
                         </Text>
                       </VerticalLayout>

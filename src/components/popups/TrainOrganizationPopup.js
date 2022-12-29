@@ -69,7 +69,7 @@ class TrainOrganizationPopup extends React.Component {
                   style={{ width: 31, height: 31 }}
                 />
               </Button>
-              <Text style={{ fontSize: 18, lineHeight: 22 }}>מתאמנים באירגון</Text>
+              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>מתאמנים באירגון</Text>
             </HorizontalLayout>
             <HorizontalLayout
               style={{ width: '100%', justifyContent: 'space-between', marginBottom: 15 }}>

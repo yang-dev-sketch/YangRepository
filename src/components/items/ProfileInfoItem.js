@@ -30,7 +30,9 @@ class ProfileInfoItem extends React.Component {
           {(this.props.complex && (
             <VerticalLayout
               style={{ alignItems: 'flex-end', justifyContent: 'space-between', height: '100%' }}>
-              <Text>{this.props.firstLineText}</Text>
+              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000', fontWeight: '600' }}>
+                {this.props.firstLineText}
+              </Text>
               <HorizontalLayout style={{ alignItems: 'center' }}>
                 {this.props.secondLineImage && (
                   <LocalImage
@@ -42,7 +44,15 @@ class ProfileInfoItem extends React.Component {
               </HorizontalLayout>
             </VerticalLayout>
           )) || (
-            <Text style={{ width: '50%' }} numberOfLines={this.props.numberOfLines}>
+            <Text
+              style={{
+                width: '60%',
+                fontSize: 16,
+                lineHeight: 19,
+                color: '#000',
+                fontWeight: '400',
+              }}
+              numberOfLines={this.props.numberOfLines}>
               {this.props.text}
             </Text>
           )}

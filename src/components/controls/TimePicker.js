@@ -69,11 +69,11 @@ export default class TimePicker extends React.Component {
                         alignItems: 'center',
                         justifyContent: 'space-around',
                       }}>
-                      <Text style={{ fontSize: 16, lineHeight: 19 }}>{data.value}</Text>
-                      {(isSelected && <Text style={{ fontSize: 16, lineHeight: 19 }}>:</Text>) || (
+                      <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>{data.value}</Text>
+                      {(isSelected && <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>:</Text>) || (
                         <Text></Text>
                       )}
-                      <Text style={{ fontSize: 16, lineHeight: 19 }}>00</Text>
+                      <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>00</Text>
                     </HorizontalLayout>
                   </Button>
                 );
@@ -150,13 +150,13 @@ export default class TimePicker extends React.Component {
               justifyContent: 'space-around',
               flexDirection: 'row',
             }}>
-            <Text style={{ fontSize: 16, lineHeight: 19 }}>
+            <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>
               {this.props.selectedValue < 10
                 ? '0' + Number(this.props.selectedValue)
                 : Number(this.props.selectedValue)}
             </Text>
-            <Text style={{ fontSize: 16, lineHeight: 19 }}>:</Text>
-            <Text style={{ fontSize: 16, lineHeight: 19 }}>00</Text>
+            <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>:</Text>
+            <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>00</Text>
           </Button>
         )}
       </View>

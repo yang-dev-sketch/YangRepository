@@ -38,7 +38,7 @@ export default class FacialRecogScreen extends AppScreen {
                 this.props.navigation.goBack();
               }}
               style={{ alignSelf: 'center', position: 'absolute', top: 60, left: 21 }}>
-              <Text style={{ fontSize: 14, lineHeight: 17, textDecorationLine: 'underline' }}>
+              <Text style={{ fontSize: 14, lineHeight: 17, textDecorationLine: 'underline', color: '#000' }}>
                 הקודם
               </Text>
             </Button>
@@ -46,12 +46,12 @@ export default class FacialRecogScreen extends AppScreen {
               source={require('src/assets/image/ic_mark.png')}
               style={{ width: 73, height: 73 }}
             />
-            <Text style={{ fontSize: 24, lineHeight: 29, letterSpacing: -0.17, marginTop: 14 }}>
+            <Text style={{ fontSize: 24, lineHeight: 29, letterSpacing: -0.17, marginTop: 14, color: '#000', fontWeight: '600' }}>
               Face ID
             </Text>
           </LinearGradient>
           <Text
-            style={{ fontSize: 16, lineHeight: 22, marginHorizontal: 20, letterSpacing: -0.17 }}>
+            style={{ fontSize: 16, lineHeight: 22, marginHorizontal: 20, letterSpacing: -0.17, color: '#000', fontWeight: '600' }}>
             וחלקים מתוך הספרות הלטינית הקלאסית מאז 45 לפני הספירה. מה שהופך אותו לעתיק מעל 2000 שנה.
             ריצ'רד מקלינטוק, פרופסור לטיני בקולג' של המפדן-סידני בורג'יניה, חיפש את אחת המילים
             המעורפלות ביותר בלטינית - מתוך פסקאות של ודרך ציטוטים של המילה מתוך הספרות הקלאסית, הוא

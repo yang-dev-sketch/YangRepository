@@ -171,6 +171,7 @@ export default class ShopScreen extends React.Component {
                   lineHeight: 22,
                   letterSpacing: 1,
                   color: '#000',
+                  fontWeight: '700'
                 }}>
                 חנות
               </Text>
@@ -201,14 +202,14 @@ export default class ShopScreen extends React.Component {
                     style={{ width: 11.67, height: 13.33 }}
                   />
                 </View>
-                <Text style={{ fontSize: 24, lineHeight: 29 }}>5</Text>
-                <Text numberOfLines={2} style={{ width: '50%' }}>
+                <Text style={{ fontSize: 24, lineHeight: 29, color: '#000', fontWeight: '700' }}>5</Text>
+                <Text numberOfLines={2} style={{ width: '50%', color: '#000' }}>
                   נמכר בחודש
                 </Text>
               </HorizontalLayout>
               <HorizontalLayout style={styles.total_item}>
-                <Text style={{ fontSize: 24, lineHeight: 29, color: '#688EF8' }}>100K</Text>
-                <Text numberOfLines={2} style={{ width: '50%' }}>
+                <Text style={{ fontSize: 24, lineHeight: 29, color: '#688EF8', fontWeight: '700' }}>100K</Text>
+                <Text numberOfLines={2} style={{ width: '50%', color: '#000', fontSize: 14, lineHeight: 17 }}>
                   נמכר
                 </Text>
               </HorizontalLayout>
@@ -230,6 +231,7 @@ export default class ShopScreen extends React.Component {
                     lineHeight: 19.2,
                     color: '#5C9DF2',
                     textDecorationLine: 'underline',
+                    fontWeight: '600'
                   }}>
                   סינון
                 </Text>

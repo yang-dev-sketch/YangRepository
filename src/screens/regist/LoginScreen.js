@@ -86,7 +86,7 @@ export default class LoginScreen extends AppScreen {
                 this.props.navigation.goBack();
               }}
               style={{ alignSelf: 'center', position: 'absolute', top: 60, left: 21 }}>
-              <Text style={{ fontSize: 14, lineHeight: 17, textDecorationLine: 'underline' }}>
+              <Text style={{ fontSize: 14, lineHeight: 17, textDecorationLine: 'underline', color: '#000' }}>
                 הקודם
               </Text>
             </Button>
@@ -133,7 +133,7 @@ export default class LoginScreen extends AppScreen {
             {(this.state.firstPhone === '' && this.state.secondPhone === '' && (
               <>
                 <Button style={{ alignSelf: 'center', marginBottom: 30 }}>
-                  <Text style={{ fontSize: 16, lineHeight: 19, textDecorationLine: 'underline' }}>
+                  <Text style={{ fontSize: 16, lineHeight: 19, textDecorationLine: 'underline', color: '#000', fontWeight: '600' }}>
                     הזדהות ע״י איימיל
                   </Text>
                 </Button>
@@ -158,10 +158,11 @@ export default class LoginScreen extends AppScreen {
                     style={{ alignSelf: 'center', marginBottom: 15 }}>
                     <Text
                       style={{
-                        fontSize: 16,
-                        lineHeight: 19,
+                        fontSize: 18,
+                        lineHeight: 22,
                         textDecorationLine: 'underline',
                         color: '#0D65D9',
+                        fontWeight: '600'
                       }}>
                       הרשמה
                     </Text>

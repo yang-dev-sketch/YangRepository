@@ -38,7 +38,9 @@ class TrackItem extends React.Component {
             )}
           <HorizontalLayout
             style={{ alignItems: 'center', justifyContent: 'flex-end', width: '80%' }}>
-            <Text numberOfLines={2} style={{ fontSize: 16, lineHeight: 22, marginRight: 7 }}>
+            <Text
+              numberOfLines={2}
+              style={{ fontSize: 16, lineHeight: 22, marginRight: 7, color: '#000' }}>
               {data.description}
             </Text>
             {this.props.selectedTrackId !== data.id && (

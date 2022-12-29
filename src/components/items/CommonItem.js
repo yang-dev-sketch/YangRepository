@@ -42,7 +42,7 @@ class CommonItem extends React.Component {
             )}
           </HorizontalLayout>
           <HorizontalLayout style={{ alignItems: 'center' }}>
-            <Text numberOfLines={this.props.numberOfLines} style={{ fontSize: 16, lineHeight: 19 }}>
+            <Text numberOfLines={this.props.numberOfLines} style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>
               {this.props.text}
             </Text>
             {(data.id == this.props.selectId &&

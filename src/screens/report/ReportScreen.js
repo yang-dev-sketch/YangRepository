@@ -85,8 +85,9 @@ export default class ReportScreen extends React.Component {
                   lineHeight: 22,
                   letterSpacing: 1,
                   color: '#000',
+                  fontWeight: '700',
                 }}>
-                הגדרות
+                דוחות
               </Text>
               <Button onPress={() => {}}>
                 <LocalImage
@@ -116,6 +117,7 @@ export default class ReportScreen extends React.Component {
                           lineHeight: 19,
                           color: '#5C9DF2',
                           textDecorationLine: 'underline',
+                          fontWeight: '600',
                         }}>
                         למין
                       </Text>
@@ -146,7 +148,9 @@ export default class ReportScreen extends React.Component {
                   selectedItem.name === 'תאריך מותאם אישית' && this.setState({ customDate: true });
                 }}
               />
-              <Text style={{ fontSize: 16, lineHeight: 19 }}>חברות פעילה</Text>
+              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000', fontWeight: '600' }}>
+                חברות פעילה
+              </Text>
             </HorizontalLayout>
             {this.state.customDate && (
               <CustomCalendar style={{ marginBottom: 10 }} selectedType="single-range" />
@@ -169,14 +173,23 @@ export default class ReportScreen extends React.Component {
                     style={{ width: 11.67, height: 13.33 }}
                   />
                 </LinearGradient>
-                <Text style={{ fontSize: 16, lineHeight: 19, color: '#94CF0A', marginLeft: 10 }}>
+                <Text
+                  style={{
+                    fontSize: 16,
+                    lineHeight: 19,
+                    color: '#94CF0A',
+                    marginLeft: 10,
+                    fontWeight: '600',
+                  }}>
                   21
                 </Text>
               </HorizontalLayout>
               <HorizontalLayout style={{ alignItems: 'center' }}>
-                <Text style={{ fontSize: 16, lineHeight: 19, marginRight: 7 }}>מנויים</Text>
+                <Text style={{ fontSize: 16, lineHeight: 19, marginRight: 7, color: '#000' }}>
+                  מנויים
+                </Text>
                 <View style={[styles.info_num, { backgroundColor: '#95B7EA' }]}>
-                  <Text style={{ fontSize: 18, lineHeight: 22, color: 'white' }}>
+                  <Text style={{ fontSize: 18, lineHeight: 22, color: 'white', fontWeight: '600' }}>
                     {this.state.active_subscribers}
                   </Text>
                 </View>
@@ -200,29 +213,50 @@ export default class ReportScreen extends React.Component {
                     style={{ width: 11.67, height: 13.33 }}
                   />
                 </LinearGradient>
-                <Text style={{ fontSize: 16, lineHeight: 19, color: '#FF9797', marginLeft: 10 }}>
+                <Text
+                  style={{
+                    fontSize: 16,
+                    lineHeight: 19,
+                    color: '#FF9797',
+                    marginLeft: 10,
+                    fontWeight: '600',
+                  }}>
                   21
                 </Text>
               </HorizontalLayout>
               <HorizontalLayout style={{ alignItems: 'center' }}>
-                <Text style={{ fontSize: 16, lineHeight: 19, marginRight: 7 }}>כרטיסי ניקוב</Text>
+                <Text style={{ fontSize: 16, lineHeight: 19, marginRight: 7, color: '#000' }}>
+                  כרטיסי ניקוב
+                </Text>
                 <View style={[styles.info_num, { backgroundColor: '#0D65D9' }]}>
-                  <Text style={{ fontSize: 18, lineHeight: 22, color: 'white' }}>
+                  <Text style={{ fontSize: 18, lineHeight: 22, color: 'white', fontWeight: '600' }}>
                     {this.state.active_punchCard}
                   </Text>
                 </View>
               </HorizontalLayout>
             </HorizontalLayout>
-            <Text style={{ fontSize: 16, lineHeight: 19, marginBottom: 15 }}>חברות לא פעילה</Text>
+            <Text
+              style={{
+                fontSize: 16,
+                lineHeight: 19,
+                marginBottom: 15,
+                color: '#000',
+                fontWeight: '600',
+              }}>
+              חברות לא פעילה
+            </Text>
             <HorizontalLayout style={{ justifyContent: 'space-between' }}>
               <View style={{ width: (SCREEN_WIDTH - 64) / 2 }}>
                 <HorizontalLayout style={styles.info_item}>
                   <View style={[styles.info_num, { backgroundColor: '#4399FF' }]}>
-                    <Text style={{ fontSize: 18, lineHeight: 22, color: 'white' }}>
+                    <Text
+                      style={{ fontSize: 18, lineHeight: 22, color: 'white', fontWeight: '600' }}>
                       {this.state.inactive_punchCard}
                     </Text>
                   </View>
-                  <Text numberOfLines={2} style={{ fontSize: 16, lineHeight: 19, width: '50%' }}>
+                  <Text
+                    numberOfLines={2}
+                    style={{ fontSize: 16, lineHeight: 19, width: '50%', color: '#000' }}>
                     כרטיסי ניקוב
                   </Text>
                 </HorizontalLayout>
@@ -230,11 +264,12 @@ export default class ReportScreen extends React.Component {
               <View style={{ width: (SCREEN_WIDTH - 64) / 2 }}>
                 <HorizontalLayout style={styles.info_item}>
                   <View style={[styles.info_num, { backgroundColor: '#43C7FF' }]}>
-                    <Text style={{ fontSize: 18, lineHeight: 22, color: 'white' }}>
+                    <Text
+                      style={{ fontSize: 18, lineHeight: 22, color: 'white', fontWeight: '600' }}>
                       {this.state.inactive_subscriber}
                     </Text>
                   </View>
-                  <Text numberOfLines={1} style={{ fontSize: 16, lineHeight: 19 }}>
+                  <Text numberOfLines={1} style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>
                     מנויים
                   </Text>
                 </HorizontalLayout>
@@ -259,8 +294,9 @@ export default class ReportScreen extends React.Component {
                     lineHeight: 19,
                     color: '#5C9DF2',
                     textDecorationLine: 'underline',
+                    fontWeight: '600'
                   }}>
-                  למין
+                  סינון
                 </Text>
                 <LocalImage
                   source={require('src/assets/image/ic_sort.png')}
@@ -291,7 +327,7 @@ export default class ReportScreen extends React.Component {
                 onPress={() => {
                   this.setState({ tabIndex: 0 });
                 }}>
-                <Text style={{ fontSize: 16, lineHeight: 19, color: '#1E6FD9' }}>כרטיסי ניקוב</Text>
+                <Text style={{ fontSize: 16, lineHeight: 19, color: '#1E6FD9', fontWeight: '600' }}>כרטיסי ניקוב</Text>
               </Button>
               <Button
                 style={[
@@ -301,7 +337,7 @@ export default class ReportScreen extends React.Component {
                 onPress={() => {
                   this.setState({ tabIndex: 1 });
                 }}>
-                <Text style={{ fontSize: 16, lineHeight: 19, color: '#1E6FD9' }}>מִנוּי</Text>
+                <Text style={{ fontSize: 16, lineHeight: 19, color: '#1E6FD9', fontWeight: '600' }}>מִנוּי</Text>
               </Button>
             </HorizontalLayout>
             <FlatList
@@ -319,7 +355,7 @@ export default class ReportScreen extends React.Component {
                       style={{ width: 27, height: 27 }}
                     />
                     <HorizontalLayout style={{ alignItems: 'center' }}>
-                      <Text style={{ fontSize: 16, lineHeight: 19, marginRight: 5 }}>
+                      <Text style={{ fontSize: 16, lineHeight: 19, marginRight: 5, fontWeight: '600', color: '#000' }}>
                         {item.name}
                       </Text>
                       <FastImage

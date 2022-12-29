@@ -79,7 +79,7 @@ class TrainTimePopup extends React.Component {
                   />
                 </Button>
               </HorizontalLayout>
-              <Text style={{ fontSize: 18, lineHeight: 22 }}>התראות</Text>
+              <Text style={{ fontSize: 18, lineHeight: 22, fontWeight: '600', color: '#000' }}>התראות</Text>
             </HorizontalLayout>
             <HorizontalLayout
               style={[Styles.input_wrapper, { marginBottom: 45, justifyContent: 'space-between' }]}>

@@ -91,7 +91,7 @@ class EditProductPopup extends React.Component {
                   style={{ width: 31, height: 31 }}
                 />
               </Button>
-              <Text style={{ fontSize: 18, lineHeight: 22 }}>עריכה</Text>
+              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>עריכה</Text>
             </HorizontalLayout>
             <VerticalLayout
               style={{

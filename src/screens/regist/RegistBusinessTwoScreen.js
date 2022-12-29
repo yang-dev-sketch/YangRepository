@@ -109,7 +109,7 @@ export default class RegistBusinessTwoScreen extends AppScreen {
                   />
                 )}
               </Button>
-              <Text style={{ fontSize: 16, lineHeight: 19 }}>לוגו של העסק</Text>
+              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>לוגו של העסק</Text>
             </VerticalLayout>
             <SetValueGroup
               style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#FFF' }]}
@@ -192,7 +192,7 @@ export default class RegistBusinessTwoScreen extends AppScreen {
             />
             <HorizontalLayout
               style={{ alignItems: 'center', justifyContent: 'flex-end', marginBottom: 45 }}>
-              <Text style={{ fontSize: 16, lineHeight: 19 }}>אין ברשותי מקום אימונים קבוע</Text>
+              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>אין ברשותי מקום אימונים קבוע</Text>
               <CheckBox
                 onFillColor="#0D65D9"
                 value={this.state.permanentPlace}

@@ -64,7 +64,7 @@ class BranchPopup extends React.Component {
                   style={{ width: 31, height: 31 }}
                 />
               </Button>
-              <Text style={{ fontSize: 18, lineHeight: 22 }}>הסניפים שלנו</Text>
+              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>הסניפים שלנו</Text>
             </HorizontalLayout>
             <SearchInput
               setSearch={(search) => {
@@ -106,7 +106,7 @@ class BranchPopup extends React.Component {
                     paddingVertical: 15,
                     marginBottom: 15,
                   }}>
-                  <Text style={{ fontSize: 16, lineHeight: 19 }}>הוספת סניף חדש</Text>
+                  <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>הוספת סניף חדש</Text>
                   <LocalImage
                     source={require('src/assets/image/ic_plus_sign.png')}
                     style={{ width: 24, height: 24, marginLeft: 6 }}

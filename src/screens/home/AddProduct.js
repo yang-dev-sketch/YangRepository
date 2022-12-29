@@ -114,6 +114,7 @@ export default class AddProduct extends React.Component {
                   lineHeight: 22,
                   letterSpacing: 1,
                   color: '#000',
+                  fontWeight: '700'
                 }}>
                 חנות
               </Text>
@@ -131,6 +132,8 @@ export default class AddProduct extends React.Component {
                 textAlign: 'right',
                 marginBottom: 15,
                 marginTop: 20,
+                color: '#000',
+                fontWeight: '600'
               }}>
               להוסיף מוצר
             </Text>
@@ -162,7 +165,7 @@ export default class AddProduct extends React.Component {
                   />
                 )}
               </Button>
-              <Text numberOfLines={2} style={{ fontSize: 16, lineHeight: 19 }}>
+              <Text numberOfLines={2} style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>
                 העלאת תמונה ראשית למוצר
               </Text>
             </VerticalLayout>
@@ -247,7 +250,7 @@ export default class AddProduct extends React.Component {
               }}>
               <HorizontalLayout
                 style={{ alignItems: 'center', justifyContent: 'center', marginBottom: 35 }}>
-                <Text style={{ fontSize: 16, lineHeight: 19.2 }}>הוסף מק"ט</Text>
+                <Text style={{ fontSize: 16, lineHeight: 19.2, color: '#000' }}>הוסף מק"ט</Text>
                 <LocalImage
                   source={require('src/assets/image/ic_plus_sign.png')}
                   style={{ width: 24, height: 24, marginLeft: 6 }}

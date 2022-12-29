@@ -49,6 +49,7 @@ export default class PaymentMethodScreen extends React.Component {
                 lineHeight: 22,
                 letterSpacing: 1,
                 color: '#000',
+                fontWeight: '700',
               }}>
               הגדרות
             </Text>
@@ -59,8 +60,24 @@ export default class PaymentMethodScreen extends React.Component {
               />
             </Button>
           </HorizontalLayout>
-          <Text style={{ fontSize: 18, lineHeight: 22, marginBottom: 20 }}>עריכת אזור עסקי</Text>
-          <Text style={{ fontSize: 18, lineHeight: 22, marginBottom: 15 }}>
+          <Text
+            style={{
+              fontSize: 18,
+              lineHeight: 22,
+              marginBottom: 20,
+              color: '#000',
+              fontWeight: '600',
+            }}>
+            עריכת אזור עסקי
+          </Text>
+          <Text
+            style={{
+              fontSize: 18,
+              lineHeight: 22,
+              marginBottom: 15,
+              color: '#000',
+              fontWeight: '600',
+            }}>
             את פרטי אמצעי התשלום
           </Text>
           <PaymentMethodCard />

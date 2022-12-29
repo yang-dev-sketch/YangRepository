@@ -79,7 +79,7 @@ class InvitateTraineePopup extends React.Component {
                   />
                 </Button>
               </HorizontalLayout>
-              <Text style={{ fontSize: 18, lineHeight: 22 }}>מתאמנים באירגון</Text>
+              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>מתאמנים באירגון</Text>
             </HorizontalLayout>
             <SetValueGroup
               style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#F5F5F5' }]}

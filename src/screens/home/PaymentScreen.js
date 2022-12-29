@@ -76,7 +76,7 @@ export default class PaymentScreen extends React.Component {
                 style={{ width: 27.12, height: 27.12 }}
               />
             </Button>
-            <Text style={{ fontSize: 18, lineHeight: 22 }}>תשלומים</Text>
+            <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>תשלומים</Text>
           </HorizontalLayout>
           <SearchInput
             setSearch={(search) => {

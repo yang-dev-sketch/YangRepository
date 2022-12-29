@@ -60,11 +60,21 @@ export default class LeadItem extends React.Component {
         </VerticalLayout>
         <HorizontalLayout>
           <VerticalLayout style={{ justifyContent: 'space-between', alignItems: 'flex-end' }}>
-            <Text>{data.name}</Text>
-            <Text>{data.phone}</Text>
-            <Text>{data.gmail}</Text>
-            <Text>{data.createdAt}נוצר:</Text>
-            <Text>{data.updatedAt}עדכון אחרון:</Text>
+            <Text style={{ fontSize: 14, lineHeight: 17, color: '#000' }}>{data.name}</Text>
+            <Text style={{ fontSize: 14, lineHeight: 17, color: '#000' }}>{data.phone}</Text>
+            <Text style={{ fontSize: 14, lineHeight: 17, color: '#000' }}>{data.gmail}</Text>
+            <HorizontalLayout>
+              <Text style={{ fontSize: 14, lineHeight: 17, color: '#000' }}>{data.createdAt}</Text>
+              <Text style={{ fontSize: 14, lineHeight: 17, color: '#000', fontWeight: '600' }}>
+                נוצר:
+              </Text>
+            </HorizontalLayout>
+            <HorizontalLayout>
+              <Text style={{ fontSize: 14, lineHeight: 17, color: '#000' }}>{data.updatedAt}</Text>
+              <Text style={{ fontSize: 14, lineHeight: 17, color: '#000', fontWeight: '600' }}>
+                עדכון אחרון:
+              </Text>
+            </HorizontalLayout>
           </VerticalLayout>
           <View style={{ width: 29, height: 20, overflow: 'hidden', marginLeft: 6 }}>
             <FastImage

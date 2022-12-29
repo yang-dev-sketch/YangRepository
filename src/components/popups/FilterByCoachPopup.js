@@ -73,7 +73,7 @@ class FilterByCoachPopup extends React.Component {
                 </Button>
               </HorizontalLayout>
               <HorizontalLayout>
-                <Text style={{ fontSize: 18, lineHeight: 22 }}>סינון לפי: מאמנים</Text>
+                <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>סינון לפי: מאמנים</Text>
                 <LocalImage
                   source={require('src/assets/image/ic_sort_black.png')}
                   style={{ width: 24, height: 24 }}

@@ -16,9 +16,9 @@ import ImageCropPicker from 'react-native-image-crop-picker';
 import { CommonInput, DisactiveButton, SetValueGroup } from '../../components/common';
 import DropDownPicker from '../../components/controls/DropDownPicker';
 import CheckBox from '@react-native-community/checkbox';
-import { Styles } from "../../constants";
-import Toast from "react-native-root-toast";
-import ToastContainer from "../../components/controls/ToastContainer";
+import { Styles } from '../../constants';
+import Toast from 'react-native-root-toast';
+import ToastContainer from '../../components/controls/ToastContainer';
 
 @observer
 export default class BusinessScreen extends React.Component {
@@ -78,7 +78,7 @@ export default class BusinessScreen extends React.Component {
               style={{
                 alignItems: 'center',
                 justifyContent: 'space-between',
-                marginBottom: 22.25,
+                marginBottom: 20,
               }}>
               <Button
                 onPress={() => {
@@ -95,6 +95,7 @@ export default class BusinessScreen extends React.Component {
                   lineHeight: 22,
                   letterSpacing: 1,
                   color: '#000',
+                  fontWeight: '700',
                 }}>
                 הגדרות
               </Text>
@@ -105,6 +106,16 @@ export default class BusinessScreen extends React.Component {
                 />
               </Button>
             </HorizontalLayout>
+            <Text
+              style={{
+                fontSize: 18,
+                lineHeight: 22,
+                color: '#000',
+                fontWeight: '600',
+                marginBottom: 15,
+              }}>
+              עריכת אזור עסקי
+            </Text>
             <HorizontalLayout
               style={{ width: '100%', justifyContent: 'space-between', marginBottom: 10 }}>
               <VerticalLayout
@@ -125,7 +136,7 @@ export default class BusinessScreen extends React.Component {
                     style={{ width: 70, height: 70 }}
                   />
                 </Button>
-                <Text style={{ fontSize: 16, lineHeight: 19, marginTop: 10 }}>הוספת סניף חדש</Text>
+                <Text style={{ fontSize: 16, lineHeight: 19, marginTop: 10, color: '#000' }}>הוספת סניף חדש</Text>
               </VerticalLayout>
               <VerticalLayout
                 style={{
@@ -155,7 +166,7 @@ export default class BusinessScreen extends React.Component {
                     />
                   )}
                 </Button>
-                <Text style={{ fontSize: 16, lineHeight: 19, marginTop: 10 }}>לוגו של העסק</Text>
+                <Text style={{ fontSize: 16, lineHeight: 19, marginTop: 10, color: '#000' }}>לוגו של העסק</Text>
               </VerticalLayout>
             </HorizontalLayout>
             <SetValueGroup
@@ -251,7 +262,7 @@ export default class BusinessScreen extends React.Component {
             />
             <HorizontalLayout
               style={{ alignItems: 'center', justifyContent: 'flex-end', marginBottom: 40 }}>
-              <Text style={{ fontSize: 16, lineHeight: 19 }}>אין ברשותי מקום אימונים קבוע</Text>
+              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>אין ברשותי מקום אימונים קבוע</Text>
               <CheckBox
                 onFillColor="#0D65D9"
                 value={this.state.permanentPlace}

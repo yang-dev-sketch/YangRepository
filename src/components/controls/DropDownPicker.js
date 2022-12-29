@@ -69,7 +69,7 @@ export default class DropDownPicker extends React.Component {
                     />
                   )}
                 </HorizontalLayout>
-                <Text style={{ fontSize: 16, lineHeight: 19 }}>{this.props.selectedValue}</Text>
+                <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>{this.props.selectedValue}</Text>
               </HorizontalLayout>
             );
           }}

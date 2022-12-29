@@ -70,7 +70,7 @@ class ReservationAvailabilityPopup extends React.Component {
                   />
                 </Button>
               </HorizontalLayout>
-              <Text style={{ fontSize: 18, lineHeight: 22 }}>סוג מסלול:</Text>
+              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>סוג מסלול:</Text>
             </HorizontalLayout>
             <View
               style={{

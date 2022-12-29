@@ -30,15 +30,15 @@ export default class DateDropDown extends React.Component {
                 alignItems: 'center',
                 justifyContent: 'space-evenly',
               }}>
-              <Text style={{ fontSize: 16, lineHeight: 19 }}>
+              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>
                 {CommonUtils.getFormatedDate(this.state.date, 'DD')}
               </Text>
-              <Text style={{ fontSize: 16, lineHeight: 19 }}>/</Text>
-              <Text style={{ fontSize: 16, lineHeight: 19 }}>
+              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>/</Text>
+              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>
                 {CommonUtils.getFormatedDate(this.state.date, 'MM')}
               </Text>
-              <Text style={{ fontSize: 16, lineHeight: 19 }}>/</Text>
-              <Text style={{ fontSize: 16, lineHeight: 19 }}>
+              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>/</Text>
+              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>
                 {CommonUtils.getFormatedDate(this.state.date, 'YYYY')}
               </Text>
             </HorizontalLayout>

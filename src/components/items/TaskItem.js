@@ -44,8 +44,8 @@ export default class TaskItem extends React.Component {
           />
           <HorizontalLayout>
             <VerticalLayout>
-              <Text>{data.name}</Text>
-              <Text style={{ fontSize: 14, lineHeight: 22, letterSpacing: -0.17 }}>
+              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>{data.name}</Text>
+              <Text style={{ fontSize: 14, lineHeight: 22, letterSpacing: -0.17, color: '#000' }}>
                 {data.date}
               </Text>
             </VerticalLayout>
@@ -65,6 +65,7 @@ export default class TaskItem extends React.Component {
             paddingHorizontal: 15,
             fontSize: 14,
             lineHeight: 16.8,
+            color: '#000',
           }}>
           {data.content}
         </Text>

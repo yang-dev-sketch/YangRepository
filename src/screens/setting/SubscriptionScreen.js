@@ -89,6 +89,7 @@ export default class SubscriptionScreen extends React.Component {
                   lineHeight: 22,
                   letterSpacing: 1,
                   color: '#000',
+                  fontWeight: '700',
                 }}>
                 הגדרות
               </Text>
@@ -99,10 +100,26 @@ export default class SubscriptionScreen extends React.Component {
                 />
               </Button>
             </HorizontalLayout>
-            <Text style={{ fontSize: 18, lineHeight: 22, marginBottom: 20 }}>המנוי שלי</Text>
+            <Text
+              style={{
+                fontSize: 18,
+                lineHeight: 22,
+                marginBottom: 20,
+                color: '#000',
+                fontWeight: '600',
+              }}>
+              המנוי שלי
+            </Text>
             <VerticalLayout style={styles.package_type}>
               <Text style={{ fontSize: 16, lineHeight: 19, marginBottom: 5 }}>סוג החבילה</Text>
-              <Text style={{ fontSize: 16, lineHeight: 19, color: '#0D65D9', marginBottom: 10 }}>
+              <Text
+                style={{
+                  fontSize: 16,
+                  lineHeight: 19,
+                  color: '#0D65D9',
+                  marginBottom: 10,
+                  fontWeight: '600',
+                }}>
                 {this.state.packageType}
               </Text>
               <Text
@@ -116,7 +133,14 @@ export default class SubscriptionScreen extends React.Component {
                 סוג החבילה
               </Text>
               <Text style={{ fontSize: 16, lineHeight: 19, marginBottom: 5 }}>סוג החבילה</Text>
-              <Text style={{ fontSize: 16, lineHeight: 19, color: '#0D65D9', marginBottom: 15 }}>
+              <Text
+                style={{
+                  fontSize: 16,
+                  lineHeight: 19,
+                  color: '#0D65D9',
+                  marginBottom: 15,
+                  fontWeight: '600',
+                }}>
                 {this.state.nextBilling}
               </Text>
               <View
@@ -142,11 +166,11 @@ export default class SubscriptionScreen extends React.Component {
                     source={require('src/assets/image/ic_income_white.png')}
                     style={{ width: 12, height: 10, marginRight: 4 }}
                   />
-                  <Text style={{ fontSize: 16, lineHeight: 19, color: 'white' }}>
+                  <Text style={{ fontSize: 16, lineHeight: 19, color: 'white', fontWeight: '600' }}>
                     {this.state.packageSum}
                   </Text>
                 </Button>
-                <Text style={{ fontSize: 16, lineHeight: 19 }}>סכום:</Text>
+                <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>סכום:</Text>
               </HorizontalLayout>
             </VerticalLayout>
             <Button
@@ -173,7 +197,9 @@ export default class SubscriptionScreen extends React.Component {
                   borderTopRightRadius: 11,
                   paddingRight: 15,
                 }}>
-                <Text style={{ fontSize: 16, lineHeight: 16, color: 'white' }}>תשלומים</Text>
+                <Text style={{ fontSize: 16, lineHeight: 16, color: 'white', fontWeight: '600' }}>
+                  תשלומים
+                </Text>
               </HorizontalLayout>
               <FlatList
                 ref={(ref) => {
@@ -220,10 +246,26 @@ export default class SubscriptionScreen extends React.Component {
                           source={require('src/assets/image/ic_income.png')}
                           style={{ width: 8, height: 7, marginRight: 2 }}
                         />
-                        <Text style={{ fontSize: 16, lineHeight: 19 }}>{item.income}</Text>
+                        <Text
+                          style={{
+                            fontSize: 16,
+                            lineHeight: 19,
+                            fontWeight: '600',
+                            color: '#000',
+                          }}>
+                          {item.income}
+                        </Text>
                       </HorizontalLayout>
                       <VerticalLayout>
-                        <Text style={{ fontSize: 16, lineHeight: 19 }}>{item.name}</Text>
+                        <Text
+                          style={{
+                            fontSize: 16,
+                            lineHeight: 19,
+                            color: '#000',
+                            fontWeight: '600',
+                          }}>
+                          {item.name}
+                        </Text>
                         <Text style={{ fontSize: 14, lineHeight: 22, color: '#979797' }}>
                           {item.date}
                         </Text>
@@ -298,7 +340,7 @@ export default class SubscriptionScreen extends React.Component {
                 this.onUpgrade();
               }}
             />
-            <DisactiveButto
+            <DisactiveButton
               text="הקודם"
               action={() => {
                 this.onPrevious();

@@ -16,6 +16,10 @@ import { ActiveButton, CommonInput, SetValueGroup } from '../../components/commo
 export default class FaceApprovalScreen extends AppScreen {
   constructor(props) {
     super(props);
+    this.state = {
+      firstPhone: null,
+      secondPhone: null,
+    };
   }
 
   render() {
@@ -38,7 +42,7 @@ export default class FaceApprovalScreen extends AppScreen {
                 this.props.navigation.goBack();
               }}
               style={{ alignSelf: 'center', position: 'absolute', top: 60, left: 21 }}>
-              <Text style={{ fontSize: 14, lineHeight: 17, textDecorationLine: 'underline' }}>
+              <Text style={{ fontSize: 14, lineHeight: 17, textDecorationLine: 'underline', color: '#000' }}>
                 הקודם
               </Text>
             </Button>
@@ -46,7 +50,7 @@ export default class FaceApprovalScreen extends AppScreen {
               source={require('src/assets/image/ic_gyme.png')}
               style={{ width: 152.26, height: 152.26 }}
             />
-            <Text style={{ fontSize: 24, lineHeight: 32, position: 'absolute', bottom: 13 }}>
+            <Text style={{ fontSize: 24, lineHeight: 32, position: 'absolute', bottom: 13, color: '#000', fontWeight: '700' }}>
               אישור השימוש בזיהוי פנים
             </Text>
           </LinearGradient>
@@ -92,6 +96,8 @@ export default class FaceApprovalScreen extends AppScreen {
                   lineHeight: 19,
                   textDecorationLine: 'underline',
                   marginBottom: 180,
+                  color: '#000',
+                  fontWeight: '600'
                 }}>
                 הזדהות ע״י איימיל
               </Text>

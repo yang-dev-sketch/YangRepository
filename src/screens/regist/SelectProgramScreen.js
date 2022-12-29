@@ -54,7 +54,7 @@ export default class SelectProgramScreen extends AppScreen {
               source={require('src/assets/image/ic_gyme_blue.png')}
               style={{ width: 48, height: 48, position: 'absolute', top: 226 }}
             />
-            <Text style={{ fontSize: 18, lineHeight: 22, position: 'absolute', top: 284 }}>
+            <Text style={{ fontSize: 18, lineHeight: 22, position: 'absolute', top: 284, color: '#000', fontWeight: '600' }}>
               בחרו את התכנית המתאימה לכם
             </Text>
           </LinearGradient>
@@ -83,7 +83,7 @@ export default class SelectProgramScreen extends AppScreen {
                   alignItems: 'center',
                   justifyContent: 'space-around',
                 }}>
-                <Text style={{ fontSize: 16, lineHeight: 19, color: 'white', marginTop: 6 }}>
+                <Text style={{ fontSize: 16, lineHeight: 19, color: 'white', marginTop: 6, fontWeight: '600' }}>
                   מנוי חודשי
                 </Text>
                 <HorizontalLayout style={{ alignItems: 'center' }}>
@@ -92,7 +92,7 @@ export default class SelectProgramScreen extends AppScreen {
                     style={{ width: 18, height: 15, marginRight: 5 }}
                     resizeMode="stretch"
                   />
-                  <Text style={{ fontSize: 40, lineHeight: 48, color: 'white' }}>
+                  <Text style={{ fontSize: 40, lineHeight: 48, color: 'white', fontWeight: '700' }}>
                     {this.state.monthlyPrice}
                   </Text>
                 </HorizontalLayout>
@@ -108,14 +108,14 @@ export default class SelectProgramScreen extends AppScreen {
                 }}>
                 <VerticalLayout style={{ width: '30%' }}>
                   <HorizontalLayout style={{ alignItems: 'center', marginBottom: 10 }}>
-                    <Text numberOfLines={2}>טקסט טקסט טקסט טקסט</Text>
+                    <Text numberOfLines={2} style={{fontSize: 14, lineHeight: 17, color: '#000'}}>טקסט טקסט טקסט טקסט</Text>
                     <LocalImage
                       source={require('src/assets/image/ic_check_on.png')}
                       style={{ width: 22, height: 22, marginLeft: 6 }}
                     />
                   </HorizontalLayout>
                   <HorizontalLayout style={{ alignItems: 'center' }}>
-                    <Text numberOfLines={2}>טקסט טקסט טקסט טקסט</Text>
+                    <Text numberOfLines={2} style={{fontSize: 14, lineHeight: 17, color: '#000'}}>טקסט טקסט טקסט טקסט</Text>
                     <LocalImage
                       source={require('src/assets/image/ic_check_on.png')}
                       style={{ width: 22, height: 22, marginLeft: 6 }}
@@ -131,14 +131,14 @@ export default class SelectProgramScreen extends AppScreen {
                   }}></View>
                 <VerticalLayout style={{ width: '30%' }}>
                   <HorizontalLayout style={{ alignItems: 'center', marginBottom: 10 }}>
-                    <Text numberOfLines={2}>טקסט טקסט טקסט טקסט</Text>
+                    <Text numberOfLines={2} style={{fontSize: 14, lineHeight: 17, color: '#000'}}>טקסט טקסט טקסט טקסט</Text>
                     <LocalImage
                       source={require('src/assets/image/ic_check_on.png')}
                       style={{ width: 22, height: 22, marginLeft: 6 }}
                     />
                   </HorizontalLayout>
                   <HorizontalLayout style={{ alignItems: 'center' }}>
-                    <Text numberOfLines={2}>טקסט טקסט טקסט טקסט</Text>
+                    <Text numberOfLines={2} style={{fontSize: 14, lineHeight: 17, color: '#000'}}>טקסט טקסט טקסט טקסט</Text>
                     <LocalImage
                       source={require('src/assets/image/ic_check_on.png')}
                       style={{ width: 22, height: 22, marginLeft: 6 }}
@@ -158,7 +158,7 @@ export default class SelectProgramScreen extends AppScreen {
                 backgroundColor: '#94BDF2',
                 alignSelf: 'center',
               }}>
-              <Text style={{ fontSize: 14, lineHeight: 17, color: 'white' }}>המשתלם ביותר</Text>
+              <Text style={{ fontSize: 14, lineHeight: 17, color: 'white', fontWeight: '600' }}>המשתלם ביותר</Text>
             </View>
             <Button
               onPress={() => {
@@ -184,7 +184,7 @@ export default class SelectProgramScreen extends AppScreen {
                   alignItems: 'center',
                   justifyContent: 'space-around',
                 }}>
-                <Text style={{ fontSize: 16, lineHeight: 19, color: 'white', marginTop: 6 }}>
+                <Text style={{ fontSize: 16, lineHeight: 19, color: 'white', marginTop: 6, fontWeight: '600' }}>
                   מנוי חודשי
                 </Text>
                 <HorizontalLayout style={{ alignItems: 'center' }}>
@@ -193,7 +193,7 @@ export default class SelectProgramScreen extends AppScreen {
                     style={{ width: 18, height: 15, marginRight: 5 }}
                     resizeMode="stretch"
                   />
-                  <Text style={{ fontSize: 40, lineHeight: 48, color: 'white' }}>
+                  <Text style={{ fontSize: 40, lineHeight: 48, color: 'white', fontWeight: '700' }}>
                     {this.state.profitablePrice}
                   </Text>
                 </HorizontalLayout>
@@ -209,14 +209,14 @@ export default class SelectProgramScreen extends AppScreen {
                 }}>
                 <VerticalLayout style={{ width: '30%' }}>
                   <HorizontalLayout style={{ alignItems: 'center', marginBottom: 10 }}>
-                    <Text numberOfLines={2}>טקסט טקסט טקסט טקסט</Text>
+                    <Text numberOfLines={2} style={{fontSize: 14, lineHeight: 17, color: '#000'}}>טקסט טקסט טקסט טקסט</Text>
                     <LocalImage
                       source={require('src/assets/image/ic_check_on.png')}
                       style={{ width: 22, height: 22, marginLeft: 6 }}
                     />
                   </HorizontalLayout>
                   <HorizontalLayout style={{ alignItems: 'center' }}>
-                    <Text numberOfLines={2}>טקסט טקסט טקסט טקסט</Text>
+                    <Text numberOfLines={2} style={{fontSize: 14, lineHeight: 17, color: '#000'}}>טקסט טקסט טקסט טקסט</Text>
                     <LocalImage
                       source={require('src/assets/image/ic_check_on.png')}
                       style={{ width: 22, height: 22, marginLeft: 6 }}
@@ -232,14 +232,14 @@ export default class SelectProgramScreen extends AppScreen {
                   }}></View>
                 <VerticalLayout style={{ width: '30%' }}>
                   <HorizontalLayout style={{ alignItems: 'center', marginBottom: 10 }}>
-                    <Text numberOfLines={2}>טקסט טקסט טקסט טקסט</Text>
+                    <Text numberOfLines={2} style={{fontSize: 14, lineHeight: 17, color: '#000'}}>טקסט טקסט טקסט טקסט</Text>
                     <LocalImage
                       source={require('src/assets/image/ic_check_on.png')}
                       style={{ width: 22, height: 22, marginLeft: 6 }}
                     />
                   </HorizontalLayout>
                   <HorizontalLayout style={{ alignItems: 'center' }}>
-                    <Text numberOfLines={2}>טקסט טקסט טקסט טקסט</Text>
+                    <Text numberOfLines={2} style={{fontSize: 14, lineHeight: 17, color: '#000'}}>טקסט טקסט טקסט טקסט</Text>
                     <LocalImage
                       source={require('src/assets/image/ic_check_on.png')}
                       style={{ width: 22, height: 22, marginLeft: 6 }}
@@ -254,6 +254,7 @@ export default class SelectProgramScreen extends AppScreen {
                   color: '#1E6FD9',
                   alignSelf: 'center',
                   marginBottom: 15,
+                  fontWeight: '600'
                 }}>
                 שבוע נסיון חינם
               </Text>
@@ -279,6 +280,7 @@ export default class SelectProgramScreen extends AppScreen {
                     lineHeight: 17,
                     textDecorationLine: 'underline',
                     opacity: 0.7,
+                    color: '#000'
                   }}>
                   מדיניות פרטיות
                 </Text>
@@ -290,6 +292,7 @@ export default class SelectProgramScreen extends AppScreen {
                     lineHeight: 17,
                     textDecorationLine: 'underline',
                     opacity: 0.7,
+                    color: '#000'
                   }}>
                   תנאי שימוש
                 </Text>

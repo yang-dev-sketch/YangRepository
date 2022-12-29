@@ -91,7 +91,7 @@ class AddTraineeRolePopup extends React.Component {
                   />
                 </Button>
               </HorizontalLayout>
-              <Text style={{ fontSize: 18, lineHeight: 22 }}>להזמין חדש</Text>
+              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>להזמין חדש</Text>
             </HorizontalLayout>
             <ScrollView showsVerticalScrollIndicator={false}>
               <SetValueGroup

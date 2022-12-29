@@ -38,7 +38,7 @@ class PaymentItem extends React.Component {
           />
         </HorizontalLayout>
         <VerticalLayout>
-          <Text style={{ fontSize: 16, lineHeight: 19 }}>{data.method}</Text>
+          <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>{data.method}</Text>
           <Text style={{ fontSize: 14, lineHeight: 22, color: '#979797' }}>
             {CommonUtils.getTrainTypeDate(data.date)}
           </Text>

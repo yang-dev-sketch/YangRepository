@@ -146,6 +146,7 @@ export default class CreateWorkout extends React.Component {
                           lineHeight: 22,
                           color: '#5C9DF2',
                           textDecorationLine: 'underline',
+                          fontWeight: '600'
                         }}>
                         סניף:{this.state.selectedBranch}
                       </Text>
@@ -164,6 +165,8 @@ export default class CreateWorkout extends React.Component {
                 style={{
                   fontSize: 18,
                   lineHeight: 22,
+                  color: '#000',
+                  fontWeight: '600'
                 }}>
                 יצירת אימון
               </Text>
@@ -249,10 +252,10 @@ export default class CreateWorkout extends React.Component {
                   style={{ width: 15.93, height: 15.93 }}
                 />
               </Button>
-              <Text>עריכת המשתתפים</Text>
+              <Text style={{fontSize: 16, lineHeight: 19, color: '#000'}}>עריכת המשתתפים</Text>
             </HorizontalLayout>
             <HorizontalLayout style={{ alignItems: 'center', justifyContent: 'flex-end' }}>
-              <Text style={{ fontSize: 16, lineHeight: 19 }}>יצירת אותו אימון</Text>
+              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>יצירת אותו אימון</Text>
               <CheckBox
                 style={{ marginRight: -8 }}
                 onFillColor="#0D65D9"
@@ -264,7 +267,7 @@ export default class CreateWorkout extends React.Component {
             </HorizontalLayout>
             <HorizontalLayout
               style={{ alignItems: 'center', justifyContent: 'flex-end', marginBottom: 45 }}>
-              <Text style={{ fontSize: 16, lineHeight: 19 }}>אימון שקוף</Text>
+              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>אימון שקוף</Text>
               <CheckBox
                 style={{ marginRight: -8 }}
                 onFillColor="#0D65D9"

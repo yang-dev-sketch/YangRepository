@@ -36,6 +36,8 @@ export default class SplashScreen extends AppScreen {
             position: 'absolute',
             top: 465,
             textAlign: 'center',
+            color: '#000',
+            fontWeight: '600'
           }}>
           נרשמת בהצלחה, אנו שמחים לראות אותך
         </Text>

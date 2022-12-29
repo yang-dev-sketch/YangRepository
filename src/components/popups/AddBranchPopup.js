@@ -123,7 +123,7 @@ class AddBranchPopup extends React.Component {
                   />
                 </Button>
               </HorizontalLayout>
-              <Text style={{ fontSize: 18, lineHeight: 22 }}>הסניפים שלנו</Text>
+              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>הסניפים שלנו</Text>
             </HorizontalLayout>
             <ScrollView style={{ paddingHorizontal: 20 }}>
               <Text style={{ fontSize: 18, lineHeight: 22, textAlign: 'right', marginBottom: 15 }}>

@@ -15,7 +15,6 @@ export default class LocalImage extends React.Component {
         source={this.props.source}
         style={this.props.style}
         onPress={() => {
-          console.log('dsfdsf')
           if (this.props.onPress) {
               this.props.onPress();
           }

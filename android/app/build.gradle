@@ -142,8 +142,9 @@ android {
         dexOptions {
             javaMaxHeapSize "4g"
         }
-         missingDimensionStrategy "store", "play"
+        missingDimensionStrategy "store", "play"
         multiDexEnabled true
+        manifestPlaceholders = [auth0Domain: "dev-i6z3p1otvpnqp7mo.us.auth0.com", auth0Scheme: "${applicationId}"]
     }
     splits {
         abi {

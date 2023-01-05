@@ -14,17 +14,19 @@ import { setJSExceptionHandler, setNativeExceptionHandler } from 'react-native-e
 import { RootSiblingParent } from 'react-native-root-siblings';
 import Toast from 'react-native-root-toast';
 import { Colors, Langs } from './src/constants';
-import { IS_OFFLINE_MODE, SHARE_TYPE } from './src/constants/Constants';
+import {
+  IS_OFFLINE_MODE,
+  SHARE_TYPE,
+  AUTH0_DOMAIN,
+  AUTH0_CLIENT_ID,
+} from './src/constants/Constants';
 import GlobalState from './src/mobx/GlobalState';
 import MyInfo from './src/mobx/MyInfo';
 import AppNavigator from './src/navigation/AppNavigator';
 import NavigationService from './src/navigation/NavigationService';
-
-const reporter = (error) => {
-  // Logic for reporting to devs
-  // Example : Log issues to github issues using github apis.
-  console.log(error); // sample
-};
+import SInfo from 'react-native-sensitive-info';
+import Auth0 from 'react-native-auth0';
+import jwtDecode from 'jwt-decode';
 
 const errorHandler = (e, isFatal) => {
   if (isFatal) {
@@ -48,7 +50,7 @@ const errorHandler = (e, isFatal) => {
   }
 };
 
-const APP_QUIT_ROUTES = ['Splash', 'Usage'];
+const APP_QUIT_ROUTES = ['Splash'];
 
 setJSExceptionHandler(errorHandler);
 
@@ -70,22 +72,65 @@ class App extends React.Component {
     this.state = {
       loadedMetaData: false,
       introTimeOver: false,
+      loading: true,
+      loggedIn: null,
+      userData: null,
     };
-
     LogBox.ignoreAllLogs(true);
+
+    this.auth0 = new Auth0({
+      domain: AUTH0_DOMAIN,
+      clientId: AUTH0_CLIENT_ID,
+    });
   }
+
+  login = async () => {
+    try {
+      const credentials = await this.auth0.webAuth.authorize({
+        scope: 'openid email profile',
+      });
+      console.log('credentials', credentials);
+      await SInfo.setItem('idToken', credentials.idToken, {});
+      const user_data = await getUserData(credentials.idToken);
+      this.setState({ loggedIn: true, userData: user_data });
+    } catch (err) {
+      console.log(err)
+      alert('Error logging in');
+    }
+  };
+
+  logout = async () => {
+    try {
+      await this.auth0.webAuth.clearSession({});
+      await SInfo.deleteItem('idToken', {});
+      this.setState({ loggedIn: false, userData: user_data });
+    } catch (err) {
+      alert('Error logging in');
+    }
+  };
+
+  getUserData = async (id) => {
+    const idToken = id ? id : await SInfo.getItem('idToken', {});
+    const { name, picture, exp } = jwtDecode(idToken);
+
+    if (exp < Date.now() / 1000) {
+      throw new Error('ID token expired!');
+    }
+
+    return {
+      name,
+      picture,
+    };
+  };
 
   componentDidMount() {
     if (!GlobalState.applicationCreated) {
       GlobalState.applicationCreated = true;
-
-      if (!IS_OFFLINE_MODE) {
-        this.checkPermission();
-        this.createNotificationListeners();
-      }
     }
 
     BackHandler.addEventListener('hardwareBackPress', this.handleBackPress);
+
+    // this.login();
   }
 
   handleBackPress = () => {
@@ -115,74 +160,35 @@ class App extends React.Component {
     return true;
   };
 
-  componentWillUnmount() {
-    if (!IS_OFFLINE_MODE) {
-      if (this.unsubscribeMessaging) {
-        this.unsubscribeMessaging();
-      }
-    }
-  }
-
-  async getToken() {
-    MyInfo.fcm_token = await firebase.messaging().getToken();
-  }
-
-  async checkPermission() {
-    const enabled = await firebase.messaging().hasPermission();
-    if (enabled > 0) {
-      this.getToken();
-    } else {
-      this.requestPermission();
-    }
-  }
-
-  async requestPermission() {
-    try {
-      await firebase.messaging().requestPermission();
-      this.getToken();
-    } catch (error) {
-      console.log('permission rejected');
-    }
-  }
-
-  async createNotificationListeners() {
-    this.unsubscribeMessaging = firebase.messaging().onMessage((message) => {
-      console.log('FCM Message Data:', message.data);
-
-      const type = Number(message.data.type);
-      if (type == 0) {
-        // TODO: do sth
-      }
-    });
-  }
+  // async getToken() {
+  //   MyInfo.fcm_token = await firebase.messaging().getToken();
+  // }
 
   render() {
     return (
       <RootSiblingParent>
-        <View style={{ width: '100%', height: '100%' }}>
-          <AppNavigator
-            ref={(navigatorRef) => {
-              NavigationService.setTopLevelNavigator(navigatorRef);
-            }}
-          />
-          {GlobalState.isLoading && (
-            <View
-              style={{
-                position: 'absolute',
-                width: '100%',
-                height: '100%',
-                justifyContent: 'center',
-                alignItems: 'center',
-                backgroundColor: 'transparent',
-              }}>
-              <ActivityIndicator
-                style={{ backgroundColor: 'transparent' }}
-                size="large"
-                color={Colors.primary}
-              />
-            </View>
-          )}
-        </View>
+        <AppNavigator
+          ref={(navigatorRef) => {
+            NavigationService.setTopLevelNavigator(navigatorRef);
+          }}
+        />
+        {GlobalState.isLoading && (
+          <View
+            style={{
+              position: 'absolute',
+              width: '100%',
+              height: '100%',
+              justifyContent: 'center',
+              alignItems: 'center',
+              backgroundColor: 'transparent',
+            }}>
+            <ActivityIndicator
+              style={{ backgroundColor: 'transparent' }}
+              size="large"
+              color={Colors.primary}
+            />
+          </View>
+        )}
       </RootSiblingParent>
     );
   }

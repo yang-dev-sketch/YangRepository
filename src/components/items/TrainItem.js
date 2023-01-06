@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, StyleSheet } from 'react-native';
 import { Button, HorizontalLayout, LocalImage } from '../controls';
+import { CommonUtils } from '../../utils';
 
 class TrainItem extends React.Component {
   constructor(props) {
@@ -37,90 +38,17 @@ class TrainItem extends React.Component {
             <Text numberOfLines={1} style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>
               {data.name}
             </Text>
-            {(data.id == this.props.selectTrainId && data.name === 'הכל' && (
+            {(data.id == this.props.selectTrainId && (
               <LocalImage
-                source={require('src/assets/image/ic_train_round_on.png')}
+                source={CommonUtils.getTrainImage(data.type)}
                 style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 7 }}
               />
-            )) ||
-              (data.name === 'אימון קבוצתי' && (
-                <LocalImage
-                  source={require('src/assets/image/ic_man_round_off.png')}
-                  style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 7 }}
-                />
-              )) ||
-              (data.name === 'איגרוף' && (
-                <LocalImage
-                  source={require('src/assets/image/ic_boxing_round_off.png')}
-                  style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 7 }}
-                />
-              )) ||
-              (data.name === 'זומבה' && (
-                <LocalImage
-                  source={require('src/assets/image/ic_zumba_round_off.png')}
-                  style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 7 }}
-                />
-              )) ||
-              (data.name === 'יוגה' && (
-                <LocalImage
-                  source={require('src/assets/image/ic_yoga_round_off.png')}
-                  style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 7 }}
-                />
-              )) ||
-              (data.name === 'פונקציונאלי' && (
-                <LocalImage
-                  source={require('src/assets/image/ic_function_round_off.png')}
-                  style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 7 }}
-                />
-              )) ||
-              (data.name === 'כדורגל' && (
-                <LocalImage
-                  source={require('src/assets/image/ic_football_round_off.png')}
-                  style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 7 }}
-                />
-              )) ||
-              (data.name === 'הכל' && (
-                <LocalImage
-                  source={require('src/assets/image/ic_train_round_on.png')}
-                  style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 7 }}
-                />
-              )) ||
-              (data.name === 1 && (
-                <LocalImage
-                  source={require('src/assets/image/ic_man_round_off.png')}
-                  style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 7 }}
-                />
-              )) ||
-              (data.name === 'איגרוף' && (
-                <LocalImage
-                  source={require('src/assets/image/ic_boxing_round_off.png')}
-                  style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 7 }}
-                />
-              )) ||
-              (data.name === 'זומבה' && (
-                <LocalImage
-                  source={require('src/assets/image/ic_zumba_round_off.png')}
-                  style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 7 }}
-                />
-              )) ||
-              (data.name === 'הכל' && (
-                <LocalImage
-                  source={require('src/assets/image/ic_yoga_round_off.png')}
-                  style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 7 }}
-                />
-              )) ||
-              (data.name === 'הכל' && (
-                <LocalImage
-                  source={require('src/assets/image/ic_function_round_off.png')}
-                  style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 7 }}
-                />
-              )) ||
-              (data.name === 'כדורגל' && (
-                <LocalImage
-                  source={require('src/assets/image/ic_football_round_off.png')}
-                  style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 7 }}
-                />
-              ))}
+            )) || (
+              <LocalImage
+                source={CommonUtils.getTrainImageOff(data.type)}
+                style={{ width: 45, height: 45, borderRadius: 22.5, marginLeft: 7 }}
+              />
+            )}
           </HorizontalLayout>
         </HorizontalLayout>
       </Button>

@@ -9,16 +9,15 @@ import { ActiveButton, DisactiveButton } from '../common';
 import { ScrollView } from 'react-navigation';
 import { API, API_RES_CODE, SCREEN_HEIGHT, SCREEN_WIDTH } from '../../constants/Constants';
 import DatePicker from 'react-native-date-picker';
+import TimePicker from '../controls/TimePicker';
 
 @observer
 class HoursLimitPopup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      hourList: [
-        { id: 1, startTime: '08:00', endTime: '09:00' },
-        { id: 2, startTime: '10:00', endTime: '11:00' },
-      ],
+      hourList: [{ id: 1, startTime: '08', endTime: '09' }],
+      scrollEnabled: true,
     };
   }
 
@@ -69,7 +68,9 @@ class HoursLimitPopup extends React.Component {
                   />
                 </Button>
               </HorizontalLayout>
-              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>סוג מסלול:</Text>
+              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>
+                סוג מסלול:
+              </Text>
             </HorizontalLayout>
             <View
               style={{
@@ -78,10 +79,14 @@ class HoursLimitPopup extends React.Component {
                 borderBottomColor: '#F2F2F2',
                 marginBottom: 20,
               }}>
-              <Text style={{ fontSize: 16, lineHeight: 19.2 }}>תכונות ייחודיות</Text>
+              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000', fontWeight: '600' }}>
+                תכונות ייחודיות
+              </Text>
             </View>
-            <ScrollView>
-              <Text style={{ fontSize: 16, lineHeight: 19.2, marginBottom: 15 }}>הגבלת שעות</Text>
+            <ScrollView scrollEnabled={this.state.scrollEnabled}>
+              <Text style={{ fontSize: 16, lineHeight: 19.2, marginBottom: 15, color: '#000' }}>
+                הגבלת שעות
+              </Text>
               <FlatList
                 ref={(ref) => {
                   this._flContent = ref;
@@ -95,7 +100,7 @@ class HoursLimitPopup extends React.Component {
                       style={{ alignItems: 'center', justifyContent: 'space-between' }}>
                       <VerticalLayout
                         style={{
-                          width: SCREEN_WIDTH - 72,
+                          width: SCREEN_WIDTH - 70,
                           borderRadius: 11,
                           padding: 10,
                           backgroundColor: '#F5F5F5',
@@ -110,62 +115,54 @@ class HoursLimitPopup extends React.Component {
                           }}>
                           זמן פתיחת רישום
                         </Text>
-                        <HorizontalLayout
-                          style={{
-                            width: '100%',
-                            backgroundColor: 'white',
-                            borderRadius: 43,
-                            alignItems: 'center',
-                            justifyContent: 'space-evenly',
-                            paddingVertical: 10,
-                            marginBottom: 10,
+                        <View
+                          onTouchStart={() => {
+                            this.setState({ scrollEnabled: false });
+                          }}
+                          onTouchEnd={() => {
+                            this.setState({ scrollEnabled: true });
                           }}>
-                          <Text>08</Text>
-                          <Text>:</Text>
-                          <Text>00</Text>
-                        </HorizontalLayout>
+                          <TimePicker
+                            selectedValue={item.startTime}
+                            onValueChange={(value) => {
+                              this.setState({ startTime: value, scrollEnabled: true });
+                            }}
+                          />
+                        </View>
                         <Text
                           style={{
                             fontSize: 16,
                             lineHeight: 19,
                             color: '#6F6F6F',
                             marginBottom: 6,
+                            marginTop: 10,
                           }}>
                           זמן סגירת רישום
                         </Text>
-                        <HorizontalLayout
-                          style={{
-                            width: '100%',
-                            backgroundColor: 'white',
-                            borderRadius: 43,
-                            alignItems: 'center',
-                            justifyContent: 'space-evenly',
-                            paddingVertical: 10,
+                        <View
+                          onTouchStart={() => {
+                            this.setState({ scrollEnabled: false });
+                          }}
+                          onTouchEnd={() => {
+                            this.setState({ scrollEnabled: true });
                           }}>
-                          <Text>08</Text>
-                          <Text>:</Text>
-                          <Text>00</Text>
-                        </HorizontalLayout>
-                        {/* <DatePicker
-                          open={false}
-                          style={{
-                            backgroundColor: 'white',
-                          }}
-                          date={new Date()}
-                          mode="time"
-                          onDateChange={(time) => {
-                            this.setState({ time: time });
-                          }}
-                        /> */}
+                          <TimePicker
+                            selectedValue={item.startTime}
+                            onValueChange={(value) => {
+                              this.setState({ startTime: value, scrollEnabled: true });
+                            }}
+                          />
+                        </View>
                       </VerticalLayout>
                       <Button
                         onPress={() => {
                           const hourList = this.state.hourList;
-                          this.setState({
-                            hourList: this.state.hourList.filter((_item) => {
-                              return _item.id != item.id;
-                            }),
-                          });
+                          this.state.hourList.length > 1 &&
+                            this.setState({
+                              hourList: this.state.hourList.filter((_item) => {
+                                return _item.id != item.id;
+                              }),
+                            });
                         }}>
                         <LocalImage
                           source={require('src/assets/image/ic_close_red.png')}
@@ -183,7 +180,7 @@ class HoursLimitPopup extends React.Component {
               <Button
                 onPress={() => {
                   const hourList = this.state.hourList;
-                  hourList.push({ id: hourList.length + 1, startTime: '', endTime: '' });
+                  hourList.push({ id: hourList.length + 1, startTime: '01', endTime: '01' });
                   this.setState({ hourList: hourList });
                 }}
                 style={{
@@ -192,7 +189,9 @@ class HoursLimitPopup extends React.Component {
                   marginBottom: 45,
                   flexDirection: 'row',
                 }}>
-                <Text>הוספת הגבלת זמן נוספת לרישום</Text>
+                <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>
+                  הוספת הגבלת זמן נוספת לרישום
+                </Text>
                 <LocalImage
                   source={require('src/assets/image/ic_plus_sign.png')}
                   style={{ width: 24, height: 24, marginLeft: 6 }}

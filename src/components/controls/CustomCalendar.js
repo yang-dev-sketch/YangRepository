@@ -192,7 +192,7 @@ export default class CustomCalendar extends React.Component {
             backgroundColor: 'white',
             paddingBottom: 15,
             borderRadius: 11,
-            elevation: 1,
+            elevation: 2,
             flexDirection: 'column',
           },
         ]}

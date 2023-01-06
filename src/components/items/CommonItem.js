@@ -29,12 +29,13 @@ class CommonItem extends React.Component {
                 source={require('src/assets/image/ic_check_on.png')}
                 style={{ width: 22, height: 22 }}
               />
-            )) || (
-              <LocalImage
-                source={require('src/assets/image/ic_check_off.png')}
-                style={{ width: 22, height: 22 }}
-              />
-            )}
+            )) ||
+              (this.props.checkOff && (
+                <LocalImage
+                  source={require('src/assets/image/ic_check_off.png')}
+                  style={{ width: 22, height: 22 }}
+                />
+              )) || <View></View>}
             {this.props.leftText != '' && (
               <Text numberOfLines={2} style={{ fontSize: 16, lineHeight: 22, color: '#979797' }}>
                 {this.props.leftText}
@@ -42,7 +43,9 @@ class CommonItem extends React.Component {
             )}
           </HorizontalLayout>
           <HorizontalLayout style={{ alignItems: 'center' }}>
-            <Text numberOfLines={this.props.numberOfLines} style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>
+            <Text
+              numberOfLines={this.props.numberOfLines}
+              style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>
               {this.props.text}
             </Text>
             {(data.id == this.props.selectId &&

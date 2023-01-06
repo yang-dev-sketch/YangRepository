@@ -9,7 +9,7 @@ import { SearchInput } from '../common';
 import { ScrollView } from 'react-navigation';
 import CommonItem from '../items/CommonItem';
 import { CommonUtils } from '../../utils';
-import { SCREEN_WIDTH } from '../../constants/Constants';
+import { SCREEN_HEIGHT, SCREEN_WIDTH } from '../../constants/Constants';
 
 @observer
 class FutureTrainPopup extends React.Component {
@@ -90,13 +90,12 @@ class FutureTrainPopup extends React.Component {
                 />
               </HorizontalLayout>
             </Button>
-            <ScrollView style={{ paddingHorizontal: 20 }}>
+            <ScrollView style={{ paddingHorizontal: 20, paddingBottom: 60 }}>
               <FlatList
                 ref={(ref) => {
                   this._flContent = ref;
                 }}
                 showsVerticalScrollIndicator={false}
-                style={{ marginTop: 15 }}
                 data={this.props.data}
                 numColumns={1}
                 renderItem={({ item, index }) => {
@@ -105,10 +104,10 @@ class FutureTrainPopup extends React.Component {
                       data={item}
                       select={() => {}}
                       text={item.name}
-                      disActiveImage={item.image}
+                      disActiveImage={CommonUtils.getTrainImage(item.type)}
                       fastImage={false}
                       numberOfLines={2}
-                      leftText={CommonUtils.getTrainTypeDate(item.startDate, item.endDate)}
+                      leftText={CommonUtils.getTrainTypeDate(item.date, item.startTime, item.endTime)}
                     />
                   );
                 }}
@@ -150,7 +149,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     width: '100%',
-    height: '95%',
+    maxHeight: SCREEN_HEIGHT * 0.8
   },
 });
 

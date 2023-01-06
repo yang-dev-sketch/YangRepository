@@ -31,10 +31,15 @@ class TrackItem extends React.Component {
                 style={{ width: 28, height: 28 }}
               />
             )) || (
-              <LocalImage
-                source={require('src/assets/image/ic_edit_round.png')}
-                style={{ width: 28, height: 28 }}
-              />
+              <Button
+                onPress={() => {
+                  this.props.editTrack();
+                }}>
+                <LocalImage
+                  source={require('src/assets/image/ic_edit_round.png')}
+                  style={{ width: 28, height: 28 }}
+                />
+              </Button>
             )}
           <HorizontalLayout
             style={{ alignItems: 'center', justifyContent: 'flex-end', width: '80%' }}>

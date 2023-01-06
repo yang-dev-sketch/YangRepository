@@ -3,6 +3,8 @@ import { StyleSheet, Text, View } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import { IMAGE_FOO_URL } from '../../constants/Constants';
 import { LocalImage, HorizontalLayout, VerticalLayout } from '../controls';
+import moment from 'moment';
+import { CommonUtils } from "../../utils";
 
 export default class TaskItem extends React.Component {
   constructor(props) {
@@ -35,18 +37,28 @@ export default class TaskItem extends React.Component {
             borderBottomWidth: 1,
             borderBottomColor: '#F2F2F2',
           }}>
-          <LocalImage
-            source={
-              (data.checked && require('src/assets/image/ic_check_on.png')) ||
-              require('src/assets/image/ic_check_off.png')
-            }
-            style={{ width: 22.92, height: 22.92 }}
-          />
+          <HorizontalLayout>
+            <LocalImage
+              source={
+                (data.checked && require('src/assets/image/ic_check_on.png')) ||
+                require('src/assets/image/ic_check_off.png')
+              }
+              style={{ width: 22.92, height: 22.92, marginRight: 10 }}
+            />
+            {CommonUtils.isBeforeToday(data.date) || (
+              <Text style={{ fontSize: 14, lineHeight: 22, fontWeight: '600', color: '#1E6FD9' }}>
+                {moment(data.date).format('hh:mm')}
+              </Text>
+            )}
+          </HorizontalLayout>
           <HorizontalLayout>
             <VerticalLayout>
-              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>{data.name}</Text>
-              <Text style={{ fontSize: 14, lineHeight: 22, letterSpacing: -0.17, color: '#000' }}>
-                {data.date}
+              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000', fontWeight: '600' }}>
+                {data.name}
+              </Text>
+              <Text
+                style={{ fontSize: 14, lineHeight: 22, letterSpacing: -0.17, color: '#979797' }}>
+                {moment(data.date).format('hh:mm, DD.MM.YYYY')}
               </Text>
             </VerticalLayout>
             <FastImage

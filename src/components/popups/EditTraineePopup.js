@@ -1,12 +1,13 @@
 import { observer } from 'mobx-react';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
 import Modal from 'react-native-modal';
 import { Colors } from '../../constants';
 import { Button, HorizontalLayout, VerticalLayout, LocalImage } from '../controls';
 import SwipeUpDownModal from 'react-native-swipe-modal-up-down';
 import { ActiveButton, DisactiveButton } from '../common';
-import { API } from '../../constants/Constants';
+import { API, IMAGE_FOO_URL, SCREEN_HEIGHT } from '../../constants/Constants';
+import FastImage from 'react-native-fast-image';
 
 @observer
 class EditTraineePopup extends React.Component {
@@ -21,6 +22,8 @@ class EditTraineePopup extends React.Component {
   addTrainee = () => {
     this.props.addTrainee();
   };
+
+  onSave = () => {};
 
   render() {
     return (
@@ -58,7 +61,9 @@ class EditTraineePopup extends React.Component {
                   style={{ width: 31, height: 31 }}
                 />
               </Button>
-              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>עריכת מתאמנים</Text>
+              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>
+                עריכת מתאמנים
+              </Text>
             </HorizontalLayout>
             <Button
               onPress={() => {
@@ -76,19 +81,62 @@ class EditTraineePopup extends React.Component {
                 הוספת מתאמנים
               </Text>
             </Button>
-            <View
-              style={{
-                width: '100%',
-                borderWidth: 1,
-                borderColor: '#94BDF2',
-                borderRadius: 11,
-                paddingTop: 18,
-                paddingBottom: 21,
-                marginBottom: 60,
-                alignItems: 'center',
-              }}>
-              <Text>לא קיימים כרגע מתאמנים באימון</Text>
-            </View>
+            {(this.props.data.length == 0 && (
+              <View
+                style={{
+                  width: '100%',
+                  borderWidth: 1,
+                  borderColor: '#94BDF2',
+                  borderRadius: 11,
+                  paddingTop: 18,
+                  paddingBottom: 21,
+                  marginBottom: 60,
+                  alignItems: 'center',
+                }}>
+                <Text>לא קיימים כרגע מתאמנים באימון</Text>
+              </View>
+            )) || (
+              <FlatList
+                ref={(ref) => {
+                  this._flContent = ref;
+                }}
+                style={{ marginVertical: 20 }}
+                showsVerticalScrollIndicator={false}
+                data={this.props.data}
+                numColumns={1}
+                renderItem={({ item, index }) => {
+                  return (
+                    <HorizontalLayout
+                      style={{
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        justifyContent: 'flex-end',
+                        paddingVertical: 10,
+                        paddingLeft: 21,
+                        paddingRight: 15,
+                        borderWidth: 1,
+                        borderColor: '#D8D8D8',
+                        borderRadius: 8,
+                      }}>
+                      <HorizontalLayout style={{ alignItems: 'center' }}>
+                        <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>
+                          {item.name}
+                        </Text>
+                        <FastImage
+                          source={{ uri: item.avatar ? item.avatar : IMAGE_FOO_URL }}
+                          resizeMode={FastImage.resizeMode.cover}
+                          style={{ width: 45, height: 45, marginLeft: 7 }}
+                        />
+                      </HorizontalLayout>
+                    </HorizontalLayout>
+                  );
+                }}
+                keyExtractor={(item, idx) => idx.toString()}
+                ItemSeparatorComponent={() => {
+                  return <View style={{ height: 15 }} />;
+                }}
+              />
+            )}
             <DisactiveButton
               text="שמירה"
               style={{ marginBottom: 15 }}
@@ -100,7 +148,7 @@ class EditTraineePopup extends React.Component {
               text="שמירה"
               style={{ marginBottom: 15 }}
               action={() => {
-                this.onSave();
+                this.onCancel();
               }}
             />
           </VerticalLayout>
@@ -122,6 +170,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     width: '100%',
+    maxHeight: SCREEN_HEIGHT * 0.8,
   },
 });
 

@@ -7,6 +7,7 @@ import { Button, HorizontalLayout, VerticalLayout, LocalImage } from '../control
 import SwipeUpDownModal from 'react-native-swipe-modal-up-down';
 import { ActiveButton } from '../common';
 import SwitchItem from '../items/SwitchItem';
+import { SCREEN_HEIGHT } from "../../constants/Constants";
 
 @observer
 class AssignRolePopup extends React.Component {
@@ -139,7 +140,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     width: '100%',
-    height: '95%',
+    maxHeight: SCREEN_HEIGHT * 0.8
   },
 });
 

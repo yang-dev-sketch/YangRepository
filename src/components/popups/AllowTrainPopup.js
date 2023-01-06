@@ -10,6 +10,7 @@ import { ScrollView } from 'react-navigation';
 import CommonInput from '../common/CommonInput';
 import { API, API_RES_CODE, SCREEN_HEIGHT, SCREEN_WIDTH } from '../../constants/Constants';
 import DropDownPicker from '../controls/DropDownPicker';
+import CheckBox from '@react-native-community/checkbox';
 
 @observer
 class AllowTrainPopup extends React.Component {
@@ -28,6 +29,7 @@ class AllowTrainPopup extends React.Component {
       rateUpto: 2,
       timesB: [{ name: 'שנה' }, { name: 'שנה' }, { name: 'שנה' }],
       selectedTimesB: 'שנה',
+      allow: false,
     };
   }
 
@@ -78,7 +80,9 @@ class AllowTrainPopup extends React.Component {
                   />
                 </Button>
               </HorizontalLayout>
-              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>סוג מסלול:</Text>
+              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>
+                סוג מסלול:
+              </Text>
             </HorizontalLayout>
             <View
               style={{
@@ -87,12 +91,23 @@ class AllowTrainPopup extends React.Component {
                 borderBottomColor: '#F2F2F2',
                 marginBottom: 20,
               }}>
-              <Text style={{ fontSize: 16, lineHeight: 19.2 }}>תכונות ייחודיות</Text>
+              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000', fontWeight: '600' }}>
+                תכונות ייחודיות
+              </Text>
             </View>
             <ScrollView>
-              <Text style={{ fontSize: 16, lineHeight: 19.2, marginBottom: 15 }}>
-                לאפשר לפי הגדרת התדירות אימונים הבאה
-              </Text>
+              <HorizontalLayout style={{ alignItems: 'center', justifyContent: 'flex-end' }}>
+                <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>
+                  לאפשר לפי הגדרת התדירות אימונים הבאה
+                </Text>
+                <CheckBox
+                  onFillColor="#0D65D9"
+                  value={this.state.allow}
+                  onChange={() => {
+                    this.setState({ allow: !this.state.allow });
+                  }}
+                />
+              </HorizontalLayout>
               <HorizontalLayout style={{ alignItems: 'center', width: '100%', marginBottom: 15 }}>
                 <VerticalLayout
                   style={{
@@ -124,7 +139,9 @@ class AllowTrainPopup extends React.Component {
                       }
                       style={{ width: 17.41, height: 9.17 }}
                     />
-                    <Text>הגבל את תדירות הרישום</Text>
+                    <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>
+                      הגבל את תדירות הרישום
+                    </Text>
                   </Button>
                   {this.state.limitRegist && (
                     <>
@@ -140,6 +157,7 @@ class AllowTrainPopup extends React.Component {
                           textAlign="center"
                           numberOfLines={1}
                           backgroundColor="#F5F5F5"
+                          keyboardType="numeric"
                           value={this.state.upto}
                           onChangeText={(text) => {
                             this.setState({ upto: text });
@@ -234,7 +252,9 @@ class AllowTrainPopup extends React.Component {
                         }
                         style={{ width: 17.41, height: 9.17 }}
                       />
-                      <Text>הגבלת רישום לפי שיעור ותדירות</Text>
+                      <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>
+                        הגבלת רישום לפי שיעור ותדירות
+                      </Text>
                     </Button>
                     {this.state.limitRate && (
                       <>
@@ -270,6 +290,7 @@ class AllowTrainPopup extends React.Component {
                             textAlign="center"
                             numberOfLines={1}
                             backgroundColor="#F5F5F5"
+                            keyboardType="numeric"
                             value={this.state.rateUpto}
                             onChangeText={(text) => {
                               this.setState({ rateUpto: text });

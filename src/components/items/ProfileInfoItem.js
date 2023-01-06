@@ -46,11 +46,12 @@ class ProfileInfoItem extends React.Component {
           )) || (
             <Text
               style={{
-                width: '60%',
+                width: '55%',
                 fontSize: 16,
                 lineHeight: 19,
                 color: '#000',
                 fontWeight: '400',
+                marginRight: 7
               }}
               numberOfLines={this.props.numberOfLines}>
               {this.props.text}

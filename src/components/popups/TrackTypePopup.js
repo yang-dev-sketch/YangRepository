@@ -8,7 +8,7 @@ import SwipeUpDownModal from 'react-native-swipe-modal-up-down';
 import { ActiveButton, DisactiveButton, SearchInput } from '../common';
 import { ScrollView } from 'react-navigation';
 import { SCREEN_HEIGHT } from '../../constants/Constants';
-import TrackItem from "../items/TrackItem";
+import TrackItem from '../items/TrackItem';
 
 @observer
 class TrackTypePopup extends React.Component {
@@ -75,7 +75,9 @@ class TrackTypePopup extends React.Component {
                   style={{ width: 31, height: 31 }}
                 />
               </Button>
-              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>סוג מסלול:</Text>
+              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>
+                סוג מסלול:
+              </Text>
             </HorizontalLayout>
             {(this.state.sortType && (
               <VerticalLayout style={{ marginBottom: 20 }}>
@@ -124,6 +126,9 @@ class TrackTypePopup extends React.Component {
                         this.props.selectTrack(item.id);
                       }}
                       selectedTrackId={this.props.selectedTrackId}
+                      editTrack={() => {
+                        this.props.editTrack();
+                      }}
                     />
                   );
                 }}

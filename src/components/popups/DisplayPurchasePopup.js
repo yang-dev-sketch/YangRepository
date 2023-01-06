@@ -109,10 +109,20 @@ class DisplayPurchasePopup extends React.Component {
                   />
                 </Button>
               </HorizontalLayout>
-              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>סוג מסלול:</Text>
+              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>
+                סוג מסלול:
+              </Text>
             </HorizontalLayout>
             <ScrollView style={{ paddingHorizontal: 20 }}>
-              <Text style={{ fontSize: 18, lineHeight: 22, textAlign: 'right', marginBottom: 15 }}>
+              <Text
+                style={{
+                  fontSize: 16,
+                  lineHeight: 19,
+                  textAlign: 'right',
+                  marginBottom: 15,
+                  color: '#000',
+                  fontWeight: '600',
+                }}>
                 מִנוּי
               </Text>
               <HorizontalLayout
@@ -165,7 +175,7 @@ class DisplayPurchasePopup extends React.Component {
                           width: '33.3%',
                           justifyContent: 'flex-end',
                         }}>
-                        <Text style={{ fontSize: 16, lineHeight: 19.2, marginRight: 10 }}>
+                        <Text style={{ fontSize: 16, lineHeight: 19.2, marginRight: 10, color: '#000' }}>
                           {item.name}
                         </Text>
                         <Button
@@ -194,7 +204,7 @@ class DisplayPurchasePopup extends React.Component {
                   }}
                 />
               </View>
-              <Text style={{ fontSize: 18, lineHeight: 22, textAlign: 'right', marginBottom: 7 }}>
+              <Text style={{ fontSize: 16, lineHeight: 19, textAlign: 'right', marginBottom: 7, marginTop: 10, color: '#000' }}>
                 שעות ספציפיות
               </Text>
               <SetValueGroup

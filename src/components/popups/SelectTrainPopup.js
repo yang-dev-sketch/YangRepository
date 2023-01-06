@@ -15,12 +15,12 @@ class SelectTrainPopup extends React.Component {
     super(props);
     this.state = {
       trainType: [
-        { id: 1, name: 'הכל' },
-        { id: 2, name: 'אימון קבוצתי' },
-        { id: 3, name: 'איגרוף' },
-        { id: 4, name: 'זומבה' },
-        { id: 5, name: 'יוגה' },
-        { id: 6, name: 'פונקציונאלי' },
+        { id: 1, name: 'הכל', type: 'personal' },
+        { id: 2, name: 'אימון קבוצתי', type: 'group' },
+        { id: 3, name: 'איגרוף', type: 'boxing' },
+        { id: 4, name: 'זומבה', type: 'zumba' },
+        { id: 5, name: 'יוגה', type: 'yoga' },
+        { id: 6, name: 'פונקציונאלי', type: 'functional' },
       ],
       selectedTrainId: this.props.selectedTrainId,
     };
@@ -111,7 +111,7 @@ class SelectTrainPopup extends React.Component {
                     data={item}
                     index={index}
                     key={index}
-                    selectTrainId={this.props.selectTrainId}
+                    selectTrainId={this.props.selectedTrainId}
                     selectTrain={() => {
                       this.props.selectTrain(item.id);
                     }}

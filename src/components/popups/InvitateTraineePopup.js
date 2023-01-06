@@ -7,7 +7,7 @@ import { Button, HorizontalLayout, VerticalLayout, LocalImage } from '../control
 import SwipeUpDownModal from 'react-native-swipe-modal-up-down';
 import { ActiveButton, SetValueGroup } from '../common';
 import CommonInput from '../common/CommonInput';
-import { API, API_RES_CODE } from '../../constants/Constants';
+import { API, API_RES_CODE, SCREEN_HEIGHT, SCREEN_WIDTH } from '../../constants/Constants';
 import Toast from "react-native-root-toast";
 import ToastContainer from "../controls/ToastContainer";
 
@@ -160,6 +160,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     width: '100%',
+    maxHeight: SCREEN_HEIGHT * 0.6
   },
 });
 

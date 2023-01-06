@@ -40,9 +40,12 @@ export default class TrainingItem extends React.Component {
           <Text style={{ fontSize: 14, lineHeight: 17, color: 'white' }}>עריכה</Text>
         </VerticalLayout>
         <VerticalLayout style={{ alignItems: 'flex-end', justifyContent: 'space-between' }}>
-          <Text style={{ fontSize: 16, lineHeight: 19, color: 'white', fontWeight: '600' }}>
-            {data.type} | {data.min} דק’
-          </Text>
+          <HorizontalLayout>
+            <Text style={{ fontSize: 16, lineHeight: 19, color: 'white' }}>| {data.min} דק’</Text>
+            <Text style={{ fontSize: 16, lineHeight: 19, color: 'white', fontWeight: '600' }}>
+              {data.type}
+            </Text>
+          </HorizontalLayout>
           <HorizontalLayout style={{ alignItems: 'center' }}>
             <Text style={{ fontSize: 16, lineHeight: 19, color: 'white' }}>{data.timeArea}</Text>
             <LocalImage

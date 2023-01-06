@@ -7,7 +7,7 @@ import { Button, HorizontalLayout, VerticalLayout, LocalImage } from '../control
 import SwipeUpDownModal from 'react-native-swipe-modal-up-down';
 import { ActiveButton, SetValueGroup } from '../common';
 import CommonInput from '../common/CommonInput';
-import { API, API_RES_CODE } from '../../constants/Constants';
+import { API, API_RES_CODE, SCREEN_HEIGHT } from '../../constants/Constants';
 import DropDownPicker from '../controls/DropDownPicker';
 
 @observer
@@ -102,6 +102,7 @@ class ManualBillingPopup extends React.Component {
                   numberOfLines={1}
                   backgroundColor="white"
                   value={this.state.total}
+                  keyboardType="numeric"
                   onChangeText={(text) => {
                     this.setState({ total: text });
                   }}
@@ -143,6 +144,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     width: '100%',
+    maxHeight: SCREEN_HEIGHT * 0.8,
     paddingHorizontal: 20,
   },
 });

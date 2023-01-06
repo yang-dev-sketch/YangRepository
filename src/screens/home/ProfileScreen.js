@@ -3,7 +3,13 @@ import { observer } from 'mobx-react';
 import { FlatList, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
 import FastImage from 'react-native-fast-image';
 import { Styles } from '../../constants';
-import { API, API_RES_CODE, IMAGE_FOO_URL, MAIN_TAB } from '../../constants/Constants';
+import {
+  API,
+  API_RES_CODE,
+  IMAGE_FOO_URL,
+  MAIN_TAB,
+  SCREEN_WIDTH,
+} from '../../constants/Constants';
 import { Button, HorizontalLayout, LocalImage, VerticalLayout } from '../../components/controls';
 import GlobalState from '../../mobx/GlobalState';
 import { requestGet, requestPost } from '../../utils/ApiUtils';
@@ -28,6 +34,7 @@ import ReservationAvailabilityPopup from '../../components/popups/ReservationAva
 import AllowPenaltyPopup from '../../components/popups/AllowPenaltyPopup';
 import AdditionalSettingPopup from '../../components/popups/AdditionalSettingPopup';
 import ProfileInfoItem from '../../components/items/ProfileInfoItem';
+import { CommonUtils } from '../../utils';
 
 @observer
 export default class ProfileScreen extends React.Component {
@@ -37,6 +44,7 @@ export default class ProfileScreen extends React.Component {
       avatar: '',
       showTaskPopup: false,
       taskList: [],
+      futureList: [],
       showAssignRolePopup: false,
       roleList: [
         { id: 1, name: 'מנהל מערכת' },
@@ -44,7 +52,8 @@ export default class ProfileScreen extends React.Component {
         { id: 3, name: 'להפוך משתמש' },
         { id: 4, name: 'להפוך משתמש' },
       ],
-      sex: 1,
+      profileInfo: {},
+      gender: 1,
       search_task: '',
       search_future: '',
       showFutureTrainPopup: false,
@@ -105,7 +114,7 @@ export default class ProfileScreen extends React.Component {
       {
         id: 1,
         name: 'שם המשימה',
-        date: '20222-10-06 22:45:00',
+        date: '2022-10-06 22:45:00',
         content: 'זוהי עובדה מבוססת שדעתו של',
         time: '08:00',
         avatar: '',
@@ -113,7 +122,7 @@ export default class ProfileScreen extends React.Component {
       {
         id: 2,
         name: 'שם המשימה',
-        date: '20222-10-06 22:45:00',
+        date: '2022-10-06 22:45:00',
         content: 'זוהי עובדה מבוססת שדעתו של',
         time: '09:00',
         avatar: '',
@@ -121,7 +130,7 @@ export default class ProfileScreen extends React.Component {
       {
         id: 3,
         name: 'שם המשימה',
-        date: '20222-10-06 22:45:00',
+        date: '2022-10-06 22:45:00',
         content: 'זוהי עובדה מבוססת שדעתו של',
         time: '10:00',
         avatar: '',
@@ -129,7 +138,7 @@ export default class ProfileScreen extends React.Component {
       {
         id: 4,
         name: 'שם המשימה',
-        date: '20222-10-06 22:45:00',
+        date: '2022-10-06 22:45:00',
         content: 'זוהי עובדה מבוססת שדעתו של',
         time: '11:00',
         avatar: '',
@@ -151,6 +160,8 @@ export default class ProfileScreen extends React.Component {
     this.getTaskList();
     this.getTrackList();
     this.getTrain();
+    this.getProfileInfo();
+    this.getFutureTrain();
   };
 
   componentDidMount() {
@@ -204,43 +215,42 @@ export default class ProfileScreen extends React.Component {
       {
         id: 1,
         name: 'הכל',
-        image: require('src/assets/image/ic_train_round_on.png'),
-        startDate: '2022-10-06 09:00:00',
-        endDate: '2022-10-07 10:00:00',
+        type: 'group',
+        date: '2022-10-06',
+        startTime: '09:00:00',
+        endTime: '10:00:00',
       },
       {
         id: 2,
         name: 'אימון קבוצתי',
-        image: require('src/assets/image/ic_man_round_off.png'),
-        startDate: '2022-10-06 09:00:00',
-        endDate: '2022-10-06 10:00:00',
+        type: 'personal',
+        date: '2022-10-06',
+        startTime: '09:00:00',
+        endTime: '10:00:00',
       },
       {
         id: 3,
         name: 'איגרוף',
-        image: require('src/assets/image/ic_boxing_round_off.png'),
-        startDate: '2022-10-06 09:00:00',
+        type: 'zumba',
+        date: '2022-10-06',
+        startTime: '09:00:00',
       },
       {
         id: 4,
         name: 'איגרוף',
-        image: require('src/assets/image/ic_boxing_round_off.png'),
-        startDate: '2022-10-06 09:00:00',
-        endDate: '2022-10-06 10:00:00',
+        type: 'yoga',
+        date: '2022-10-06',
+        startTime: '09:00:00',
+        endTime: '10:00:00',
       },
     ];
     // requestGet(API.Home.get_future_train, {
     //   search: this.state.search_future,
     // }).then(async (result) => {
     //   if (result.code == API_RES_CODE.SUCCESS) {
-    this.setState(
-      {
-        futureList: futureList,
-      },
-      () => {
-        this.setState({ showFutureTrainPopup: true });
-      },
-    );
+    this.setState({
+      futureList: futureList,
+    });
     //   } else {
     //   }
     // });
@@ -258,6 +268,32 @@ export default class ProfileScreen extends React.Component {
       { id: 4, name: 'שם הסוג', image: require('src/assets/image/ic_bottom_gyme_on.png') },
     ];
     this.setState({ trainType: trainType });
+    //   } else {
+    //   }
+    // });
+  };
+
+  getProfileInfo = () => {
+    // requestGet(API.Home.get_profile, {
+    // }).then(async (result) => {
+    //   if (result.code == API_RES_CODE.SUCCESS) {
+    const profileInfo = {
+      id: 1,
+      gender: 1,
+      firstName: 'X',
+      lastName: '',
+      avatar: '',
+      firstPhone: '052',
+      secondPhone: '00000000',
+      mail: 'mastya1106@gmail.com',
+      birthday: '1998-11-06',
+      paidUp: 549.9,
+      active: '2021-09-21',
+      previousTrain: 21,
+      futureTrain: 21,
+      task: 34,
+    };
+    this.setState({ profileInfo: profileInfo });
     //   } else {
     //   }
     // });
@@ -289,7 +325,7 @@ export default class ProfileScreen extends React.Component {
                   color: '#000',
                   fontWeight: '600',
                 }}>
-                הפרופיל של X
+                הפרופיל של {this.state.profileInfo.firstName} {this.state.profileInfo.lastName}
               </Text>
             </HorizontalLayout>
             <HorizontalLayout
@@ -305,7 +341,7 @@ export default class ProfileScreen extends React.Component {
               <HorizontalLayout style={{ alignItems: 'center' }}>
                 <LocalImage
                   source={
-                    this.state.sex === 1
+                    this.state.profileInfo.gender === 1
                       ? require('src/assets/image/ic_male.png')
                       : require('src/assets/image/ic_female.png')
                   }
@@ -323,23 +359,27 @@ export default class ProfileScreen extends React.Component {
                   }}>
                   <View style={{ width: 46, height: 30, overflow: 'hidden' }}>
                     <FastImage
-                      source={{ uri: this.state.avatar ? this.state.avatar : IMAGE_FOO_URL }}
+                      source={{
+                        uri: this.state.profileInfo.avatar
+                          ? this.state.profileInfo.avatar
+                          : IMAGE_FOO_URL,
+                      }}
                       resizeMode={FastImage.resizeMode.cover}
                       style={{ width: 46, height: 46, marginTop: -8 }}
                     />
                   </View>
                 </View>
               </HorizontalLayout>
-              <VerticalLayout>
+              <VerticalLayout style={{ alignItems: 'flex-end' }}>
                 <Text style={{ fontSize: 14, lineHeight: 17, marginBottom: 5, color: '#000' }}>
-                  052 - 000000000
+                  {this.state.profileInfo.firstPhone} - {this.state.profileInfo.secondPhone}
                 </Text>
                 <Text style={{ fontSize: 14, lineHeight: 17, marginBottom: 10, color: '#000' }}>
-                  nastya1106@gmail.com
+                  {this.state.profileInfo.mail}
                 </Text>
                 <HorizontalLayout>
                   <Text style={{ fontSize: 14, lineHeight: 17, color: '#000' }}>
-                    11.06.1998 ,24 שנים
+                    {CommonUtils.getBirthday(this.state.profileInfo.birthday)}
                   </Text>
                   <LocalImage
                     source={require('src/assets/image/ic_birthday.png')}
@@ -429,7 +469,7 @@ export default class ProfileScreen extends React.Component {
                     }}>
                     <Text
                       style={{ fontSize: 16, lineHeight: 19, color: 'white', fontWeight: '600' }}>
-                      21
+                      {this.state.profileInfo.previousTrain}
                     </Text>
                   </View>
                 }
@@ -455,12 +495,12 @@ export default class ProfileScreen extends React.Component {
                     }}>
                     <Text
                       style={{ fontSize: 16, lineHeight: 19, color: 'white', fontWeight: '600' }}>
-                      21
+                      {this.state.futureList.length}
                     </Text>
                   </View>
                 }
                 action={() => {
-                  this.getFutureTrain();
+                  this.setState({ showFutureTrainPopup: true });
                 }}
               />
             </HorizontalLayout>
@@ -515,7 +555,7 @@ export default class ProfileScreen extends React.Component {
                           }}>
                           <LocalImage
                             source={require('src/assets/image/ic_track.png')}
-                            style={{ width: 46, height: 46, marginRight: 15 }}
+                            style={{ width: 35, height: 35, marginRight: 15 }}
                           />
                         </Button>
                       )) || <View></View>}
@@ -555,18 +595,31 @@ export default class ProfileScreen extends React.Component {
               />
             </VerticalLayout>
             <HorizontalLayout style={{ justifyContent: 'space-between', marginBottom: 10 }}>
-              <ProfileInfoItem
-                border={true}
-                leftIcon={require('src/assets/image/ic_round_left.png')}
-                rightIcon={require('src/assets/image/ic_alarm.png')}
-                rightIconStyle={{ width: 16, height: 16 }}
-                text="משימות(34)"
-                height={47}
-                numberOfLines={1}
-                action={() => {
+              <Button
+                onPress={() => {
                   this.setState({ showTaskPopup: true });
-                }}
-              />
+                }}>
+                <HorizontalLayout style={styles.profile_item}>
+                  <LocalImage source={require('src/assets/image/ic_round_left.png')} />
+                  <Text style={{ fontSize: 16, lineHeight: 19, color: '#FC2121' }}>
+                    ({this.state.profileInfo.task})
+                  </Text>
+                  <Text
+                    style={{
+                      fontSize: 16,
+                      lineHeight: 19,
+                      color: '#000',
+                    }}
+                    numberOfLines={1}>
+                    משימות
+                  </Text>
+                  <LocalImage
+                    source={require('src/assets/image/ic_alarm.png')}
+                    style={{ width: 16, height: 16, marginLeft: 7 }}
+                  />
+                  {this.props.rightContent}
+                </HorizontalLayout>
+              </Button>
               <ProfileInfoItem
                 border={true}
                 leftIcon={require('src/assets/image/ic_round_left.png')}
@@ -588,6 +641,7 @@ export default class ProfileScreen extends React.Component {
               <ProfileInfoItem
                 border={true}
                 leftIcon={require('src/assets/image/ic_payment.png')}
+                leftIconStyle={{ width: 23, height: 25 }}
                 text="היסטוריית תשלומים"
                 height={57}
                 numberOfLines={2}
@@ -664,7 +718,8 @@ export default class ProfileScreen extends React.Component {
               this.getTrackList();
             });
           }}
-          addTrack={() => {
+          addTrack={() => {}}
+          editTrack={() => {
             this.setState({ showTrackTypePopup: false, showSelectMembershipPopup: true });
           }}
         />
@@ -800,7 +855,7 @@ export default class ProfileScreen extends React.Component {
           onBack={() => {
             this.setState({
               showRecurringStorePopup: false,
-              showAvailableStorePopup: true,
+              showAdvancedSettingPopup: true,
             });
           }}
           onCancel={() => {
@@ -816,7 +871,7 @@ export default class ProfileScreen extends React.Component {
           onBack={() => {
             this.setState({
               showLimitTrainingTypePopup: false,
-              showRecurringStorePopup: true,
+              showAdvancedSettingPopup: true,
             });
           }}
           onCancel={() => {
@@ -838,7 +893,7 @@ export default class ProfileScreen extends React.Component {
           onBack={() => {
             this.setState({
               showAllowTrainPopup: false,
-              showLimitTrainingTypePopup: true,
+              showAdvancedSettingPopup: true,
             });
           }}
           onCancel={() => {
@@ -853,7 +908,7 @@ export default class ProfileScreen extends React.Component {
           onBack={() => {
             this.setState({
               showAllowBookingPopup: false,
-              showAllowTrainPopup: true,
+              showAdvancedSettingPopup: true,
             });
           }}
           onCancel={() => {
@@ -868,7 +923,7 @@ export default class ProfileScreen extends React.Component {
           onBack={() => {
             this.setState({
               showHoursLimitPopup: false,
-              showAllowBookingPopup: true,
+              showAdvancedSettingPopup: true,
             });
           }}
           onCancel={() => {
@@ -883,7 +938,7 @@ export default class ProfileScreen extends React.Component {
           onBack={() => {
             this.setState({
               showReservationAvailabilityPopup: false,
-              showHoursLimitPopup: true,
+              showAdvancedSettingPopup: true,
             });
           }}
           onCancel={() => {
@@ -898,7 +953,7 @@ export default class ProfileScreen extends React.Component {
           onBack={() => {
             this.setState({
               showAllowPenaltyPopup: false,
-              showReservationAvailabilityPopup: true,
+              showAdvancedSettingPopup: true,
             });
           }}
           onCancel={() => {
@@ -913,7 +968,7 @@ export default class ProfileScreen extends React.Component {
           onBack={() => {
             this.setState({
               showAdditionalSettingPopup: false,
-              showAllowPenaltyPopup: true,
+              showAdvancedSettingPopup: true,
             });
           }}
           onCancel={() => {
@@ -928,4 +983,16 @@ export default class ProfileScreen extends React.Component {
   }
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  profile_item: {
+    width: (SCREEN_WIDTH - 64) / 2,
+    borderRadius: 11,
+    padding: 10,
+    backgroundColor: 'white',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    height: 47,
+    borderWidth: 1,
+    borderColor: '#D8D8D8',
+  },
+});

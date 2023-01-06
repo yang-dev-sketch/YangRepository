@@ -80,19 +80,12 @@ class TaskPopup extends React.Component {
                   style={{ width: 31, height: 31 }}
                 />
               </Button>
-              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>משימות</Text>
+              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>
+                משימות
+              </Text>
             </HorizontalLayout>
             <ScrollView style={{ paddingHorizontal: 20 }}>
-              <View
-                style={{
-                  borderRadius: 11,
-                  borderWidth: 1,
-                  borderColor: '#F5F5F5',
-                  elevation: 3,
-                  marginBottom: 10,
-                }}>
-                <CustomCalendar style={{ marginBottom: 10 }} selectedType="single-range" />
-              </View>
+              <CustomCalendar style={{ marginBottom: 10 }} selectedType="single-range" sort={() => {}} />
               <SearchInput
                 setSearch={(search) => {
                   this.props.setSearch(search);

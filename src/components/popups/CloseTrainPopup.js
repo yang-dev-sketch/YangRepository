@@ -7,7 +7,7 @@ import { Button, HorizontalLayout, VerticalLayout, LocalImage } from '../control
 import SwipeUpDownModal from 'react-native-swipe-modal-up-down';
 import { SearchInput } from '../common';
 import { ScrollView } from 'react-navigation';
-import { API } from '../../constants/Constants';
+import { API, SCREEN_HEIGHT } from '../../constants/Constants';
 import Timeline from 'react-native-timeline-flatlist';
 import TrainingItem from '../items/TrainingItem';
 
@@ -18,6 +18,7 @@ class CloseTrainPopup extends React.Component {
     this.onEventPress = this.onEventPress.bind(this);
     this.renderSelected = this.renderSelected.bind(this);
     this.renderDetail = this.renderDetail.bind(this);
+    this.renderCircle = this.renderCircle.bind(this);
     this.data = [
       {
         type: 'אימון אישי ',
@@ -63,6 +64,32 @@ class CloseTrainPopup extends React.Component {
     return <TrainingItem data={rowData} even={sectionID % 2 === 0} />;
   }
 
+  renderCircle(rowData, sectionID, rowID) {
+    return (
+      <View
+        style={{
+          width: 20,
+          height: 20,
+          borderRadius: 10,
+          backgroundColor: '#E2E2E2',
+          position: 'absolute',
+          top: 0,
+          right: 11,
+          zIndex: 999,
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+        <View
+          style={[
+            { width: 12, height: 12, borderRadius: 6 },
+            (sectionID % 2 === 0 && { backgroundColor: '#1E6FD9' }) || {
+              backgroundColor: '#43C7FF',
+            },
+          ]}></View>
+      </View>
+    );
+  }
+
   render() {
     const data = this.props.data;
 
@@ -102,7 +129,9 @@ class CloseTrainPopup extends React.Component {
                   style={{ width: 31, height: 31 }}
                 />
               </Button>
-              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>אימונים קרובים</Text>
+              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>
+                אימונים קרובים
+              </Text>
             </HorizontalLayout>
             <View style={{ paddingHorizontal: 20, marginVertical: 15 }}>
               <SearchInput
@@ -123,11 +152,6 @@ class CloseTrainPopup extends React.Component {
             <ScrollView style={{ paddingHorizontal: 20 }}>
               <Timeline
                 data={this.data}
-                innerCircle="dot"
-                circleSize={20}
-                dotSize={12}
-                dotColor="#1E6FD9"
-                circleColor="#E2E2E2"
                 lineWidth={2}
                 lineColor="#1E6FD9"
                 listViewContainerStyle={{ paddingTop: 40 }}
@@ -152,6 +176,7 @@ class CloseTrainPopup extends React.Component {
                 columnFormat="single-column-right"
                 onEventPress={this.onEventPress}
                 renderDetail={this.renderDetail}
+                renderCircle={this.renderCircle}
               />
             </ScrollView>
           </VerticalLayout>
@@ -170,10 +195,9 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
     backgroundColor: Colors.white,
-    bottom: 0,
-    left: 0,
     width: '100%',
-    height: '80%',
+    bottom: 0,
+    maxHeight: SCREEN_HEIGHT * 0.8,
   },
 });
 

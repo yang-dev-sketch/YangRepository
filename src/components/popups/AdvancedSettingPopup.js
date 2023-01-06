@@ -72,7 +72,7 @@ class AdvancedSettingPopup extends React.Component {
                 borderBottomColor: '#F2F2F2',
                 marginBottom: 15,
               }}>
-              <Text style={{ fontSize: 16, lineHeight: 19.2 }}>הגדרות מתקדמות</Text>
+              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000', fontWeight: '600' }}>הגדרות מתקדמות</Text>
             </View>
             <SearchInput
               style={{ marginBottom: 15 }}
@@ -90,7 +90,7 @@ class AdvancedSettingPopup extends React.Component {
                   source={require('src/assets/image/ic_round_left.png')}
                   style={{ width: 23, height: 23 }}
                 />
-                <Text style={{ fontSize: 16, lineHeight: 19, width: '90%' }} numberOfLines={2}>
+                <Text style={{ fontSize: 16, lineHeight: 19, width: '90%', color: '#000' }} numberOfLines={2}>
                   שם מוצר
                 </Text>
               </Button>
@@ -103,7 +103,7 @@ class AdvancedSettingPopup extends React.Component {
                   source={require('src/assets/image/ic_round_left.png')}
                   style={{ width: 23, height: 23 }}
                 />
-                <Text style={{ fontSize: 16, lineHeight: 19, width: '90%' }} numberOfLines={2}>
+                <Text style={{ fontSize: 16, lineHeight: 19, width: '90%', color: '#000' }} numberOfLines={2}>
                   תוכנית תשלומים חוזרים
                 </Text>
               </Button>
@@ -116,7 +116,7 @@ class AdvancedSettingPopup extends React.Component {
                   source={require('src/assets/image/ic_round_left.png')}
                   style={{ width: 23, height: 23 }}
                 />
-                <Text style={{ fontSize: 16, lineHeight: 19, width: '90%' }} numberOfLines={2}>
+                <Text style={{ fontSize: 16, lineHeight: 19, width: '90%', color: '#000' }} numberOfLines={2}>
                   הגבלת סוגי אימון
                 </Text>
               </Button>
@@ -129,20 +129,20 @@ class AdvancedSettingPopup extends React.Component {
                   source={require('src/assets/image/ic_round_left.png')}
                   style={{ width: 23, height: 23 }}
                 />
-                <Text style={{ fontSize: 16, lineHeight: 19, width: '90%' }} numberOfLines={2}>
+                <Text style={{ fontSize: 16, lineHeight: 19, width: '90%', color: '#000' }} numberOfLines={2}>
                   לאפשר לפי הגדרת התדירות אימונים
                 </Text>
               </Button>
               <Button
                 style={styles.setting_item}
                 onPress={() => {
-                  this.setAllowBooking();
+                  this.props.setAllowBooking();
                 }}>
                 <LocalImage
                   source={require('src/assets/image/ic_round_left.png')}
                   style={{ width: 23, height: 23 }}
                 />
-                <Text style={{ fontSize: 16, lineHeight: 19, width: '90%' }} numberOfLines={2}>
+                <Text style={{ fontSize: 16, lineHeight: 19, width: '90%', color: '#000' }} numberOfLines={2}>
                   לאפשר הזמנה רק בימים ספציפיים
                 </Text>
               </Button>
@@ -155,7 +155,7 @@ class AdvancedSettingPopup extends React.Component {
                   source={require('src/assets/image/ic_round_left.png')}
                   style={{ width: 23, height: 23 }}
                 />
-                <Text style={{ fontSize: 16, lineHeight: 19, width: '90%' }} numberOfLines={2}>
+                <Text style={{ fontSize: 16, lineHeight: 19, width: '90%', color: '#000' }} numberOfLines={2}>
                   הגבלת שעות
                 </Text>
               </Button>
@@ -168,7 +168,7 @@ class AdvancedSettingPopup extends React.Component {
                   source={require('src/assets/image/ic_round_left.png')}
                   style={{ width: 23, height: 23 }}
                 />
-                <Text style={{ fontSize: 16, lineHeight: 19, width: '90%' }} numberOfLines={2}>
+                <Text style={{ fontSize: 16, lineHeight: 19, width: '90%', color: '#000' }} numberOfLines={2}>
                   הזמן על מקום פנוי
                 </Text>
               </Button>
@@ -181,7 +181,7 @@ class AdvancedSettingPopup extends React.Component {
                   source={require('src/assets/image/ic_round_left.png')}
                   style={{ width: 23, height: 23 }}
                 />
-                <Text style={{ fontSize: 16, lineHeight: 19, width: '90%' }} numberOfLines={2}>
+                <Text style={{ fontSize: 16, lineHeight: 19, width: '90%', color: '#000' }} numberOfLines={2}>
                   לאפשר עונשים או הגבלות עקב מספר גבוה של היעדרויות
                 </Text>
               </Button>
@@ -194,7 +194,7 @@ class AdvancedSettingPopup extends React.Component {
                   source={require('src/assets/image/ic_round_left.png')}
                   style={{ width: 23, height: 23 }}
                 />
-                <Text style={{ fontSize: 16, lineHeight: 19, width: '90%' }} numberOfLines={2}>
+                <Text style={{ fontSize: 16, lineHeight: 19, width: '90%', color: '#000' }} numberOfLines={2}>
                   הגדרות אחרות
                 </Text>
               </Button>

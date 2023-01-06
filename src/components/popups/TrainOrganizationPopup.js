@@ -93,7 +93,7 @@ class TrainOrganizationPopup extends React.Component {
                     justifyContent: 'center',
                   },
                 ]}>
-                <Text style={{ fontSize: 16, lineHeight: 19, color: '#1E6FD9' }}>מחכים לאישור</Text>
+                <Text style={{ fontSize: 16, lineHeight: 19, color: '#1E6FD9', fontWeight: '600' }}>מחכים לאישור</Text>
               </Button>
               <Button
                 onPress={() => {
@@ -115,7 +115,7 @@ class TrainOrganizationPopup extends React.Component {
                     justifyContent: 'center',
                   },
                 ]}>
-                <Text style={{ fontSize: 16, lineHeight: 19, color: '#1E6FD9' }}>מתאמנים</Text>
+                <Text style={{ fontSize: 16, lineHeight: 19, color: '#1E6FD9', fontWeight: '600' }}>מתאמנים</Text>
               </Button>
             </HorizontalLayout>
             <SearchInput
@@ -163,7 +163,7 @@ class TrainOrganizationPopup extends React.Component {
                   marginTop: 20,
                   marginBottom: 41.5,
                 }}>
-                <Text style={{ fontSize: 16, lineHeight: 19 }}>הוספת מתאמן</Text>
+                <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>הוספת מתאמן</Text>
                 <LocalImage
                   source={require('src/assets/image/ic_plus_sign.png')}
                   style={{ width: 24, height: 24, marginLeft: 6 }}

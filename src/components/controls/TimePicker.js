@@ -89,7 +89,7 @@ export default class TimePicker extends React.Component {
             />
             <View
               style={{
-                width: SCREEN_WIDTH - 100,
+                width: '90%',
                 height: 1,
                 backgroundColor: '#5C9DF2',
                 position: 'absolute',
@@ -98,7 +98,7 @@ export default class TimePicker extends React.Component {
               }}></View>
             <View
               style={{
-                width: SCREEN_WIDTH - 100,
+                width: '90%',
                 height: 1,
                 backgroundColor: '#5C9DF2',
                 position: 'absolute',

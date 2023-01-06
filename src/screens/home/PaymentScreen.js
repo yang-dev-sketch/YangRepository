@@ -57,7 +57,6 @@ export default class PaymentScreen extends React.Component {
           style={{
             paddingVertical: 29,
             backgroundColor: '#F5F5F5',
-            paddingHorizontal: 20,
             flex: 1,
             paddingBottom: 90,
           }}>
@@ -66,6 +65,7 @@ export default class PaymentScreen extends React.Component {
               alignItem: 'center',
               justifyContent: 'space-between',
               marginBottom: 16.94,
+              paddingHorizontal: 20,
             }}>
             <Button
               onPress={() => {
@@ -76,14 +76,17 @@ export default class PaymentScreen extends React.Component {
                 style={{ width: 27.12, height: 27.12 }}
               />
             </Button>
-            <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>תשלומים</Text>
+            <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>
+              תשלומים
+            </Text>
           </HorizontalLayout>
           <SearchInput
             setSearch={(search) => {
               this.search();
             }}
+            style={{ marginHorizontal: 20 }}
           />
-          <ScrollView style={{ marginTop: 15 }}>
+          <ScrollView style={{ marginTop: 15, paddingHorizontal: 20 }}>
             <FlatList
               ref={(ref) => {
                 this._flContent = ref;

@@ -8,8 +8,10 @@ import SwipeUpDownModal from 'react-native-swipe-modal-up-down';
 import { ActiveButton, DisactiveButton, SearchInput } from '../common';
 import { FlatList } from 'react-native-gesture-handler';
 import CommonItem from '../items/CommonItem';
-import Toast from "react-native-root-toast";
-import ToastContainer from "../controls/ToastContainer";
+import Toast from 'react-native-root-toast';
+import ToastContainer from '../controls/ToastContainer';
+import { IMAGE_FOO_URL } from '../../constants/Constants';
+import FastImage from 'react-native-fast-image';
 
 @observer
 class AddTraineePopup extends React.Component {
@@ -93,7 +95,9 @@ class AddTraineePopup extends React.Component {
                   />
                 </Button>
               </HorizontalLayout>
-              <Text style={{ fontSize: 18, lineHeight: 22 }}>הסניפים שלנו</Text>
+              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>
+                עריכת מתאמנים: הוספה
+              </Text>
             </HorizontalLayout>
             <SearchInput
               setSearch={(search) => {
@@ -110,18 +114,40 @@ class AddTraineePopup extends React.Component {
               numColumns={1}
               renderItem={({ item, index }) => {
                 return (
-                  <CommonItem
-                    data={item}
-                    key={index}
-                    selectId={this.props.selectId}
-                    select={() => {
+                  <Button
+                    onPress={() => {
                       this.props.select(item.id);
                     }}
-                    text={item.name}
-                    fastImage={true}
-                    activeImage={item.image}
-                    numberOfLines={1}
-                  />
+                    style={[
+                      (item.id === this.props.selectId && { borderColor: '#0D65D9' }) || { borderColor: '#D8D8D8' },
+                      {
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        paddingVertical: 10,
+                        paddingLeft: 21,
+                        paddingRight: 15,
+                        borderWidth: 1,
+                        borderRadius: 8,
+                      },
+                    ]}>
+                    {(item.id === this.props.selectId && (
+                      <LocalImage
+                        source={require('src/assets/image/ic_check_on.png')}
+                        style={{ width: 22, height: 22 }}
+                      />
+                    )) || <View></View>}
+                    <HorizontalLayout style={{ alignItems: 'center' }}>
+                      <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>
+                        {item.name}
+                      </Text>
+                      <FastImage
+                        source={{ uri: item.avatar ? item.avatar : IMAGE_FOO_URL }}
+                        resizeMode={FastImage.resizeMode.cover}
+                        style={{ width: 45, height: 45, marginLeft: 7 }}
+                      />
+                    </HorizontalLayout>
+                  </Button>
                 );
               }}
               keyExtractor={(item, idx) => idx.toString()}

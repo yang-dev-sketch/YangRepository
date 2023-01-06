@@ -92,7 +92,9 @@ class SubscriptionPopup extends React.Component {
                   />
                 </Button>
               </HorizontalLayout>
-              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>סוג מסלול:</Text>
+              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>
+                סוג מסלול:
+              </Text>
             </HorizontalLayout>
             <ScrollView style={{ paddingHorizontal: 20 }}>
               <Text style={{ fontSize: 18, lineHeight: 22, textAlign: 'right', marginBottom: 15 }}>
@@ -281,7 +283,9 @@ class SubscriptionPopup extends React.Component {
                 <DisactiveButton
                   text="המשך להגדרות מתקדמות"
                   style={{ marginBottom: 15 }}
-                  action={() => {}}
+                  action={() => {
+                    this.props.setSetting();
+                  }}
                 />
               )}
               <ActiveButton text="שמירה" style={{ marginBottom: 15 }} action={() => {}} />

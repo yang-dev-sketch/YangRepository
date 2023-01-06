@@ -90,7 +90,7 @@ class AllowBookingPopup extends React.Component {
                 borderBottomColor: '#F2F2F2',
                 marginBottom: 20,
               }}>
-              <Text style={{ fontSize: 16, lineHeight: 19.2 }}>תכונות ייחודיות</Text>
+              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000', fontWeight: '600' }}>תכונות ייחודיות</Text>
             </View>
             <Text style={{ fontSize: 16, lineHeight: 19.2, marginBottom: 15 }}>
               לאפשר הזמנה רק בימים ספציפיים

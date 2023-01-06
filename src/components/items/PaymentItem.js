@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, StyleSheet, View } from 'react-native';
 import { HorizontalLayout, LocalImage, VerticalLayout } from '../controls';
 import { CommonUtils } from '../../utils';
+import moment from "moment";
 
 class PaymentItem extends React.Component {
   constructor(props) {
@@ -38,9 +39,9 @@ class PaymentItem extends React.Component {
           />
         </HorizontalLayout>
         <VerticalLayout>
-          <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>{data.method}</Text>
+          <Text style={{ fontSize: 16, lineHeight: 19, color: '#000', fontWeight: '600' }}>{data.method}</Text>
           <Text style={{ fontSize: 14, lineHeight: 22, color: '#979797' }}>
-            {CommonUtils.getTrainTypeDate(data.date)}
+            {moment(data.date).format('hh:mm, DD.MM.YYYY')}
           </Text>
         </VerticalLayout>
       </HorizontalLayout>

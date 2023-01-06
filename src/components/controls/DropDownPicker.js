@@ -69,7 +69,9 @@ export default class DropDownPicker extends React.Component {
                     />
                   )}
                 </HorizontalLayout>
-                <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>{this.props.selectedValue}</Text>
+                <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>
+                  {this.props.selectedValue || this.props.placeholder || 'בחרו סוג'}
+                </Text>
               </HorizontalLayout>
             );
           }}
@@ -79,7 +81,6 @@ export default class DropDownPicker extends React.Component {
             borderRadius: 21,
             backgroundColor: 'white',
             paddingHorizontal: 15,
-            elevation: 3,
             marginTop: -1,
           }}
           rowStyle={{ height: 48, paddingVertical: 15, borderBottomColor: '#F5F5F5' }}

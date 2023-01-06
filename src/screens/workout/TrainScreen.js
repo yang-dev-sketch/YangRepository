@@ -4,12 +4,12 @@ import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
 import moment from 'moment';
 import { CommonUtils } from '../../utils';
 import { Styles } from '../../constants';
-import { API, API_RES_CODE } from '../../constants/Constants';
+import { API, API_RES_CODE, SCREEN_WIDTH } from '../../constants/Constants';
 import { Button, HorizontalLayout, LocalImage, VerticalLayout } from '../../components/controls';
 import { requestGet, requestPost } from '../../utils/ApiUtils';
 import { DatePickerPopup, NotiPopup, TrainTimePopup } from '../../components/popups';
 import TimePickerPopup from '../../components/popups/TimePickerPopup';
-import { SearchInput } from '../../components/common';
+import { BottomMenu, SearchInput } from '../../components/common';
 import Timeline from 'react-native-timeline-flatlist';
 import TaskItem from '../../components/items/TaskItem';
 import TrainingItem from '../../components/items/TrainingItem';
@@ -20,6 +20,8 @@ import FilterByHourPopup from '../../components/popups/FilterByHourPopup';
 import FilterByTrainingPopup from '../../components/popups/FilterByTrainingPopup';
 import FilterByBranchPopup from '../../components/popups/FilterByBranchPopup';
 import CustomCalendar from '../../components/controls/CustomCalendar';
+import Toast from "react-native-root-toast";
+import ToastContainer from "../../components/controls/ToastContainer";
 
 @observer
 export default class TrainScreen extends React.Component {
@@ -170,6 +172,14 @@ export default class TrainScreen extends React.Component {
 
   componentDidMount() {
     this.getInfo();
+    if (this.props.navigation.getParam('create')) {
+      Toast.show(<ToastContainer title="האימון נוצר בהצלחה!" />, {
+        duration: 3000,
+        position: 20,
+        opacity: 1,
+        containerStyle: { backgroundColor: 'transparent' },
+      });
+    }
   }
 
   onFilter = () => {};

@@ -259,25 +259,11 @@ export default {
     return false;
   },
 
-  getTrainTypeDate(startDate, endDate) {
-    if (endDate) {
-      if (moment(startDate).format('YYYY-MM-DD') == moment(endDate).format('YYYY-MM-DD')) {
-        return (
-          moment(startDate).format('hh:mm') +
-          ' - ' +
-          moment(endDate).format('hh:mm') +
-          ', ' +
-          moment(startDate).format('DD.MM.YYYY')
-        );
-      } else {
-        return (
-          moment(startDate).format('hh:mm, DD.MM.YYYY') +
-          ' - ' +
-          moment(endDate).format('hh:mm, DD.MM.YYYY')
-        );
-      }
+  getTrainTypeDate(date, startTime, endTime) {
+    if (endTime) {
+      return startTime + ' - ' + endTime + ', ' + moment(date).format('DD.MM.YYYY');
     } else {
-      return moment(startDate).format('hh:mm, DD.MM.YYYY');
+      return startTime + ', ' + moment(date).format('DD.MM.YYYY');
     }
   },
 
@@ -318,5 +304,28 @@ export default {
       valueNum = valueNum.substr(0, 14) + ' ' + valueNum.substr(14);
     }
     return valueNum;
+  },
+  getBirthday(value) {
+    let today = new Date();
+    let diff = moment(today).format('YYYY') - moment(value).format('YYYY');
+    return moment(value).format('DD.MM.YYYY') + ' ,' + diff + ' שנים';
+  },
+  getTrainImage(type) {
+    if (type === 'group') return require('src/assets/image/ic_man_round_off.png');
+    if (type === 'personal') return require('src/assets/image/ic_train_round_on.png');
+    if (type === 'zumba') return require('src/assets/image/ic_zumba_round_off.png');
+    if (type === 'yoga') return require('src/assets/image/ic_yoga_round_off.png');
+    if (type === 'functional') return require('src/assets/image/ic_function_round_off.png');
+    if (type === 'football') return require('src/assets/image/ic_football_round_off.png');
+    if (type === 'boxing') return require('src/assets/image/ic_boxing_round_off.png');
+  },
+  getTrainImageOff(type) {
+    if (type === 'group') return require('src/assets/image/ic_man_round_off.png');
+    if (type === 'personal') return require('src/assets/image/ic_train_round_on.png');
+    if (type === 'zumba') return require('src/assets/image/ic_zumba_round_off.png');
+    if (type === 'yoga') return require('src/assets/image/ic_yoga_round_off.png');
+    if (type === 'functional') return require('src/assets/image/ic_function_round_off.png');
+    if (type === 'football') return require('src/assets/image/ic_football_round_off.png');
+    if (type === 'boxing') return require('src/assets/image/ic_boxing_round_off.png');
   },
 };

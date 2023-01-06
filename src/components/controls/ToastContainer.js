@@ -25,7 +25,7 @@ export default class ToastContainer extends React.Component {
           top: 30,
           paddingLeft: 17,
           paddingRight: 15,
-          overScreen: true
+          overScreen: true,
         }}>
         <LocalImage
           source={require('src/assets/image/ic_close_toast.png')}

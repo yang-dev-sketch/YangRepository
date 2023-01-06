@@ -1,12 +1,12 @@
 import { observer } from 'mobx-react';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import Modal from 'react-native-modal';
 import { Styles, Colors } from '../../constants';
 import { Button, HorizontalLayout, VerticalLayout, LocalImage } from '../controls';
 import SwipeUpDownModal from 'react-native-swipe-modal-up-down';
 import { ActiveButton, CommonInput, SetValueGroup } from '../common';
-import { API, API_RES_CODE, SCREEN_WIDTH } from '../../constants/Constants';
+import { API, API_RES_CODE, SCREEN_HEIGHT, SCREEN_WIDTH } from '../../constants/Constants';
 import FastImage from 'react-native-fast-image';
 import ImageCropPicker from 'react-native-image-crop-picker';
 import { requestUpload } from '../../utils/ApiUtils';
@@ -64,7 +64,7 @@ class EditProductPopup extends React.Component {
           this.onCancel();
         }}
         ContentModal={
-          <VerticalLayout style={{ paddingHorizontal: 20 }}>
+          <VerticalLayout style={{ height: '100%' }}>
             <View
               style={{ width: '100%', height: 23, alignItems: 'center', justifyContent: 'center' }}>
               <View
@@ -81,6 +81,7 @@ class EditProductPopup extends React.Component {
                 alignItem: 'center',
                 justifyContent: 'space-between',
                 marginBottom: 16.94,
+                paddingHorizontal: 20,
               }}>
               <Button
                 onPress={() => {
@@ -91,116 +92,120 @@ class EditProductPopup extends React.Component {
                   style={{ width: 31, height: 31 }}
                 />
               </Button>
-              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>עריכה</Text>
-            </HorizontalLayout>
-            <VerticalLayout
-              style={{
-                width: 155,
-                alignSelf: 'center',
-                borderRadius: 11,
-                backgroundColor: '#F5F5F5',
-                paddingVertical: 18,
-                paddingHorizontal: 29,
-                marginBottom: 15,
-                alignItems: 'center',
-              }}>
-              <Button
-                onPress={() => {
-                  this.onGallery();
-                }}>
-                {(this.props.logo === '' && (
-                  <LocalImage
-                    source={require('src/assets/image/ic_add_image.png')}
-                    style={{ width: 70, height: 70, marginBottom: 10 }}
-                  />
-                )) || (
-                  <FastImage
-                    source={{ uri: this.props.logo ? this.props.logo : IMAGE_FOO_URL }}
-                    resizeMode={FastImage.resizeMode.cover}
-                    style={{ width: 70, height: 70, marginBottom: 10, borderRadius: 35 }}
-                  />
-                )}
-              </Button>
-              <Text numberOfLines={2} style={{ fontSize: 16, lineHeight: 19 }}>
-                לוגו של העסק
+              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>
+                עריכה
               </Text>
-            </VerticalLayout>
-            <SetValueGroup
-              style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#F5F5F5' }]}
-              title="שם מוצר"
-              image={require('src/assets/image/ic_branch.png')}
-              inputNode={
-                <CommonInput
-                  numberOfLines={1}
-                  backgroundColor="white"
-                  value={this.props.name}
-                  onChangeText={(text) => {
-                    this.props.setName(text);
-                  }}
-                />
-              }
-            />
-            <SetValueGroup
-              style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#F5F5F5' }]}
-              title="תיאור"
-              image={require('src/assets/image/ic_info.png')}
-              numberLine={1}
-              inputNode={
-                <CommonInput
-                  numberOfLines={4}
-                  backgroundColor="white"
-                  value={this.props.description}
-                  onChangeText={(text) => {
-                    this.props.setDescription(text);
-                  }}
-                />
-              }
-            />
-            <HorizontalLayout style={{ justifyContent: 'space-between', marginBottom: 15 }}>
-              <View style={{ width: (SCREEN_WIDTH - 64) / 2 }}>
-                <SetValueGroup
-                  style={[Styles.input_wrapper, { backgroundColor: '#F5F5F5' }]}
-                  title="מְלַאי"
-                  image={require('src/assets/image/ic_stock.png')}
-                  inputNode={
-                    <CommonInput
-                      numberOfLines={1}
-                      keyboardType="numeric"
-                      backgroundColor="white"
-                      value={this.props.stock}
-                      onChangeText={(text) => {
-                        this.props.setStock(text);
-                      }}
-                    />
-                  }
-                />
-              </View>
-              <View style={{ width: (SCREEN_WIDTH - 64) / 2 }}>
-                <SetValueGroup
-                  style={[Styles.input_wrapper, { marginBottom: 0, backgroundColor: '#F5F5F5' }]}
-                  title="מחיר"
-                  image={require('src/assets/image/ic_price.png')}
-                  inputNode={
-                    <CommonInput
-                      numberOfLines={1}
-                      keyboardType="numeric"
-                      backgroundColor="white"
-                      value={this.props.price}
-                      onChangeText={(text) => {
-                        this.props.setPrice(text);
-                      }}
-                    />
-                  }
-                />
-              </View>
             </HorizontalLayout>
-            <ActiveButton
-              text="שמור שינויים"
-              style={{ marginBottom: 15 }}
-              action={() => {
-                this.updateProduct();
-              }}
-            />
+            <ScrollView style={{ paddingHorizontal: 20 }}>
+              <VerticalLayout
+                style={{
+                  width: 155,
+                  alignSelf: 'center',
+                  borderRadius: 11,
+                  backgroundColor: '#F5F5F5',
+                  paddingVertical: 18,
+                  paddingHorizontal: 29,
+                  marginBottom: 15,
+                  alignItems: 'center',
+                }}>
+                <Button
+                  onPress={() => {
+                    this.onGallery();
+                  }}>
+                  {(this.props.logo === '' && (
+                    <LocalImage
+                      source={require('src/assets/image/ic_add_image.png')}
+                      style={{ width: 70, height: 70, marginBottom: 10 }}
+                    />
+                  )) || (
+                    <FastImage
+                      source={{ uri: this.props.logo ? this.props.logo : IMAGE_FOO_URL }}
+                      resizeMode={FastImage.resizeMode.cover}
+                      style={{ width: 70, height: 70, marginBottom: 10, borderRadius: 35 }}
+                    />
+                  )}
+                </Button>
+                <Text numberOfLines={2} style={{ fontSize: 16, lineHeight: 19 }}>
+                  לוגו של העסק
+                </Text>
+              </VerticalLayout>
+              <SetValueGroup
+                style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#F5F5F5' }]}
+                title="שם מוצר"
+                image={require('src/assets/image/ic_branch.png')}
+                inputNode={
+                  <CommonInput
+                    numberOfLines={1}
+                    backgroundColor="white"
+                    value={this.props.name}
+                    onChangeText={(text) => {
+                      this.props.setName(text);
+                    }}
+                  />
+                }
+              />
+              <SetValueGroup
+                style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#F5F5F5' }]}
+                title="תיאור"
+                image={require('src/assets/image/ic_info.png')}
+                numberLine={1}
+                inputNode={
+                  <CommonInput
+                    numberOfLines={4}
+                    backgroundColor="white"
+                    value={this.props.description}
+                    onChangeText={(text) => {
+                      this.props.setDescription(text);
+                    }}
+                  />
+                }
+              />
+              <HorizontalLayout style={{ justifyContent: 'space-between', marginBottom: 15 }}>
+                <View style={{ width: (SCREEN_WIDTH - 64) / 2 }}>
+                  <SetValueGroup
+                    style={[Styles.input_wrapper, { backgroundColor: '#F5F5F5' }]}
+                    title="מְלַאי"
+                    image={require('src/assets/image/ic_stock.png')}
+                    inputNode={
+                      <CommonInput
+                        numberOfLines={1}
+                        keyboardType="numeric"
+                        backgroundColor="white"
+                        value={this.props.stock}
+                        onChangeText={(text) => {
+                          this.props.setStock(text);
+                        }}
+                      />
+                    }
+                  />
+                </View>
+                <View style={{ width: (SCREEN_WIDTH - 64) / 2 }}>
+                  <SetValueGroup
+                    style={[Styles.input_wrapper, { marginBottom: 0, backgroundColor: '#F5F5F5' }]}
+                    title="מחיר"
+                    image={require('src/assets/image/ic_price.png')}
+                    inputNode={
+                      <CommonInput
+                        numberOfLines={1}
+                        keyboardType="numeric"
+                        backgroundColor="white"
+                        value={this.props.price}
+                        onChangeText={(text) => {
+                          this.props.setPrice(text);
+                        }}
+                      />
+                    }
+                  />
+                </View>
+              </HorizontalLayout>
+              <ActiveButton
+                text="שמור שינויים"
+                style={{ marginBottom: 15 }}
+                action={() => {
+                  this.updateProduct();
+                }}
+              />
+            </ScrollView>
           </VerticalLayout>
         }
         onClose={() => {
@@ -213,14 +218,11 @@ class EditProductPopup extends React.Component {
 
 const styles = StyleSheet.create({
   Modal: {
-    position: 'absolute',
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
     backgroundColor: Colors.white,
-    bottom: 0,
-    left: 0,
     width: '100%',
-    elevation: 3,
+    maxHeight: SCREEN_HEIGHT * 0.9,
   },
 });
 

@@ -140,10 +140,11 @@ export default class ShopScreen extends React.Component {
     productList[this.state.selectedIndex].stock = this.state.stock;
     productList[this.state.selectedIndex].price = this.state.price;
     this.setState({ productList: productList, showEditProductPopup: false });
-    Toast.show(<ToastContainer title="מוצר התווסף לחנות" />, {
+    Toast.show(<ToastContainer title="שינויים נשמרו" />, {
       duration: 3000,
       position: 20,
-      containerStyle: { backgroundColor: 'transparent', opacity: 1 },
+      opacity: 1,
+      containerStyle: { backgroundColor: 'transparent' },
     });
     //   } else {
     //   }
@@ -236,7 +237,7 @@ export default class ShopScreen extends React.Component {
                   סינון
                 </Text>
                 <LocalImage
-                  source={require('src/assets/image/ic_arrow_up.png')}
+                  source={require('src/assets/image/ic_down_blue.png')}
                   style={{ width: 13.06, height: 6.88, marginLeft: 4.47 }}
                 />
               </HorizontalLayout>
@@ -279,7 +280,7 @@ export default class ShopScreen extends React.Component {
               }}>
               <HorizontalLayout
                 style={{ alignItems: 'center', justifyContent: 'center', paddingVertical: 15 }}>
-                <Text style={{ fontSize: 16, lineHeight: 19.2 }}>להוסיף מוצר</Text>
+                <Text style={{ fontSize: 16, lineHeight: 19.2, color: '#000' }}>להוסיף מוצר</Text>
                 <LocalImage
                   source={require('src/assets/image/ic_plus_sign.png')}
                   style={{ width: 24, height: 24, marginLeft: 6 }}

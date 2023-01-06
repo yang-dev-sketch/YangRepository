@@ -11,7 +11,7 @@ import CommonInput from '../common/CommonInput';
 import CheckBox from '@react-native-community/checkbox';
 import { requestUpload } from '../../utils/ApiUtils';
 import ImageCropPicker from 'react-native-image-crop-picker';
-import { API, API_RES_CODE, IMAGE_FOO_URL } from '../../constants/Constants';
+import { API, API_RES_CODE, IMAGE_FOO_URL, SCREEN_HEIGHT } from '../../constants/Constants';
 import FastImage from 'react-native-fast-image';
 
 @observer
@@ -126,7 +126,7 @@ class AddBranchPopup extends React.Component {
               <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>הסניפים שלנו</Text>
             </HorizontalLayout>
             <ScrollView style={{ paddingHorizontal: 20 }}>
-              <Text style={{ fontSize: 18, lineHeight: 22, textAlign: 'right', marginBottom: 15 }}>
+              <Text style={{ fontSize: 18, lineHeight: 22, textAlign: 'right', marginBottom: 15, color: '#000', fontWeight: '600' }}>
                 הוספת סניף חדש
               </Text>
               <VerticalLayout
@@ -156,7 +156,7 @@ class AddBranchPopup extends React.Component {
                     />
                   )}
                 </Button>
-                <Text style={{ fontSize: 16, lineHeight: 19 }}>לוגו של העסק</Text>
+                <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>לוגו של העסק</Text>
               </VerticalLayout>
               <SetValueGroup
                 style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#F5F5F5' }]}
@@ -205,7 +205,7 @@ class AddBranchPopup extends React.Component {
               />
               <HorizontalLayout
                 style={{ alignItems: 'center', justifyContent: 'flex-end', marginBottom: 40 }}>
-                <Text style={{ fontSize: 16, lineHeight: 19 }}>עריכת אמצעי תשלום</Text>
+                <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>עריכת אמצעי תשלום</Text>
                 <CheckBox
                   onFillColor="#0D65D9"
                   value={this.state.pay_method}
@@ -248,7 +248,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     width: '100%',
-    height: '95%',
+    maxHeight: SCREEN_HEIGHT * 0.95
   },
 });
 

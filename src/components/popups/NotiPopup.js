@@ -95,7 +95,7 @@ class NotiPopup extends React.Component {
                   style={{ width: 31, height: 31 }}
                 />
               </Button>
-              <Text style={{ fontSize: 18, lineHeight: 22 }}>התראות</Text>
+              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>התראות</Text>
             </HorizontalLayout>
             <View style={{ paddingHorizontal: 20 }}>
               <SearchInput
@@ -110,7 +110,7 @@ class NotiPopup extends React.Component {
                   this._flContent = ref;
                 }}
                 showsVerticalScrollIndicator={false}
-                style={{ marginTop: 15 }}
+                style={{ marginVertical: 15 }}
                 data={this.state.notiList}
                 numColumns={1}
                 renderItem={({ item, index }) => {

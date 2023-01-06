@@ -71,7 +71,8 @@ export default class AddBusinessScreen extends React.Component {
     Toast.show(<ToastContainer title="הפרטים נשמרו בהצלחה" />, {
       duration: 3000,
       position: 20,
-      containerStyle: { backgroundColor: 'transparent', opacity: 1 },
+      opacity: 1,
+      containerStyle: { backgroundColor: 'transparent' },
     });
   };
 

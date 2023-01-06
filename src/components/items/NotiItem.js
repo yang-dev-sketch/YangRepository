@@ -54,7 +54,7 @@ class NotiItem extends React.Component {
                 <FastImage
                   source={{ uri: data.avatar ? data.avatar : IMAGE_FOO_URL }}
                   resizeMode={FastImage.resizeMode.cover}
-                  style={{ width: 34, height: 34, borderRadius: 17 }}
+                  style={{ width: 34, height: 34, borderRadius: 17, marginLeft: 10 }}
                 />
               </HorizontalLayout>
             </HorizontalLayout>

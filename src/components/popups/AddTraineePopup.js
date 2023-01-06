@@ -25,7 +25,8 @@ class AddTraineePopup extends React.Component {
     Toast.show(<ToastContainer title="רשימת המשתתפים עודכנה" />, {
       duration: 3000,
       position: 20,
-      containerStyle: { backgroundColor: 'transparent', opacity: 1 },
+      opacity: 1,
+      containerStyle: { backgroundColor: 'transparent' },
     });
     this.props.onCancel();
     //   } else {

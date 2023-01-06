@@ -7,7 +7,7 @@ import { Button, HorizontalLayout, VerticalLayout, LocalImage } from '../control
 import SwipeUpDownModal from 'react-native-swipe-modal-up-down';
 import { ActiveButton, SearchInput } from '../common';
 import { ScrollView } from 'react-navigation';
-import { API } from '../../constants/Constants';
+import { API, SCREEN_HEIGHT } from '../../constants/Constants';
 import TotalItem from '../items/TotalItem';
 import Timeline from 'react-native-timeline-flatlist';
 import LeadItem from '../items/LeadItem';
@@ -232,14 +232,13 @@ class LeadPopup extends React.Component {
 
 const styles = StyleSheet.create({
   Modal: {
-    position: 'absolute',
     borderTopLeftRadius: 25,
     borderTopRightRadius: 25,
     backgroundColor: Colors.white,
     bottom: 0,
     left: 0,
     width: '100%',
-    height: '95%',
+    height: SCREEN_HEIGHT * 0.95
   },
 });
 

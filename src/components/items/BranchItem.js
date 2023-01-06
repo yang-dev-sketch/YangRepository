@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, StyleSheet } from 'react-native';
+import { Text, StyleSheet, View } from 'react-native';
 import { Button, HorizontalLayout, LocalImage } from '../controls';
 
 class BranchItem extends React.Component {
@@ -26,12 +26,13 @@ class BranchItem extends React.Component {
               source={require('src/assets/image/ic_check_on.png')}
               style={{ width: 22, height: 22 }}
             />
-          )) || (
-            <LocalImage
-              source={require('src/assets/image/ic_bottom_setting_on.png')}
-              style={{ width: 35, height: 35 }}
-            />
-          )}
+          )) ||
+            (this.props.settingIcon && (
+              <LocalImage
+                source={require('src/assets/image/ic_bottom_setting_on.png')}
+                style={{ width: 35, height: 35 }}
+              />
+            )) || <View></View>}
           <HorizontalLayout style={{ alignItems: 'center' }}>
             <Text numberOfLines={1} style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>
               {data.name}

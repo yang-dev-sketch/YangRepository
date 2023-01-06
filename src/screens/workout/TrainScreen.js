@@ -220,7 +220,7 @@ export default class TrainScreen extends React.Component {
               </Button>
             </HorizontalLayout>
             <CustomCalendar
-              style={{ marginBottom: 10 }}
+              style={{ marginBottom: 10, width: '100%' }}
               selectedType="single-range"
               sort={() => {
                 this.setState({ showFilterByPopup: true });
@@ -229,10 +229,12 @@ export default class TrainScreen extends React.Component {
             <HorizontalLayout style={{ justifyContent: 'space-between', marginVertical: 15 }}>
               <Button
                 style={{
-                  paddingHorizontal: 22,
+                  width: '22%',
+                  alignItems: 'center',
                   paddingVertical: 9,
                   borderRadius: 11,
                   backgroundColor: 'white',
+                  elevation: 2,
                 }}>
                 <Text style={{ fontSize: 18, lineHeight: 22, color: '#1E6FD9', fontWeight: '600' }}>
                   יוגה
@@ -240,10 +242,12 @@ export default class TrainScreen extends React.Component {
               </Button>
               <Button
                 style={{
-                  paddingHorizontal: 22,
+                  width: '22%',
+                  alignItems: 'center',
                   paddingVertical: 9,
                   borderRadius: 11,
                   backgroundColor: 'white',
+                  elevation: 2,
                 }}>
                 <Text style={{ fontSize: 18, lineHeight: 22, color: '#43C7FF', fontWeight: '600' }}>
                   פילאטיס
@@ -251,10 +255,12 @@ export default class TrainScreen extends React.Component {
               </Button>
               <Button
                 style={{
-                  paddingHorizontal: 22,
+                  width: '22%',
+                  alignItems: 'center',
                   paddingVertical: 9,
                   borderRadius: 11,
                   backgroundColor: 'white',
+                  elevation: 2,
                 }}>
                 <Text style={{ fontSize: 18, lineHeight: 22, color: '#5C9DF2', fontWeight: '600' }}>
                   קבוצתי
@@ -262,10 +268,12 @@ export default class TrainScreen extends React.Component {
               </Button>
               <Button
                 style={{
-                  paddingHorizontal: 22,
+                  width: '22%',
+                  alignItems: 'center',
                   paddingVertical: 9,
                   borderRadius: 11,
                   backgroundColor: 'white',
+                  elevation: 2,
                 }}>
                 <Text style={{ fontSize: 18, lineHeight: 22, color: '#94BDF2', fontWeight: '600' }}>
                   הכל

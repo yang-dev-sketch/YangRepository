@@ -83,10 +83,11 @@ export default class AddProduct extends React.Component {
     // }).then(async (result) => {
     //   if (result.code == API_RES_CODE.SUCCESS) {
     GlobalState.setTabIndex(MAIN_TAB.SHOP);
-    Toast.show(<ToastContainer title="שינויים נשמרו" />, {
+    Toast.show(<ToastContainer title="מוצר התווסף לחנות" />, {
       duration: 3000,
       position: 20,
-      containerStyle: { backgroundColor: 'transparent', opacity: 1 },
+      opacity: 1,
+      containerStyle: { backgroundColor: 'transparent' },
     });
     //   } else {
     //   }

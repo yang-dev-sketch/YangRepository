@@ -49,7 +49,7 @@ const CustomHeaderComponent = ({ onPressLeft, title, onPressRight, sort }) => {
       <HorizontalLayout style={{ alignItems: 'center' }}>
         <Button
           onPress={() => {
-            onPressLeft();
+            onPressRight();
           }}>
           <LocalImage
             source={require('src/assets/image/ic_left.png')}
@@ -59,10 +59,12 @@ const CustomHeaderComponent = ({ onPressLeft, title, onPressRight, sort }) => {
         <Text style={{ fontSize: 18, lineHeight: 22, width: 50, textAlign: 'left', color: '#000' }}>
           {customYear(title)}
         </Text>
-        <Text style={{ fontSize: 18, lineHeight: 22, width: 70, color: '#000' }}>{customTitle(title)}</Text>
+        <Text style={{ fontSize: 18, lineHeight: 22, width: 70, color: '#000' }}>
+          {customTitle(title)}
+        </Text>
         <Button
           onPress={() => {
-            onPressRight();
+            onPressLeft();
           }}>
           <LocalImage
             source={require('src/assets/image/ic_right.png')}
@@ -143,7 +145,7 @@ const CustomDayComponent = ({
         <View
           style={{
             position: 'absolute',
-            right: -14,
+            left: -14,
             width: (SCREEN_WIDTH - 38) / 14,
             height: 26,
             backgroundColor: 'rgba(30, 111, 217, 0.1)',
@@ -154,7 +156,7 @@ const CustomDayComponent = ({
         <View
           style={{
             position: 'absolute',
-            left: -14,
+            right: -14,
             width: (SCREEN_WIDTH - 38) / 14,
             height: 26,
             backgroundColor: 'rgba(30, 111, 217, 0.1)',
@@ -191,6 +193,7 @@ export default class CustomCalendar extends React.Component {
             paddingBottom: 15,
             borderRadius: 11,
             elevation: 1,
+            flexDirection: 'column',
           },
         ]}
         headerDateFormat="yyyy L"
@@ -209,9 +212,10 @@ export default class CustomCalendar extends React.Component {
           fontSize: 16,
           lineHeight: 19,
           color: '#000',
-          fontWeight: '700'
+          fontWeight: '700',
         }}
         dayContainerStyle={{ alignItems: 'center' }}
+        daysRowStyle={{ flexDirection: 'row-reverse' }}
         selectedType={this.props.selectedType} //'single' | 'range' | 'single-range'
         disabledDates={[new Date('12/22/2022'), new Date('12/15/2022'), new Date('12/27/2022')]}
         dayDisabledStyle={{ color: '#6F6F6F' }}

@@ -8,6 +8,8 @@ import SwipeUpDownModal from 'react-native-swipe-modal-up-down';
 import { ActiveButton, SetValueGroup } from '../common';
 import CommonInput from '../common/CommonInput';
 import { API, API_RES_CODE } from '../../constants/Constants';
+import Toast from "react-native-root-toast";
+import ToastContainer from "../controls/ToastContainer";
 
 @observer
 class InvitateTraineePopup extends React.Component {
@@ -26,7 +28,13 @@ class InvitateTraineePopup extends React.Component {
     //   name: this.state.firstName + this.state.lastName,
     // }).then(async (result) => {
     //   if (result.code == API_RES_CODE.SUCCESS) {
-    this.props.onBack();
+    this.props.onCancel();
+    Toast.show(<ToastContainer title="מתאמן חדש הוזמן להצטרף למערכת" />, {
+      duration: 3000,
+      position: 20,
+      opacity: 1,
+      containerStyle: { backgroundColor: 'transparent' },
+    });
     //   } else {
     //   }
     // });

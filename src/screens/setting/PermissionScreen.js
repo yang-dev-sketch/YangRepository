@@ -178,7 +178,8 @@ export default class PermissionScreen extends React.Component {
     Toast.show(<ToastContainer title="תפקיד חדש נוסף" />, {
       duration: 3000,
       position: 20,
-      containerStyle: { backgroundColor: 'transparent', opacity: 1 },
+      opacity: 1,
+      containerStyle: { backgroundColor: 'transparent' },
     });
   };
 

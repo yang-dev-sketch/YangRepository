@@ -21,6 +21,7 @@ import ProfileScreen from '../screens/home/ProfileScreen';
 import PaymentScreen from '../screens/home/PaymentScreen';
 
 import TrainScreen from '../screens/workout/TrainScreen';
+import ConductTrain from '../screens/workout/ConductTrain';
 
 import SettingScreen from '../screens/setting/SettingScreen';
 import BusinessScreen from '../screens/setting/BusinessScreen';
@@ -50,6 +51,7 @@ const MainStackNavigator = createStackNavigator({
     PaymentScreen,
 
     TrainScreen,
+    ConductTrain,
 
     SettingScreen,
     BusinessScreen,

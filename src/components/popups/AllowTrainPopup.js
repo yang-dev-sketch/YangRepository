@@ -10,7 +10,7 @@ import { ScrollView } from 'react-navigation';
 import CommonInput from '../common/CommonInput';
 import { API, API_RES_CODE, SCREEN_HEIGHT, SCREEN_WIDTH } from '../../constants/Constants';
 import DropDownPicker from '../controls/DropDownPicker';
-import CheckBox from '@react-native-community/checkbox';
+import CheckBox from './../controls/CheckBox';
 
 @observer
 class AllowTrainPopup extends React.Component {
@@ -101,10 +101,9 @@ class AllowTrainPopup extends React.Component {
                   לאפשר לפי הגדרת התדירות אימונים הבאה
                 </Text>
                 <CheckBox
-                  onFillColor="#0D65D9"
                   value={this.state.allow}
-                  onChange={() => {
-                    this.setState({ allow: !this.state.allow });
+                  onChange={(value) => {
+                    this.setState({ allow: value });
                   }}
                 />
               </HorizontalLayout>

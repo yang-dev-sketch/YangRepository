@@ -6,7 +6,7 @@ import { API, API_RES_CODE, MAIN_TAB } from '../../constants/Constants';
 import { Button, HorizontalLayout, LocalImage, VerticalLayout } from '../../components/controls';
 import { requestGet, requestPost } from '../../utils/ApiUtils';
 import { ActiveButton, CommonInput, DisactiveButton, SetValueGroup } from '../../components/common';
-import CheckBox from '@react-native-community/checkbox';
+import CheckBox from './../../components/controls/CheckBox';
 import EditTrainPopup from '../../components/popups/EditTrainPopup';
 import ModalDropDown from '../../components/controls/ModalDropDown';
 import EditTraineePopup from '../../components/popups/EditTraineePopup';
@@ -293,10 +293,9 @@ export default class CreateWorkout extends React.Component {
               <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>יצירת אותו אימון</Text>
               <CheckBox
                 style={{ marginRight: -8 }}
-                onFillColor="#0D65D9"
                 value={this.state.createSameWorkout}
-                onChange={() => {
-                  this.setState({ createSameWorkout: !this.state.createSameWorkout });
+                onChange={(value) => {
+                  this.setState({ createSameWorkout: value });
                 }}
               />
             </HorizontalLayout>
@@ -305,10 +304,9 @@ export default class CreateWorkout extends React.Component {
               <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>אימון שקוף</Text>
               <CheckBox
                 style={{ marginRight: -8 }}
-                onFillColor="#0D65D9"
                 value={this.state.payMethod}
-                onChange={() => {
-                  this.setState({ payMethod: !this.state.payMethod });
+                onChange={(value) => {
+                  this.setState({ payMethod: value });
                 }}
               />
             </HorizontalLayout>

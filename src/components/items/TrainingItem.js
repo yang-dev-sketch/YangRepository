@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { LocalImage, HorizontalLayout, VerticalLayout } from '../controls';
+import { LocalImage, HorizontalLayout, VerticalLayout, Button } from '../controls';
 
 export default class TrainingItem extends React.Component {
   constructor(props) {
@@ -33,10 +33,15 @@ export default class TrainingItem extends React.Component {
             />
           </View>
           <Text style={{ fontSize: 14, lineHeight: 17, color: 'white' }}>אישורי הגעה</Text>
-          <LocalImage
-            source={require('src/assets/image/ic_editing.png')}
-            style={{ width: 22.5, height: 22.5 }}
-          />
+          <Button
+            onPress={() => {
+              this.props.onEdit(data.id);
+            }}>
+            <LocalImage
+              source={require('src/assets/image/ic_editing.png')}
+              style={{ width: 22.5, height: 22.5 }}
+            />
+          </Button>
           <Text style={{ fontSize: 14, lineHeight: 17, color: 'white' }}>עריכה</Text>
         </VerticalLayout>
         <VerticalLayout style={{ alignItems: 'flex-end', justifyContent: 'space-between' }}>

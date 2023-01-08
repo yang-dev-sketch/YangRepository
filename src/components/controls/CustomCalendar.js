@@ -4,7 +4,7 @@ import { Button, HorizontalLayout, LocalImage, VerticalLayout } from '.';
 import { Calendar } from 'react-native-plain-calendar';
 import { SCREEN_WIDTH } from '../../constants/Constants';
 
-const CustomHeaderComponent = ({ onPressLeft, title, onPressRight, sort }) => {
+const CustomHeaderComponent = ({ onPressLeft, title, onPressRight, sort, sortable }) => {
   const customYear = (title) => {
     return title.substring(0, 4);
   };
@@ -26,26 +26,30 @@ const CustomHeaderComponent = ({ onPressLeft, title, onPressRight, sort }) => {
 
   return (
     <HorizontalLayout
-      style={{
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        paddingLeft: 10,
-        paddingRight: 18.29,
-        paddingTop: 18,
-        paddingBottom: 10,
-      }}>
-      <Button
-        onPress={() => {
-          sort();
-        }}>
-        <HorizontalLayout style={{ alignItems: 'center' }}>
-          <Text style={{ color: '#000', fontSize: 16, lineHeight: 19 }}>סינון לפי</Text>
-          <LocalImage
-            source={require('src/assets/image/ic_sort_black.png')}
-            style={{ width: 24, height: 24 }}
-          />
-        </HorizontalLayout>
-      </Button>
+      style={[
+        (sortable && { justifyContent: 'space-between' }) || { justifyContent: 'center' },
+        {
+          alignItems: 'center',
+          paddingLeft: 10,
+          paddingRight: 18.29,
+          paddingTop: 18,
+          paddingBottom: 10,
+        },
+      ]}>
+      {sortable && (
+        <Button
+          onPress={() => {
+            sort();
+          }}>
+          <HorizontalLayout style={{ alignItems: 'center' }}>
+            <Text style={{ color: '#000', fontSize: 16, lineHeight: 19 }}>סינון לפי</Text>
+            <LocalImage
+              source={require('src/assets/image/ic_sort_black.png')}
+              style={{ width: 24, height: 24 }}
+            />
+          </HorizontalLayout>
+        </Button>
+      )}
       <HorizontalLayout style={{ alignItems: 'center' }}>
         <Button
           onPress={() => {
@@ -205,6 +209,7 @@ export default class CustomCalendar extends React.Component {
             sort={() => {
               this.props.sort();
             }}
+            sortable={this.props.sortable}
           />
         )}
         weekdays={['ש', 'ו', 'ה', 'ד', 'ג', 'ב', 'א']}
@@ -214,6 +219,7 @@ export default class CustomCalendar extends React.Component {
           color: '#000',
           fontWeight: '700',
         }}
+        minDate={this.props.minDate}
         dayContainerStyle={{ alignItems: 'center' }}
         daysRowStyle={{ flexDirection: 'row-reverse' }}
         selectedType={this.props.selectedType} //'single' | 'range' | 'single-range'
@@ -245,6 +251,7 @@ export default class CustomCalendar extends React.Component {
           />
         )}
         onSelected={(date) => {
+          this.props.selectedDate(date);
           console.log(date);
         }}
       />

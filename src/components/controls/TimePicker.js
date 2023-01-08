@@ -67,12 +67,10 @@ export default class TimePicker extends React.Component {
                       style={{
                         width: '100%',
                         alignItems: 'center',
-                        justifyContent: 'space-around',
+                        justifyContent: 'space-evenly',
                       }}>
                       <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>{data.value}</Text>
-                      {(isSelected && <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>:</Text>) || (
-                        <Text></Text>
-                      )}
+                      <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>:</Text>
                       <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>00</Text>
                     </HorizontalLayout>
                   </Button>
@@ -147,7 +145,7 @@ export default class TimePicker extends React.Component {
               backgroundColor: 'white',
               borderRadius: 20,
               alignItems: 'center',
-              justifyContent: 'space-around',
+              justifyContent: 'space-evenly',
               flexDirection: 'row',
             }}>
             <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>

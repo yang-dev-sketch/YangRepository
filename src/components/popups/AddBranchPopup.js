@@ -8,7 +8,7 @@ import SwipeUpDownModal from 'react-native-swipe-modal-up-down';
 import { ActiveButton, DisactiveButton, SetValueGroup } from '../common';
 import { ScrollView } from 'react-navigation';
 import CommonInput from '../common/CommonInput';
-import CheckBox from '@react-native-community/checkbox';
+import CheckBox from '../controls/CheckBox';
 import { requestUpload } from '../../utils/ApiUtils';
 import ImageCropPicker from 'react-native-image-crop-picker';
 import { API, API_RES_CODE, IMAGE_FOO_URL, SCREEN_HEIGHT } from '../../constants/Constants';
@@ -207,10 +207,9 @@ class AddBranchPopup extends React.Component {
                 style={{ alignItems: 'center', justifyContent: 'flex-end', marginBottom: 40 }}>
                 <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>עריכת אמצעי תשלום</Text>
                 <CheckBox
-                  onFillColor="#0D65D9"
                   value={this.state.pay_method}
-                  onChange={() => {
-                    this.setState({ pay_method: !this.state.pay_method });
+                  onChange={(value) => {
+                    this.setState({ pay_method: value });
                   }}
                 />
               </HorizontalLayout>

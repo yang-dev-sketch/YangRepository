@@ -16,7 +16,7 @@ import { requestGet, requestPost, requestUpload } from '../../utils/ApiUtils';
 import ImageCropPicker from 'react-native-image-crop-picker';
 import { ActiveButton, CommonInput, DisactiveButton, SetValueGroup } from '../../components/common';
 import DropDownPicker from '../../components/controls/DropDownPicker';
-import CheckBox from '@react-native-community/checkbox';
+import CheckBox from './../../components/controls/CheckBox';
 import BranchDetailPopup from '../../components/popups/BranchDetailPopup';
 import Toast from "react-native-root-toast";
 import ToastContainer from "../../components/controls/ToastContainer";
@@ -226,10 +226,9 @@ export default class AddBusinessScreen extends React.Component {
               style={{ alignItems: 'center', justifyContent: 'flex-end', marginBottom: 40 }}>
               <Text style={{ fontSize: 16, lineHeight: 19 }}>אין ברשותי מקום אימונים קבוע</Text>
               <CheckBox
-                onFillColor="#0D65D9"
                 value={this.state.permanentPlace}
-                onChange={() => {
-                  this.setState({ permanentPlace: !this.state.permanentPlace }, () => {
+                onChange={(value) => {
+                  this.setState({ permanentPlace: value }, () => {
                     this.state.permanentPlace && this.setState({ showBranchDetailPopup: true });
                   });
                 }}

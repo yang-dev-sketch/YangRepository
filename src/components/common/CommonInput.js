@@ -22,7 +22,7 @@ export default class CommonInput extends React.Component {
           maxLength={this.props.numberOfLines === 1 ? this.props.maxLength || 40 : 250}
           multiline={this.props.numberOfLines === 1 ? false : true}
           numberOfLines={this.props.numberOfLines}
-          value={this.props.value}
+          value={`${this.props.value}`}
           placeholder={this.props.placeholder}
           returnKeyType={this.props.returnKeyType}
           keyboardType={this.props.keyboardType}

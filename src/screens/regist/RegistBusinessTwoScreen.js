@@ -14,8 +14,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import { ActiveButton, CommonInput, SetValueGroup } from '../../components/common';
 import FastImage from 'react-native-fast-image';
 import ImageCropPicker from 'react-native-image-crop-picker';
-import CheckBox from '@react-native-community/checkbox';
-
+import CheckBox from './../../components/controls/CheckBox';
 export default class RegistBusinessTwoScreen extends AppScreen {
   constructor(props) {
     super(props);
@@ -194,10 +193,9 @@ export default class RegistBusinessTwoScreen extends AppScreen {
               style={{ alignItems: 'center', justifyContent: 'flex-end', marginBottom: 45 }}>
               <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>אין ברשותי מקום אימונים קבוע</Text>
               <CheckBox
-                onFillColor="#0D65D9"
                 value={this.state.permanentPlace}
-                onChange={() => {
-                  this.setState({ permanentPlace: !this.state.permanentPlace });
+                onChange={(value) => {
+                  this.setState({ permanentPlace: value });
                 }}
               />
             </HorizontalLayout>

@@ -8,7 +8,7 @@ import SwipeUpDownModal from 'react-native-swipe-modal-up-down';
 import { ActiveButton, DisactiveButton, SetValueGroup } from '../common';
 import { ScrollView } from 'react-navigation';
 import CommonInput from '../common/CommonInput';
-import CheckBox from '@react-native-community/checkbox';
+import CheckBox from './../controls/CheckBox';
 import { API, API_RES_CODE, SCREEN_HEIGHT } from '../../constants/Constants';
 import DropDownPicker from '../controls/DropDownPicker';
 
@@ -201,10 +201,9 @@ class AllowPenaltyPopup extends React.Component {
               <HorizontalLayout style={{ alignItems: 'center', justifyContent: 'flex-end' }}>
                 <Text style={{ fontSize: 16, lineHeight: 19 }}>אישורי הגעה</Text>
                 <CheckBox
-                  onFillColor="#0D65D9"
                   value={this.state.countAbsence}
-                  onChange={() => {
-                    this.setState({ countAbsence: !this.state.countAbsence });
+                  onChange={(value) => {
+                    this.setState({ countAbsence: value });
                   }}
                 />
               </HorizontalLayout>
@@ -212,10 +211,9 @@ class AllowPenaltyPopup extends React.Component {
                 style={{ alignItems: 'center', justifyContent: 'flex-end', marginBottom: 30 }}>
                 <Text style={{ fontSize: 16, lineHeight: 19 }}>היעדרות/ביטול מאוחר</Text>
                 <CheckBox
-                  onFillColor="#0D65D9"
                   value={this.state.absenceCancel}
-                  onChange={() => {
-                    this.setState({ absenceCancel: !this.state.absenceCancel });
+                  onChange={(value) => {
+                    this.setState({ absenceCancel: value });
                   }}
                 />
               </HorizontalLayout>

@@ -8,7 +8,7 @@ export default class DateDropDown extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      date: new Date(),
+      date: this.props.date,
       modifyState: false,
     };
   }
@@ -63,6 +63,7 @@ export default class DateDropDown extends React.Component {
                   this.setState({ modifyState: false });
                 }, 5000);
                 this.setState({ date: date });
+                this.props.changeDate(date);
               }}
             />
           </View>

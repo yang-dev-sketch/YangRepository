@@ -22,6 +22,7 @@ import TrainerOrganizationPopup from '../../components/popups/TrainerOrganizatio
 import PieChart from 'react-native-pie-chart';
 import Toast from 'react-native-root-toast';
 import ToastContainer from '../../components/controls/ToastContainer';
+import MyProfilePopup from '../../components/popups/MyProfilePopup';
 
 @observer
 export default class HomeScreen extends React.Component {
@@ -55,6 +56,9 @@ export default class HomeScreen extends React.Component {
       traineeList: [],
       showInvitateTraineePopup: false,
       showTrainerOrganizationPopup: false,
+      showMyProfilePopup: false,
+      accountList: [],
+      selectedAccountId: 0
     };
   }
 
@@ -185,6 +189,15 @@ export default class HomeScreen extends React.Component {
     // });
   };
 
+  getAccount = () => {
+    const accountList = [
+      { id: 1, name: 'admin', type: 'נתניה' },
+      { id: 2, name: 'coach', type: 'כל הסניפים' },
+      { id: 3, name: 'coach', type: 'תל אביב' },
+    ];
+    this.setState({accountList: accountList})
+  };
+
   render() {
     const widthAndHeight = 100;
     const series = [20, 30, 15, 10, 40, 20];
@@ -214,7 +227,11 @@ export default class HomeScreen extends React.Component {
                 }}>
                 פרופיל
               </Text>
-              <Button onPress={() => {}}>
+              <Button
+                onPress={() => {
+                  this.getAccount();
+                  this.setState({ showMyProfilePopup: true });
+                }}>
                 <LocalImage
                   source={require('src/assets/image/ic_bottom_gyme_off.png')}
                   style={{ width: 39, height: 39 }}
@@ -623,6 +640,16 @@ export default class HomeScreen extends React.Component {
             this.setState({ showTrainerOrganizationPopup: false });
             this.addTrainer(data);
           }}
+        />
+        <MyProfilePopup
+          visible={this.state.showMyProfilePopup}
+          onCancel={() => {
+            this.setState({ showMyProfilePopup: false });
+          }}
+          setSearch={() => {}}
+          data={this.state.accountList}
+          selectAccount={(index) => {this.setState({selectedAccountId: index})}}
+          selectId={this.state.selectedAccountId}
         />
       </SafeAreaView>
     );

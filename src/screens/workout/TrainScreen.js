@@ -20,8 +20,8 @@ import FilterByHourPopup from '../../components/popups/FilterByHourPopup';
 import FilterByTrainingPopup from '../../components/popups/FilterByTrainingPopup';
 import FilterByBranchPopup from '../../components/popups/FilterByBranchPopup';
 import CustomCalendar from '../../components/controls/CustomCalendar';
-import Toast from "react-native-root-toast";
-import ToastContainer from "../../components/controls/ToastContainer";
+import Toast from 'react-native-root-toast';
+import ToastContainer from '../../components/controls/ToastContainer';
 
 @observer
 export default class TrainScreen extends React.Component {
@@ -120,8 +120,26 @@ export default class TrainScreen extends React.Component {
     if (this.state.selected) return <Text>{this.state.selected.id}</Text>;
   }
 
+  onEdit = (id) => {
+    this.props.navigation.navigate({
+      routeName: 'ConductTrain',
+      params: {
+        id: id,
+      },
+      key: 'ConductTrain',
+    });
+  };
+
   renderDetail(rowData, sectionID, rowID) {
-    return <TrainingItem data={rowData} even={sectionID % 2 === 0} />;
+    return (
+      <TrainingItem
+        data={rowData}
+        even={sectionID % 2 === 0}
+        onEdit={(id) => {
+          this.onEdit(id);
+        }}
+      />
+    );
   }
 
   getTaskList = () => {

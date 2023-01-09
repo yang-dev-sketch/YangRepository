@@ -85,6 +85,7 @@ class BranchPopup extends React.Component {
                 return (
                   <BranchItem
                     data={item}
+                    settingIcon={true}
                     selectable={this.props.selectable}
                     key={index}
                     selectBranchId={this.props.selectBranchId}

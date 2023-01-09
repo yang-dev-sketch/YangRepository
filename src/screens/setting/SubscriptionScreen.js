@@ -9,6 +9,7 @@ import { requestGet, requestPost, requestUpload } from '../../utils/ApiUtils';
 import { ActiveButton, DisactiveButton } from '../../components/common';
 import LegalDocumentPopup from '../../components/popups/LegalDocumentPopup';
 import { AddBranchPopup, BranchPopup } from '../../components/popups';
+import moment from "moment/moment";
 
 @observer
 export default class SubscriptionScreen extends React.Component {
@@ -267,7 +268,7 @@ export default class SubscriptionScreen extends React.Component {
                           {item.name}
                         </Text>
                         <Text style={{ fontSize: 14, lineHeight: 22, color: '#979797' }}>
-                          {item.date}
+                          {moment(item.date).format('hh:mm, DD.MM.YYYY')}
                         </Text>
                       </VerticalLayout>
                     </HorizontalLayout>

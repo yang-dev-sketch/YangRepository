@@ -75,6 +75,8 @@ export default class SettingScreen extends React.Component {
     this.setState({ branchList: branchList });
   };
 
+  deleteBranch = () => {}
+
   render() {
     return (
       <SafeAreaView>
@@ -101,7 +103,7 @@ export default class SettingScreen extends React.Component {
                   lineHeight: 22,
                   letterSpacing: 1,
                   color: '#000',
-                  fontWeight: '700'
+                  fontWeight: '700',
                 }}>
                 הגדרות
               </Text>
@@ -237,6 +239,9 @@ export default class SettingScreen extends React.Component {
           visible={this.state.showBranchPopup}
           data={this.state.branchList}
           selectable={false}
+          selectBranch={(id) => {
+            this.setState({ selectedBranchId: id });
+          }}
           selectBranchId={this.state.selectedBranchId}
           setSearch={(search) => {
             this.setState({ search_branch: search }, () => {

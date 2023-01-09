@@ -36,7 +36,7 @@ export default class PermissionScreen extends React.Component {
   }
 
   getRoles = () => {
-    const roleList = [
+    const manageList = [
       {
         id: 1,
         name: 'Admin',
@@ -45,56 +45,102 @@ export default class PermissionScreen extends React.Component {
           { id: 2, name: 'שם המתאמן.ת', train: 'Steps-London', avatar: '' },
           { id: 3, name: 'שם המתאמן.ת', train: 'Steps-London', avatar: '' },
         ],
-        report: true,
-        training: false,
-        payment: false,
-        task: false,
-        lead: false,
       },
       {
         id: 2,
         name: 'Coach',
         member: [
-          { id: 1, name: 'שם המתאמן.ת', train: 'Steps-London', avatar: '' },
-          { id: 2, name: 'שם המתאמן.ת', train: 'Steps-London', avatar: '' },
-          { id: 3, name: 'שם המתאמן.ת', train: 'Steps-London', avatar: '' },
+          { id: 4, name: 'שם המתאמן.ת', train: 'Steps-London', avatar: '' },
+          { id: 5, name: 'שם המתאמן.ת', train: 'Steps-London', avatar: '' },
+          { id: 6, name: 'שם המתאמן.ת', train: 'Steps-London', avatar: '' },
         ],
-        report: true,
-        training: false,
-        payment: false,
-        task: false,
-        lead: false,
       },
       {
         id: 3,
         name: 'Office Manager',
         member: [
-          { id: 1, name: 'שם המתאמן.ת', train: 'Steps-London', avatar: '' },
-          { id: 2, name: 'שם המתאמן.ת', train: 'Steps-London', avatar: '' },
-          { id: 3, name: 'שם המתאמן.ת', train: 'Steps-London', avatar: '' },
+          { id: 7, name: 'שם המתאמן.ת', train: 'Steps-London', avatar: '' },
+          { id: 8, name: 'שם המתאמן.ת', train: 'Steps-London', avatar: '' },
+          { id: 9, name: 'שם המתאמן.ת', train: 'Steps-London', avatar: '' },
         ],
-        report: true,
-        training: false,
-        payment: false,
-        task: false,
-        lead: false,
       },
       {
         id: 4,
         name: 'Custom Service Agent',
         member: [
+          { id: 10, name: 'שם המתאמן.ת', train: 'Steps-London', avatar: '' },
+          { id: 11, name: 'שם המתאמן.ת', train: 'Steps-London', avatar: '' },
+          { id: 12, name: 'שם המתאמן.ת', train: 'Steps-London', avatar: '' },
+        ],
+      },
+    ];
+    const descList = [
+      {
+        id: 1,
+        name: 'Admin',
+        member: [
           { id: 1, name: 'שם המתאמן.ת', train: 'Steps-London', avatar: '' },
           { id: 2, name: 'שם המתאמן.ת', train: 'Steps-London', avatar: '' },
           { id: 3, name: 'שם המתאמן.ת', train: 'Steps-London', avatar: '' },
         ],
-        report: true,
-        training: false,
-        payment: false,
-        task: false,
-        lead: false,
+        desc: {
+          report: true,
+          training: false,
+          payment: false,
+          task: false,
+          lead: false,
+        },
+      },
+      {
+        id: 2,
+        name: 'Coach',
+        member: [
+          { id: 4, name: 'שם המתאמן.ת', train: 'Steps-London', avatar: '' },
+          { id: 5, name: 'שם המתאמן.ת', train: 'Steps-London', avatar: '' },
+          { id: 6, name: 'שם המתאמן.ת', train: 'Steps-London', avatar: '' },
+        ],
+        desc: {
+          report: true,
+          training: false,
+          payment: false,
+          task: false,
+          lead: false,
+        },
+      },
+      {
+        id: 3,
+        name: 'Office Manager',
+        member: [
+          { id: 7, name: 'שם המתאמן.ת', train: 'Steps-London', avatar: '' },
+          { id: 8, name: 'שם המתאמן.ת', train: 'Steps-London', avatar: '' },
+          { id: 9, name: 'שם המתאמן.ת', train: 'Steps-London', avatar: '' },
+        ],
+        desc: {
+          report: true,
+          training: false,
+          payment: false,
+          task: false,
+          lead: false,
+        },
+      },
+      {
+        id: 4,
+        name: 'Custom Service Agent',
+        member: [
+          { id: 10, name: 'שם המתאמן.ת', train: 'Steps-London', avatar: '' },
+          { id: 11, name: 'שם המתאמן.ת', train: 'Steps-London', avatar: '' },
+          { id: 12, name: 'שם המתאמן.ת', train: 'Steps-London', avatar: '' },
+        ],
+        desc: {
+          report: true,
+          training: false,
+          payment: false,
+          task: false,
+          lead: false,
+        },
       },
     ];
-    this.setState({ manageList: roleList, descList: roleList });
+    this.setState({ manageList: manageList, descList: descList });
   };
 
   getUser = () => {
@@ -152,7 +198,7 @@ export default class PermissionScreen extends React.Component {
     this.setState({ descList: descList });
   };
 
-  changeJob = (id, type) => {
+  changeDesc = (id, type) => {
     // requestPost(API.Setting.change_role, {
     //   type: type,
     // }).then(async (result) => {
@@ -160,11 +206,11 @@ export default class PermissionScreen extends React.Component {
     const descList = this.state.descList;
     descList.map((item, index) => {
       if (item.id === id) {
-        if (type === 'report') item.report = !item.report;
-        if (type === 'training') item.training = !item.training;
-        if (type === 'payment') item.payment = !item.payment;
-        if (type === 'task') item.task = !item.report;
-        if (type === 'lead') item.lead = !item.lead;
+        if (type === 'report') item.desc.report = !item.desc.report;
+        if (type === 'training') item.desc.training = !item.desc.training;
+        if (type === 'payment') item.desc.payment = !item.desc.payment;
+        if (type === 'task') item.desc.task = !item.desc.report;
+        if (type === 'lead') item.desc.lead = !item.desc.lead;
       }
     });
     this.setState({ descList: descList });
@@ -183,11 +229,34 @@ export default class PermissionScreen extends React.Component {
     });
   };
 
+  searchManage = (search, id) => {
+    const member = [];
+    const manageList = this.state.manageList;
+    manageList.map((item, index) => {
+      if (item.id === id) item.member = member;
+    });
+    this.setState({ manageList: manageList });
+  };
+
+  searchDesc = (search, id) => {
+    const desc = {};
+    const descList = this.state.descList;
+    descList.map((item, index) => {
+      if (item.id === id) item.desc = desc;
+    });
+    this.setState({ descList: descList });
+  };
+
   render() {
     return (
       <SafeAreaView style={Styles.full}>
         <ScrollView style={Styles.wrapper}>
-          <VerticalLayout style={{ paddingVertical: 29, paddingBottom: 90 }}>
+          <VerticalLayout
+            style={[
+              { paddingTop: 29 },
+              (this.state.selectedUser !== 0 &&
+                this.state.tabIndex === 0 && { paddingBottom: 45 }) || { paddingBottom: 90 },
+            ]}>
             <HorizontalLayout
               style={{
                 alignItems: 'center',
@@ -209,6 +278,7 @@ export default class PermissionScreen extends React.Component {
                   lineHeight: 22,
                   letterSpacing: 1,
                   color: '#000',
+                  fontWeight: '700',
                 }}>
                 הגדרות
               </Text>
@@ -323,9 +393,12 @@ export default class PermissionScreen extends React.Component {
                           </Button>
                           {item.checked && (
                             <VerticalLayout>
-                              {item.member.length > 0 && (
-                                <SearchInput style={{ marginTop: 10, marginBottom: 5 }} />
-                              )}
+                              <SearchInput
+                                style={{ marginTop: 10, marginBottom: 5 }}
+                                setSearch={(search) => {
+                                  this.searchManage(search, item.id);
+                                }}
+                              />
                               {item.member.map((sub_item, sub_index) => {
                                 return (
                                   <Button
@@ -426,7 +499,6 @@ export default class PermissionScreen extends React.Component {
                         <>
                           <Button
                             onPress={() => {
-                              this.setState({ selectedDesc: item.id });
                               this.selectDesc(item.id);
                             }}
                             key={index}
@@ -472,57 +544,72 @@ export default class PermissionScreen extends React.Component {
                           </Button>
                           {item.checked && (
                             <VerticalLayout>
-                              {item.member.length > 0 && <SearchInput style={{ marginTop: 10 }} />}
-                              <SwitchItem
-                                style={styles.switch_item}
-                                data={{
-                                  name: 'דיווחים',
-                                  checked: item.report,
-                                }}
-                                onSelect={() => {
-                                  this.changeJob(item.id, 'report');
+                              <SearchInput
+                                style={{ marginTop: 10 }}
+                                setSearch={(search) => {
+                                  this.searchDesc(search, item.id);
                                 }}
                               />
-                              <SwitchItem
-                                style={styles.switch_item}
-                                data={{
-                                  name: 'אימונים',
-                                  checked: item.training,
-                                }}
-                                onSelect={() => {
-                                  this.changeJob(item.id, 'training');
-                                }}
-                              />
-                              <SwitchItem
-                                style={styles.switch_item}
-                                data={{
-                                  name: 'תשלומים',
-                                  checked: item.payment,
-                                }}
-                                onSelect={() => {
-                                  this.changeJob(item.id, 'payment');
-                                }}
-                              />
-                              <SwitchItem
-                                style={styles.switch_item}
-                                data={{
-                                  name: 'משימות',
-                                  checked: item.task,
-                                }}
-                                onSelect={() => {
-                                  this.changeJob(item.id, 'task');
-                                }}
-                              />
-                              <SwitchItem
-                                style={styles.switch_item}
-                                data={{
-                                  name: 'לידים',
-                                  checked: item.lead,
-                                }}
-                                onSelect={() => {
-                                  this.changeJob(item.id, 'lead');
-                                }}
-                              />
+                              {item.desc.report != undefined && (
+                                <SwitchItem
+                                  style={styles.switch_item}
+                                  data={{
+                                    name: 'דיווחים',
+                                    checked: item.desc.report,
+                                  }}
+                                  onSelect={() => {
+                                    this.changeDesc(item.id, 'report');
+                                  }}
+                                />
+                              )}
+                              {item.desc.training != undefined && (
+                                <SwitchItem
+                                  style={styles.switch_item}
+                                  data={{
+                                    name: 'אימונים',
+                                    checked: item.desc.training,
+                                  }}
+                                  onSelect={() => {
+                                    this.changeDesc(item.id, 'training');
+                                  }}
+                                />
+                              )}
+                              {item.desc.payment != undefined && (
+                                <SwitchItem
+                                  style={styles.switch_item}
+                                  data={{
+                                    name: 'תשלומים',
+                                    checked: item.desc.payment,
+                                  }}
+                                  onSelect={() => {
+                                    this.changeDesc(item.id, 'payment');
+                                  }}
+                                />
+                              )}
+                              {item.desc.task != undefined && (
+                                <SwitchItem
+                                  style={styles.switch_item}
+                                  data={{
+                                    name: 'משימות',
+                                    checked: item.desc.task,
+                                  }}
+                                  onSelect={() => {
+                                    this.changeDesc(item.id, 'task');
+                                  }}
+                                />
+                              )}
+                              {item.desc.lead != undefined && (
+                                <SwitchItem
+                                  style={styles.switch_item}
+                                  data={{
+                                    name: 'לידים',
+                                    checked: item.desc.lead,
+                                  }}
+                                  onSelect={() => {
+                                    this.changeDesc(item.id, 'lead');
+                                  }}
+                                />
+                              )}
                             </VerticalLayout>
                           )}
                         </>
@@ -552,7 +639,7 @@ export default class PermissionScreen extends React.Component {
               />
             </Button>
           </VerticalLayout>
-          {this.state.selectedUser !== 0 && (
+          {this.state.selectedUser !== 0 && this.state.tabIndex === 0 && (
             <>
               <DisactiveButton
                 text="מחק משתמש"
@@ -563,7 +650,7 @@ export default class PermissionScreen extends React.Component {
               />
               <ActiveButton
                 text="ביטול"
-                style={{ marginBottom: 15 }}
+                style={{ marginBottom: 90 }}
                 action={() => {
                   this.setState({ selectedUser: 0 });
                 }}

@@ -15,6 +15,8 @@ import DropDownPicker from '../../components/controls/DropDownPicker';
 import DateDropDown from '../../components/controls/DateDropDown';
 import TimePicker from '../../components/controls/TimePicker';
 import GlobalState from '../../mobx/GlobalState';
+import ToastContainer from "../../components/controls/ToastContainer";
+import Toast from "react-native-root-toast";
 
 @observer
 export default class CreateWorkout extends React.Component {
@@ -130,13 +132,13 @@ export default class CreateWorkout extends React.Component {
     // }).then(async (result) => {
     //   if (result.code == API_RES_CODE.SUCCESS) {
     GlobalState.setTabIndex(MAIN_TAB.TRAIN);
-    this.props.navigation.navigate({
-      routeName: 'TrainScreen',
-      params: {
-        create: true,
-      },
-      key: 'TrainScreen',
+    Toast.show(<ToastContainer title="האימון נוצר בהצלחה!" />, {
+      duration: 3000,
+      position: 20,
+      opacity: 1,
+      containerStyle: { backgroundColor: 'transparent' },
     });
+    this.props.navigation.navigate('TrainScreen');
     //   } else {
     //   }
     // });

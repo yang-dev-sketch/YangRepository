@@ -190,14 +190,6 @@ export default class TrainScreen extends React.Component {
 
   componentDidMount() {
     this.getInfo();
-    if (this.props.navigation.getParam('create')) {
-      Toast.show(<ToastContainer title="האימון נוצר בהצלחה!" />, {
-        duration: 3000,
-        position: 20,
-        opacity: 1,
-        containerStyle: { backgroundColor: 'transparent' },
-      });
-    }
   }
 
   onFilter = () => {};
@@ -253,6 +245,7 @@ export default class TrainScreen extends React.Component {
               sort={() => {
                 this.setState({ showFilterByPopup: true });
               }}
+              sortable={true}
             />
             <HorizontalLayout style={{ justifyContent: 'space-between', marginVertical: 15 }}>
               <Button
@@ -310,7 +303,6 @@ export default class TrainScreen extends React.Component {
             </HorizontalLayout>
             <SearchInput
               setSearch={(search) => {
-                this.props.setSearch(search);
               }}
             />
             <HorizontalLayout

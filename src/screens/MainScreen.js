@@ -109,7 +109,7 @@ export default class MainScreen extends AppScreen {
         <View
           style={{
             height: 30,
-            width: SCREEN_WIDTH,
+            width: SCREEN_WIDTH - 20,
             backgroundColor: '#F5F5F5',
             position: 'absolute',
             bottom: 0,

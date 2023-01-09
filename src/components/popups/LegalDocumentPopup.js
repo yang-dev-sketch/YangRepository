@@ -7,7 +7,7 @@ import { Button, HorizontalLayout, VerticalLayout, LocalImage } from '../control
 import SwipeUpDownModal from 'react-native-swipe-modal-up-down';
 import { ScrollView } from 'react-navigation';
 import { DisactiveButton } from '../common';
-import { SCREEN_HEIGHT } from "../../constants/Constants";
+import { SCREEN_HEIGHT } from '../../constants/Constants';
 
 @observer
 class LegalDocumentPopup extends React.Component {
@@ -61,7 +61,9 @@ class LegalDocumentPopup extends React.Component {
                   style={{ width: 31, height: 31 }}
                 />
               </Button>
-              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>מסמכים משפטיים</Text>
+              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>
+                מסמכים משפטיים
+              </Text>
             </HorizontalLayout>
             <ScrollView style={{ marginTop: 20 }}>
               <FlatList
@@ -79,7 +81,9 @@ class LegalDocumentPopup extends React.Component {
                         source={require('src/assets/image/ic_download.png')}
                         style={{ width: 45, height: 45 }}
                       />
-                      <Text>{item.title}</Text>
+                      <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>
+                        {item.title}
+                      </Text>
                     </Button>
                   );
                 }}

@@ -35,7 +35,7 @@ export default class HomeScreen extends React.Component {
       upcoming: 0,
       detailList: [
         { title: 'חנות', image: require('src/assets/image/ic_store.png') },
-        { title: 'יצירת אימון', image: require('src/assets/image/ic_work.png') },
+        { title: 'CRM', image: require('src/assets/image/ic_crm.png') },
         { title: 'מתאמנים באירגון', image: require('src/assets/image/ic_training.png') },
         { title: 'מאמנים באירגון', image: require('src/assets/image/ic_trainer.png') },
       ],
@@ -251,6 +251,8 @@ export default class HomeScreen extends React.Component {
                   backgroundColor: 'white',
                   alignItems: 'center',
                   justifyContent: 'center',
+                  borderWidth: 1,
+                  borderColor: '#D8D8D8'
                 }}>
                 <LocalImage
                   source={require('src/assets/image/ic_home.png')}
@@ -284,6 +286,8 @@ export default class HomeScreen extends React.Component {
                   paddingLeft: 20,
                   paddingVertical: 20,
                   justifyContent: 'space-between',
+                  borderWidth: 1,
+                  borderColor: '#D8D8D8'
                 }}>
                 <PieChart
                   widthAndHeight={widthAndHeight}
@@ -348,6 +352,8 @@ export default class HomeScreen extends React.Component {
                 alignItems: 'center',
                 justifyContent: 'space-between',
                 marginTop: 15,
+                borderWidth: 1,
+                borderColor: '#D8D8D8'
               }}>
               <HorizontalLayout style={{ alignItems: 'center' }}>
                 <LinearGradient
@@ -399,6 +405,8 @@ export default class HomeScreen extends React.Component {
                   alignItems: 'center',
                   justifyContent: 'space-between',
                   marginTop: 15,
+                  borderWidth: 1,
+                  borderColor: '#D8D8D8'
                 }}>
                 <LocalImage
                   source={require('src/assets/image/ic_round_left.png')}
@@ -462,6 +470,8 @@ export default class HomeScreen extends React.Component {
                         alignItems: 'center',
                         justifyContent: 'flex-end',
                         paddingBottom: 13,
+                        borderWidth: 1,
+                        borderColor: '#D8D8D8'
                       }}>
                       <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>
                         {item.title}

@@ -1,5 +1,6 @@
 import React from 'react';
 import { TextInput, View, StyleSheet, Text } from 'react-native';
+import { LocalImage } from "../controls";
 
 export default class CommonInput extends React.Component {
   constructor(props) {
@@ -27,9 +28,17 @@ export default class CommonInput extends React.Component {
           returnKeyType={this.props.returnKeyType}
           keyboardType={this.props.keyboardType}
           onChangeText={(text) => this.props.onChangeText(text)}
+          onFocus={this.props.onFocus}
+          onBlur={this.props.onBlur}
         />
         {this.props.numberOfLines !== 1 && (
           <Text style={styles.count}>{this.props.value.length}/250</Text>
+        )}
+        {this.props.icon && (
+          <LocalImage
+            source={this.props.icon}
+            style={{ width: 14.4, height: 16, position: 'absolute', top: 12, left: 15.8 }}
+          />
         )}
       </View>
     );

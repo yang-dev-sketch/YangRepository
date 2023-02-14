@@ -9,7 +9,7 @@ export default class SetValueGroup extends React.Component {
 
   render() {
     return (
-      <VerticalLayout style={[{ alignItems: 'flex-end', width: '100%' }, this.props.style]}>
+      <VerticalLayout style={[{ alignItems: 'flex-end', width: '100%', borderWidth: 1, borderColor: '#D8D8D8' }, this.props.style]}>
         <Button
           style={{ width: '100%', alignItems: 'center' }}
           onPress={() => {

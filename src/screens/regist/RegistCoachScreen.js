@@ -130,7 +130,7 @@ export default class RegistCoachScreen extends AppScreen {
               source={require('src/assets/image/ic_gyme.png')}
               style={{ width: 152.26, height: 152.26 }}
             />
-            <Button
+            {/* <Button
               onPress={() => {
                 this.props.navigation.goBack();
               }}
@@ -144,7 +144,7 @@ export default class RegistCoachScreen extends AppScreen {
                 }}>
                 הקודם
               </Text>
-            </Button>
+            </Button> */}
           </LinearGradient>
           <VerticalLayout style={{ paddingHorizontal: 20, marginTop: -77 }}>
             <VerticalLayout

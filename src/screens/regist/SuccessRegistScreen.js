@@ -25,19 +25,31 @@ export default class SplashScreen extends AppScreen {
         ]}>
         <LocalImage
           source={require('src/assets/image/ic_splash.png')}
-          style={[{ width: '100%', height: '80%', position: 'absolute', top: 0 }]}
+          style={[{ width: '100%', height: '100%', position: 'absolute', top: 0 }]}
           resizeMode="cover"
         />
         <Text
           style={{
+            fontSize: 32,
+            lineHeight: 38,
+            letterSpacing: -0.17,
+            color: '#000',
+            textAlign: 'center',
+            position: 'absolute',
+            top: 79
+          }}>
+          ברוך הבא
+        </Text>
+        <Text
+          style={{
             width: SCREEN_WIDTH - 124,
-            fontSize: 24,
-            lineHeight: 29,
+            fontSize: 20,
+            lineHeight: 24,
             position: 'absolute',
             top: 465,
             textAlign: 'center',
             color: '#000',
-            fontWeight: '600'
+            fontWeight: '600',
           }}>
           נרשמת בהצלחה, אנו שמחים לראות אותך
         </Text>

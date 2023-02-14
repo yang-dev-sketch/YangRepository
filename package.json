@@ -1,5 +1,5 @@
 {
-  "name": "uma",
+  "name": "gyme",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -64,7 +64,7 @@
     "react-native-permissions": "^2.2.0",
     "react-native-pie-chart": "^2.1.0",
     "react-native-plain-calendar": "^1.0.8",
-    "react-native-reanimated": "^2.13.0",
+    "react-native-reanimated": "^2.14.4",
     "react-native-root-toast": "3.2.1",
     "react-native-safe-area-context": "3.2.0",
     "react-native-screens": "2.18.1",

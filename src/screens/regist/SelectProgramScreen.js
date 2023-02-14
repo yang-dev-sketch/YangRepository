@@ -12,6 +12,7 @@ import {
 import { requestPost } from '../../utils/ApiUtils';
 import LinearGradient from 'react-native-linear-gradient';
 import { ActiveButton } from '../../components/common';
+import { RotateInDownLeft } from "react-native-reanimated";
 
 export default class SelectProgramScreen extends AppScreen {
   constructor(props) {
@@ -54,7 +55,15 @@ export default class SelectProgramScreen extends AppScreen {
               source={require('src/assets/image/ic_gyme_blue.png')}
               style={{ width: 48, height: 48, position: 'absolute', top: 226 }}
             />
-            <Text style={{ fontSize: 18, lineHeight: 22, position: 'absolute', top: 284, color: '#000', fontWeight: '600' }}>
+            <Text
+              style={{
+                fontSize: 18,
+                lineHeight: 22,
+                position: 'absolute',
+                top: 284,
+                color: '#000',
+                fontWeight: '600',
+              }}>
               בחרו את התכנית המתאימה לכם
             </Text>
           </LinearGradient>
@@ -64,102 +73,113 @@ export default class SelectProgramScreen extends AppScreen {
                 this.setState({ type: 'monthly' });
               }}
               style={[
-                (this.state.type === 'monthly' && { borderWidth: 2, borderColor: '#0D65D9' }) || {
+                (this.state.type === 'monthly' && { borderWidth: 2, borderColor: '#5C9DF2' }) || {
                   borderWidth: 1,
-                  borderColor: '#D7D7D7',
+                  borderColor: '#D8D8D8',
                 },
-                { width: '100%', borderRadius: 11, marginBottom: 15 },
-              ]}>
-              <LocalImage
-                source={require('src/assets/image/ic_rectangle.png')}
-                style={{ width: '100%', height: 70, position: 'absolute', top: 0 }}
-                resizeMode="stretch"
-              />
-              <VerticalLayout
-                style={{
-                  position: 'absolute',
+                {
                   width: '100%',
-                  height: 70,
-                  alignItems: 'center',
-                  justifyContent: 'space-around',
-                }}>
-                <Text style={{ fontSize: 16, lineHeight: 19, color: 'white', marginTop: 6, fontWeight: '600' }}>
-                  מנוי חודשי
-                </Text>
-                <HorizontalLayout style={{ alignItems: 'center' }}>
-                  <LocalImage
-                    source={require('src/assets/image/ic_income_white.png')}
-                    style={{ width: 18, height: 15, marginRight: 5 }}
-                    resizeMode="stretch"
-                  />
-                  <Text style={{ fontSize: 40, lineHeight: 48, color: 'white', fontWeight: '700' }}>
-                    {this.state.monthlyPrice}
-                  </Text>
-                </HorizontalLayout>
-              </VerticalLayout>
-              <HorizontalLayout
+                  borderRadius: 11,
+                  marginBottom: 15,
+                  height: 179,
+                  position: 'relative',
+                  overflow: 'hidden',
+                },
+              ]}>
+              <View
                 style={{
-                  marginTop: 70,
-                  paddingTop: 11,
-                  paddingHorizontal: 38,
-                  paddingBottom: 20,
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                }}>
-                <VerticalLayout style={{ width: '30%' }}>
-                  <HorizontalLayout style={{ alignItems: 'center', marginBottom: 10 }}>
-                    <Text numberOfLines={2} style={{fontSize: 14, lineHeight: 17, color: '#000'}}>טקסט טקסט טקסט טקסט</Text>
+                  width: 309,
+                  height: 309,
+                  position: 'absolute',
+                  left: -93,
+                  top: -65,
+                  borderRadius: 154.5,
+                  backgroundColor: '#EFF7FD',
+                }}></View>
+              <HorizontalLayout
+                style={{ padding: 25, alignItems: 'center', justifyContent: 'space-between' }}>
+                <VerticalLayout style={{ justifyContent: 'space-between', height: '100%' }}>
+                  <HorizontalLayout style={{ alignItems: 'center' }}>
+                    <Text style={{ fontSize: 14, lineHeight: 17, color: '#000' }}>
+                      טקסט טקסט טקסט
+                    </Text>
                     <LocalImage
-                      source={require('src/assets/image/ic_check_on.png')}
-                      style={{ width: 22, height: 22, marginLeft: 6 }}
+                      source={require('src/assets/image/ic_check_blue.png')}
+                      style={{ width: 15.5, height: 11.39, marginLeft: 11.97 }}
                     />
                   </HorizontalLayout>
                   <HorizontalLayout style={{ alignItems: 'center' }}>
-                    <Text numberOfLines={2} style={{fontSize: 14, lineHeight: 17, color: '#000'}}>טקסט טקסט טקסט טקסט</Text>
+                    <Text style={{ fontSize: 14, lineHeight: 17, color: '#000' }}>
+                      טקסט טקסט טקסט
+                    </Text>
                     <LocalImage
-                      source={require('src/assets/image/ic_check_on.png')}
-                      style={{ width: 22, height: 22, marginLeft: 6 }}
+                      source={require('src/assets/image/ic_check_blue.png')}
+                      style={{ width: 15.5, height: 11.39, marginLeft: 11.97 }}
+                    />
+                  </HorizontalLayout>
+                  <HorizontalLayout style={{ alignItems: 'center' }}>
+                    <Text style={{ fontSize: 14, lineHeight: 17, color: '#000' }}>
+                      טקסט טקסט טקסט
+                    </Text>
+                    <LocalImage
+                      source={require('src/assets/image/ic_check_blue.png')}
+                      style={{ width: 15.5, height: 11.39, marginLeft: 11.97 }}
+                    />
+                  </HorizontalLayout>
+                  <HorizontalLayout style={{ alignItems: 'center' }}>
+                    <Text style={{ fontSize: 14, lineHeight: 17, color: '#000' }}>
+                      טקסט טקסט טקסט
+                    </Text>
+                    <LocalImage
+                      source={require('src/assets/image/ic_check_blue.png')}
+                      style={{ width: 15.5, height: 11.39, marginLeft: 11.97 }}
+                    />
+                  </HorizontalLayout>
+                  <HorizontalLayout style={{ alignItems: 'center' }}>
+                    <Text style={{ fontSize: 14, lineHeight: 17, color: '#000' }}>
+                      טקסט טקסט טקסט
+                    </Text>
+                    <LocalImage
+                      source={require('src/assets/image/ic_check_blue.png')}
+                      style={{ width: 15.5, height: 11.39, marginLeft: 11.97 }}
                     />
                   </HorizontalLayout>
                 </VerticalLayout>
-                <View
+                <VerticalLayout
                   style={{
-                    width: 0,
-                    height: 59,
-                    borderWidth: 1,
-                    borderColor: 'rgba(92,157,242,0.25)',
-                  }}></View>
-                <VerticalLayout style={{ width: '30%' }}>
-                  <HorizontalLayout style={{ alignItems: 'center', marginBottom: 10 }}>
-                    <Text numberOfLines={2} style={{fontSize: 14, lineHeight: 17, color: '#000'}}>טקסט טקסט טקסט טקסט</Text>
-                    <LocalImage
-                      source={require('src/assets/image/ic_check_on.png')}
-                      style={{ width: 22, height: 22, marginLeft: 6 }}
-                    />
-                  </HorizontalLayout>
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    paddingVertical: 5,
+                    height: '100%',
+                  }}>
+                  <Text
+                    style={{
+                      fontSize: 16,
+                      lineHeight: 19,
+                      color: '#6F6F6F',
+                      width: 65,
+                      textAlign: 'center',
+                    }}
+                    numberOfLines={2}>
+                    מנוי חודשי
+                  </Text>
+                  <LocalImage
+                    source={require('src/assets/image/ic_train_blue.png')}
+                    style={{ width: 36, height: 20.51 }}
+                  />
                   <HorizontalLayout style={{ alignItems: 'center' }}>
-                    <Text numberOfLines={2} style={{fontSize: 14, lineHeight: 17, color: '#000'}}>טקסט טקסט טקסט טקסט</Text>
                     <LocalImage
-                      source={require('src/assets/image/ic_check_on.png')}
-                      style={{ width: 22, height: 22, marginLeft: 6 }}
+                      source={require('src/assets/image/ic_income_blue.png')}
+                      style={{ width: 15, height: 12, marginRight: 6 }}
                     />
+                    <Text
+                      style={{ fontSize: 32, lineHeight: 38, color: '#1E6FD9', fontWeight: '700' }}>
+                      29.9
+                    </Text>
                   </HorizontalLayout>
                 </VerticalLayout>
               </HorizontalLayout>
             </Button>
-            <View
-              style={{
-                width: 141,
-                height: 27,
-                borderTopLeftRadius: 11,
-                borderTopRightRadius: 11,
-                alignItems: 'center',
-                justifyContent: 'center',
-                backgroundColor: '#94BDF2',
-                alignSelf: 'center',
-              }}>
-              <Text style={{ fontSize: 14, lineHeight: 17, color: 'white', fontWeight: '600' }}>המשתלם ביותר</Text>
-            </View>
             <Button
               onPress={() => {
                 this.setState({ type: 'profitable' });
@@ -167,97 +187,127 @@ export default class SelectProgramScreen extends AppScreen {
               style={[
                 (this.state.type === 'profitable' && {
                   borderWidth: 2,
-                  borderColor: '#0D65D9',
-                }) || { borderWidth: 1, borderColor: '#D7D7D7' },
-                { width: '100%', borderRadius: 11, marginBottom: 17 },
-              ]}>
-              <LocalImage
-                source={require('src/assets/image/ic_rectangle.png')}
-                style={{ width: '100%', height: 70, position: 'absolute', top: 0 }}
-                resizeMode="stretch"
-              />
-              <VerticalLayout
-                style={{
-                  position: 'absolute',
+                  borderColor: '#5C9DF2',
+                }) || { borderWidth: 1, borderColor: '#D8D8D8' },
+                {
                   width: '100%',
-                  height: 70,
-                  alignItems: 'center',
-                  justifyContent: 'space-around',
-                }}>
-                <Text style={{ fontSize: 16, lineHeight: 19, color: 'white', marginTop: 6, fontWeight: '600' }}>
-                  מנוי חודשי
-                </Text>
-                <HorizontalLayout style={{ alignItems: 'center' }}>
-                  <LocalImage
-                    source={require('src/assets/image/ic_income_white.png')}
-                    style={{ width: 18, height: 15, marginRight: 5 }}
-                    resizeMode="stretch"
-                  />
-                  <Text style={{ fontSize: 40, lineHeight: 48, color: 'white', fontWeight: '700' }}>
-                    {this.state.profitablePrice}
-                  </Text>
-                </HorizontalLayout>
-              </VerticalLayout>
+                  borderRadius: 11,
+                  marginBottom: 17,
+                  height: 179,
+                  position: 'relative',
+                  overflow: 'hidden'
+                },
+              ]}>
+              <View
+                style={{
+                  width: 309,
+                  height: 309,
+                  position: 'absolute',
+                  left: -93,
+                  top: -65,
+                  borderRadius: 154.5,
+                  backgroundColor: '#EFF7FD',
+                }}></View>
               <HorizontalLayout
-                style={{
-                  marginTop: 70,
-                  paddingTop: 11,
-                  paddingHorizontal: 38,
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  marginBottom: 10,
-                }}>
-                <VerticalLayout style={{ width: '30%' }}>
-                  <HorizontalLayout style={{ alignItems: 'center', marginBottom: 10 }}>
-                    <Text numberOfLines={2} style={{fontSize: 14, lineHeight: 17, color: '#000'}}>טקסט טקסט טקסט טקסט</Text>
+                style={{ alignItems: 'center', justifyContent: 'space-between', paddingLeft: 25, paddingVertical: 0, height: '100%' }}>
+                <VerticalLayout
+                  style={{ justifyContent: 'space-between', height: '100%', alignItems: 'center', paddingVertical: 25 }}>
+                  <HorizontalLayout style={{ alignItems: 'center' }}>
+                    <Text style={{ fontSize: 14, lineHeight: 17, color: '#000' }}>
+                      טקסט טקסט טקסט
+                    </Text>
                     <LocalImage
-                      source={require('src/assets/image/ic_check_on.png')}
-                      style={{ width: 22, height: 22, marginLeft: 6 }}
+                      source={require('src/assets/image/ic_check_blue.png')}
+                      style={{ width: 15.5, height: 11.39, marginLeft: 11.97 }}
                     />
                   </HorizontalLayout>
                   <HorizontalLayout style={{ alignItems: 'center' }}>
-                    <Text numberOfLines={2} style={{fontSize: 14, lineHeight: 17, color: '#000'}}>טקסט טקסט טקסט טקסט</Text>
+                    <Text style={{ fontSize: 14, lineHeight: 17, color: '#000' }}>
+                      טקסט טקסט טקסט
+                    </Text>
                     <LocalImage
-                      source={require('src/assets/image/ic_check_on.png')}
-                      style={{ width: 22, height: 22, marginLeft: 6 }}
-                    />
-                  </HorizontalLayout>
-                </VerticalLayout>
-                <View
-                  style={{
-                    width: 0,
-                    height: 59,
-                    borderWidth: 1,
-                    borderColor: 'rgba(92,157,242,0.25)',
-                  }}></View>
-                <VerticalLayout style={{ width: '30%' }}>
-                  <HorizontalLayout style={{ alignItems: 'center', marginBottom: 10 }}>
-                    <Text numberOfLines={2} style={{fontSize: 14, lineHeight: 17, color: '#000'}}>טקסט טקסט טקסט טקסט</Text>
-                    <LocalImage
-                      source={require('src/assets/image/ic_check_on.png')}
-                      style={{ width: 22, height: 22, marginLeft: 6 }}
+                      source={require('src/assets/image/ic_check_blue.png')}
+                      style={{ width: 15.5, height: 11.39, marginLeft: 11.97 }}
                     />
                   </HorizontalLayout>
                   <HorizontalLayout style={{ alignItems: 'center' }}>
-                    <Text numberOfLines={2} style={{fontSize: 14, lineHeight: 17, color: '#000'}}>טקסט טקסט טקסט טקסט</Text>
+                    <Text style={{ fontSize: 14, lineHeight: 17, color: '#000' }}>
+                      טקסט טקסט טקסט
+                    </Text>
                     <LocalImage
-                      source={require('src/assets/image/ic_check_on.png')}
-                      style={{ width: 22, height: 22, marginLeft: 6 }}
+                      source={require('src/assets/image/ic_check_blue.png')}
+                      style={{ width: 15.5, height: 11.39, marginLeft: 11.97 }}
                     />
                   </HorizontalLayout>
+                  <HorizontalLayout style={{ alignItems: 'center' }}>
+                    <Text style={{ fontSize: 14, lineHeight: 17, color: '#000' }}>
+                      טקסט טקסט טקסט
+                    </Text>
+                    <LocalImage
+                      source={require('src/assets/image/ic_check_blue.png')}
+                      style={{ width: 15.5, height: 11.39, marginLeft: 11.97 }}
+                    />
+                  </HorizontalLayout>
+                  <Text
+                    style={{ fontSize: 16, lineHeight: 19, fontWeight: '600', color: '#5C9DF2' }}>
+                    שבוע נסיון חינם
+                  </Text>
                 </VerticalLayout>
+                <HorizontalLayout style={{ alignItems: 'center', padding: 0, height: '100%' }}>
+                  <VerticalLayout
+                    style={{
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      height: '100%',
+                      paddingVertical: 30
+                    }}>
+                    <Text
+                      style={{
+                        fontSize: 16,
+                        lineHeight: 19,
+                        color: '#6F6F6F',
+                        width: 65,
+                        textAlign: 'center',
+                      }}
+                      numberOfLines={2}>
+                      מנוי חודשי
+                    </Text>
+                    <LocalImage
+                      source={require('src/assets/image/ic_train_blue.png')}
+                      style={{ width: 36, height: 20.51 }}
+                    />
+                    <HorizontalLayout style={{ alignItems: 'center' }}>
+                      <LocalImage
+                        source={require('src/assets/image/ic_income_blue.png')}
+                        style={{ width: 15, height: 12, marginRight: 6 }}
+                      />
+                      <Text
+                        style={{
+                          fontSize: 32,
+                          lineHeight: 38,
+                          color: '#1E6FD9',
+                          fontWeight: '700',
+                        }}>
+                        199
+                      </Text>
+                    </HorizontalLayout>
+                  </VerticalLayout>
+                  <View
+                    style={{
+                      width: 23,
+                      height: 179,
+                      borderTopLeftRadius: 11,
+                      borderBottomLeftRadius: 11,
+                      borderTopRightRadius: 8,
+                      borderBottomRightRadius: 8,
+                      backgroundColor: '#5C9DF2',
+                      marginLeft: 25,
+                      justifyContent: 'center'
+                    }}>
+                      {/* <Text style={{ fontSize: 14, lineHeight: 17, color: '#FFF', transform: [{ rotate: '-90deg'}] }}>המשתלם ביותר</Text> */}
+                    </View>
+                </HorizontalLayout>
               </HorizontalLayout>
-              <Text
-                style={{
-                  fontSize: 16,
-                  lineHeight: 19,
-                  color: '#1E6FD9',
-                  alignSelf: 'center',
-                  marginBottom: 15,
-                  fontWeight: '600'
-                }}>
-                שבוע נסיון חינם
-              </Text>
             </Button>
             <ActiveButton
               text="התחילו עכשיו"
@@ -280,7 +330,7 @@ export default class SelectProgramScreen extends AppScreen {
                     lineHeight: 17,
                     textDecorationLine: 'underline',
                     opacity: 0.7,
-                    color: '#000'
+                    color: '#000',
                   }}>
                   מדיניות פרטיות
                 </Text>
@@ -292,7 +342,7 @@ export default class SelectProgramScreen extends AppScreen {
                     lineHeight: 17,
                     textDecorationLine: 'underline',
                     opacity: 0.7,
-                    color: '#000'
+                    color: '#000',
                   }}>
                   תנאי שימוש
                 </Text>

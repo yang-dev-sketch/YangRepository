@@ -49,13 +49,20 @@ export default class PaymentDetailScreen extends AppScreen {
                 color: '#000',
                 fontWeight: '700',
               }}>
-              הרשמה לעסקים
-            </Text>
-            <Text style={{ fontSize: 16, lineHeight: 19, marginBottom: 20, color: '#000' }}>
               פרטי תשלום
             </Text>
+            <Text style={{ fontSize: 16, lineHeight: 19, marginBottom: 20, color: '#000' }}>
+              הרשמה לעסקים
+            </Text>
             <PaymentMethodCard />
-            <Text style={{ fontSize: 14, lineHeight: 17, marginBottom: 45, marginTop: 15, color: '#000' }}>
+            <Text
+              style={{
+                fontSize: 14,
+                lineHeight: 17,
+                marginBottom: 20,
+                marginTop: 25,
+                color: '#000',
+              }}>
               Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
               has been.
             </Text>

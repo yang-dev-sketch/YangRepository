@@ -15,6 +15,8 @@ import { ActiveButton, CommonInput, SetValueGroup } from '../../components/commo
 import FastImage from 'react-native-fast-image';
 import ImageCropPicker from 'react-native-image-crop-picker';
 import DropDownPicker from '../../components/controls/DropDownPicker';
+import Toast from 'react-native-root-toast';
+import auth from '@react-native-firebase/auth';
 
 export default class RegistCoachScreen extends AppScreen {
   constructor(props) {
@@ -24,11 +26,11 @@ export default class RegistCoachScreen extends AppScreen {
       firstName: '',
       lastName: '',
       email: '',
-      firstPhone: '',
+      firstPhone: '049',
       secondPhone: '',
-      birth: '',
-      sexType: [{ name: 'איש' }, { name: 'אִשָׁה' }],
-      selectedSex: 'המגדר שלך',
+      birthday: '',
+      genderType: [{ name: 'איש' }, { name: 'אִשָׁה' }],
+      selectedGender: 'איש',
     };
   }
 
@@ -54,6 +56,62 @@ export default class RegistCoachScreen extends AppScreen {
     });
   };
 
+  registUser = () => {
+    if (
+      // this.state.logo === '' ||
+      this.state.firstname === '' ||
+      this.state.lastname === '' ||
+      this.state.firstPhone === '' ||
+      this.state.secondPhone === '' ||
+      this.state.birthday === ''
+    ) {
+      Toast.show('Enter details to signup!');
+    } else {
+      auth()
+        .createUserWithEmailAndPassword(this.state.email, 'Fantasy123!@#')
+        .then((res) => {
+          res.user.updateProfile({
+            logo: this.state.logo,
+            displayName: this.state.firstName + ' ' + this.state.lastName,
+            phone: this.state.firstPhone + ' ' + this.state.secondPhone,
+            birthday: this.state.birthday,
+            gender: this.state.selectedGender,
+          });
+          Toast.show('User registered successfully!');
+          this.setState({
+            logo: '',
+            firstName: '',
+            lastName: '',
+            email: '',
+            firstPhone: '',
+            secondPhone: '',
+            birthday: '',
+            selectedGender: 'איש',
+          });
+          this.props.navigation.navigate('Login');
+        })
+        .catch((error) => {
+          if (error.code === 'auth/email-already-in-use') {
+            Toast.show('That email address is already in use!');
+          }
+
+          if (error.code === 'auth/invalid-email') {
+            Toast.show('That email address is invalid!');
+          }
+
+          if (error.code === 'auth/weak-password') {
+            Toast.show('Password should be at least 6 characters');
+          }
+
+          if (error.code === 'auth/email-already-in-use') {
+            Toast.show('The email address is already in use by another account.');
+          }
+
+          console.error(error);
+        });
+    }
+  };
+
   render() {
     return (
       <SafeAreaView>
@@ -77,22 +135,23 @@ export default class RegistCoachScreen extends AppScreen {
                 this.props.navigation.goBack();
               }}
               style={{ alignSelf: 'center', position: 'absolute', top: 60, left: 21 }}>
-              <Text style={{ fontSize: 14, lineHeight: 17, textDecorationLine: 'underline', color: '#000' }}>
+              <Text
+                style={{
+                  fontSize: 14,
+                  lineHeight: 17,
+                  textDecorationLine: 'underline',
+                  color: '#000',
+                }}>
                 הקודם
               </Text>
             </Button>
           </LinearGradient>
-          <VerticalLayout style={{ paddingHorizontal: 20, marginTop: -58 }}>
+          <VerticalLayout style={{ paddingHorizontal: 20, marginTop: -77 }}>
             <VerticalLayout
               style={{
-                alignSelf: 'flex-end',
-                borderRadius: 11,
-                backgroundColor: '#F5F5F5',
-                paddingVertical: 18,
-                paddingHorizontal: 29,
-                marginBottom: 15,
+                alignSelf: 'center',
+                marginBottom: 20,
                 alignItems: 'center',
-                elevation: 1,
               }}>
               <Button
                 onPress={() => {
@@ -111,7 +170,7 @@ export default class RegistCoachScreen extends AppScreen {
                   />
                 )}
               </Button>
-              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>לוגו של העסק</Text>
+              <Text style={{ fontSize: 14, lineHeight: 16.8, color: '#000' }}>תמונה פרופיל</Text>
             </VerticalLayout>
             <SetValueGroup
               style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#FFF' }]}
@@ -205,9 +264,9 @@ export default class RegistCoachScreen extends AppScreen {
                       lineHeight={24}
                       numberOfLines={1}
                       backgroundColor="#F5F5F5"
-                      value={this.state.birth}
+                      value={this.state.birthday}
                       onChangeText={(text) => {
-                        this.setState({ birth: text });
+                        this.setState({ birthday: text });
                       }}
                     />
                   }
@@ -221,11 +280,11 @@ export default class RegistCoachScreen extends AppScreen {
                   inputNode={
                     <DropDownPicker
                       editIcon={false}
-                      data={this.state.sexType}
+                      data={this.state.genderType}
                       backgroundColor="#F5F5F5"
-                      selectedValue={this.state.selectedSex}
+                      selectedValue={this.state.selectedGender}
                       onSelect={(value) => {
-                        this.setState({ selectedSex: value.name });
+                        this.setState({ selectedGender: value.name });
                       }}
                     />
                   }
@@ -236,7 +295,8 @@ export default class RegistCoachScreen extends AppScreen {
               text="הבא"
               style={{ width: '100%', marginBottom: 15 }}
               action={() => {
-                this.props.navigation.navigate('Login');
+                this.registUser();
+                // this.props.navigation.navigate('Login');
               }}
             />
           </VerticalLayout>

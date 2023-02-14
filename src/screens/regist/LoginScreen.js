@@ -9,10 +9,11 @@ import {
   LocalImage,
   VerticalLayout,
 } from '../../components/controls';
-import { PrefUtils } from '../../utils';
+import { CommonUtils, PrefUtils } from '../../utils';
 import { requestPost } from '../../utils/ApiUtils';
 import LinearGradient from 'react-native-linear-gradient';
 import { ActiveButton, CommonInput, DisactiveButton, SetValueGroup } from '../../components/common';
+import auth from '@react-native-firebase/auth';
 
 export default class LoginScreen extends AppScreen {
   constructor(props) {
@@ -22,49 +23,37 @@ export default class LoginScreen extends AppScreen {
       firstPhone: '',
       secondPhone: '',
       code: '',
+      confirm: null,
+      verifyState: false,
     };
   }
 
-  onGoEasyLogin = (login_type) => {
-    let sns_id = '';
-    switch (login_type) {
-      case 1: //Google
-        sns_id = 'test@google.com';
-        break;
-      case 2: //Line
-        sns_id = 'test@line.com';
-        break;
-      default:
-        break;
-    }
+  signInWithPhoneNumber = () => {
+    const phoneNumber = '+' + this.state.firstPhone + this.state.secondPhone;
+      console.log(phoneNumber);
+      const confirmation = auth().signInWithPhoneNumber(phoneNumber)
+      .catch((error) => {
+        if (error.code == 'auth/invalid-phone-number') {
+          console.log('The format of the phone number provided is incorrect.');
+        }
+      });
+      console.log(confirmation);
+      this.setState({ verifyState: true, confirm: confirmation });
+  }
 
-    //check login
-    requestPost(API.Login.check_login, {
-      user_id: sns_id,
-      password: '',
-      dev_type: Platform.OS == 'android' ? 0 : 1,
-      fcm_token: this.myInfo.fcm_token,
-      login_type: login_type,
-    }).then(async (result) => {
-      if (result.code == API_RES_CODE.SUCCESS) {
-        await PrefUtils.setString(PREF_PARAMS.EMAIL, sns_id);
-        await PrefUtils.setString(PREF_PARAMS.PWD, '');
-        await PrefUtils.setInt(PREF_PARAMS.LOGIN_TYPE, login_type);
+  confirmCode = () => {
+      const credential = auth.PhoneAuthProvider.credential(confirm.verificationId, code);
+      let userData = auth().currentUser.linkWithCredential(credential)
+      .catch((error) => {
+        if (error.code == 'auth/invalid-verification-code') {
+          console.log('Invalid code.');
+        } else {
+          console.log('Account linking error');
+        }
+      });
+      console.log(userData.user);
 
-        this.myInfo.uid = result.data.user_uid;
-        this.myInfo.password = '';
-        this.myInfo.login_type = login_type;
-
-        this.props.navigation.goBack();
-      } else {
-        this.myInfo.login_type = login_type;
-        this.myInfo.email = sns_id;
-        this.myInfo.password = '';
-
-        // this.props.navigation.navigate('SignupSec');
-      }
-    });
-  };
+  }
 
   render() {
     return (
@@ -86,7 +75,13 @@ export default class LoginScreen extends AppScreen {
                 this.props.navigation.goBack();
               }}
               style={{ alignSelf: 'center', position: 'absolute', top: 60, left: 21 }}>
-              <Text style={{ fontSize: 14, lineHeight: 17, textDecorationLine: 'underline', color: '#000' }}>
+              <Text
+                style={{
+                  fontSize: 14,
+                  lineHeight: 17,
+                  textDecorationLine: 'underline',
+                  color: '#000',
+                }}>
                 הקודם
               </Text>
             </Button>
@@ -130,10 +125,21 @@ export default class LoginScreen extends AppScreen {
                 </HorizontalLayout>
               }
             />
-            {(this.state.firstPhone === '' && this.state.secondPhone === '' && (
+            {(this.state.verifyState == false && (
               <>
-                <Button style={{ alignSelf: 'center', marginBottom: 30 }}>
-                  <Text style={{ fontSize: 16, lineHeight: 19, textDecorationLine: 'underline', color: '#000', fontWeight: '600' }}>
+                <Button
+                  style={{ alignSelf: 'center', marginBottom: 30 }}
+                  onPress={() => {
+                    this.signInWithPhoneNumber();
+                  }}>
+                  <Text
+                    style={{
+                      fontSize: 16,
+                      lineHeight: 19,
+                      textDecorationLine: 'underline',
+                      color: '#000',
+                      fontWeight: '600',
+                    }}>
                     הזדהות ע״י איימיל
                   </Text>
                 </Button>
@@ -162,7 +168,7 @@ export default class LoginScreen extends AppScreen {
                         lineHeight: 22,
                         textDecorationLine: 'underline',
                         color: '#0D65D9',
-                        fontWeight: '600'
+                        fontWeight: '600',
                       }}>
                       הרשמה
                     </Text>
@@ -206,6 +212,7 @@ export default class LoginScreen extends AppScreen {
                   text="כניסה"
                   style={{ width: '100%', marginBottom: 15 }}
                   action={() => {
+                    this.confirmCode();
                     this.props.navigation.navigate('Facial');
                   }}
                 />

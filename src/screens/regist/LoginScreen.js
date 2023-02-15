@@ -14,6 +14,7 @@ import { requestPost } from '../../utils/ApiUtils';
 import LinearGradient from 'react-native-linear-gradient';
 import { ActiveButton, CommonInput, DisactiveButton, SetValueGroup } from '../../components/common';
 import auth from '@react-native-firebase/auth';
+import GlobalState from '../../mobx/GlobalState';
 
 export default class LoginScreen extends AppScreen {
   constructor(props) {
@@ -30,20 +31,22 @@ export default class LoginScreen extends AppScreen {
 
   signInWithPhoneNumber = () => {
     const phoneNumber = '+' + this.state.firstPhone + this.state.secondPhone;
-      console.log(phoneNumber);
-      const confirmation = auth().signInWithPhoneNumber(phoneNumber)
+    console.log(phoneNumber);
+    const confirmation = auth()
+      .signInWithPhoneNumber(phoneNumber)
       .catch((error) => {
         if (error.code == 'auth/invalid-phone-number') {
           console.log('The format of the phone number provided is incorrect.');
         }
       });
-      console.log(confirmation);
-      this.setState({ verifyState: true, confirm: confirmation });
-  }
+    console.log(confirmation);
+    this.setState({ verifyState: true, confirm: confirmation });
+  };
 
   confirmCode = () => {
-      const credential = auth.PhoneAuthProvider.credential(confirm.verificationId, code);
-      let userData = auth().currentUser.linkWithCredential(credential)
+    const credential = auth.PhoneAuthProvider.credential(confirm.verificationId, code);
+    let userData = auth()
+      .currentUser.linkWithCredential(credential)
       .catch((error) => {
         if (error.code == 'auth/invalid-verification-code') {
           console.log('Invalid code.');
@@ -51,9 +54,8 @@ export default class LoginScreen extends AppScreen {
           console.log('Account linking error');
         }
       });
-      console.log(userData.user);
-
-  }
+    console.log(userData.user);
+  };
 
   render() {
     return (
@@ -82,13 +84,24 @@ export default class LoginScreen extends AppScreen {
                   textDecorationLine: 'underline',
                   color: '#000',
                 }}>
-                הקודם
+                {Langs.common.previous}
               </Text>
             </Button>
             <LocalImage
               source={require('src/assets/image/ic_gyme.png')}
               style={{ width: 152.26, height: 152.26 }}
             />
+            <Text
+              style={{
+                fontSize: 24,
+                lineHeight: 32,
+                color: '#000',
+                fontWeight: '700',
+                position: 'absolute',
+                bottom: 13
+              }}>
+              {Langs.common.entrance}
+            </Text>
           </LinearGradient>
           <VerticalLayout style={{ paddingHorizontal: 20 }}>
             <SetValueGroup
@@ -96,7 +109,7 @@ export default class LoginScreen extends AppScreen {
                 Styles.input_wrapper,
                 { marginBottom: 20, backgroundColor: 'white', elevation: 1 },
               ]}
-              title="מספר טלפון"
+              title={Langs.common.phone_number}
               image={require('src/assets/image/ic_phone.png')}
               inputNode={
                 <HorizontalLayout style={{ alignItems: 'center', justifyContent: 'space-between' }}>
@@ -140,16 +153,16 @@ export default class LoginScreen extends AppScreen {
                       color: '#000',
                       fontWeight: '600',
                     }}>
-                    הזדהות ע״י איימיל
+                    {Langs.regist.identi_by_email}
                   </Text>
                 </Button>
                 <ActiveButton
-                  text="להיכנס"
+                  text={Langs.common.entrance}
                   style={{ width: '100%', marginBottom: 15 }}
                   action={() => {}}
                 />
                 <DisactiveButton
-                  text="השתמש בזיהוי פנים"
+                  text={Langs.regist.use_facial_recog}
                   image={true}
                   style={{ width: '100%', marginBottom: 40 }}
                   action={() => {
@@ -170,7 +183,7 @@ export default class LoginScreen extends AppScreen {
                         color: '#0D65D9',
                         fontWeight: '600',
                       }}>
-                      הרשמה
+                      {Langs.regist.enrollment}
                     </Text>
                   </Button>
                 )) || (
@@ -187,7 +200,7 @@ export default class LoginScreen extends AppScreen {
                       backgroundColor: '#94BDF2',
                       marginBottom: 15,
                     }}>
-                    <Text style={{ fontSize: 16, lineHeight: 19, color: 'white' }}> הרשמה</Text>
+                    <Text style={{ fontSize: 16, lineHeight: 19, color: 'white' }}>{Langs.regist.enrollment}</Text>
                   </Button>
                 )}
               </>
@@ -195,7 +208,7 @@ export default class LoginScreen extends AppScreen {
               <>
                 <SetValueGroup
                   style={[Styles.input_wrapper, { marginBottom: 40, backgroundColor: '#FFF' }]}
-                  title="להזין את הקוד"
+                  title={Langs.regist.enter_code}
                   inputNode={
                     <CommonInput
                       numberOfLines={1}
@@ -209,7 +222,7 @@ export default class LoginScreen extends AppScreen {
                   }
                 />
                 <ActiveButton
-                  text="כניסה"
+                  text={Langs.common.entrance}
                   style={{ width: '100%', marginBottom: 15 }}
                   action={() => {
                     this.confirmCode();

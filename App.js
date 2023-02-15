@@ -17,8 +17,6 @@ import { Colors, Langs } from './src/constants';
 import {
   IS_OFFLINE_MODE,
   SHARE_TYPE,
-  AUTH0_DOMAIN,
-  AUTH0_CLIENT_ID,
 } from './src/constants/Constants';
 import GlobalState from './src/mobx/GlobalState';
 import MyInfo from './src/mobx/MyInfo';
@@ -78,10 +76,6 @@ class App extends React.Component {
     };
     LogBox.ignoreAllLogs(true);
 
-    this.auth0 = new Auth0({
-      domain: AUTH0_DOMAIN,
-      clientId: AUTH0_CLIENT_ID,
-    });
   }
 
   login = async () => {

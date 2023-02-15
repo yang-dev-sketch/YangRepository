@@ -1,7 +1,7 @@
 import React from 'react';
 import { SafeAreaView, StyleSheet, Text, View, ScrollView } from 'react-native';
-import { Styles } from '../../constants';
-import { API, API_RES_CODE, IMAGE_FOO_URL } from '../../constants/Constants';
+import { Langs, Styles } from '../../constants';
+import { API, API_RES_CODE, IMAGE_FOO_URL, SCREEN_WIDTH } from '../../constants/Constants';
 import {
   AppScreen,
   Button,
@@ -13,6 +13,7 @@ import { requestPost } from '../../utils/ApiUtils';
 import LinearGradient from 'react-native-linear-gradient';
 import { ActiveButton, CommonInput, SetValueGroup } from '../../components/common';
 import DropDownPicker from '../../components/controls/DropDownPicker';
+import GlobalState from "../../mobx/GlobalState";
 
 export default class RegistBusinessOneScreen extends AppScreen {
   constructor(props) {
@@ -22,6 +23,7 @@ export default class RegistBusinessOneScreen extends AppScreen {
       businessType: [{ name: 'סוג העסק' }, { name: 'סוג העסק' }],
       selectedBusiness: 'סוג העסק',
       hp: '',
+      companyName: '',
       firstPhone: '',
       secondPhone: '',
       email: '',
@@ -59,7 +61,7 @@ export default class RegistBusinessOneScreen extends AppScreen {
           <VerticalLayout style={{ paddingHorizontal: 20, marginTop: -50 }}>
             <SetValueGroup
               style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#FFF' }]}
-              title="שם העסק"
+              title={Langs.regist.business_name}
               image={require('src/assets/image/ic_active_calendar.png')}
               inputNode={
                 <CommonInput
@@ -74,13 +76,15 @@ export default class RegistBusinessOneScreen extends AppScreen {
             />
             <SetValueGroup
               style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#FFF' }]}
-              title="סוג העסק"
+              title={Langs.regist.type_business}
               image={require('src/assets/image/ic_active_calendar.png')}
               inputNode={
                 <DropDownPicker
                   editIcon={false}
                   backgroundColor="#F5F5F5"
                   data={this.state.businessType}
+                  search={true}
+                  searchPlaceHolder={Langs.common.search}
                   selectedValue={this.state.selectedBusiness}
                   onSelect={(value) => {
                     this.setState({ selectedBusiness: value.name });
@@ -90,7 +94,7 @@ export default class RegistBusinessOneScreen extends AppScreen {
             />
             <SetValueGroup
               style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#FFF' }]}
-              title="ח.פ"
+              title={Langs.regist.hp}
               image={require('src/assets/image/ic_hp.png')}
               inputNode={
                 <CommonInput
@@ -104,11 +108,26 @@ export default class RegistBusinessOneScreen extends AppScreen {
               }
             />
             <SetValueGroup
+              style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#FFF' }]}
+              title={Langs.regist.company_name}
+              image={require('src/assets/image/ic_active_calendar.png')}
+              inputNode={
+                <CommonInput
+                  numberOfLines={1}
+                  backgroundColor="#F5F5F5"
+                  value={this.state.companyName}
+                  onChangeText={(text) => {
+                    this.setState({ companyName: text });
+                  }}
+                />
+              }
+            />
+            <SetValueGroup
               style={[
                 Styles.input_wrapper,
                 { marginBottom: 20, backgroundColor: 'white', elevation: 1 },
               ]}
-              title="נייד"
+              title={Langs.common.phone_number}
               image={require('src/assets/image/ic_phone.png')}
               inputNode={
                 <HorizontalLayout style={{ alignItems: 'center', justifyContent: 'space-between' }}>
@@ -139,7 +158,7 @@ export default class RegistBusinessOneScreen extends AppScreen {
             />
             <SetValueGroup
               style={[Styles.input_wrapper, { marginBottom: 30, backgroundColor: '#FFF' }]}
-              title="דוא”ל"
+              title={Langs.common.email}
               image={require('src/assets/image/ic_email.png')}
               inputNode={
                 <CommonInput
@@ -153,7 +172,7 @@ export default class RegistBusinessOneScreen extends AppScreen {
               }
             />
             <ActiveButton
-              text="הבא"
+              text={Langs.common.next}
               style={{ width: '100%', marginBottom: 15 }}
               action={() => {
                 this.props.navigation.navigate('RegistBusinessTwo');

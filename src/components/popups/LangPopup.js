@@ -76,10 +76,10 @@ class LangPopup extends React.Component {
                 style={{ width: '50%' }}
               />
               <CheckBox
-                label={Langs.my_page.jp}
-                checked={this.state.lang_val == 'jp' ? true : false}
+                label={Langs.my_page.hb}
+                checked={this.state.lang_val == 'hb' ? true : false}
                 onPress={() => {
-                  this.setState({ lang_val: 'jp' });
+                  this.setState({ lang_val: 'hb' });
                 }}
                 style={{ width: '50%' }}
               />

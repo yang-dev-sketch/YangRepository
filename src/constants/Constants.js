@@ -11,9 +11,6 @@ export const IMAGE_FOO_URL = 'http://localhost:8081/src/assets/image/ic_shadow.p
 export const SCREEN_HEIGHT = Dimensions.get('window').height;
 export const SCREEN_WIDTH = Dimensions.get('screen').width;
 
-export const AUTH0_DOMAIN="dev-i6z3p1otvpnqp7mo.us.auth0.com";
-export const AUTH0_CLIENT_ID="MBTdw3r9ZvcQXr0k1cADv6gc3MBK6Tz6";
-
 export const PREF_PARAMS = {
   EMAIL: 'email',
   PWD: 'pwd',

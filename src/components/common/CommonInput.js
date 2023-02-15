@@ -1,6 +1,7 @@
 import React from 'react';
 import { TextInput, View, StyleSheet, Text } from 'react-native';
-import { LocalImage } from "../controls";
+import { LocalImage } from '../controls';
+import GlobalState from '../../mobx/GlobalState';
 
 export default class CommonInput extends React.Component {
   constructor(props) {
@@ -14,7 +15,7 @@ export default class CommonInput extends React.Component {
           style={this.props.inputStyle}
           backgroundColor={this.props.backgroundColor}
           borderRadius={this.props.numberOfLines === 1 ? 43 : 8}
-          textAlign={this.props.textAlign == 'center' ? 'center' : 'right'}
+          textAlign={GlobalState.langPopup.langStatus === 'en' ? 'left' : 'right'}
           textAlignVertical="top"
           paddingHorizontal={10}
           paddingBottom={this.props.numberOfLines === 1 ? 0 : 30}
@@ -32,12 +33,21 @@ export default class CommonInput extends React.Component {
           onBlur={this.props.onBlur}
         />
         {this.props.numberOfLines !== 1 && (
-          <Text style={styles.count}>{this.props.value.length}/250</Text>
+          <Text
+            style={[
+              styles.count,
+              (GlobalState.langPopup.langStatus === 'en' && { right: 10 }) || { left: 10 },
+            ]}>
+            {this.props.value.length}/250
+          </Text>
         )}
         {this.props.icon && (
           <LocalImage
             source={this.props.icon}
-            style={{ width: 14.4, height: 16, position: 'absolute', top: 12, left: 15.8 }}
+            style={[
+              { width: 14.4, height: 16, position: 'absolute', top: 12 },
+              (GlobalState.langPopup.langStatus === 'en' && { right: 15.8 }) || { left: 15.8 },
+            ]}
           />
         )}
       </View>
@@ -50,7 +60,6 @@ const styles = StyleSheet.create({
     lineHeight: 17,
     color: '#1E6FD9',
     position: 'absolute',
-    left: 10,
     bottom: 10,
   },
 });

@@ -1,7 +1,7 @@
 import React from 'react';
 import { SafeAreaView, StyleSheet, Text, View, ScrollView } from 'react-native';
-import { Styles } from '../../constants';
-import { API, API_RES_CODE } from '../../constants/Constants';
+import { Langs, Styles } from '../../constants';
+import { API, API_RES_CODE, SCREEN_WIDTH } from '../../constants/Constants';
 import {
   AppScreen,
   Button,
@@ -17,14 +17,14 @@ export default class FaceApprovalScreen extends AppScreen {
   constructor(props) {
     super(props);
     this.state = {
-      firstPhone: null,
-      secondPhone: null,
+      firstPhone: '',
+      secondPhone: '',
     };
   }
 
   render() {
     return (
-      <SafeAreaView>
+      <SafeAreaView style={{ flex: 1 }}>
         <ScrollView>
           <LinearGradient
             start={{ x: 0, y: 0 }}
@@ -32,7 +32,7 @@ export default class FaceApprovalScreen extends AppScreen {
             colors={['rgba(92,157,242,0.25)', 'rgba(92,157,242,0)']}
             style={{
               width: '100%',
-              height: 350,
+              height: 355,
               alignItems: 'center',
               justifyContent: 'center',
               marginBottom: 7,
@@ -42,16 +42,30 @@ export default class FaceApprovalScreen extends AppScreen {
                 this.props.navigation.goBack();
               }}
               style={{ alignSelf: 'center', position: 'absolute', top: 60, left: 21 }}>
-              <Text style={{ fontSize: 14, lineHeight: 17, textDecorationLine: 'underline', color: '#000' }}>
-                הקודם
+              <Text
+                style={{
+                  fontSize: 14,
+                  lineHeight: 17,
+                  textDecorationLine: 'underline',
+                  color: '#000',
+                }}>
+                {Langs.common.previous}
               </Text>
             </Button>
             <LocalImage
               source={require('src/assets/image/ic_gyme.png')}
               style={{ width: 152.26, height: 152.26 }}
             />
-            <Text style={{ fontSize: 24, lineHeight: 32, position: 'absolute', bottom: 13, color: '#000', fontWeight: '700' }}>
-              אישור השימוש בזיהוי פנים
+            <Text
+              style={{
+                fontSize: 24,
+                lineHeight: 32,
+                position: 'absolute',
+                bottom: 13,
+                color: '#000',
+                fontWeight: '700',
+              }}>
+              {Langs.regist.approval_use_face}
             </Text>
           </LinearGradient>
           <VerticalLayout style={{ paddingHorizontal: 20, alignItems: 'center' }}>
@@ -60,7 +74,7 @@ export default class FaceApprovalScreen extends AppScreen {
                 Styles.input_wrapper,
                 { marginBottom: 20, backgroundColor: 'white', elevation: 1 },
               ]}
-              title="מספר טלפון"
+              title={Langs.common.phone_number}
               image={require('src/assets/image/ic_phone.png')}
               inputNode={
                 <HorizontalLayout style={{ alignItems: 'center', justifyContent: 'space-between' }}>
@@ -95,20 +109,19 @@ export default class FaceApprovalScreen extends AppScreen {
                   fontSize: 16,
                   lineHeight: 19,
                   textDecorationLine: 'underline',
-                  marginBottom: 180,
                   color: '#000',
-                  fontWeight: '600'
+                  fontWeight: '600',
                 }}>
-                הזדהות ע״י איימיל
+                {Langs.regist.identi_by_email}
               </Text>
             </Button>
-            <ActiveButton
-              text="להיכנס"
-              style={{ width: '100%', marginBottom: 15 }}
-              action={() => {}}
-            />
           </VerticalLayout>
         </ScrollView>
+        <ActiveButton
+          text={Langs.common.confirm}
+          style={{ width: SCREEN_WIDTH - 40, marginBottom: 55, marginHorizontal: 20 }}
+          action={() => {}}
+        />
       </SafeAreaView>
     );
   }

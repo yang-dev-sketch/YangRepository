@@ -1,9 +1,9 @@
 import LocalizedStrings from 'react-native-localization';
 
 import en from './../assets/locales/en.js'
-import jp from './../assets/locales/jp.js'
+import hb from '../assets/locales/hb.js'
 
-const Langs = new LocalizedStrings({ en, jp });
-Langs.setLanguage('jp');
+const Langs = new LocalizedStrings({ en, hb });
+Langs.setLanguage('hb');
 
 export default Langs;

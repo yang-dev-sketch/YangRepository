@@ -1,6 +1,6 @@
 import React from 'react';
 import { SafeAreaView, StyleSheet, Text, View, ScrollView } from 'react-native';
-import { Styles } from '../../constants';
+import { Langs, Styles } from '../../constants';
 import { API, API_RES_CODE } from '../../constants/Constants';
 import { AppScreen, HorizontalLayout, LocalImage, VerticalLayout } from '../../components/controls';
 import { CommonUtils } from '../../utils';
@@ -34,7 +34,7 @@ export default class BankDetailScreen extends AppScreen {
               justifyContent: 'center',
             }}>
             <Text style={{ fontSize: 24, lineHeight: 29, position: 'absolute', top: 80, color: '#000', fontWeight: '700' }}>
-              פרטי בנק
+            {Langs.regist.bank_detail}
             </Text>
             <LocalImage
               source={require('src/assets/image/ic_bank.png')}
@@ -48,7 +48,7 @@ export default class BankDetailScreen extends AppScreen {
             </Text>
             <SetValueGroup
               style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#FFF' }]}
-              title="מספר חשבון"
+              title={Langs.regist.account_number}
               inputNode={
                 <CommonInput
                   numberOfLines={1}
@@ -63,7 +63,7 @@ export default class BankDetailScreen extends AppScreen {
             />
             <SetValueGroup
               style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#FFF' }]}
-              title="מספר בנק ושם"
+              title={Langs.regist.bank_number_name}
               inputNode={
                 <CommonInput
                   numberOfLines={1}
@@ -77,7 +77,7 @@ export default class BankDetailScreen extends AppScreen {
             />
             <SetValueGroup
               style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#FFF' }]}
-              title="מספר סניף"
+              title={Langs.regist.branch_number}
               inputNode={
                 <CommonInput
                   numberOfLines={1}
@@ -92,7 +92,7 @@ export default class BankDetailScreen extends AppScreen {
             />
             <SetValueGroup
               style={[Styles.input_wrapper, { marginBottom: 45, backgroundColor: '#FFF' }]}
-              title="שם החשבון"
+              title={Langs.regist.account_name}
               inputNode={
                 <CommonInput
                   numberOfLines={1}
@@ -106,7 +106,7 @@ export default class BankDetailScreen extends AppScreen {
               }
             />
             <ActiveButton
-              text="לשמור"
+              text={Langs.regist.preserve}
               style={{ width: '100%', marginBottom: 15 }}
               action={() => {
                 this.props.navigation.navigate('SuccessRegist');

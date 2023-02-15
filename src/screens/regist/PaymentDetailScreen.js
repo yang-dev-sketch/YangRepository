@@ -49,10 +49,10 @@ export default class PaymentDetailScreen extends AppScreen {
                 color: '#000',
                 fontWeight: '700',
               }}>
-              פרטי תשלום
+              {Langs.regist.payment_detail}
             </Text>
             <Text style={{ fontSize: 16, lineHeight: 19, marginBottom: 20, color: '#000' }}>
-              הרשמה לעסקים
+              {Langs.regist.business_registration}
             </Text>
             <PaymentMethodCard />
             <Text
@@ -63,11 +63,10 @@ export default class PaymentDetailScreen extends AppScreen {
                 marginTop: 25,
                 color: '#000',
               }}>
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-              has been.
+              {Langs.regist.lorem_ipsum}
             </Text>
             <ActiveButton
-              text="הוספת כרטיס"
+              text={Langs.regist.add_card}
               style={{ width: '100%', marginBottom: 15 }}
               action={() => {
                 this.props.navigation.navigate('BankDetail');

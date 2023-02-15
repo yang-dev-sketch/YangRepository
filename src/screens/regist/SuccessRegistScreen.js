@@ -4,6 +4,7 @@ import { API, API_RES_CODE, SCREEN_WIDTH } from '../../constants/Constants';
 import { AppScreen, LocalImage } from '../../components/controls';
 import { requestPost } from '../../utils/ApiUtils';
 import { ActiveButton } from '../../components/common';
+import { Langs } from "../../constants";
 
 export default class SplashScreen extends AppScreen {
   constructor(props) {
@@ -31,18 +32,19 @@ export default class SplashScreen extends AppScreen {
         <Text
           style={{
             fontSize: 32,
-            lineHeight: 38,
+            lineHeight: 38.4,
             letterSpacing: -0.17,
             color: '#000',
             textAlign: 'center',
             position: 'absolute',
+            fontWeight: '600',
             top: 79
           }}>
-          ברוך הבא
+          {Langs.regist.welcome}
         </Text>
         <Text
           style={{
-            width: SCREEN_WIDTH - 124,
+            width: SCREEN_WIDTH - 150,
             fontSize: 20,
             lineHeight: 24,
             position: 'absolute',
@@ -51,10 +53,10 @@ export default class SplashScreen extends AppScreen {
             color: '#000',
             fontWeight: '600',
           }}>
-          נרשמת בהצלחה, אנו שמחים לראות אותך
+          {Langs.regist.success_registered}
         </Text>
         <ActiveButton
-          text="הַתחָלָה"
+          text={Langs.regist.start}
           style={{ width: SCREEN_WIDTH - 124, position: 'absolute', bottom: 55 }}
           action={() => {
             this.props.navigation.navigate('Main');

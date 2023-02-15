@@ -9,7 +9,7 @@ import {
   LocalImage,
   VerticalLayout,
 } from '../../components/controls';
-import { requestPost } from '../../utils/ApiUtils';
+import { requestPost, requestUpload } from '../../utils/ApiUtils';
 import LinearGradient from 'react-native-linear-gradient';
 import { ActiveButton, CommonInput, SetValueGroup } from '../../components/common';
 import FastImage from 'react-native-fast-image';
@@ -29,8 +29,8 @@ export default class RegistCoachScreen extends AppScreen {
       firstPhone: '049',
       secondPhone: '',
       birthday: '',
-      genderType: [{ name: 'איש' }, { name: 'אִשָׁה' }],
-      selectedGender: 'איש',
+      genderType: [{ name: Langs.common.man }, { name: Langs.common.women }],
+      selectedGender: Langs.common.man,
     };
   }
 
@@ -47,8 +47,7 @@ export default class RegistCoachScreen extends AppScreen {
       console.log(result);
       if (result.code == API_RES_CODE.SUCCESS) {
         this.setState({
-          profile_url: result.data.file_url,
-          profile: result.data.file_path,
+          logo: result.data.file_path,
         });
       } else {
         Toast.show(result.msg);
@@ -170,11 +169,13 @@ export default class RegistCoachScreen extends AppScreen {
                   />
                 )}
               </Button>
-              <Text style={{ fontSize: 14, lineHeight: 16.8, color: '#000' }}>תמונה פרופיל</Text>
+              <Text style={{ fontSize: 14, lineHeight: 16.8, color: '#000' }}>
+                {Langs.regist.profile_image}
+              </Text>
             </VerticalLayout>
             <SetValueGroup
               style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#FFF' }]}
-              title="שם פרטי"
+              title={Langs.common.first_name}
               image={require('src/assets/image/ic_coach_on.png')}
               inputNode={
                 <CommonInput
@@ -189,7 +190,7 @@ export default class RegistCoachScreen extends AppScreen {
             />
             <SetValueGroup
               style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#FFF' }]}
-              title="שם משפחה"
+              title={Langs.common.last_name}
               image={require('src/assets/image/ic_coach_on.png')}
               inputNode={
                 <CommonInput
@@ -204,7 +205,7 @@ export default class RegistCoachScreen extends AppScreen {
             />
             <SetValueGroup
               style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#FFF' }]}
-              title="דוא”ל"
+              title={Langs.common.email}
               image={require('src/assets/image/ic_email.png')}
               inputNode={
                 <CommonInput
@@ -222,7 +223,7 @@ export default class RegistCoachScreen extends AppScreen {
                 Styles.input_wrapper,
                 { marginBottom: 20, backgroundColor: 'white', elevation: 1 },
               ]}
-              title="נייד"
+              title={Langs.common.phone_number}
               image={require('src/assets/image/ic_phone.png')}
               inputNode={
                 <HorizontalLayout style={{ alignItems: 'center', justifyContent: 'space-between' }}>
@@ -255,7 +256,7 @@ export default class RegistCoachScreen extends AppScreen {
               <View style={{ width: (SCREEN_WIDTH - 63) / 2 }}>
                 <SetValueGroup
                   style={[Styles.input_wrapper, { backgroundColor: '#FFF' }]}
-                  title="תאריך לידה"
+                  title={Langs.common.birthday}
                   image={require('src/assets/image/ic_birthday.png')}
                   inputNode={
                     <CommonInput
@@ -275,7 +276,7 @@ export default class RegistCoachScreen extends AppScreen {
               <View style={{ width: (SCREEN_WIDTH - 63) / 2 }}>
                 <SetValueGroup
                   style={[Styles.input_wrapper, { backgroundColor: '#FFF' }]}
-                  title="מִין"
+                  title={Langs.common.sex}
                   image={require('src/assets/image/ic_gender.png')}
                   inputNode={
                     <DropDownPicker
@@ -292,7 +293,7 @@ export default class RegistCoachScreen extends AppScreen {
               </View>
             </HorizontalLayout>
             <ActiveButton
-              text="הבא"
+              text={Langs.common.next}
               style={{ width: '100%', marginBottom: 15 }}
               action={() => {
                 this.registUser();

@@ -12,7 +12,8 @@ import {
 import { requestPost } from '../../utils/ApiUtils';
 import LinearGradient from 'react-native-linear-gradient';
 import { ActiveButton } from '../../components/common';
-import { RotateInDownLeft } from "react-native-reanimated";
+import { RotateInDownLeft } from 'react-native-reanimated';
+import GlobalState from '../../mobx/GlobalState';
 
 export default class SelectProgramScreen extends AppScreen {
   constructor(props) {
@@ -64,7 +65,7 @@ export default class SelectProgramScreen extends AppScreen {
                 color: '#000',
                 fontWeight: '600',
               }}>
-              בחרו את התכנית המתאימה לכם
+              {Langs.regist.choose_suit_program}
             </Text>
           </LinearGradient>
           <VerticalLayout style={{ paddingHorizontal: 20, marginTop: -34 }}>
@@ -87,61 +88,64 @@ export default class SelectProgramScreen extends AppScreen {
                 },
               ]}>
               <View
-                style={{
-                  width: 309,
-                  height: 309,
-                  position: 'absolute',
-                  left: -93,
-                  top: -65,
-                  borderRadius: 154.5,
-                  backgroundColor: '#EFF7FD',
-                }}></View>
+                style={[
+                  {
+                    width: 309,
+                    height: 309,
+                    position: 'absolute',
+                    top: -65,
+                    borderRadius: 154.5,
+                    backgroundColor: '#EFF7FD',
+                  },
+                  (GlobalState.langPopup.langStatus === 'en' && { right: -93 }) || { left: -93 },
+                ]}></View>
               <HorizontalLayout
-                style={{ padding: 25, alignItems: 'center', justifyContent: 'space-between' }}>
+                style={{ padding: 25, alignItems: 'center', justifyContent: 'space-between' }}
+                reverse={true}>
                 <VerticalLayout style={{ justifyContent: 'space-between', height: '100%' }}>
-                  <HorizontalLayout style={{ alignItems: 'center' }}>
+                  <HorizontalLayout style={{ alignItems: 'center' }} reverse={true}>
                     <Text style={{ fontSize: 14, lineHeight: 17, color: '#000' }}>
-                      טקסט טקסט טקסט
+                      {Langs.regist.text}
                     </Text>
                     <LocalImage
                       source={require('src/assets/image/ic_check_blue.png')}
-                      style={{ width: 15.5, height: 11.39, marginLeft: 11.97 }}
+                      style={{ width: 15.5, height: 11.39, marginHorizontal: 11.97 }}
                     />
                   </HorizontalLayout>
-                  <HorizontalLayout style={{ alignItems: 'center' }}>
+                  <HorizontalLayout style={{ alignItems: 'center' }} reverse={true}>
                     <Text style={{ fontSize: 14, lineHeight: 17, color: '#000' }}>
-                      טקסט טקסט טקסט
+                      {Langs.regist.text}
                     </Text>
                     <LocalImage
                       source={require('src/assets/image/ic_check_blue.png')}
-                      style={{ width: 15.5, height: 11.39, marginLeft: 11.97 }}
+                      style={{ width: 15.5, height: 11.39, marginHorizontal: 11.97 }}
                     />
                   </HorizontalLayout>
-                  <HorizontalLayout style={{ alignItems: 'center' }}>
+                  <HorizontalLayout style={{ alignItems: 'center' }} reverse={true}>
                     <Text style={{ fontSize: 14, lineHeight: 17, color: '#000' }}>
-                      טקסט טקסט טקסט
+                      {Langs.regist.text}
                     </Text>
                     <LocalImage
                       source={require('src/assets/image/ic_check_blue.png')}
-                      style={{ width: 15.5, height: 11.39, marginLeft: 11.97 }}
+                      style={{ width: 15.5, height: 11.39, marginHorizontal: 11.97 }}
                     />
                   </HorizontalLayout>
-                  <HorizontalLayout style={{ alignItems: 'center' }}>
+                  <HorizontalLayout style={{ alignItems: 'center' }} reverse={true}>
                     <Text style={{ fontSize: 14, lineHeight: 17, color: '#000' }}>
-                      טקסט טקסט טקסט
+                      {Langs.regist.text}
                     </Text>
                     <LocalImage
                       source={require('src/assets/image/ic_check_blue.png')}
-                      style={{ width: 15.5, height: 11.39, marginLeft: 11.97 }}
+                      style={{ width: 15.5, height: 11.39, marginHorizontal: 11.97 }}
                     />
                   </HorizontalLayout>
-                  <HorizontalLayout style={{ alignItems: 'center' }}>
+                  <HorizontalLayout style={{ alignItems: 'center' }} reverse={true}>
                     <Text style={{ fontSize: 14, lineHeight: 17, color: '#000' }}>
-                      טקסט טקסט טקסט
+                      {Langs.regist.text}
                     </Text>
                     <LocalImage
                       source={require('src/assets/image/ic_check_blue.png')}
-                      style={{ width: 15.5, height: 11.39, marginLeft: 11.97 }}
+                      style={{ width: 15.5, height: 11.39, marginHorizontal: 11.97 }}
                     />
                   </HorizontalLayout>
                 </VerticalLayout>
@@ -157,11 +161,11 @@ export default class SelectProgramScreen extends AppScreen {
                       fontSize: 16,
                       lineHeight: 19,
                       color: '#6F6F6F',
-                      width: 65,
+                      width: 90,
                       textAlign: 'center',
                     }}
                     numberOfLines={2}>
-                    מנוי חודשי
+                    {Langs.regist.subscription_monthly}
                   </Text>
                   <LocalImage
                     source={require('src/assets/image/ic_train_blue.png')}
@@ -195,57 +199,71 @@ export default class SelectProgramScreen extends AppScreen {
                   marginBottom: 17,
                   height: 179,
                   position: 'relative',
-                  overflow: 'hidden'
+                  overflow: 'hidden',
                 },
               ]}>
               <View
-                style={{
-                  width: 309,
-                  height: 309,
-                  position: 'absolute',
-                  left: -93,
-                  top: -65,
-                  borderRadius: 154.5,
-                  backgroundColor: '#EFF7FD',
-                }}></View>
+                style={[
+                  {
+                    width: 309,
+                    height: 309,
+                    position: 'absolute',
+                    top: -65,
+                    borderRadius: 154.5,
+                    backgroundColor: '#EFF7FD',
+                  },
+                  (GlobalState.langPopup.langStatus === 'en' && { right: -93 }) || { left: -93 },
+                ]}></View>
               <HorizontalLayout
-                style={{ alignItems: 'center', justifyContent: 'space-between', paddingLeft: 25, paddingVertical: 0, height: '100%' }}>
+                style={{
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  paddingLeft: 25,
+                  paddingVertical: 0,
+                  height: '100%',
+                }}
+                reverse={true}>
                 <VerticalLayout
-                  style={{ justifyContent: 'space-between', height: '100%', alignItems: 'center', paddingVertical: 25 }}>
-                  <HorizontalLayout style={{ alignItems: 'center' }}>
+                  style={{
+                    justifyContent: 'space-between',
+                    height: '100%',
+                    alignItems: 'center',
+                    paddingVertical: 25,
+                  }}>
+                  <HorizontalLayout style={{ alignItems: 'center' }} reverse={true}>
                     <Text style={{ fontSize: 14, lineHeight: 17, color: '#000' }}>
-                      טקסט טקסט טקסט
+                      {Langs.regist.text}
                     </Text>
                     <LocalImage
                       source={require('src/assets/image/ic_check_blue.png')}
-                      style={{ width: 15.5, height: 11.39, marginLeft: 11.97 }}
+                      style={{ width: 15.5, height: 11.39, marginHorizontal: 11.97 }}
                     />
                   </HorizontalLayout>
-                  <HorizontalLayout style={{ alignItems: 'center' }}>
+                  <HorizontalLayout style={{ alignItems: 'center' }} reverse={true}>
                     <Text style={{ fontSize: 14, lineHeight: 17, color: '#000' }}>
-                      טקסט טקסט טקסט
+                      {Langs.regist.text}
                     </Text>
                     <LocalImage
                       source={require('src/assets/image/ic_check_blue.png')}
-                      style={{ width: 15.5, height: 11.39, marginLeft: 11.97 }}
+                      style={{ width: 15.5, height: 11.39, marginHorizontal: 11.97 }}
                     />
                   </HorizontalLayout>
-                  <HorizontalLayout style={{ alignItems: 'center' }}>
+                  <HorizontalLayout style={{ alignItems: 'center' }} reverse={true}>
                     <Text style={{ fontSize: 14, lineHeight: 17, color: '#000' }}>
-                      טקסט טקסט טקסט
+                      {Langs.regist.text}
                     </Text>
                     <LocalImage
                       source={require('src/assets/image/ic_check_blue.png')}
-                      style={{ width: 15.5, height: 11.39, marginLeft: 11.97 }}
+                      style={{ width: 15.5, height: 11.39, marginHorizontal: 11.97 }}
                     />
                   </HorizontalLayout>
-                  <HorizontalLayout style={{ alignItems: 'center' }}>
+                  <HorizontalLayout style={{ alignItems: 'center' }} reverse={true}>
                     <Text style={{ fontSize: 14, lineHeight: 17, color: '#000' }}>
-                      טקסט טקסט טקסט
+                      {Langs.regist.text}
                     </Text>
                     <LocalImage
                       source={require('src/assets/image/ic_check_blue.png')}
-                      style={{ width: 15.5, height: 11.39, marginLeft: 11.97 }}
+                      style={{ width: 15.5, height: 11.39, marginHorizontal: 11.97 }}
                     />
                   </HorizontalLayout>
                   <Text
@@ -253,24 +271,27 @@ export default class SelectProgramScreen extends AppScreen {
                     שבוע נסיון חינם
                   </Text>
                 </VerticalLayout>
-                <HorizontalLayout style={{ alignItems: 'center', padding: 0, height: '100%' }}>
+                <HorizontalLayout
+                  style={{ alignItems: 'center', padding: 0, height: '100%' }}
+                  reverse={true}>
                   <VerticalLayout
                     style={{
                       alignItems: 'center',
                       justifyContent: 'space-between',
                       height: '100%',
-                      paddingVertical: 30
+                      paddingVertical: 30,
+                      marginHorizontal: 25,
                     }}>
                     <Text
                       style={{
                         fontSize: 16,
                         lineHeight: 19,
                         color: '#6F6F6F',
-                        width: 65,
+                        width: 90,
                         textAlign: 'center',
                       }}
                       numberOfLines={2}>
-                      מנוי חודשי
+                      {Langs.regist.subscription_monthly}
                     </Text>
                     <LocalImage
                       source={require('src/assets/image/ic_train_blue.png')}
@@ -293,24 +314,46 @@ export default class SelectProgramScreen extends AppScreen {
                     </HorizontalLayout>
                   </VerticalLayout>
                   <View
+                    style={[
+                      {
+                        width: 23,
+                        height: 179,
+                        backgroundColor: '#5C9DF2',
+                        justifyContent: 'center',
+                        position: 'relative',
+                        overflow: 'visible',
+                      },
+                      (GlobalState.langPopup.langStatus === 'en' && {
+                        borderTopRightRadius: 11,
+                        borderBottomRightRadius: 11,
+                        borderTopLeftRadius: 8,
+                        borderBottomLeftRadius: 8,
+                      }) || {
+                        borderTopLeftRadius: 11,
+                        borderBottomLeftRadius: 11,
+                        borderTopRightRadius: 8,
+                        borderBottomRightRadius: 8,
+                      },
+                    ]}></View>
+                  <Text
                     style={{
-                      width: 23,
-                      height: 179,
-                      borderTopLeftRadius: 11,
-                      borderBottomLeftRadius: 11,
-                      borderTopRightRadius: 8,
-                      borderBottomRightRadius: 8,
-                      backgroundColor: '#5C9DF2',
-                      marginLeft: 25,
-                      justifyContent: 'center'
-                    }}>
-                      {/* <Text style={{ fontSize: 14, lineHeight: 17, color: '#FFF', transform: [{ rotate: '-90deg'}] }}>המשתלם ביותר</Text> */}
-                    </View>
+                      fontSize: 14,
+                      lineHeight: 17,
+                      color: '#FFF',
+                      width: '100%',
+                      position: 'absolute',
+                      left: 70,
+                      bottom: (GlobalState.langPopup.langStatus === 'en' && 100) || 40,
+                      transform: [{ rotate: '-90deg' }],
+                    }}
+                    numberOfLines={1}>
+                    {Langs.regist.most_profitable}
+                  </Text>
                 </HorizontalLayout>
               </HorizontalLayout>
             </Button>
             <ActiveButton
-              text="התחילו עכשיו"
+              text={Langs.regist.start_now}
               style={{ width: '100%', marginBottom: 45 }}
               action={() => {
                 this.props.navigation.navigate({
@@ -332,7 +375,7 @@ export default class SelectProgramScreen extends AppScreen {
                     opacity: 0.7,
                     color: '#000',
                   }}>
-                  מדיניות פרטיות
+                  {Langs.regist.privacy_policy}
                 </Text>
               </Button>
               <Button>
@@ -344,7 +387,7 @@ export default class SelectProgramScreen extends AppScreen {
                     opacity: 0.7,
                     color: '#000',
                   }}>
-                  תנאי שימוש
+                  {Langs.regist.terms_of_use}
                 </Text>
               </Button>
             </HorizontalLayout>

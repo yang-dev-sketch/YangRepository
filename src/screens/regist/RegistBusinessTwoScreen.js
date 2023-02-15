@@ -101,12 +101,12 @@ export default class RegistBusinessTwoScreen extends AppScreen {
                 )}
               </Button>
               <Text style={{ fontSize: 14, lineHeight: 17, color: '#000', fontWeight: '400' }}>
-                תמונה פרופיל
+                {Langs.regist.profile_image}
               </Text>
             </VerticalLayout>
             <SetValueGroup
               style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#FFF' }]}
-              title="כמה מילים על העסק"
+              title={Langs.regist.few_word_business}
               image={require('src/assets/image/ic_info.png')}
               inputNode={
                 <CommonInput
@@ -121,7 +121,7 @@ export default class RegistBusinessTwoScreen extends AppScreen {
             />
             <SetValueGroup
               style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#FFF' }]}
-              title="כתובת העסק"
+              title={Langs.regist.business_address}
               image={require('src/assets/image/ic_address.png')}
               inputNode={
                 <CommonInput
@@ -135,9 +135,9 @@ export default class RegistBusinessTwoScreen extends AppScreen {
               }
             />
             <HorizontalLayout
-              style={{ alignItems: 'center', justifyContent: 'flex-end', marginBottom: 25 }}>
-              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000', marginRight: 7 }}>
-                אין ברשותי מקום אימונים קבוע
+              style={{ alignItems: 'center', justifyContent: 'flex-end', marginBottom: 25 }} reverse={true}>
+              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000', marginHorizontal: 7 }}>
+                {Langs.regist.not_have_train_place}
               </Text>
               <CheckBox
                 value={this.state.permanentPlace}
@@ -155,11 +155,11 @@ export default class RegistBusinessTwoScreen extends AppScreen {
                 marginHorizontal: 57,
                 marginBottom: 45,
               }}
-              numberOfLines={2}>
-              במידה וישנם סניפים לעסק יהיה ניתן להוסיף לאחר ההרשמה
+              numberOfLines={3}>
+              {Langs.regist.if_branch_can_add_regist}
             </Text>
             <ActiveButton
-              text="הבא"
+              text={Langs.common.next}
               style={{ width: '100%', marginBottom: 15 }}
               action={() => {
                 this.props.navigation.navigate('RegistBusinessThree');

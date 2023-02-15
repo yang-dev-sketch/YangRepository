@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 import { Button, HorizontalLayout, LocalImage, VerticalLayout } from '../controls';
+import GlobalState from '../../mobx/GlobalState';
 
 export default class SetValueGroup extends React.Component {
   constructor(props) {
@@ -9,7 +10,11 @@ export default class SetValueGroup extends React.Component {
 
   render() {
     return (
-      <VerticalLayout style={[{ alignItems: 'flex-end', width: '100%', borderWidth: 1, borderColor: '#D8D8D8' }, this.props.style]}>
+      <VerticalLayout
+        style={[
+          { alignItems: 'flex-end', width: '100%', borderWidth: 1, borderColor: '#D8D8D8' },
+          this.props.style,
+        ]}>
         <Button
           style={{ width: '100%', alignItems: 'center' }}
           onPress={() => {
@@ -21,9 +26,11 @@ export default class SetValueGroup extends React.Component {
                 alignItems: 'center',
                 justifyContent: 'space-between',
                 width: '100%',
+                flexDirection: 'row-reverse',
               },
               this.props.numberLine !== 1 && { marginBottom: 8.5 },
-            ]}>
+            ]}
+            reverse={true}>
             {this.props.expandable
               ? (this.props.numberLine === 1 && (
                   <LocalImage
@@ -50,7 +57,7 @@ export default class SetValueGroup extends React.Component {
                     )}
                   </HorizontalLayout>
                 )) || <View></View>}
-            <HorizontalLayout style={{ alignItems: 'center' }}>
+            <HorizontalLayout style={{ alignItems: 'center' }} reverse={true}>
               <Text
                 style={[{ fontSize: 16, lineHeight: 19, color: '#6F6F6F' }, this.props.textStyle]}>
                 {this.props.title}
@@ -58,7 +65,12 @@ export default class SetValueGroup extends React.Component {
               {this.props.image && (
                 <LocalImage
                   source={this.props.image}
-                  style={{ width: 16, height: 16, marginLeft: 5.5 }}
+                  style={[
+                    (GlobalState.langPopup.langStatus === 'en' && { marginRight: 5.5 }) || {
+                      marginLeft: 5.5,
+                    },
+                    { width: 16, height: 16 },
+                  ]}
                 />
               )}
             </HorizontalLayout>

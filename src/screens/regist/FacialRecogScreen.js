@@ -29,7 +29,7 @@ export default class FacialRecogScreen extends AppScreen {
             colors={['rgba(92,157,242,0.25)', 'rgba(92,157,242,0)']}
             style={{
               width: '100%',
-              height: 350,
+              height: 355,
               alignItems: 'center',
               justifyContent: 'center',
             }}>
@@ -39,7 +39,7 @@ export default class FacialRecogScreen extends AppScreen {
               }}
               style={{ alignSelf: 'center', position: 'absolute', top: 60, left: 21 }}>
               <Text style={{ fontSize: 14, lineHeight: 17, textDecorationLine: 'underline', color: '#000' }}>
-                הקודם
+                {Langs.common.previous}
               </Text>
             </Button>
             <LocalImage
@@ -47,21 +47,18 @@ export default class FacialRecogScreen extends AppScreen {
               style={{ width: 73, height: 73 }}
             />
             <Text style={{ fontSize: 24, lineHeight: 29, letterSpacing: -0.17, marginTop: 14, color: '#000', fontWeight: '600' }}>
-              Face ID
+              {Langs.regist.face_id}
             </Text>
           </LinearGradient>
           <Text
             style={{ fontSize: 16, lineHeight: 22, marginHorizontal: 20, letterSpacing: -0.17, color: '#000', fontWeight: '600' }}>
-            וחלקים מתוך הספרות הלטינית הקלאסית מאז 45 לפני הספירה. מה שהופך אותו לעתיק מעל 2000 שנה.
-            ריצ'רד מקלינטוק, פרופסור לטיני בקולג' של המפדן-סידני בורג'יניה, חיפש את אחת המילים
-            המעורפלות ביותר בלטינית - מתוך פסקאות של ודרך ציטוטים של המילה מתוך הספרות הקלאסית, הוא
-            גילה מקור בלתי ניתן
+            {Langs.regist.face_recog_text}
           </Text>
           <HorizontalLayout
-            style={{ justifyContent: 'space-between', paddingHorizontal: 20, marginTop: 150 }}>
+            style={{ justifyContent: 'space-between', paddingHorizontal: 20, marginTop: 205 }}>
             <View style={{ width: (SCREEN_WIDTH - 65) / 2 }}>
               <DisactiveButton
-                text="לא תודה"
+                text={Langs.regist.agree}
                 style={{ width: '100%', marginBottom: 40 }}
                 action={() => {
                   this.props.navigation.goBack();
@@ -70,7 +67,7 @@ export default class FacialRecogScreen extends AppScreen {
             </View>
             <View style={{ width: (SCREEN_WIDTH - 65) / 2 }}>
               <ActiveButton
-                text="אני מסכים"
+                text={Langs.regist.no_thanks}
                 image={true}
                 style={{ width: '100%', marginBottom: 40 }}
                 action={() => {

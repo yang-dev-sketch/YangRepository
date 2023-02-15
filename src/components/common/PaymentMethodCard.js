@@ -6,6 +6,7 @@ import CommonInput from './CommonInput';
 import SetValueGroup from './SetValueGroup';
 import { SCREEN_WIDTH } from 'react-native-common-date-picker/src/contants';
 import { CommonUtils } from '../../utils';
+import { Langs } from "../../constants";
 
 export default class PaymentMethodCard extends React.Component {
   constructor(props) {
@@ -28,7 +29,7 @@ export default class PaymentMethodCard extends React.Component {
         <VerticalLayout>
           <SetValueGroup
             style={{ marginBottom: 17, backgroundColor: 'transparent', borderWidth: 0 }}
-            title="הזנת מספר כרטיס אשראי"
+            title={Langs.regist.enter_card_number}
             textStyle={{ fontSize: 14, lineHeight: 17, color: '#0D65D9' }}
             inputNode={
               <CommonInput
@@ -69,7 +70,7 @@ export default class PaymentMethodCard extends React.Component {
                 width: (SCREEN_WIDTH - 111) / 2,
                 borderWidth: 0,
               }}
-              title="הזנת תוקף"
+              title={Langs.regist.valid_entry}
               textStyle={{ fontSize: 14, lineHeight: 16.8, color: '#6F6F6F' }}
               inputNode={
                 <CommonInput
@@ -108,7 +109,7 @@ export default class PaymentMethodCard extends React.Component {
                 width: (SCREEN_WIDTH - 111) / 2,
                 borderWidth: 0,
               }}
-              title="הזנת CVV"
+              title={Langs.regist.cvv_entry}
               textStyle={{ fontSize: 14, lineHeight: 16.8, color: '#6F6F6F' }}
               inputNode={
                 <CommonInput
@@ -143,7 +144,7 @@ export default class PaymentMethodCard extends React.Component {
           </HorizontalLayout>
           <SetValueGroup
             style={{ marginBottom: 12, backgroundColor: 'transparent', borderWidth: 0 }}
-            title="שם בעל הכרטיס"
+            title={Langs.regist.cardholder_name}
             textStyle={{ fontSize: 14, lineHeight: 16.8, color: '#6F6F6F' }}
             inputNode={
               <CommonInput
@@ -165,7 +166,7 @@ export default class PaymentMethodCard extends React.Component {
                 onBlur={() => {
                   this.setState({ cardholderFocus: false });
                 }}
-                placeholder={'הזן את שמו המלא של בעל הכרטיס'}
+                placeholder={Langs.regist.enter_cardholder_fullname}
                 onChangeText={(text) => {
                   this.setState({ id: text });
                 }}
@@ -173,11 +174,11 @@ export default class PaymentMethodCard extends React.Component {
             }
           />
           <HorizontalLayout
-            style={{ justifyContent: 'flex-end', width: '100%', alignItems: 'center' }}>
-            <Text style={{ fontSize: 16, lineHeight: 19.2, color: '#000' }}>כרטיס שמור</Text>
+            style={{ justifyContent: 'flex-end', width: '100%', alignItems: 'center' }} reverse={true}>
+            <Text style={{ fontSize: 16, lineHeight: 19.2, color: '#000', marginHorizontal: 7.67 }}>{Langs.regist.reserved_card}</Text>
             <LocalImage
               source={require('src/assets/image/ic_check_on.png')}
-              style={{ width: 14.67, height: 14.67, marginLeft: 7.67 }}
+              style={{ width: 14.67, height: 14.67 }}
             />
           </HorizontalLayout>
         </VerticalLayout>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { SafeAreaView, StyleSheet, Text, View, ScrollView } from 'react-native';
-import { Styles } from '../../constants';
+import { Langs, Styles } from '../../constants';
 import { API, API_RES_CODE, IMAGE_FOO_URL, SCREEN_WIDTH } from '../../constants/Constants';
 import {
   AppScreen,
@@ -27,8 +27,8 @@ export default class RegistBusinessThreeScreen extends AppScreen {
       secondPhone: '',
       email: '',
       birth: '',
-      sexType: [{ name: 'איש' }, { name: 'אִשָׁה' }],
-      selectedSex: 'המגדר שלך',
+      sexType: [{ name: Langs.common.man }, { name: Langs.common.women }],
+      selectedSex: Langs.common.man,
     };
   }
 
@@ -109,12 +109,12 @@ export default class RegistBusinessThreeScreen extends AppScreen {
                 )}
               </Button>
               <Text style={{ fontSize: 14, lineHeight: 17, color: '#000', fontWeight: '400' }}>
-                תמונת משתמש
+                {Langs.regist.user_photo}
               </Text>
             </VerticalLayout>
             <SetValueGroup
               style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#FFF' }]}
-              title="שם פרטי"
+              title={Langs.common.first_name}
               image={require('src/assets/image/ic_coach_on.png')}
               inputNode={
                 <CommonInput
@@ -129,7 +129,7 @@ export default class RegistBusinessThreeScreen extends AppScreen {
             />
             <SetValueGroup
               style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#FFF' }]}
-              title="שם משפחה"
+              title={Langs.common.last_name}
               image={require('src/assets/image/ic_coach_on.png')}
               inputNode={
                 <CommonInput
@@ -147,7 +147,7 @@ export default class RegistBusinessThreeScreen extends AppScreen {
                 Styles.input_wrapper,
                 { marginBottom: 15, backgroundColor: 'white', elevation: 1 },
               ]}
-              title="נייד"
+              title={Langs.common.phone_number}
               image={require('src/assets/image/ic_phone.png')}
               inputNode={
                 <HorizontalLayout style={{ alignItems: 'center', justifyContent: 'space-between' }}>
@@ -178,7 +178,7 @@ export default class RegistBusinessThreeScreen extends AppScreen {
             />
             <SetValueGroup
               style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#FFF' }]}
-              title="דוא”ל"
+              title={Langs.common.email}
               image={require('src/assets/image/ic_email.png')}
               inputNode={
                 <CommonInput
@@ -195,7 +195,7 @@ export default class RegistBusinessThreeScreen extends AppScreen {
               <View style={{ width: (SCREEN_WIDTH - 63) / 2 }}>
                 <SetValueGroup
                   style={[Styles.input_wrapper, { backgroundColor: '#FFF' }]}
-                  title="תאריך לידה"
+                  title={Langs.common.birthday}
                   image={require('src/assets/image/ic_birthday.png')}
                   inputNode={
                     <CommonInput
@@ -215,7 +215,7 @@ export default class RegistBusinessThreeScreen extends AppScreen {
               <View style={{ width: (SCREEN_WIDTH - 63) / 2 }}>
                 <SetValueGroup
                   style={[Styles.input_wrapper, { backgroundColor: '#FFF' }]}
-                  title="מִין"
+                  title={Langs.common.sex}
                   image={require('src/assets/image/ic_gender.png')}
                   inputNode={
                     <DropDownPicker
@@ -232,14 +232,14 @@ export default class RegistBusinessThreeScreen extends AppScreen {
               </View>
             </HorizontalLayout>
             <DisactiveButton
-              text="התחבר למשתמש שלך"
+              text={Langs.regist.login_your_user}
               style={{ width: '100%', marginBottom: 15 }}
               action={() => {
                 this.userLogin();
               }}
             />
             <ActiveButton
-              text="הבא"
+              text={Langs.common.next}
               style={{ width: '100%', marginBottom: 15 }}
               action={() => {
                 this.props.navigation.navigate('SelectProgram');

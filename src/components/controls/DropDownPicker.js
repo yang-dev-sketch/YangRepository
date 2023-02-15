@@ -2,6 +2,8 @@ import React from 'react';
 import { Text, View } from 'react-native';
 import SelectDropdown from 'react-native-select-dropdown';
 import { Button, HorizontalLayout, LocalImage } from '.';
+import GlobalState from '../../mobx/GlobalState';
+import { SCREEN_WIDTH } from '../../constants/Constants';
 
 export default class DropDownPicker extends React.Component {
   constructor(props) {
@@ -22,7 +24,50 @@ export default class DropDownPicker extends React.Component {
           onBlur={() => {
             this.setState({ typeOpen: false });
           }}
-          searchInputStyle={{ padding: 0, margin: 0 }}
+          search={this.props.search}
+          searchInputStyle={{
+            width: SCREEN_WIDTH - 90,
+            height: 40,
+            borderRadius: 43,
+            borderWidth: 0.5,
+            borderColor: '#D8D8D8',
+            backgroundColor: '#F5F5F5',
+            fontSize: 16,
+            lineHeight: 19,
+            color: '#6F6F6F',
+            marginTop: 10,
+            flexDirection: GlobalState.langPopup.langStatus === 'en' ? 'row' : 'row-reverse',
+          }}
+          searchPlaceHolder={this.props.searchPlaceHolder}
+          renderSearchInputLeftIcon={() => {
+            return (
+              GlobalState.langPopup.langStatus === 'en' && (
+                <LocalImage
+                  source={require('src/assets/image/ic_search.png')}
+                  style={{ width: 13, height: 13 }}
+                />
+              )
+            );
+          }}
+          renderSearchInputRightIcon={() => {
+            return (
+              GlobalState.langPopup.langStatus === 'hb' && (
+                <LocalImage
+                  source={require('src/assets/image/ic_search.png')}
+                  style={{
+                    width: 13,
+                    height: 13,
+                    position: 'absolute',
+                    left: SCREEN_WIDTH - 140,
+                    top: 15,
+                  }}
+                />
+              )
+            );
+          }}
+          searchInputTxtStyle={{
+            textAlign: GlobalState.langPopup.langStatus === 'en' ? 'left' : 'right',
+          }}
           data={data}
           defaultValue="בחרו סוג"
           buttonStyle={{
@@ -44,7 +89,8 @@ export default class DropDownPicker extends React.Component {
                   justifyContent: 'space-between',
                   width: '100%',
                   borderRadius: 50,
-                }}>
+                }}
+                reverse={true}>
                 <HorizontalLayout style={{ alignItems: 'center' }}>
                   {this.props.editIcon && (
                     <Button

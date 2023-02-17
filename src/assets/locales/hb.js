@@ -76,5 +76,6 @@ export default {
     start: 'הַתחָלָה',
     branch_name: 'שם הסניף',
     where_want_money: 'לאן אתם רוצים שהכסף\n שלכם יכנס ?',
+    login_your_user: 'התחבר למשתמש שלך',
   },
 };

@@ -15,6 +15,7 @@ import { ActiveButton, CommonInput, DisactiveButton, SetValueGroup } from '../..
 import DropDownPicker from '../../components/controls/DropDownPicker';
 import ImageCropPicker from 'react-native-image-crop-picker';
 import FastImage from 'react-native-fast-image';
+import LoginUserPopup from '../../components/popups/LoginUserPopup';
 
 export default class RegistBusinessThreeScreen extends AppScreen {
   constructor(props) {
@@ -29,6 +30,7 @@ export default class RegistBusinessThreeScreen extends AppScreen {
       birth: '',
       sexType: [{ name: Langs.common.man }, { name: Langs.common.women }],
       selectedSex: Langs.common.man,
+      showLoginUserPopup: false
     };
   }
 
@@ -54,7 +56,9 @@ export default class RegistBusinessThreeScreen extends AppScreen {
     });
   };
 
-  userLogin = () => {}
+  userLogin = () => {
+    this.setState({showLoginUserPopup: true})
+  };
 
   render() {
     return (
@@ -247,6 +251,12 @@ export default class RegistBusinessThreeScreen extends AppScreen {
             />
           </VerticalLayout>
         </ScrollView>
+        <LoginUserPopup
+          visible={this.state.showLoginUserPopup}
+          onCancel={() => {
+            this.setState({ showLoginUserPopup: false });
+          }}
+        />
       </SafeAreaView>
     );
   }

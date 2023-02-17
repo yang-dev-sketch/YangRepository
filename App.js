@@ -14,10 +14,7 @@ import { setJSExceptionHandler, setNativeExceptionHandler } from 'react-native-e
 import { RootSiblingParent } from 'react-native-root-siblings';
 import Toast from 'react-native-root-toast';
 import { Colors, Langs } from './src/constants';
-import {
-  IS_OFFLINE_MODE,
-  SHARE_TYPE,
-} from './src/constants/Constants';
+import { IS_OFFLINE_MODE, SHARE_TYPE } from './src/constants/Constants';
 import GlobalState from './src/mobx/GlobalState';
 import MyInfo from './src/mobx/MyInfo';
 import AppNavigator from './src/navigation/AppNavigator';
@@ -60,7 +57,7 @@ setNativeExceptionHandler((errorString) => {
   // To customize the popup screen take a look at CUSTOMIZATION section.
 });
 
-@observer
+// @observer
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -75,7 +72,6 @@ class App extends React.Component {
       userData: null,
     };
     LogBox.ignoreAllLogs(true);
-
   }
 
   login = async () => {
@@ -88,7 +84,7 @@ class App extends React.Component {
       const user_data = await getUserData(credentials.idToken);
       this.setState({ loggedIn: true, userData: user_data });
     } catch (err) {
-      console.log(err)
+      console.log(err);
       alert('Error logging in');
     }
   };

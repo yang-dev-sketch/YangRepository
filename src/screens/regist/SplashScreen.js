@@ -151,7 +151,7 @@ export default class SplashScreen extends AppScreen {
   go2Main = () => {
     setTimeout(() => {
       this.setState({ showButton: true });
-      // this.props.navigation.navigate('Login');
+      this.props.navigation.navigate('RegistBusinessThree');
     }, Math.max(0, this.INTRO_TIME - (new Date().getTime() - this.startTime)));
   };
 }

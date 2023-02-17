@@ -20,6 +20,8 @@ export default {
     next: 'הבא',
     search: 'חיפוש',
     phone_number: 'מספר טלפון',
+    height: 'מִשׁקָל',
+    weight: 'גוֹבַה',
   },
   regist: {
     identi_by_email: 'הזדהות ע״י איימיל',
@@ -71,6 +73,8 @@ export default {
     preserve: 'לשמור',
     welcome: 'ברוך הבא',
     success_registered: 'נרשמת בהצלחה, אנו שמחים לראות אותך',
-    start: 'הַתחָלָה'
+    start: 'הַתחָלָה',
+    branch_name: 'שם הסניף',
+    where_want_money: 'לאן אתם רוצים שהכסף\n שלכם יכנס ?',
   },
 };

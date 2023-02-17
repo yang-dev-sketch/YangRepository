@@ -21,7 +21,8 @@ export default class RegistBusinessTwoScreen extends AppScreen {
     this.state = {
       logo: '',
       description: '',
-      address: '',
+      branch_name: '',
+      business_address: '',
       permanentPlace: false,
     };
   }
@@ -105,13 +106,13 @@ export default class RegistBusinessTwoScreen extends AppScreen {
               </Text>
             </VerticalLayout>
             <SetValueGroup
-              style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#FFF' }]}
+              style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#F5F5F5' }]}
               title={Langs.regist.few_word_business}
               image={require('src/assets/image/ic_info.png')}
               inputNode={
                 <CommonInput
                   numberOfLines={4}
-                  backgroundColor="#F5F5F5"
+                  backgroundColor="#FFF"
                   value={this.state.description}
                   onChangeText={(text) => {
                     this.setState({ description: text });
@@ -120,16 +121,31 @@ export default class RegistBusinessTwoScreen extends AppScreen {
               }
             />
             <SetValueGroup
-              style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#FFF' }]}
+              style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#F5F5F5' }]}
+              title={Langs.regist.branch_name}
+              image={require('src/assets/image/ic_address.png')}
+              inputNode={
+                <CommonInput
+                  numberOfLines={1}
+                  backgroundColor="#FFF"
+                  value={this.state.branch_name}
+                  onChangeText={(text) => {
+                    this.setState({ branch_name: text });
+                  }}
+                />
+              }
+            />
+            <SetValueGroup
+              style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#F5F5F5' }]}
               title={Langs.regist.business_address}
               image={require('src/assets/image/ic_address.png')}
               inputNode={
                 <CommonInput
                   numberOfLines={1}
-                  backgroundColor="#F5F5F5"
-                  value={this.state.description}
+                  backgroundColor="#FFF"
+                  value={this.state.business_address}
                   onChangeText={(text) => {
-                    this.setState({ description: text });
+                    this.setState({ business_address: text });
                   }}
                 />
               }

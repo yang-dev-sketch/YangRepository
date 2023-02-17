@@ -69,7 +69,7 @@ export default class PaymentDetailScreen extends AppScreen {
               text={Langs.regist.add_card}
               style={{ width: '100%', marginBottom: 15 }}
               action={() => {
-                this.props.navigation.navigate('BankDetail');
+                this.props.navigation.navigate('SuccessRegist');
               }}
             />
           </VerticalLayout>

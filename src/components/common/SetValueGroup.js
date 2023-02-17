@@ -12,7 +12,13 @@ export default class SetValueGroup extends React.Component {
     return (
       <VerticalLayout
         style={[
-          { alignItems: 'flex-end', width: '100%', borderWidth: 1, borderColor: '#D8D8D8' },
+          {
+            alignItems: 'flex-end',
+            width: '100%',
+            borderWidth: 1,
+            borderColor: '#D8D8D8',
+            backgroundColor: '#F5F5F5',
+          },
           this.props.style,
         ]}>
         <Button

@@ -20,6 +20,8 @@ export default {
     next: 'The next',
     search: 'Search',
     phone_number: 'Phone number',
+    height: 'Height',
+    weight: 'Weight',
   },
   regist: {
     identi_by_email: 'Identification by email',
@@ -72,6 +74,8 @@ export default {
     preserve: 'Preserve',
     welcome: 'Welcome',
     success_registered: 'You have successfullly registered, we are happy to see you',
-    start: 'Start'
+    start: 'Start',
+    branch_name: 'Branch name',
+    where_want_money: 'Where do you want the money?\n Will yours come in?',
   },
 };

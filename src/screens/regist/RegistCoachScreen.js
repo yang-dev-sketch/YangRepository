@@ -31,6 +31,8 @@ export default class RegistCoachScreen extends AppScreen {
       birthday: '',
       genderType: [{ name: Langs.common.man }, { name: Langs.common.women }],
       selectedGender: Langs.common.man,
+      height: '',
+      weight: ''
     };
   }
 
@@ -180,7 +182,7 @@ export default class RegistCoachScreen extends AppScreen {
               inputNode={
                 <CommonInput
                   numberOfLines={1}
-                  backgroundColor="#F5F5F5"
+                  backgroundColor="#FFF"
                   value={this.state.firstName}
                   onChangeText={(text) => {
                     this.setState({ firstName: text });
@@ -195,7 +197,7 @@ export default class RegistCoachScreen extends AppScreen {
               inputNode={
                 <CommonInput
                   numberOfLines={1}
-                  backgroundColor="#F5F5F5"
+                  backgroundColor="#FFF"
                   value={this.state.lastName}
                   onChangeText={(text) => {
                     this.setState({ lastName: text });
@@ -210,7 +212,7 @@ export default class RegistCoachScreen extends AppScreen {
               inputNode={
                 <CommonInput
                   numberOfLines={1}
-                  backgroundColor="#F5F5F5"
+                  backgroundColor="#FFF"
                   value={this.state.email}
                   onChangeText={(text) => {
                     this.setState({ email: text });
@@ -230,7 +232,7 @@ export default class RegistCoachScreen extends AppScreen {
                   <CommonInput
                     style={{ width: 70 }}
                     numberOfLines={1}
-                    backgroundColor="#F5F5F5"
+                    backgroundColor="#FFF"
                     maxLength={3}
                     value={this.state.firstPhone}
                     onChangeText={(text) => {
@@ -242,7 +244,7 @@ export default class RegistCoachScreen extends AppScreen {
                   <CommonInput
                     style={{ width: 230 }}
                     numberOfLines={1}
-                    backgroundColor="#F5F5F5"
+                    backgroundColor="#FFF"
                     maxLength={10}
                     value={this.state.secondPhone}
                     onChangeText={(text) => {
@@ -252,7 +254,7 @@ export default class RegistCoachScreen extends AppScreen {
                 </HorizontalLayout>
               }
             />
-            <HorizontalLayout style={{ justifyContent: 'space-between', marginBottom: 45 }}>
+            <HorizontalLayout style={{ justifyContent: 'space-between', marginBottom: 15 }}>
               <View style={{ width: (SCREEN_WIDTH - 63) / 2 }}>
                 <SetValueGroup
                   style={[Styles.input_wrapper, { backgroundColor: '#FFF' }]}
@@ -264,7 +266,7 @@ export default class RegistCoachScreen extends AppScreen {
                       fontSize={20}
                       lineHeight={24}
                       numberOfLines={1}
-                      backgroundColor="#F5F5F5"
+                      backgroundColor="#FFF"
                       value={this.state.birthday}
                       onChangeText={(text) => {
                         this.setState({ birthday: text });
@@ -282,10 +284,52 @@ export default class RegistCoachScreen extends AppScreen {
                     <DropDownPicker
                       editIcon={false}
                       data={this.state.genderType}
-                      backgroundColor="#F5F5F5"
+                      backgroundColor="#FFF"
                       selectedValue={this.state.selectedGender}
                       onSelect={(value) => {
                         this.setState({ selectedGender: value.name });
+                      }}
+                    />
+                  }
+                />
+              </View>
+            </HorizontalLayout>
+            <HorizontalLayout style={{ justifyContent: 'space-between', marginBottom: 20 }}>
+              <View style={{ width: (SCREEN_WIDTH - 63) / 2 }}>
+                <SetValueGroup
+                  style={[Styles.input_wrapper, { backgroundColor: '#FFF' }]}
+                  title={Langs.common.height}
+                  image={require('src/assets/image/ic_man.png')}
+                  inputNode={
+                    <CommonInput
+                      inputStyle={{ height: 40 }}
+                      fontSize={20}
+                      lineHeight={24}
+                      numberOfLines={1}
+                      backgroundColor="#FFF"
+                      value={this.state.height}
+                      onChangeText={(text) => {
+                        this.setState({ height: text });
+                      }}
+                    />
+                  }
+                />
+              </View>
+              <View style={{ width: (SCREEN_WIDTH - 63) / 2 }}>
+              <SetValueGroup
+                  style={[Styles.input_wrapper, { backgroundColor: '#FFF' }]}
+                  title={Langs.common.weight}
+                  image={require('src/assets/image/ic_man.png')}
+                  inputNode={
+                    <CommonInput
+                      inputStyle={{ height: 40 }}
+                      fontSize={20}
+                      lineHeight={24}
+                      numberOfLines={1}
+                      backgroundColor="#FFF"
+                      value={this.state.weight}
+                      onChangeText={(text) => {
+                        this.setState({ weight: text });
                       }}
                     />
                   }

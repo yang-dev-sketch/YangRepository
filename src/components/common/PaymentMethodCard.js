@@ -195,6 +195,6 @@ const styles = StyleSheet.create({
     paddingVertical: 27,
     borderWidth: 1,
     borderColor: '#D8D8D8',
-    backgroundColor: '#FFF',
+    backgroundColor: '#F5F5F5',
   },
 });

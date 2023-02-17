@@ -107,7 +107,7 @@ export default class LoginScreen extends AppScreen {
             <SetValueGroup
               style={[
                 Styles.input_wrapper,
-                { marginBottom: 20, backgroundColor: 'white', elevation: 1 },
+                { marginBottom: 20, backgroundColor: '#F5F5F5', elevation: 1 },
               ]}
               title={Langs.common.phone_number}
               image={require('src/assets/image/ic_phone.png')}
@@ -116,7 +116,7 @@ export default class LoginScreen extends AppScreen {
                   <CommonInput
                     style={{ width: 70 }}
                     numberOfLines={1}
-                    backgroundColor="#F5F5F5"
+                    backgroundColor="#FFF"
                     maxLength={3}
                     value={this.state.firstPhone}
                     onChangeText={(text) => {
@@ -128,7 +128,7 @@ export default class LoginScreen extends AppScreen {
                   <CommonInput
                     style={{ width: 230 }}
                     numberOfLines={1}
-                    backgroundColor="#F5F5F5"
+                    backgroundColor="#FFF"
                     maxLength={10}
                     value={this.state.secondPhone}
                     onChangeText={(text) => {
@@ -141,7 +141,7 @@ export default class LoginScreen extends AppScreen {
             {(this.state.verifyState == false && (
               <>
                 <Button
-                  style={{ alignSelf: 'center', marginBottom: 30 }}
+                  style={{ alignSelf: 'center', marginBottom: 35 }}
                   onPress={() => {
                     this.signInWithPhoneNumber();
                   }}>
@@ -156,6 +156,10 @@ export default class LoginScreen extends AppScreen {
                     {Langs.regist.identi_by_email}
                   </Text>
                 </Button>
+                <LocalImage
+                  source={require('src/assets/image/ic_fingerprint.png')}
+                  style={{ width: 36, height: 36, marginBottom: 20, alignSelf: 'center' }}
+                />
                 <ActiveButton
                   text={Langs.common.entrance}
                   style={{ width: '100%', marginBottom: 15 }}
@@ -207,12 +211,12 @@ export default class LoginScreen extends AppScreen {
             )) || (
               <>
                 <SetValueGroup
-                  style={[Styles.input_wrapper, { marginBottom: 40, backgroundColor: '#FFF' }]}
+                  style={[Styles.input_wrapper, { marginBottom: 40, backgroundColor: '#F5F5F5' }]}
                   title={Langs.regist.enter_code}
                   inputNode={
                     <CommonInput
                       numberOfLines={1}
-                      backgroundColor="#F5F5F5"
+                      backgroundColor="#FFF"
                       maxLength={10}
                       value={this.state.code}
                       onChangeText={(text) => {

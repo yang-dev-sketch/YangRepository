@@ -60,13 +60,13 @@ export default class RegistBusinessOneScreen extends AppScreen {
           </LinearGradient>
           <VerticalLayout style={{ paddingHorizontal: 20, marginTop: -50 }}>
             <SetValueGroup
-              style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#FFF' }]}
+              style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#F5F5F5' }]}
               title={Langs.regist.business_name}
               image={require('src/assets/image/ic_active_calendar.png')}
               inputNode={
                 <CommonInput
                   numberOfLines={1}
-                  backgroundColor="#F5F5F5"
+                  backgroundColor="#FFF"
                   value={this.state.businessName}
                   onChangeText={(text) => {
                     this.setState({ businessName: text });
@@ -75,13 +75,13 @@ export default class RegistBusinessOneScreen extends AppScreen {
               }
             />
             <SetValueGroup
-              style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#FFF' }]}
+              style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#F5F5F5' }]}
               title={Langs.regist.type_business}
               image={require('src/assets/image/ic_active_calendar.png')}
               inputNode={
                 <DropDownPicker
                   editIcon={false}
-                  backgroundColor="#F5F5F5"
+                  backgroundColor="#FFF"
                   data={this.state.businessType}
                   search={true}
                   searchPlaceHolder={Langs.common.search}
@@ -93,13 +93,13 @@ export default class RegistBusinessOneScreen extends AppScreen {
               }
             />
             <SetValueGroup
-              style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#FFF' }]}
+              style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#F5F5F5' }]}
               title={Langs.regist.hp}
               image={require('src/assets/image/ic_hp.png')}
               inputNode={
                 <CommonInput
                   numberOfLines={1}
-                  backgroundColor="#F5F5F5"
+                  backgroundColor="#FFF"
                   value={this.state.hp}
                   onChangeText={(text) => {
                     this.setState({ hp: text });
@@ -108,13 +108,13 @@ export default class RegistBusinessOneScreen extends AppScreen {
               }
             />
             <SetValueGroup
-              style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#FFF' }]}
+              style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#F5F5F5' }]}
               title={Langs.regist.company_name}
               image={require('src/assets/image/ic_active_calendar.png')}
               inputNode={
                 <CommonInput
                   numberOfLines={1}
-                  backgroundColor="#F5F5F5"
+                  backgroundColor="#FFF"
                   value={this.state.companyName}
                   onChangeText={(text) => {
                     this.setState({ companyName: text });
@@ -125,7 +125,7 @@ export default class RegistBusinessOneScreen extends AppScreen {
             <SetValueGroup
               style={[
                 Styles.input_wrapper,
-                { marginBottom: 20, backgroundColor: 'white', elevation: 1 },
+                { marginBottom: 20, backgroundColor: '#F5F5F5', elevation: 1 },
               ]}
               title={Langs.common.phone_number}
               image={require('src/assets/image/ic_phone.png')}
@@ -134,7 +134,7 @@ export default class RegistBusinessOneScreen extends AppScreen {
                   <CommonInput
                     style={{ width: 70 }}
                     numberOfLines={1}
-                    backgroundColor="#F5F5F5"
+                    backgroundColor="#FFF"
                     maxLength={3}
                     value={this.state.firstPhone}
                     onChangeText={(text) => {
@@ -146,7 +146,7 @@ export default class RegistBusinessOneScreen extends AppScreen {
                   <CommonInput
                     style={{ width: 230 }}
                     numberOfLines={1}
-                    backgroundColor="#F5F5F5"
+                    backgroundColor="#FFF"
                     maxLength={10}
                     value={this.state.secondPhone}
                     onChangeText={(text) => {
@@ -157,13 +157,13 @@ export default class RegistBusinessOneScreen extends AppScreen {
               }
             />
             <SetValueGroup
-              style={[Styles.input_wrapper, { marginBottom: 30, backgroundColor: '#FFF' }]}
+              style={[Styles.input_wrapper, { marginBottom: 30, backgroundColor: '#F5F5F5' }]}
               title={Langs.common.email}
               image={require('src/assets/image/ic_email.png')}
               inputNode={
                 <CommonInput
                   numberOfLines={1}
-                  backgroundColor="#F5F5F5"
+                  backgroundColor="#FFF"
                   value={this.state.email}
                   onChangeText={(text) => {
                     this.setState({ email: text });

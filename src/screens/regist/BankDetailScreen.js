@@ -42,19 +42,19 @@ export default class BankDetailScreen extends AppScreen {
             />
           </LinearGradient>
           <VerticalLayout style={{ paddingHorizontal: 20, marginTop: -36, alignItems: 'center' }}>
-            <Text style={{ fontSize: 16, lineHeight: 19, marginBottom: 35, textAlign: 'center', color: '#000', marginHorizontal:  18 }}>
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-              has been the industry's.
+            <Text style={{ fontSize: 16, lineHeight: 19, marginBottom: 35, textAlign: 'center', color: '#000' }}>
+              {Langs.regist.where_want_money}
             </Text>
             <SetValueGroup
-              style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#FFF' }]}
+              style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#F5F5F5' }]}
               title={Langs.regist.account_number}
               inputNode={
                 <CommonInput
                   numberOfLines={1}
                   maxLength={19}
-                  backgroundColor="#F5F5F5"
+                  backgroundColor="#FFF"
                   value={CommonUtils.formatAccountNumber(this.state.accountNumber)}
+                  keyboardType={'numeric'}
                   onChangeText={(text) => {
                     this.setState({ accountNumber: text });
                   }}
@@ -62,12 +62,12 @@ export default class BankDetailScreen extends AppScreen {
               }
             />
             <SetValueGroup
-              style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#FFF' }]}
+              style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#F5F5F5' }]}
               title={Langs.regist.bank_number_name}
               inputNode={
                 <CommonInput
                   numberOfLines={1}
-                  backgroundColor="#F5F5F5"
+                  backgroundColor="#FFF"
                   value={this.state.bankNumber}
                   onChangeText={(text) => {
                     this.setState({ bankNumber: text });
@@ -76,14 +76,15 @@ export default class BankDetailScreen extends AppScreen {
               }
             />
             <SetValueGroup
-              style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#FFF' }]}
+              style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#F5F5F5' }]}
               title={Langs.regist.branch_number}
               inputNode={
                 <CommonInput
                   numberOfLines={1}
-                  backgroundColor="#F5F5F5"
+                  backgroundColor="#FFF"
                   maxLength={9}
                   value={this.state.branchNumber}
+                  keyboardType={'numeric'}
                   onChangeText={(text) => {
                     this.setState({ branchNumber: text });
                   }}
@@ -91,14 +92,15 @@ export default class BankDetailScreen extends AppScreen {
               }
             />
             <SetValueGroup
-              style={[Styles.input_wrapper, { marginBottom: 45, backgroundColor: '#FFF' }]}
+              style={[Styles.input_wrapper, { marginBottom: 45, backgroundColor: '#F5F5F5' }]}
               title={Langs.regist.account_name}
               inputNode={
                 <CommonInput
                   numberOfLines={1}
-                  backgroundColor="#F5F5F5"
+                  backgroundColor="#FFF"
                   maxLength={9}
                   value={this.state.accountName}
+                  keyboardType={'numeric'}
                   onChangeText={(text) => {
                     this.setState({ accountName: text });
                   }}
@@ -109,7 +111,7 @@ export default class BankDetailScreen extends AppScreen {
               text={Langs.regist.preserve}
               style={{ width: '100%', marginBottom: 15 }}
               action={() => {
-                this.props.navigation.navigate('SuccessRegist');
+                this.props.navigation.navigate('SelectProgram');
               }}
             />
           </VerticalLayout>

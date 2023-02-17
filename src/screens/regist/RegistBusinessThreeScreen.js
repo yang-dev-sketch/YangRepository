@@ -113,13 +113,13 @@ export default class RegistBusinessThreeScreen extends AppScreen {
               </Text>
             </VerticalLayout>
             <SetValueGroup
-              style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#FFF' }]}
+              style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#F5F5F5' }]}
               title={Langs.common.first_name}
               image={require('src/assets/image/ic_coach_on.png')}
               inputNode={
                 <CommonInput
                   numberOfLines={1}
-                  backgroundColor="#F5F5F5"
+                  backgroundColor="#FFF"
                   value={this.state.firstName}
                   onChangeText={(text) => {
                     this.setState({ firstName: text });
@@ -128,13 +128,13 @@ export default class RegistBusinessThreeScreen extends AppScreen {
               }
             />
             <SetValueGroup
-              style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#FFF' }]}
+              style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#F5F5F5' }]}
               title={Langs.common.last_name}
               image={require('src/assets/image/ic_coach_on.png')}
               inputNode={
                 <CommonInput
                   numberOfLines={1}
-                  backgroundColor="#F5F5F5"
+                  backgroundColor="#FFF"
                   value={this.state.lastName}
                   onChangeText={(text) => {
                     this.setState({ lastName: text });
@@ -145,7 +145,7 @@ export default class RegistBusinessThreeScreen extends AppScreen {
             <SetValueGroup
               style={[
                 Styles.input_wrapper,
-                { marginBottom: 15, backgroundColor: 'white', elevation: 1 },
+                { marginBottom: 15, backgroundColor: '#F5F5F5', elevation: 1 },
               ]}
               title={Langs.common.phone_number}
               image={require('src/assets/image/ic_phone.png')}
@@ -154,7 +154,7 @@ export default class RegistBusinessThreeScreen extends AppScreen {
                   <CommonInput
                     style={{ width: 70 }}
                     numberOfLines={1}
-                    backgroundColor="#F5F5F5"
+                    backgroundColor="#FFF"
                     maxLength={3}
                     value={this.state.firstPhone}
                     onChangeText={(text) => {
@@ -166,7 +166,7 @@ export default class RegistBusinessThreeScreen extends AppScreen {
                   <CommonInput
                     style={{ width: 230 }}
                     numberOfLines={1}
-                    backgroundColor="#F5F5F5"
+                    backgroundColor="#FFF"
                     maxLength={10}
                     value={this.state.secondPhone}
                     onChangeText={(text) => {
@@ -177,13 +177,13 @@ export default class RegistBusinessThreeScreen extends AppScreen {
               }
             />
             <SetValueGroup
-              style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#FFF' }]}
+              style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#F5F5F5' }]}
               title={Langs.common.email}
               image={require('src/assets/image/ic_email.png')}
               inputNode={
                 <CommonInput
                   numberOfLines={1}
-                  backgroundColor="#F5F5F5"
+                  backgroundColor="#FFF"
                   value={this.state.email}
                   onChangeText={(text) => {
                     this.setState({ email: text });
@@ -194,7 +194,7 @@ export default class RegistBusinessThreeScreen extends AppScreen {
             <HorizontalLayout style={{ justifyContent: 'space-between', marginBottom: 45 }}>
               <View style={{ width: (SCREEN_WIDTH - 63) / 2 }}>
                 <SetValueGroup
-                  style={[Styles.input_wrapper, { backgroundColor: '#FFF' }]}
+                  style={[Styles.input_wrapper, { backgroundColor: '#F5F5F5' }]}
                   title={Langs.common.birthday}
                   image={require('src/assets/image/ic_birthday.png')}
                   inputNode={
@@ -203,7 +203,7 @@ export default class RegistBusinessThreeScreen extends AppScreen {
                       fontSize={20}
                       lineHeight={24}
                       numberOfLines={1}
-                      backgroundColor="#F5F5F5"
+                      backgroundColor="#FFF"
                       value={this.state.birth}
                       onChangeText={(text) => {
                         this.setState({ birth: text });
@@ -214,14 +214,14 @@ export default class RegistBusinessThreeScreen extends AppScreen {
               </View>
               <View style={{ width: (SCREEN_WIDTH - 63) / 2 }}>
                 <SetValueGroup
-                  style={[Styles.input_wrapper, { backgroundColor: '#FFF' }]}
+                  style={[Styles.input_wrapper, { backgroundColor: '#F5F5F5' }]}
                   title={Langs.common.sex}
                   image={require('src/assets/image/ic_gender.png')}
                   inputNode={
                     <DropDownPicker
                       editIcon={false}
                       data={this.state.sexType}
-                      backgroundColor="#F5F5F5"
+                      backgroundColor="#FFF"
                       selectedValue={this.state.selectedSex}
                       onSelect={(value) => {
                         this.setState({ selectedSex: value.name });
@@ -242,7 +242,7 @@ export default class RegistBusinessThreeScreen extends AppScreen {
               text={Langs.common.next}
               style={{ width: '100%', marginBottom: 15 }}
               action={() => {
-                this.props.navigation.navigate('SelectProgram');
+                this.props.navigation.navigate('BankDetail');
               }}
             />
           </VerticalLayout>

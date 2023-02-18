@@ -3,9 +3,8 @@ import { Dimensions } from 'react-native';
 export const IS_OFFLINE_MODE = true;
 export const IS_UI_MODE = false;
 
-// export const SERVER_URL = IS_OFFLINE_MODE ? 'http://192.168.0.58:9006/admin/index.php' : 'http://api.made.me';
-export const SERVER_URL = IS_OFFLINE_MODE ? 'http://10.10.10.199/Gyme/index.php' : 'http://api.made.me';
-export const API_URL = SERVER_URL + '/api/';
+export const SERVER_URL = IS_OFFLINE_MODE ? 'http://10.0.2.2:5000/' : 'http://api.made.me';
+export const API_URL = SERVER_URL;
 export const IMAGE_FOO_URL = 'http://localhost:8081/src/assets/image/ic_shadow.png';
 
 export const SCREEN_HEIGHT = Dimensions.get('window').height;
@@ -59,16 +58,17 @@ export const API = {
     multi: 'Upload/multi_upload'
   },
 
-  Login: {
-    check_login: 'Login/check_login',
-    check_domain: 'Login/check_domain',
-    check_password: 'Login/check_password',
-    check_nickname: 'Login/check_nickname',
-    get_cert_num: 'Login/get_cert_num',
-    check_cert_num: 'Login/check_cert_num',
-    get_signup_terms: 'Login/get_signup_terms',
-    sign_up: 'Login/sign_up',
-    check_phone: 'Login/check_phone',
+  Regist: {
+    regist_coach: 'regist/regist_coach/',
+    check_login: 'regist/check_login',
+    check_domain: 'regist/check_domain',
+    check_password: 'regist/check_password',
+    check_nickname: 'regist/check_nickname',
+    get_cert_num: 'regist/get_cert_num',
+    check_cert_num: 'regist/check_cert_num',
+    get_signup_terms: 'regist/get_signup_terms',
+    sign_up: 'regist/sign_up',
+    check_phone: 'regist/check_phone',
   },
   Home: {
     update_train_time: 'Home/update_train_time',

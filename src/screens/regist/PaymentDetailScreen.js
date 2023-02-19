@@ -14,17 +14,81 @@ import { requestPost } from '../../utils/ApiUtils';
 import LinearGradient from 'react-native-linear-gradient';
 import { ActiveButton, CommonInput, SetValueGroup } from '../../components/common';
 import PaymentMethodCard from '../../components/common/PaymentMethodCard';
+import Toast, { ToastContainer } from 'react-native-root-toast';
 
 export default class PaymentDetailScreen extends AppScreen {
   constructor(props) {
     super(props);
     this.state = {
-      creditCardNumber: null,
+      creditNumber: '00000000000000000000',
       validity: '04/45',
       cvv: '488',
-      id: null,
+      cardHolderName: 'cardHolderName',
     };
   }
+
+  next = () => {
+    if (
+      this.state.creditNumber === '' ||
+      this.state.validity === '' ||
+      this.state.cvv === '' ||
+      this.state.cardHolderName === ''
+    ) {
+      Toast.show('All field must be entered.');
+    } else {
+      // this.setState({
+      // creditNumber: '',
+      // validity: '',
+      // cvv: '',
+      // cardHolderName: '',
+      // });
+      requestPost(API.Regist.regist_business, {
+        businessName: this.props.navigation.getParam('businessName'),
+        businessType: this.props.navigation.getParam('businessType'),
+        hp: this.props.navigation.getParam('hp'),
+        companyName: this.props.navigation.getParam('companyName'),
+        phone: this.props.navigation.getParam('phone'),
+        // email: this.props.navigation.getParam('email'),
+        // profile: this.props.navigation.getParam('profile'),
+        // description: this.props.navigation.getParam('description'),
+        // branchName: this.props.navigation.getParam('branchName'),
+        // address: this.props.navigation.getParam('businessAddress'),
+        // permanentPlace: this.props.navigation.getParam('permanentPlace'),
+        // accountNumber: this.props.navigation.getParam('accountNumber'),
+        // bankNumber: this.props.navigation.getParam('bankNumber'),
+        // branchNumber: this.props.navigation.getParam('branchNumber'),
+        // accountName: this.props.navigation.getParam('accountName'),
+        // type: this.props.navigation.getParam('type'),
+        // creditNumber: this.state.creditNumber,
+        // validity: this.state.validity,
+        // cvv: this.state.cvv,
+        // cardHolderName: this.state.cardHolderName,
+      }).then(async (result) => {
+        if (result.code == API_RES_CODE.SUCCESS) {
+          Toast.show(result.message);
+          requestPost(API.Regist.regist_coach, {
+            avatar: this.props.navigation.getParam('userPhoto'),
+            firstName: this.props.navigation.getParam('firstName'),
+            lastName: this.props.navigation.getParam('lastName'),
+            phone:
+              this.props.navigation.getParam('firstPhone') +
+              this.props.navigation.getParam('secondPhone'),
+            email: this.props.navigation.getParam('email'),
+            birthday: this.props.navigation.getParam('birthday'),
+            gender: this.props.navigation.getParam('selectedGender'),
+          }).then(async (res) => {
+            if (res.code == API_RES_CODE.SUCCESS) {
+              this.props.navigation.navigate('SuccessRegist');
+            } else {
+              // Toast.show(res.message);
+            }
+          });
+        } else {
+          Toast.show(result.message);
+        }
+      });
+    }
+  };
 
   render() {
     return (
@@ -54,7 +118,24 @@ export default class PaymentDetailScreen extends AppScreen {
             <Text style={{ fontSize: 16, lineHeight: 19, marginBottom: 20, color: '#000' }}>
               {Langs.regist.business_registration}
             </Text>
-            <PaymentMethodCard />
+            <PaymentMethodCard
+              creditNumber={this.state.creditNumber}
+              changeCreditNumber={(text) => {
+                this.setState({ creditNumber: text });
+              }}
+              validity={this.state.validity}
+              changeValidity={(text) => {
+                this.setState({ validity: text });
+              }}
+              cvv={this.state.cvv}
+              changeCvv={(text) => {
+                this.setState({ cvv: text });
+              }}
+              cardHolderName={this.state.cardHolderName}
+              changeCardHolderName={(text) => {
+                this.setState({ cardHolderName: text });
+              }}
+            />
             <Text
               style={{
                 fontSize: 14,
@@ -69,7 +150,7 @@ export default class PaymentDetailScreen extends AppScreen {
               text={Langs.regist.add_card}
               style={{ width: '100%', marginBottom: 15 }}
               action={() => {
-                this.props.navigation.navigate('SuccessRegist');
+                this.next();
               }}
             />
           </VerticalLayout>

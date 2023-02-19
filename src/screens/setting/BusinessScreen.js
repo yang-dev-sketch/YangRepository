@@ -55,7 +55,7 @@ export default class BusinessScreen extends React.Component {
   };
 
   uploadLogo = (filepath) => {
-    requestUpload(API.Upload.upload, filePath, '').then((result) => {
+    requestUpload(API.Upload.upload, filepath, '').then((result) => {
       console.log(result);
       if (result.code == API_RES_CODE.SUCCESS) {
         this.setState({ businessLogo: result.data.file_path });

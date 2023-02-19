@@ -1,7 +1,7 @@
 import React from 'react';
 import { SafeAreaView, StyleSheet, Text, View, ScrollView } from 'react-native';
 import { Langs, Styles } from '../../constants';
-import { API, API_RES_CODE, IMAGE_FOO_URL } from '../../constants/Constants';
+import { API, API_RES_CODE, IMAGE_FOO_URL, SERVER_URL } from '../../constants/Constants';
 import {
   AppScreen,
   Button,
@@ -9,44 +9,80 @@ import {
   LocalImage,
   VerticalLayout,
 } from '../../components/controls';
-import { requestPost } from '../../utils/ApiUtils';
+import { requestPost, requestUpload } from '../../utils/ApiUtils';
 import LinearGradient from 'react-native-linear-gradient';
 import { ActiveButton, CommonInput, SetValueGroup } from '../../components/common';
 import FastImage from 'react-native-fast-image';
 import ImageCropPicker from 'react-native-image-crop-picker';
 import CheckBox from './../../components/controls/CheckBox';
+import Toast from 'react-native-root-toast';
+
 export default class RegistBusinessTwoScreen extends AppScreen {
   constructor(props) {
     super(props);
     this.state = {
-      logo: '',
-      description: '',
-      branch_name: '',
-      business_address: '',
+      profile: 'profile',
+      description: 'description',
+      branchName: 'branchName',
+      businessAddress: 'businessAddress',
       permanentPlace: false,
     };
   }
+
+  uploadProfile = (filepath) => {
+    requestUpload(API.Upload.upload, filepath, '').then((result) => {
+      if (result.err) {
+        Toast.show(result.message);
+      } else {
+        this.setState({
+          profile: result.data,
+        });
+      }
+    });
+  };
 
   onGallery = () => {
     ImageCropPicker.openPicker({
       cropping: true,
     }).then((image) => {
-      this.uploadLogo(image.path);
+      this.uploadProfile(image.path);
     });
   };
 
-  uploadLogo = (filepath) => {
-    requestUpload(API.Upload.upload, filePath, '').then((result) => {
-      console.log(result);
-      if (result.code == API_RES_CODE.SUCCESS) {
-        this.setState({
-          profile_url: result.data.file_url,
-          profile: result.data.file_path,
-        });
-      } else {
-        Toast.show(result.msg);
-      }
-    });
+  next = () => {
+    if (
+      // this.state.profile === '' ||
+      this.state.description === '' ||
+      this.state.branchName === '' ||
+      this.state.businessAddress === ''
+    ) {
+      Toast.show('All field must be entered.');
+    } else {
+      // this.setState({
+      //   profile: '',
+      //   description: '',
+      //   branchName: '',
+      //   businessAddress: '',
+      //   permanentPlace: false,
+      // });
+      this.props.navigation.navigate({
+        routeName: 'RegistBusinessThree',
+        params: {
+          businessName: this.props.navigation.getParam('businessName'),
+          businessType: this.props.navigation.getParam('businessType'),
+          hp: this.props.navigation.getParam('hp'),
+          companyName: this.props.navigation.getParam('companyName'),
+          phone: this.props.navigation.getParam('phone'),
+          email: this.props.navigation.getParam('email'),
+          profile: this.state.profile,
+          description: this.state.description,
+          branchName: this.state.branchName,
+          businessAddress: this.state.businessAddress,
+          permanentPlace: this.state.permanentPlace,
+        },
+        key: 'RegistBusinessThree',
+      });
+    }
   };
 
   render() {
@@ -88,14 +124,16 @@ export default class RegistBusinessTwoScreen extends AppScreen {
                 onPress={() => {
                   this.onGallery();
                 }}>
-                {(this.state.logo === '' && (
+                {(this.state.profile === '' && (
                   <LocalImage
                     source={require('src/assets/image/ic_add_image.png')}
                     style={{ width: 70, height: 70, marginBottom: 10, borderRadius: 35 }}
                   />
                 )) || (
                   <FastImage
-                    source={{ uri: this.state.logo ? this.state.logo : IMAGE_FOO_URL }}
+                    source={{
+                      uri: this.state.profile ? SERVER_URL + this.state.profile : IMAGE_FOO_URL,
+                    }}
                     resizeMode={FastImage.resizeMode.cover}
                     style={{ width: 70, height: 70, marginBottom: 10, borderRadius: 35 }}
                   />
@@ -122,36 +160,37 @@ export default class RegistBusinessTwoScreen extends AppScreen {
             />
             <SetValueGroup
               style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#F5F5F5' }]}
-              title={Langs.regist.branch_name}
+              title={Langs.regist.branchName}
               image={require('src/assets/image/ic_address.png')}
               inputNode={
                 <CommonInput
                   numberOfLines={1}
                   backgroundColor="#FFF"
-                  value={this.state.branch_name}
+                  value={this.state.branchName}
                   onChangeText={(text) => {
-                    this.setState({ branch_name: text });
+                    this.setState({ branchName: text });
                   }}
                 />
               }
             />
             <SetValueGroup
               style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#F5F5F5' }]}
-              title={Langs.regist.business_address}
+              title={Langs.regist.businessAddress}
               image={require('src/assets/image/ic_address.png')}
               inputNode={
                 <CommonInput
                   numberOfLines={1}
                   backgroundColor="#FFF"
-                  value={this.state.business_address}
+                  value={this.state.businessAddress}
                   onChangeText={(text) => {
-                    this.setState({ business_address: text });
+                    this.setState({ businessAddress: text });
                   }}
                 />
               }
             />
             <HorizontalLayout
-              style={{ alignItems: 'center', justifyContent: 'flex-end', marginBottom: 25 }} reverse={true}>
+              style={{ alignItems: 'center', justifyContent: 'flex-end', marginBottom: 25 }}
+              reverse={true}>
               <Text style={{ fontSize: 16, lineHeight: 19, color: '#000', marginHorizontal: 7 }}>
                 {Langs.regist.not_have_train_place}
               </Text>
@@ -178,7 +217,7 @@ export default class RegistBusinessTwoScreen extends AppScreen {
               text={Langs.common.next}
               style={{ width: '100%', marginBottom: 15 }}
               action={() => {
-                this.props.navigation.navigate('RegistBusinessThree');
+                this.next();
               }}
             />
           </VerticalLayout>

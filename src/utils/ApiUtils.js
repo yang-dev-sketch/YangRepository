@@ -158,7 +158,7 @@ export async function requestUpload(url, file_uri, category = '') {
   let result = await firstResponse.json();
 
   if (firstResponse.ok) {
-    if (result.code !== API_RES_CODE.SUCCESS) {
+    if (result.code === API_RES_CODE.SUCCESS) {
       // CommonUtils.showConfirm(
       //   '',
       //   Langs.app_error.network,

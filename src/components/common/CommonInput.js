@@ -15,7 +15,10 @@ export default class CommonInput extends React.Component {
           style={this.props.inputStyle}
           backgroundColor={this.props.backgroundColor}
           borderRadius={this.props.numberOfLines === 1 ? 43 : 8}
-          textAlign={GlobalState.langPopup.langStatus === 'en' ? 'left' : 'right'}
+          textAlign={
+            (this.props.textAlignCenter && 'center') ||
+            (GlobalState.langPopup.langStatus === 'en' ? 'left' : 'right')
+          }
           textAlignVertical="top"
           paddingHorizontal={10}
           paddingBottom={this.props.numberOfLines === 1 ? 0 : 30}

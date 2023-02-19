@@ -9,55 +9,104 @@ import {
   LocalImage,
   VerticalLayout,
 } from '../../components/controls';
-import { requestPost } from '../../utils/ApiUtils';
+import { requestPost, requestUpload } from '../../utils/ApiUtils';
 import LinearGradient from 'react-native-linear-gradient';
 import { ActiveButton, CommonInput, DisactiveButton, SetValueGroup } from '../../components/common';
 import DropDownPicker from '../../components/controls/DropDownPicker';
 import ImageCropPicker from 'react-native-image-crop-picker';
 import FastImage from 'react-native-fast-image';
 import LoginUserPopup from '../../components/popups/LoginUserPopup';
+import Toast from 'react-native-root-toast';
 
 export default class RegistBusinessThreeScreen extends AppScreen {
   constructor(props) {
     super(props);
     this.state = {
-      logo: '',
-      firstName: '',
-      lastName: '',
-      firstPhone: '',
-      secondPhone: '',
-      email: '',
-      birth: '',
-      sexType: [{ name: Langs.common.man }, { name: Langs.common.women }],
-      selectedSex: Langs.common.man,
-      showLoginUserPopup: false
+      userPhoto: '',
+      firstName: 'firstname',
+      lastName: 'lastname',
+      firstPhone: '1',
+      secondPhone: '8508104265',
+      email: 'andasedev@hotmail.com',
+      birthday: '1997-01-19',
+      genderType: [{ name: Langs.common.man }, { name: Langs.common.women }],
+      selectedGender: Langs.common.man,
+      showLoginUserPopup: false,
     };
   }
+
+  uploadProfile = (filepath) => {
+    requestUpload(API.Upload.upload, filepath, '').then((result) => {
+      if (result.err) {
+        Toast.show(result.message);
+      } else {
+        this.setState({
+          profile: result.data,
+        });
+      }
+    });
+  };
 
   onGallery = () => {
     ImageCropPicker.openPicker({
       cropping: true,
     }).then((image) => {
-      this.uploadLogo(image.path);
+      this.uploadProfile(image.path);
     });
   };
 
-  uploadLogo = (filepath) => {
-    requestUpload(API.Upload.upload, filePath, '').then((result) => {
-      console.log(result);
-      if (result.code == API_RES_CODE.SUCCESS) {
-        this.setState({
-          profile_url: result.data.file_url,
-          profile: result.data.file_path,
-        });
-      } else {
-        Toast.show(result.msg);
-      }
-    });
+  next = () => {
+    if (
+      // this.state.userPhoto === '' ||
+      this.state.firstName === '' ||
+      this.state.lastName === '' ||
+      this.state.firstPhone === '' ||
+      this.state.secondPhone === '' ||
+      this.state.email === '' ||
+      this.state.birthday === ''
+    ) {
+      Toast.show('All field must be entered.');
+    } else {
+      // this.setState({
+      //   userPhoto: '',
+      //   firstName: '',
+      //   lastName: '',
+      //   firstPhone: '',
+      //   secondPhone: '',
+      //   email: '',
+      //   birthday: '',
+      //   selectedGender: this.state.genderType[0].name,
+      // });
+      this.props.navigation.navigate({
+        routeName: 'BankDetail',
+        params: {
+          businessName: this.props.navigation.getParam('businessName'),
+          businessType: this.props.navigation.getParam('businessType'),
+          hp: this.props.navigation.getParam('hp'),
+          companyName: this.props.navigation.getParam('companyName'),
+          phone: this.props.navigation.getParam('phone'),
+          email: this.props.navigation.getParam('email'),
+          profile: this.props.navigation.getParam('profile'),
+          description: this.props.navigation.getParam('description'),
+          branchName: this.props.navigation.getParam('branchName'),
+          businessAddress: this.props.navigation.getParam('businessAddress'),
+          permanentPlace: this.props.navigation.getParam('permanentPlace'),
+          userPhoto: this.state.userPhoto,
+          firstName: this.state.firstName,
+          lastName: this.state.lastName,
+          firstPhone: this.state.firstPhone,
+          secondPhone: this.state.secondPhone,
+          email: this.state.email,
+          birthday: this.state.birthday,
+          selectedGender: this.state.selectedGender,
+        },
+        key: 'BankDetail',
+      });
+    }
   };
 
   userLogin = () => {
-    this.setState({showLoginUserPopup: true})
+    this.setState({ showLoginUserPopup: true });
   };
 
   render() {
@@ -99,21 +148,21 @@ export default class RegistBusinessThreeScreen extends AppScreen {
                 onPress={() => {
                   this.onGallery();
                 }}>
-                {(this.state.logo === '' && (
+                {(this.state.userPhoto === '' && (
                   <LocalImage
                     source={require('src/assets/image/ic_add_image.png')}
                     style={{ width: 70, height: 70, marginBottom: 10, borderRadius: 35 }}
                   />
                 )) || (
                   <FastImage
-                    source={{ uri: this.state.logo ? this.state.logo : IMAGE_FOO_URL }}
+                    source={{ uri: this.state.userPhoto ? this.state.userPhoto : IMAGE_FOO_URL }}
                     resizeMode={FastImage.resizeMode.cover}
                     style={{ width: 70, height: 70, marginBottom: 10, borderRadius: 35 }}
                   />
                 )}
               </Button>
               <Text style={{ fontSize: 14, lineHeight: 17, color: '#000', fontWeight: '400' }}>
-                {Langs.regist.user_photo}
+                {Langs.regist.userPhoto}
               </Text>
             </VerticalLayout>
             <SetValueGroup
@@ -157,6 +206,7 @@ export default class RegistBusinessThreeScreen extends AppScreen {
                 <HorizontalLayout style={{ alignItems: 'center', justifyContent: 'space-between' }}>
                   <CommonInput
                     style={{ width: 70 }}
+                    textAlignCenter={true}
                     numberOfLines={1}
                     backgroundColor="#FFF"
                     maxLength={3}
@@ -204,13 +254,13 @@ export default class RegistBusinessThreeScreen extends AppScreen {
                   inputNode={
                     <CommonInput
                       inputStyle={{ height: 40 }}
-                      fontSize={20}
-                      lineHeight={24}
+                      fontSize={16}
+                      lineHeight={19}
                       numberOfLines={1}
                       backgroundColor="#FFF"
-                      value={this.state.birth}
+                      value={this.state.birthday}
                       onChangeText={(text) => {
-                        this.setState({ birth: text });
+                        this.setState({ birthday: text });
                       }}
                     />
                   }
@@ -224,11 +274,11 @@ export default class RegistBusinessThreeScreen extends AppScreen {
                   inputNode={
                     <DropDownPicker
                       editIcon={false}
-                      data={this.state.sexType}
+                      data={this.state.genderType}
                       backgroundColor="#FFF"
-                      selectedValue={this.state.selectedSex}
+                      selectedValue={this.state.selectedGender}
                       onSelect={(value) => {
-                        this.setState({ selectedSex: value.name });
+                        this.setState({ selectedGender: value.name });
                       }}
                     />
                   }
@@ -246,7 +296,7 @@ export default class RegistBusinessThreeScreen extends AppScreen {
               text={Langs.common.next}
               style={{ width: '100%', marginBottom: 15 }}
               action={() => {
-                this.props.navigation.navigate('BankDetail');
+                this.next();
               }}
             />
           </VerticalLayout>

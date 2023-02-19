@@ -54,12 +54,13 @@ export const API_RES_CODE = {
 
 export const API = {
   Upload: {
-    upload: 'Upload/index',
+    upload: 'file_upload/',
     multi: 'Upload/multi_upload'
   },
 
   Regist: {
     regist_coach: 'regist/regist_coach/',
+    regist_business: 'regist/regist_business/',
     check_login: 'regist/check_login',
     check_domain: 'regist/check_domain',
     check_password: 'regist/check_password',

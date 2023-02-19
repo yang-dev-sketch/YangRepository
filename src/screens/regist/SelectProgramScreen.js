@@ -19,11 +19,47 @@ export default class SelectProgramScreen extends AppScreen {
   constructor(props) {
     super(props);
     this.state = {
-      type: 'monthly',
+      type: 0,
       monthlyPrice: 29.9,
       profitablePrice: 199,
     };
   }
+
+  next = () => {
+    // this.setState({
+    // type: 0,
+    // });
+    this.props.navigation.navigate({
+      routeName: 'PaymentDetail',
+      params: {
+        businessName: this.props.navigation.getParam('businessName'),
+        businessType: this.props.navigation.getParam('businessType'),
+        hp: this.props.navigation.getParam('hp'),
+        companyName: this.props.navigation.getParam('companyName'),
+        phone: this.props.navigation.getParam('phone'),
+        email: this.props.navigation.getParam('email'),
+        profile: this.props.navigation.getParam('profile'),
+        description: this.props.navigation.getParam('description'),
+        branchName: this.props.navigation.getParam('branchName'),
+        businessAddress: this.props.navigation.getParam('businessAddress'),
+        permanentPlace: this.props.navigation.getParam('permanentPlace'),
+        userPhoto: this.props.navigation.getParam('userPhoto'),
+        firstName: this.props.navigation.getParam('firstName'),
+        lastName: this.props.navigation.getParam('lastName'),
+        firstPhone: this.props.navigation.getParam('firstPhone'),
+        secondPhone: this.props.navigation.getParam('secondPhone'),
+        email: this.props.navigation.getParam('email'),
+        birthday: this.props.navigation.getParam('birthday'),
+        selectedGender: this.props.navigation.getParam('selectedGender'),
+        accountNumber: this.props.navigation.getParam('accountNumber'),
+        bankNumber: this.props.navigation.getParam('bankNumber'),
+        branchNumber: this.props.navigation.getParam('branchNumber'),
+        accountName: this.props.navigation.getParam('accountName'),
+        type: this.state.type
+      },
+      key: 'PaymentDetail',
+    });
+  };
 
   render() {
     return (
@@ -71,10 +107,10 @@ export default class SelectProgramScreen extends AppScreen {
           <VerticalLayout style={{ paddingHorizontal: 20, marginTop: -34 }}>
             <Button
               onPress={() => {
-                this.setState({ type: 'monthly' });
+                this.setState({ type: 0 });
               }}
               style={[
-                (this.state.type === 'monthly' && { borderWidth: 2, borderColor: '#5C9DF2' }) || {
+                (this.state.type === 0 && { borderWidth: 2, borderColor: '#5C9DF2' }) || {
                   borderWidth: 1,
                   borderColor: '#D8D8D8',
                 },
@@ -178,7 +214,7 @@ export default class SelectProgramScreen extends AppScreen {
                     />
                     <Text
                       style={{ fontSize: 32, lineHeight: 38, color: '#1E6FD9', fontWeight: '700' }}>
-                      29.9
+                      {this.state.monthlyPrice}
                     </Text>
                   </HorizontalLayout>
                 </VerticalLayout>
@@ -309,7 +345,7 @@ export default class SelectProgramScreen extends AppScreen {
                           color: '#1E6FD9',
                           fontWeight: '700',
                         }}>
-                        199
+                        {this.state.profitablePrice}
                       </Text>
                     </HorizontalLayout>
                   </VerticalLayout>
@@ -356,13 +392,7 @@ export default class SelectProgramScreen extends AppScreen {
               text={Langs.regist.start_now}
               style={{ width: '100%', marginBottom: 45 }}
               action={() => {
-                this.props.navigation.navigate({
-                  routeName: 'PaymentDetail',
-                  params: {
-                    type: this.state.type,
-                  },
-                  key: 'paymentType',
-                });
+                this.next();
               }}
             />
             <HorizontalLayout style={{ justifyContent: 'space-between', marginBottom: 30 }}>

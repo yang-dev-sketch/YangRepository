@@ -28,7 +28,7 @@ class AddBranchPopup extends React.Component {
   }
 
   uploadLogo = (filepath) => {
-    requestUpload(API.Upload.upload, filePath, '').then((result) => {
+    requestUpload(API.Upload.upload, filepath, '').then((result) => {
       if (result.code == API_RES_CODE.SUCCESS) {
         this.setState({
           profile_url: result.data.file_url,

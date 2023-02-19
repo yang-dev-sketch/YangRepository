@@ -45,7 +45,7 @@ export default class RegistCoachScreen extends AppScreen {
   };
 
   uploadLogo = (filepath) => {
-    requestUpload(API.Upload.upload, filePath, '').then((result) => {
+    requestUpload(API.Upload.upload, filepath, '').then((result) => {
       console.log(result);
       if (result.code == API_RES_CODE.SUCCESS) {
         this.setState({
@@ -64,7 +64,9 @@ export default class RegistCoachScreen extends AppScreen {
       this.state.lastname === '' ||
       this.state.firstPhone === '' ||
       this.state.secondPhone === '' ||
-      this.state.birthday === ''
+      this.state.birthday === '' ||
+      this.state.weight === '' ||
+      this.state.height === ''
     ) {
       Toast.show('Enter details to signup!');
     } else {
@@ -73,8 +75,8 @@ export default class RegistCoachScreen extends AppScreen {
       //   .then((res) => {
       //     res.user.updateProfile({
       //       avatar: this.state.avatar,
-      //       displayName: this.state.firstName + ' ' + this.state.lastName,
-      //       phone: this.state.firstPhone + ' ' + this.state.secondPhone,
+      //       displayName: this.state.firstName + this.state.lastName,
+      //       phone: this.state.firstPhone + this.state.secondPhone,
       //       birthday: this.state.birthday,
       //       gender: this.state.selectedGender,
       //     });
@@ -84,7 +86,7 @@ export default class RegistCoachScreen extends AppScreen {
             firstName: this.state.firstName,
             lastName: this.state.lastName,
             email: this.state.email,
-            phone: this.state.firstPhone + ' ' + this.state.secondPhone,
+            phone: this.state.firstPhone + this.state.secondPhone,
             birthday: this.state.birthday,
             gender: this.state.selectedGender,
             height: this.state.height,

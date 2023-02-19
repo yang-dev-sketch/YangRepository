@@ -13,22 +13,59 @@ import { requestPost } from '../../utils/ApiUtils';
 import LinearGradient from 'react-native-linear-gradient';
 import { ActiveButton, CommonInput, SetValueGroup } from '../../components/common';
 import DropDownPicker from '../../components/controls/DropDownPicker';
-import GlobalState from "../../mobx/GlobalState";
+import GlobalState from '../../mobx/GlobalState';
+import Toast from "react-native-root-toast";
 
 export default class RegistBusinessOneScreen extends AppScreen {
   constructor(props) {
     super(props);
     this.state = {
-      businessName: '',
+      businessName: 'business_name',
       businessType: [{ name: 'סוג העסק' }, { name: 'סוג העסק' }],
       selectedBusiness: 'סוג העסק',
-      hp: '',
-      companyName: '',
-      firstPhone: '',
-      secondPhone: '',
-      email: '',
+      hp: 'hp',
+      companyName: 'company_name',
+      firstPhone: '1',
+      secondPhone: '8508104265',
+      email: 'andasedev@hotmail.com',
     };
   }
+
+  next = () => {
+    if (
+      this.state.businessName === '' ||
+      this.state.selectedBusiness === '' ||
+      this.state.hp === '' ||
+      this.state.companyName === '' ||
+      this.state.firstPhone === '' ||
+      this.state.secondPhone === '' ||
+      this.state.email === ''
+    ) {
+      Toast.show('All field must be entered.');
+    } else {
+      // this.setState({
+      //   businessName: '',
+      //   selectedBusiness: this.state.businessType[0].name,
+      //   hp: '',
+      //   companyName: '',
+      //   firstPhone: '',
+      //   secondPhone: '',
+      //   email: '',
+      // });
+      this.props.navigation.navigate({
+        routeName: 'RegistBusinessTwo',
+        params: {
+          businessName: this.state.businessName,
+          businessType: this.state.selectedBusiness,
+          hp: this.state.hp,
+          companyName: this.state.companyName,
+          phone: this.state.firstPhone + ' ' + this.state.secondPhone,
+          email: this.state.email,
+        },
+        key: 'RegistBusinessTwo',
+      });
+    }
+  };
 
   render() {
     return (
@@ -175,7 +212,7 @@ export default class RegistBusinessOneScreen extends AppScreen {
               text={Langs.common.next}
               style={{ width: '100%', marginBottom: 15 }}
               action={() => {
-                this.props.navigation.navigate('RegistBusinessTwo');
+                this.next();
               }}
             />
           </VerticalLayout>

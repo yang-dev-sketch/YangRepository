@@ -12,12 +12,54 @@ export default class BankDetailScreen extends AppScreen {
   constructor(props) {
     super(props);
     this.state = {
-      accountNumber: '',
-      bankNumber: '',
-      branchNumber: '',
-      accountName: '',
+      accountNumber: '5326532653265326',
+      bankNumber: 'Eden Eden',
+      branchNumber: '000000000',
+      accountName: '000000000',
     };
   }
+
+  next = () => {
+    if (this.state.accountNumber === '' || this.state.bankNumber === '' || this.state.branchNumber === '' || this.state.accountName === '') {
+      Toast.show('All field must be entered.');
+    } else {
+      // this.setState({
+      // accountNumber: '',
+      // bankNumber: '',
+      // branchNumber: '',
+      // accountName: '',
+      // });
+      this.props.navigation.navigate({
+        routeName: 'SelectProgram',
+        params: {
+          businessName: this.props.navigation.getParam('businessName'),
+          businessType: this.props.navigation.getParam('businessType'),
+          hp: this.props.navigation.getParam('hp'),
+          companyName: this.props.navigation.getParam('companyName'),
+          phone: this.props.navigation.getParam('phone'),
+          email: this.props.navigation.getParam('email'),
+          profile: this.props.navigation.getParam('profile'),
+          description: this.props.navigation.getParam('description'),
+          branchName: this.props.navigation.getParam('branchName'),
+          businessAddress: this.props.navigation.getParam('businessAddress'),
+          permanentPlace: this.props.navigation.getParam('permanentPlace'),
+          userPhoto: this.props.navigation.getParam('userPhoto'),
+          firstName: this.props.navigation.getParam('firstName'),
+          lastName: this.props.navigation.getParam('lastName'),
+          firstPhone: this.props.navigation.getParam('firstPhone'),
+          secondPhone: this.props.navigation.getParam('secondPhone'),
+          email: this.props.navigation.getParam('email'),
+          birthday: this.props.navigation.getParam('birthday'),
+          selectedGender: this.props.navigation.getParam('selectedGender'),
+          accountNumber: this.state.accountNumber,
+          bankNumber: this.state.bankNumber,
+          branchNumber: this.state.branchNumber,
+          accountName: this.state.accountName,
+        },
+        key: 'SelectProgram',
+      });
+    }
+  };
 
   render() {
     return (
@@ -33,8 +75,16 @@ export default class BankDetailScreen extends AppScreen {
               alignItems: 'center',
               justifyContent: 'center',
             }}>
-            <Text style={{ fontSize: 24, lineHeight: 29, position: 'absolute', top: 80, color: '#000', fontWeight: '700' }}>
-            {Langs.regist.bank_detail}
+            <Text
+              style={{
+                fontSize: 24,
+                lineHeight: 29,
+                position: 'absolute',
+                top: 80,
+                color: '#000',
+                fontWeight: '700',
+              }}>
+              {Langs.regist.bank_detail}
             </Text>
             <LocalImage
               source={require('src/assets/image/ic_bank.png')}
@@ -42,7 +92,14 @@ export default class BankDetailScreen extends AppScreen {
             />
           </LinearGradient>
           <VerticalLayout style={{ paddingHorizontal: 20, marginTop: -36, alignItems: 'center' }}>
-            <Text style={{ fontSize: 16, lineHeight: 19, marginBottom: 35, textAlign: 'center', color: '#000' }}>
+            <Text
+              style={{
+                fontSize: 16,
+                lineHeight: 19,
+                marginBottom: 35,
+                textAlign: 'center',
+                color: '#000',
+              }}>
               {Langs.regist.where_want_money}
             </Text>
             <SetValueGroup
@@ -111,7 +168,7 @@ export default class BankDetailScreen extends AppScreen {
               text={Langs.regist.preserve}
               style={{ width: '100%', marginBottom: 15 }}
               action={() => {
-                this.props.navigation.navigate('SelectProgram');
+                this.next();
               }}
             />
           </VerticalLayout>

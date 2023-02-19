@@ -6,16 +6,12 @@ import CommonInput from './CommonInput';
 import SetValueGroup from './SetValueGroup';
 import { SCREEN_WIDTH } from 'react-native-common-date-picker/src/contants';
 import { CommonUtils } from '../../utils';
-import { Langs } from "../../constants";
+import { Langs } from '../../constants';
 
 export default class PaymentMethodCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      ticketNumber: null,
-      validity: '04/45',
-      cvv: '488',
-      id: null,
       cardFocus: false,
       validFocus: false,
       cvvFocus: false,
@@ -44,7 +40,7 @@ export default class PaymentMethodCard extends React.Component {
                 numberOfLines={1}
                 maxLength={24}
                 backgroundColor="white"
-                value={CommonUtils.formatCreditCard(this.state.ticketNumber)}
+                value={CommonUtils.formatCreditCard(this.props.creditNumber)}
                 icon={
                   (this.state.cardFocus && require('src/assets/image/ic_payment.png')) ||
                   require('src/assets/image/ic_payment_black.png')
@@ -57,7 +53,7 @@ export default class PaymentMethodCard extends React.Component {
                   this.setState({ cardFocus: false });
                 }}
                 onChangeText={(text) => {
-                  this.setState({ ticketNumber: text });
+                  this.props.changeCreditNumber(text);
                 }}
               />
             }
@@ -84,7 +80,7 @@ export default class PaymentMethodCard extends React.Component {
                   lineHeight={19}
                   numberOfLines={1}
                   backgroundColor="white"
-                  value={this.state.validity}
+                  value={this.props.validity}
                   icon={
                     (this.state.validFocus && require('src/assets/image/ic_calendar.png')) ||
                     require('src/assets/image/ic_calendar_black.png')
@@ -97,7 +93,7 @@ export default class PaymentMethodCard extends React.Component {
                   }}
                   placeholder={'YY/MM'}
                   onChangeText={(text) => {
-                    this.setState({ validity: text });
+                    this.props.changeValidity(text);
                   }}
                 />
               }
@@ -123,7 +119,7 @@ export default class PaymentMethodCard extends React.Component {
                   lineHeight={19}
                   numberOfLines={1}
                   backgroundColor="white"
-                  value={this.state.cvv}
+                  value={this.props.cvv}
                   icon={
                     (this.state.cvvFocus && require('src/assets/image/ic_info.png')) ||
                     require('src/assets/image/ic_info_black.png')
@@ -136,7 +132,7 @@ export default class PaymentMethodCard extends React.Component {
                   }}
                   placeholder={'....'}
                   onChangeText={(text) => {
-                    this.setState({ cvv: text });
+                    this.props.changeCvv(text);
                   }}
                 />
               }
@@ -159,7 +155,7 @@ export default class PaymentMethodCard extends React.Component {
                 numberOfLines={1}
                 maxLength={24}
                 backgroundColor="white"
-                value={CommonUtils.formatCreditCard(this.state.id)}
+                value={this.props.cardHolderName}
                 onFocus={() => {
                   this.setState({ cardholderFocus: true });
                 }}
@@ -168,14 +164,17 @@ export default class PaymentMethodCard extends React.Component {
                 }}
                 placeholder={Langs.regist.enter_cardholder_fullname}
                 onChangeText={(text) => {
-                  this.setState({ id: text });
+                  this.props.changeCardHolderName(text);
                 }}
               />
             }
           />
           <HorizontalLayout
-            style={{ justifyContent: 'flex-end', width: '100%', alignItems: 'center' }} reverse={true}>
-            <Text style={{ fontSize: 16, lineHeight: 19.2, color: '#000', marginHorizontal: 7.67 }}>{Langs.regist.reserved_card}</Text>
+            style={{ justifyContent: 'flex-end', width: '100%', alignItems: 'center' }}
+            reverse={true}>
+            <Text style={{ fontSize: 16, lineHeight: 19.2, color: '#000', marginHorizontal: 7.67 }}>
+              {Langs.regist.reserved_card}
+            </Text>
             <LocalImage
               source={require('src/assets/image/ic_check_on.png')}
               style={{ width: 14.67, height: 14.67 }}

@@ -22,17 +22,17 @@ export default class RegistCoachScreen extends AppScreen {
   constructor(props) {
     super(props);
     this.state = {
-      logo: '',
-      firstName: '',
-      lastName: '',
-      email: '',
-      firstPhone: '049',
-      secondPhone: '',
-      birthday: '',
+      avatar: '',
+      firstName: 'andres',
+      lastName: 'gomez',
+      email: 'andasedev@hotmail.com',
+      firstPhone: '1',
+      secondPhone: '8508104625',
+      birthday: '1997-01-19',
       genderType: [{ name: Langs.common.man }, { name: Langs.common.women }],
       selectedGender: Langs.common.man,
-      height: '',
-      weight: ''
+      height: '170',
+      weight: '60',
     };
   }
 
@@ -49,7 +49,7 @@ export default class RegistCoachScreen extends AppScreen {
       console.log(result);
       if (result.code == API_RES_CODE.SUCCESS) {
         this.setState({
-          logo: result.data.file_path,
+          avatar: result.data.file_path,
         });
       } else {
         Toast.show(result.msg);
@@ -57,9 +57,9 @@ export default class RegistCoachScreen extends AppScreen {
     });
   };
 
-  registUser = () => {
+  registCoach = () => {
     if (
-      // this.state.logo === '' ||
+      // this.state.avatar === '' ||
       this.state.firstname === '' ||
       this.state.lastname === '' ||
       this.state.firstPhone === '' ||
@@ -68,19 +68,31 @@ export default class RegistCoachScreen extends AppScreen {
     ) {
       Toast.show('Enter details to signup!');
     } else {
-      auth()
-        .createUserWithEmailAndPassword(this.state.email, 'Fantasy123!@#')
-        .then((res) => {
-          res.user.updateProfile({
-            logo: this.state.logo,
-            displayName: this.state.firstName + ' ' + this.state.lastName,
+      // auth()
+      //   .createUserWithEmailAndPassword(this.state.email, 'Fantasy123!@#')
+      //   .then((res) => {
+      //     res.user.updateProfile({
+      //       avatar: this.state.avatar,
+      //       displayName: this.state.firstName + ' ' + this.state.lastName,
+      //       phone: this.state.firstPhone + ' ' + this.state.secondPhone,
+      //       birthday: this.state.birthday,
+      //       gender: this.state.selectedGender,
+      //     });
+
+          requestPost(API.Regist.regist_coach, {
+            avatar: this.state.avatar,
+            firstName: this.state.firstName,
+            lastName: this.state.lastName,
+            email: this.state.email,
             phone: this.state.firstPhone + ' ' + this.state.secondPhone,
             birthday: this.state.birthday,
             gender: this.state.selectedGender,
+            height: this.state.height,
+            weight: this.state.weight,
           });
-          Toast.show('User registered successfully!');
+
           this.setState({
-            logo: '',
+            avatar: '',
             firstName: '',
             lastName: '',
             email: '',
@@ -90,26 +102,26 @@ export default class RegistCoachScreen extends AppScreen {
             selectedGender: 'איש',
           });
           this.props.navigation.navigate('Login');
-        })
-        .catch((error) => {
-          if (error.code === 'auth/email-already-in-use') {
-            Toast.show('That email address is already in use!');
-          }
+        // })
+        // .catch((error) => {
+        //   if (error.code === 'auth/email-already-in-use') {
+        //     Toast.show('That email address is already in use!');
+        //   }
 
-          if (error.code === 'auth/invalid-email') {
-            Toast.show('That email address is invalid!');
-          }
+        //   if (error.code === 'auth/invalid-email') {
+        //     Toast.show('That email address is invalid!');
+        //   }
 
-          if (error.code === 'auth/weak-password') {
-            Toast.show('Password should be at least 6 characters');
-          }
+        //   if (error.code === 'auth/weak-password') {
+        //     Toast.show('Password should be at least 6 characters');
+        //   }
 
-          if (error.code === 'auth/email-already-in-use') {
-            Toast.show('The email address is already in use by another account.');
-          }
+        //   if (error.code === 'auth/email-already-in-use') {
+        //     Toast.show('The email address is already in use by another account.');
+        //   }
 
-          console.error(error);
-        });
+        //   console.error(error);
+        // });
     }
   };
 
@@ -158,14 +170,14 @@ export default class RegistCoachScreen extends AppScreen {
                 onPress={() => {
                   this.onGallery();
                 }}>
-                {(this.state.logo === '' && (
+                {(this.state.avatar === '' && (
                   <LocalImage
                     source={require('src/assets/image/ic_add_image.png')}
                     style={{ width: 70, height: 70, marginBottom: 10 }}
                   />
                 )) || (
                   <FastImage
-                    source={{ uri: this.state.logo ? this.state.logo : IMAGE_FOO_URL }}
+                    source={{ uri: this.state.avatar ? this.state.avatar : IMAGE_FOO_URL }}
                     resizeMode={FastImage.resizeMode.cover}
                     style={{ width: 70, height: 70, marginBottom: 10, borderRadius: 35 }}
                   />
@@ -176,7 +188,7 @@ export default class RegistCoachScreen extends AppScreen {
               </Text>
             </VerticalLayout>
             <SetValueGroup
-              style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#FFF' }]}
+              style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#F5F5F5' }]}
               title={Langs.common.first_name}
               image={require('src/assets/image/ic_coach_on.png')}
               inputNode={
@@ -191,7 +203,7 @@ export default class RegistCoachScreen extends AppScreen {
               }
             />
             <SetValueGroup
-              style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#FFF' }]}
+              style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#F5F5F5' }]}
               title={Langs.common.last_name}
               image={require('src/assets/image/ic_coach_on.png')}
               inputNode={
@@ -206,7 +218,7 @@ export default class RegistCoachScreen extends AppScreen {
               }
             />
             <SetValueGroup
-              style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#FFF' }]}
+              style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#F5F5F5' }]}
               title={Langs.common.email}
               image={require('src/assets/image/ic_email.png')}
               inputNode={
@@ -223,7 +235,7 @@ export default class RegistCoachScreen extends AppScreen {
             <SetValueGroup
               style={[
                 Styles.input_wrapper,
-                { marginBottom: 20, backgroundColor: 'white', elevation: 1 },
+                { marginBottom: 20, backgroundColor: '#F5F5F5', elevation: 1 },
               ]}
               title={Langs.common.phone_number}
               image={require('src/assets/image/ic_phone.png')}
@@ -257,14 +269,14 @@ export default class RegistCoachScreen extends AppScreen {
             <HorizontalLayout style={{ justifyContent: 'space-between', marginBottom: 15 }}>
               <View style={{ width: (SCREEN_WIDTH - 63) / 2 }}>
                 <SetValueGroup
-                  style={[Styles.input_wrapper, { backgroundColor: '#FFF' }]}
+                  style={[Styles.input_wrapper, { backgroundColor: '#F5F5F5' }]}
                   title={Langs.common.birthday}
                   image={require('src/assets/image/ic_birthday.png')}
                   inputNode={
                     <CommonInput
                       inputStyle={{ height: 40 }}
-                      fontSize={20}
-                      lineHeight={24}
+                      fontSize={16}
+                      lineHeight={19}
                       numberOfLines={1}
                       backgroundColor="#FFF"
                       value={this.state.birthday}
@@ -277,7 +289,7 @@ export default class RegistCoachScreen extends AppScreen {
               </View>
               <View style={{ width: (SCREEN_WIDTH - 63) / 2 }}>
                 <SetValueGroup
-                  style={[Styles.input_wrapper, { backgroundColor: '#FFF' }]}
+                  style={[Styles.input_wrapper, { backgroundColor: '#F5F5F5' }]}
                   title={Langs.common.sex}
                   image={require('src/assets/image/ic_gender.png')}
                   inputNode={
@@ -297,14 +309,14 @@ export default class RegistCoachScreen extends AppScreen {
             <HorizontalLayout style={{ justifyContent: 'space-between', marginBottom: 20 }}>
               <View style={{ width: (SCREEN_WIDTH - 63) / 2 }}>
                 <SetValueGroup
-                  style={[Styles.input_wrapper, { backgroundColor: '#FFF' }]}
+                  style={[Styles.input_wrapper, { backgroundColor: '#F5F5F5' }]}
                   title={Langs.common.height}
                   image={require('src/assets/image/ic_man.png')}
                   inputNode={
                     <CommonInput
                       inputStyle={{ height: 40 }}
-                      fontSize={20}
-                      lineHeight={24}
+                      fontSize={16}
+                      lineHeight={19}
                       numberOfLines={1}
                       backgroundColor="#FFF"
                       value={this.state.height}
@@ -316,15 +328,15 @@ export default class RegistCoachScreen extends AppScreen {
                 />
               </View>
               <View style={{ width: (SCREEN_WIDTH - 63) / 2 }}>
-              <SetValueGroup
-                  style={[Styles.input_wrapper, { backgroundColor: '#FFF' }]}
+                <SetValueGroup
+                  style={[Styles.input_wrapper, { backgroundColor: '#F5F5F5' }]}
                   title={Langs.common.weight}
                   image={require('src/assets/image/ic_man.png')}
                   inputNode={
                     <CommonInput
                       inputStyle={{ height: 40 }}
-                      fontSize={20}
-                      lineHeight={24}
+                      fontSize={16}
+                      lineHeight={19}
                       numberOfLines={1}
                       backgroundColor="#FFF"
                       value={this.state.weight}
@@ -340,8 +352,7 @@ export default class RegistCoachScreen extends AppScreen {
               text={Langs.common.next}
               style={{ width: '100%', marginBottom: 15 }}
               action={() => {
-                this.registUser();
-                // this.props.navigation.navigate('Login');
+                this.registCoach();
               }}
             />
           </VerticalLayout>

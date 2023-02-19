@@ -77,6 +77,6 @@ export default {
     start: 'Start',
     branch_name: 'Branch name',
     where_want_money: 'Where do you want the money?\n Will yours come in?',
-    lgin_your_user: 'Log in to your user',
+    login_your_user: 'Log in to your user',
   },
 };

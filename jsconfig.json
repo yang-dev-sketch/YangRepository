@@ -9,7 +9,8 @@
     "src/**/*"
   ],
   "files": [
-    "App.js"
+    "App.js",
+    "App.web.js"
   ],
   "exclude": [
     "node_modules"

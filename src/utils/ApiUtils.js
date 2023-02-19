@@ -143,7 +143,6 @@ export async function requestUpload(url, file_uri, category = '') {
   GlobalState.setLoading(true);
 
   console.log('@@@@@@@@Request url: ' + options1.url);
-  // console.log('@@@@@@@@Request: ' + JSON.stringify(options1));
 
   let firstResponse = await fetch(options1.url, options1).catch((error) => {
     GlobalState.setLoading(false);

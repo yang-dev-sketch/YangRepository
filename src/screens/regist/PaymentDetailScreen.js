@@ -48,24 +48,24 @@ export default class PaymentDetailScreen extends AppScreen {
         hp: this.props.navigation.getParam('hp'),
         companyName: this.props.navigation.getParam('companyName'),
         phone: this.props.navigation.getParam('phone'),
-        // email: this.props.navigation.getParam('email'),
-        // profile: this.props.navigation.getParam('profile'),
-        // description: this.props.navigation.getParam('description'),
-        // branchName: this.props.navigation.getParam('branchName'),
-        // address: this.props.navigation.getParam('businessAddress'),
-        // permanentPlace: this.props.navigation.getParam('permanentPlace'),
-        // accountNumber: this.props.navigation.getParam('accountNumber'),
-        // bankNumber: this.props.navigation.getParam('bankNumber'),
-        // branchNumber: this.props.navigation.getParam('branchNumber'),
-        // accountName: this.props.navigation.getParam('accountName'),
-        // type: this.props.navigation.getParam('type'),
-        // creditNumber: this.state.creditNumber,
-        // validity: this.state.validity,
-        // cvv: this.state.cvv,
-        // cardHolderName: this.state.cardHolderName,
-      }).then(async (result) => {
-        if (result.code == API_RES_CODE.SUCCESS) {
-          Toast.show(result.message);
+        email: this.props.navigation.getParam('email'),
+        profile: this.props.navigation.getParam('profile'),
+        description: this.props.navigation.getParam('description'),
+        branchName: this.props.navigation.getParam('branchName'),
+        businessAddress: this.props.navigation.getParam('businessAddress'),
+        permanentPlace: this.props.navigation.getParam('permanentPlace'),
+        accountNumber: this.props.navigation.getParam('accountNumber'),
+        bankNumber: this.props.navigation.getParam('bankNumber'),
+        branchNumber: this.props.navigation.getParam('branchNumber'),
+        accountName: this.props.navigation.getParam('accountName'),
+        programType: this.props.navigation.getParam('programType'),
+        creditNumber: this.state.creditNumber,
+        validity: this.state.validity,
+        cvv: this.state.cvv,
+        cardHolderName: this.state.cardHolderName,
+      }).then((result) => {
+        console.log(result)
+        if (result.success) {
           requestPost(API.Regist.regist_coach, {
             avatar: this.props.navigation.getParam('userPhoto'),
             firstName: this.props.navigation.getParam('firstName'),
@@ -77,10 +77,10 @@ export default class PaymentDetailScreen extends AppScreen {
             birthday: this.props.navigation.getParam('birthday'),
             gender: this.props.navigation.getParam('selectedGender'),
           }).then(async (res) => {
-            if (res.code == API_RES_CODE.SUCCESS) {
+            if (res.success) {
               this.props.navigation.navigate('SuccessRegist');
             } else {
-              // Toast.show(res.message);
+              Toast.show(res.err);
             }
           });
         } else {

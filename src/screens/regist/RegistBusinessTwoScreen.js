@@ -21,7 +21,7 @@ export default class RegistBusinessTwoScreen extends AppScreen {
   constructor(props) {
     super(props);
     this.state = {
-      profile: 'profile',
+      profile: '',
       description: 'description',
       branchName: 'branchName',
       businessAddress: 'businessAddress',
@@ -78,7 +78,7 @@ export default class RegistBusinessTwoScreen extends AppScreen {
           description: this.state.description,
           branchName: this.state.branchName,
           businessAddress: this.state.businessAddress,
-          permanentPlace: this.state.permanentPlace,
+          permanentPlace: this.state.permanentPlace === true ? 1 : 0,
         },
         key: 'RegistBusinessThree',
       });

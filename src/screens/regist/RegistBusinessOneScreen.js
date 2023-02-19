@@ -59,7 +59,7 @@ export default class RegistBusinessOneScreen extends AppScreen {
           businessType: this.state.selectedBusiness,
           hp: this.state.hp,
           companyName: this.state.companyName,
-          phone: this.state.firstPhone + ' ' + this.state.secondPhone,
+          phone: this.state.firstPhone + this.state.secondPhone,
           email: this.state.email,
         },
         key: 'RegistBusinessTwo',

@@ -30,14 +30,14 @@ const babelLoaderConfiguration = {
   },
 };
 
-const svgLoaderConfiguration = {
-  test: /\.svg$/,
-  use: [
-    {
-      loader: '@svgr/webpack',
-    },
-  ],
-};
+// const svgLoaderConfiguration = {
+//   test: /\.svg$/,
+//   use: [
+//     {
+//       loader: '@svgr/webpack',
+//     },
+//   ],
+// };
 
 const imageLoaderConfiguration = {
   test: /\.(gif|jpe?g|png|jpg)$/,
@@ -68,7 +68,7 @@ module.exports = {
     rules: [
       babelLoaderConfiguration,
       imageLoaderConfiguration,
-      svgLoaderConfiguration,
+      // svgLoaderConfiguration,
     ],
   },
   plugins: [

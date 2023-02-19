@@ -19,7 +19,7 @@ export default class SelectProgramScreen extends AppScreen {
   constructor(props) {
     super(props);
     this.state = {
-      type: 0,
+      programType: 0,
       monthlyPrice: 29.9,
       profitablePrice: 199,
     };
@@ -55,7 +55,7 @@ export default class SelectProgramScreen extends AppScreen {
         bankNumber: this.props.navigation.getParam('bankNumber'),
         branchNumber: this.props.navigation.getParam('branchNumber'),
         accountName: this.props.navigation.getParam('accountName'),
-        type: this.state.type
+        programType: this.state.programType
       },
       key: 'PaymentDetail',
     });

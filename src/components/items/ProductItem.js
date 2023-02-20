@@ -34,10 +34,10 @@ class ProductItem extends React.Component {
               source={require('src/assets/image/ic_income_blue.png')}
               style={{ width: 16, height: 13, marginRight: 5 }}
             />
-            <Text style={{ fontSize: 20, lineHeight: 24, color: '#0D65D9', fontWeight: '700' }}>{data.stock}</Text>
+            <Text style={{ fontSize: 20, lineHeight: 24, color: '#0D65D9', fontWeight: '700', fontFamily: 'Danidin' }}>{data.stock}</Text>
           </HorizontalLayout>
           <HorizontalLayout style={{ alignItems: 'center' }}>
-            <Text numberOfLines={1} style={{ fontSize: 16, lineHeight: 22, marginRight: 7, color: '#000', width: SCREEN_WIDTH / 2.5 }}>{data.name}</Text>
+            <Text numberOfLines={1} style={{ fontSize: 16, lineHeight: 22, marginRight: 7, color: '#000', width: SCREEN_WIDTH / 2.5, fontFamily: 'Danidin' }}>{data.name}</Text>
             <FastImage
               source={{ uri: data.image ? data.image : IMAGE_FOO_URL }}
               resizeMode={FastImage.resizeMode.cover}

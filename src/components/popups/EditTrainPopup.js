@@ -61,7 +61,7 @@ class EditTrainPopup extends React.Component {
                   style={{ width: 31, height: 31 }}
                 />
               </Button>
-              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>עריכת סוגי אימון</Text>
+              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600', fontFamily: 'Danidin' }}>עריכת סוגי אימון</Text>
             </HorizontalLayout>
             <View style={{ paddingHorizontal: 20 }}>
               <SearchInput

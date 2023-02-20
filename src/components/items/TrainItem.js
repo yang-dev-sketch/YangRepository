@@ -29,13 +29,13 @@ class TrainItem extends React.Component {
                 style={{ width: 22, height: 22 }}
               />
             )) || (
-              <Text style={{ fontSize: 16, lineHeight: 22, color: '#979797' }}>
+              <Text style={{ fontSize: 16, lineHeight: 22, color: '#979797', fontFamily: 'Danidin' }}>
                 {data.leftText}
               </Text>
             )}
           </HorizontalLayout>
           <HorizontalLayout style={{ alignItems: 'center' }}>
-            <Text numberOfLines={1} style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>
+            <Text numberOfLines={1} style={{ fontSize: 16, lineHeight: 19, color: '#000', fontFamily: 'Danidin' }}>
               {data.name}
             </Text>
             {(data.id == this.props.selectTrainId && (

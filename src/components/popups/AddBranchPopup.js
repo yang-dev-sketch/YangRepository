@@ -123,10 +123,28 @@ class AddBranchPopup extends React.Component {
                   />
                 </Button>
               </HorizontalLayout>
-              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>הסניפים שלנו</Text>
+              <Text
+                style={{
+                  fontSize: 18,
+                  lineHeight: 22,
+                  color: '#000',
+                  fontWeight: '600',
+                  fontFamily: 'Danidin',
+                }}>
+                הסניפים שלנו
+              </Text>
             </HorizontalLayout>
             <ScrollView style={{ paddingHorizontal: 20 }}>
-              <Text style={{ fontSize: 18, lineHeight: 22, textAlign: 'right', marginBottom: 15, color: '#000', fontWeight: '600' }}>
+              <Text
+                style={{
+                  fontSize: 18,
+                  lineHeight: 22,
+                  textAlign: 'right',
+                  marginBottom: 15,
+                  color: '#000',
+                  fontWeight: '600',
+                  fontFamily: 'Danidin',
+                }}>
                 הוספת סניף חדש
               </Text>
               <VerticalLayout
@@ -156,7 +174,10 @@ class AddBranchPopup extends React.Component {
                     />
                   )}
                 </Button>
-                <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>לוגו של העסק</Text>
+                <Text
+                  style={{ fontSize: 16, lineHeight: 19, color: '#000', fontFamily: 'Danidin' }}>
+                  לוגו של העסק
+                </Text>
               </VerticalLayout>
               <SetValueGroup
                 style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#F5F5F5' }]}
@@ -205,7 +226,10 @@ class AddBranchPopup extends React.Component {
               />
               <HorizontalLayout
                 style={{ alignItems: 'center', justifyContent: 'flex-end', marginBottom: 40 }}>
-                <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>עריכת אמצעי תשלום</Text>
+                <Text
+                  style={{ fontSize: 16, lineHeight: 19, color: '#000', fontFamily: 'Danidin' }}>
+                  עריכת אמצעי תשלום
+                </Text>
                 <CheckBox
                   value={this.state.pay_method}
                   onChange={(value) => {
@@ -247,7 +271,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     width: '100%',
-    maxHeight: SCREEN_HEIGHT * 0.95
+    maxHeight: SCREEN_HEIGHT * 0.95,
   },
 });
 

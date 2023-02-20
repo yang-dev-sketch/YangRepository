@@ -59,7 +59,7 @@ class MyProfilePopup extends React.Component {
                   style={{ width: 31, height: 31 }}
                 />
               </Button>
-              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>
+              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600', fontFamily: 'Danidin' }}>
                 הפרופילים שלי
               </Text>
             </HorizontalLayout>
@@ -119,7 +119,7 @@ class MyProfilePopup extends React.Component {
                       </Text>
                     </HorizontalLayout>
                     <HorizontalLayout style={{ alignItems: 'center' }}>
-                      <Text style={{ fontSize: 18, lineHeight: 22, color: '#000' }}>
+                      <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontFamily: 'Danidin' }}>
                         {item.type}
                       </Text>
                       <LocalImage
@@ -135,7 +135,7 @@ class MyProfilePopup extends React.Component {
                 return <View style={{ height: 15 }} />;
               }}
             />
-            <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600', marginVertical: 10 }}>
+            <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600', marginVertical: 10, fontFamily: 'Danidin' }}>
               חשבון אישי
             </Text>
             <HorizontalLayout
@@ -149,7 +149,7 @@ class MyProfilePopup extends React.Component {
                 padding: 15,
                 marginBottom: 22
               }}>
-              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000' }}>{this.state.name}</Text>
+              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontFamily: 'Danidin' }}>{this.state.name}</Text>
               <FastImage
                 source={{ uri: this.state.avatar ? this.state.avatar : IMAGE_FOO_URL }}
                 resizeMode={FastImage.resizeMode.cover}
@@ -164,7 +164,7 @@ class MyProfilePopup extends React.Component {
                 marginBottom: 30,
                 flexDirection: 'row',
               }}>
-              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>הוספת חשבון</Text>
+              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000', fontFamily: 'Danidin' }}>הוספת חשבון</Text>
               <LocalImage
                 source={require('src/assets/image/ic_plus_sign.png')}
                 style={{ width: 24, height: 24, marginLeft: 6 }}

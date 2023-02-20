@@ -279,6 +279,7 @@ export default class PermissionScreen extends React.Component {
                   letterSpacing: 1,
                   color: '#000',
                   fontWeight: '700',
+                  fontFamily: 'Danidin',
                 }}>
                 הגדרות
               </Text>
@@ -295,7 +296,14 @@ export default class PermissionScreen extends React.Component {
                 onPress={() => {
                   this.setState({ tabIndex: 0 });
                 }}>
-                <Text style={{ fontSize: 16, lineHeight: 19, color: '#000', fontWeight: '600' }}>
+                <Text
+                  style={{
+                    fontSize: 16,
+                    lineHeight: 19,
+                    color: '#000',
+                    fontWeight: '600',
+                    fontFamily: 'Danidin',
+                  }}>
                   ניהול משתמשים
                 </Text>
                 {this.state.tabIndex === 0 && <View style={styles.tab_active}></View>}
@@ -305,7 +313,14 @@ export default class PermissionScreen extends React.Component {
                 onPress={() => {
                   this.setState({ tabIndex: 1 });
                 }}>
-                <Text style={{ fontSize: 16, lineHeight: 19, color: '#000', fontWeight: '600' }}>
+                <Text
+                  style={{
+                    fontSize: 16,
+                    lineHeight: 19,
+                    color: '#000',
+                    fontWeight: '600',
+                    fontFamily: 'Danidin',
+                  }}>
                   הגדרות תפקיד
                 </Text>
                 {this.state.tabIndex === 1 && <View style={styles.tab_active}></View>}
@@ -323,6 +338,7 @@ export default class PermissionScreen extends React.Component {
                         textDecorationLine: 'underline',
                         marginVertical: 20,
                         alignSelf: 'center',
+                        fontFamily: 'Danidin',
                       }}>
                       עריכת משתמשים
                     </Text>
@@ -367,6 +383,7 @@ export default class PermissionScreen extends React.Component {
                                   lineHeight: 19,
                                   color: '#000',
                                   fontWeight: '600',
+                                  fontFamily: 'Danidin',
                                 }}>
                                 {item.name}
                               </Text>
@@ -385,7 +402,13 @@ export default class PermissionScreen extends React.Component {
                                     justifyContent: 'center',
                                   },
                                 ]}>
-                                <Text style={{ fontSize: 18, lineHeight: 22, color: 'white' }}>
+                                <Text
+                                  style={{
+                                    fontSize: 18,
+                                    lineHeight: 22,
+                                    color: 'white',
+                                    fontFamily: 'Danidin',
+                                  }}>
                                   {item.member.length}
                                 </Text>
                               </View>
@@ -419,12 +442,24 @@ export default class PermissionScreen extends React.Component {
                                           style={{ width: 22, height: 22, marginRight: 11 }}
                                         />
                                       )}
-                                      <Text style={{ fontSize: 18, lineHeight: 22, color: '#000' }}>
+                                      <Text
+                                        style={{
+                                          fontSize: 18,
+                                          lineHeight: 22,
+                                          color: '#000',
+                                          fontFamily: 'Danidin',
+                                        }}>
                                         {sub_item.train}
                                       </Text>
                                     </HorizontalLayout>
                                     <HorizontalLayout style={{ alignItems: 'center' }}>
-                                      <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>
+                                      <Text
+                                        style={{
+                                          fontSize: 16,
+                                          lineHeight: 19,
+                                          color: '#000',
+                                          fontFamily: 'Danidin',
+                                        }}>
                                         {sub_item.name}
                                       </Text>
                                       {(this.state.selectedUser === sub_item.id && (
@@ -469,6 +504,7 @@ export default class PermissionScreen extends React.Component {
                                     lineHeight: 19,
                                     color: '#0D65D9',
                                     textDecorationLine: 'underline',
+                                    fontFamily: 'Danidin',
                                   }}>
                                   הוספת משתמש לתפקיד
                                 </Text>
@@ -520,7 +556,9 @@ export default class PermissionScreen extends React.Component {
                               />
                             )}
                             <HorizontalLayout style={{ alignItems: 'center' }}>
-                              <Text style={{ fontSize: 16, lineHeight: 19 }}>{item.name}</Text>
+                              <Text style={{ fontSize: 16, lineHeight: 19, fontFamily: 'Danidin' }}>
+                                {item.name}
+                              </Text>
                               <View
                                 style={[
                                   index === 0 && { backgroundColor: '#75A6E4' },
@@ -536,7 +574,13 @@ export default class PermissionScreen extends React.Component {
                                     justifyContent: 'center',
                                   },
                                 ]}>
-                                <Text style={{ fontSize: 18, lineHeight: 22, color: 'white' }}>
+                                <Text
+                                  style={{
+                                    fontSize: 18,
+                                    lineHeight: 22,
+                                    color: 'white',
+                                    fontFamily: 'Danidin',
+                                  }}>
                                   {item.member.length}
                                 </Text>
                               </View>
@@ -632,7 +676,9 @@ export default class PermissionScreen extends React.Component {
                 flexDirection: 'row',
                 alignItems: 'center',
               }}>
-              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>הוסף תפקיד חדש</Text>
+              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000', fontFamily: 'Danidin' }}>
+                הוסף תפקיד חדש
+              </Text>
               <LocalImage
                 source={require('src/assets/image/ic_plus_sign.png')}
                 style={{ width: 27, height: 27, marginLeft: 6 }}

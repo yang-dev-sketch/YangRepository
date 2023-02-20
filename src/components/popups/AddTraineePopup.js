@@ -95,7 +95,7 @@ class AddTraineePopup extends React.Component {
                   />
                 </Button>
               </HorizontalLayout>
-              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>
+              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600', fontFamily: 'Danidin' }}>
                 עריכת מתאמנים: הוספה
               </Text>
             </HorizontalLayout>
@@ -138,7 +138,7 @@ class AddTraineePopup extends React.Component {
                       />
                     )) || <View></View>}
                     <HorizontalLayout style={{ alignItems: 'center' }}>
-                      <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>
+                      <Text style={{ fontSize: 16, lineHeight: 19, color: '#000', fontFamily: 'Danidin' }}>
                         {item.name}
                       </Text>
                       <FastImage

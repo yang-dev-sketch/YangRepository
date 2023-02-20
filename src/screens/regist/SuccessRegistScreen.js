@@ -4,7 +4,7 @@ import { API, API_RES_CODE, SCREEN_WIDTH } from '../../constants/Constants';
 import { AppScreen, LocalImage } from '../../components/controls';
 import { requestPost } from '../../utils/ApiUtils';
 import { ActiveButton } from '../../components/common';
-import { Langs } from "../../constants";
+import { Langs } from '../../constants';
 
 export default class SplashScreen extends AppScreen {
   constructor(props) {
@@ -38,7 +38,8 @@ export default class SplashScreen extends AppScreen {
             textAlign: 'center',
             position: 'absolute',
             fontWeight: '600',
-            top: 79
+            top: 79,
+            fontFamily: 'Danidin',
           }}>
           {Langs.regist.welcome}
         </Text>
@@ -52,6 +53,7 @@ export default class SplashScreen extends AppScreen {
             textAlign: 'center',
             color: '#000',
             fontWeight: '600',
+            fontFamily: 'Danidin',
           }}>
           {Langs.regist.success_registered}
         </Text>

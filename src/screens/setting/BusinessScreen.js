@@ -30,8 +30,8 @@ export default class BusinessScreen extends React.Component {
       type: 'סוג העסק',
       description: '',
       address: '',
-      firstPhone: '',
-      secondPhone: '',
+      firstPhone: '1',
+      secondPhone: '5555215554',
       permanentPlace: false,
       businessType: [
         { id: 1, name: 'סוג העסק' },
@@ -96,6 +96,7 @@ export default class BusinessScreen extends React.Component {
                   letterSpacing: 1,
                   color: '#000',
                   fontWeight: '700',
+                  fontFamily: 'Danidin',
                 }}>
                 הגדרות
               </Text>
@@ -113,6 +114,7 @@ export default class BusinessScreen extends React.Component {
                 color: '#000',
                 fontWeight: '600',
                 marginBottom: 15,
+                fontFamily: 'Danidin',
               }}>
               עריכת אזור עסקי
             </Text>
@@ -136,7 +138,16 @@ export default class BusinessScreen extends React.Component {
                     style={{ width: 70, height: 70 }}
                   />
                 </Button>
-                <Text style={{ fontSize: 16, lineHeight: 19, marginTop: 10, color: '#000' }}>הוספת סניף חדש</Text>
+                <Text
+                  style={{
+                    fontSize: 16,
+                    lineHeight: 19,
+                    marginTop: 10,
+                    color: '#000',
+                    fontFamily: 'Danidin',
+                  }}>
+                  הוספת סניף חדש
+                </Text>
               </VerticalLayout>
               <VerticalLayout
                 style={{
@@ -166,7 +177,16 @@ export default class BusinessScreen extends React.Component {
                     />
                   )}
                 </Button>
-                <Text style={{ fontSize: 16, lineHeight: 19, marginTop: 10, color: '#000' }}>לוגו של העסק</Text>
+                <Text
+                  style={{
+                    fontSize: 16,
+                    lineHeight: 19,
+                    marginTop: 10,
+                    color: '#000',
+                    fontFamily: 'Danidin',
+                  }}>
+                  לוגו של העסק
+                </Text>
               </VerticalLayout>
             </HorizontalLayout>
             <SetValueGroup
@@ -262,7 +282,9 @@ export default class BusinessScreen extends React.Component {
             />
             <HorizontalLayout
               style={{ alignItems: 'center', justifyContent: 'flex-end', marginBottom: 40 }}>
-              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>אין ברשותי מקום אימונים קבוע</Text>
+              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000', fontFamily: 'Danidin' }}>
+                אין ברשותי מקום אימונים קבוע
+              </Text>
               <CheckBox
                 value={this.state.permanentPlace}
                 onChange={(value) => {

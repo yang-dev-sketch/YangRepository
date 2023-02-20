@@ -23,16 +23,16 @@ export default class RegistCoachScreen extends AppScreen {
     super(props);
     this.state = {
       avatar: '',
-      firstName: 'andres',
-      lastName: 'gomez',
-      email: 'andasedev@hotmail.com',
+      firstName: 'firstname',
+      lastName: 'lastname',
+      email: 'oleksandrbokii@gmail.com',
       firstPhone: '1',
-      secondPhone: '8508104625',
-      birthday: '1997-01-19',
+      secondPhone: '5555215554',
+      birthday: '2000-01-01',
       genderType: [{ name: Langs.common.man }, { name: Langs.common.women }],
       selectedGender: Langs.common.man,
-      height: '170',
-      weight: '60',
+      height: '180',
+      weight: '70',
     };
   }
 
@@ -81,49 +81,49 @@ export default class RegistCoachScreen extends AppScreen {
       //       gender: this.state.selectedGender,
       //     });
 
-          requestPost(API.Regist.regist_coach, {
-            avatar: this.state.avatar,
-            firstName: this.state.firstName,
-            lastName: this.state.lastName,
-            email: this.state.email,
-            phone: this.state.firstPhone + this.state.secondPhone,
-            birthday: this.state.birthday,
-            gender: this.state.selectedGender,
-            height: this.state.height,
-            weight: this.state.weight,
-          });
+      requestPost(API.Regist.regist_coach, {
+        avatar: this.state.avatar,
+        firstName: this.state.firstName,
+        lastName: this.state.lastName,
+        email: this.state.email,
+        phone: this.state.firstPhone + this.state.secondPhone,
+        birthday: this.state.birthday,
+        gender: this.state.selectedGender,
+        height: this.state.height,
+        weight: this.state.weight,
+      });
 
-          this.setState({
-            avatar: '',
-            firstName: '',
-            lastName: '',
-            email: '',
-            firstPhone: '',
-            secondPhone: '',
-            birthday: '',
-            selectedGender: 'איש',
-          });
-          this.props.navigation.navigate('Login');
-        // })
-        // .catch((error) => {
-        //   if (error.code === 'auth/email-already-in-use') {
-        //     Toast.show('That email address is already in use!');
-        //   }
+      this.setState({
+        avatar: '',
+        firstName: '',
+        lastName: '',
+        email: '',
+        firstPhone: '',
+        secondPhone: '',
+        birthday: '',
+        selectedGender: 'איש',
+      });
+      this.props.navigation.navigate('Login');
+      // })
+      // .catch((error) => {
+      //   if (error.code === 'auth/email-already-in-use') {
+      //     Toast.show('That email address is already in use!');
+      //   }
 
-        //   if (error.code === 'auth/invalid-email') {
-        //     Toast.show('That email address is invalid!');
-        //   }
+      //   if (error.code === 'auth/invalid-email') {
+      //     Toast.show('That email address is invalid!');
+      //   }
 
-        //   if (error.code === 'auth/weak-password') {
-        //     Toast.show('Password should be at least 6 characters');
-        //   }
+      //   if (error.code === 'auth/weak-password') {
+      //     Toast.show('Password should be at least 6 characters');
+      //   }
 
-        //   if (error.code === 'auth/email-already-in-use') {
-        //     Toast.show('The email address is already in use by another account.');
-        //   }
+      //   if (error.code === 'auth/email-already-in-use') {
+      //     Toast.show('The email address is already in use by another account.');
+      //   }
 
-        //   console.error(error);
-        // });
+      //   console.error(error);
+      // });
     }
   };
 
@@ -156,6 +156,7 @@ export default class RegistCoachScreen extends AppScreen {
                   lineHeight: 17,
                   textDecorationLine: 'underline',
                   color: '#000',
+                  fontFamily: 'Danidin',
                 }}>
                 הקודם
               </Text>
@@ -185,7 +186,8 @@ export default class RegistCoachScreen extends AppScreen {
                   />
                 )}
               </Button>
-              <Text style={{ fontSize: 14, lineHeight: 16.8, color: '#000' }}>
+              <Text
+                style={{ fontSize: 14, lineHeight: 16.8, color: '#000', fontFamily: 'Danidin' }}>
                 {Langs.regist.profile_image}
               </Text>
             </VerticalLayout>

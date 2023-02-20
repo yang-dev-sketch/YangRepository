@@ -38,7 +38,14 @@ export default class FacialRecogScreen extends AppScreen {
                 this.props.navigation.goBack();
               }}
               style={{ alignSelf: 'center', position: 'absolute', top: 60, left: 21 }}>
-              <Text style={{ fontSize: 14, lineHeight: 17, textDecorationLine: 'underline', color: '#000' }}>
+              <Text
+                style={{
+                  fontSize: 14,
+                  lineHeight: 17,
+                  textDecorationLine: 'underline',
+                  color: '#000',
+                  fontFamily: 'Danidin',
+                }}>
                 {Langs.common.previous}
               </Text>
             </Button>
@@ -46,18 +53,35 @@ export default class FacialRecogScreen extends AppScreen {
               source={require('src/assets/image/ic_mark.png')}
               style={{ width: 73, height: 73 }}
             />
-            <Text style={{ fontSize: 24, lineHeight: 29, letterSpacing: -0.17, marginTop: 14, color: '#000', fontWeight: '600' }}>
+            <Text
+              style={{
+                fontSize: 24,
+                lineHeight: 29,
+                letterSpacing: -0.17,
+                marginTop: 14,
+                color: '#000',
+                fontWeight: '600',
+                fontFamily: 'Danidin',
+              }}>
               {Langs.regist.face_id}
             </Text>
           </LinearGradient>
           <Text
-            style={{ fontSize: 16, lineHeight: 22, marginHorizontal: 20, letterSpacing: -0.17, color: '#000', fontWeight: '600' }}>
+            style={{
+              fontSize: 16,
+              lineHeight: 22,
+              marginHorizontal: 20,
+              letterSpacing: -0.17,
+              color: '#000',
+              fontWeight: '600',
+              fontFamily: 'Danidin',
+            }}>
             {Langs.regist.face_recog_text}
           </Text>
           <HorizontalLayout
             style={{ justifyContent: 'space-between', paddingHorizontal: 20, marginTop: 205 }}>
             <View style={{ width: (SCREEN_WIDTH - 65) / 2 }}>
-              <DisactiveButton
+              <ActiveButton
                 text={Langs.regist.agree}
                 style={{ width: '100%', marginBottom: 40 }}
                 action={() => {
@@ -66,7 +90,7 @@ export default class FacialRecogScreen extends AppScreen {
               />
             </View>
             <View style={{ width: (SCREEN_WIDTH - 65) / 2 }}>
-              <ActiveButton
+              <DisactiveButton
                 text={Langs.regist.no_thanks}
                 image={true}
                 style={{ width: '100%', marginBottom: 40 }}

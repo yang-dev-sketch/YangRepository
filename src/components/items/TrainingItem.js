@@ -32,7 +32,7 @@ export default class TrainingItem extends React.Component {
               style={{ width: 11.68, height: 14 }}
             />
           </View>
-          <Text style={{ fontSize: 14, lineHeight: 17, color: 'white' }}>אישורי הגעה</Text>
+          <Text style={{ fontSize: 14, lineHeight: 17, color: 'white', fontFamily: 'Danidin' }}>אישורי הגעה</Text>
           <Button
             onPress={() => {
               this.props.onEdit(data.id);
@@ -42,31 +42,31 @@ export default class TrainingItem extends React.Component {
               style={{ width: 22.5, height: 22.5 }}
             />
           </Button>
-          <Text style={{ fontSize: 14, lineHeight: 17, color: 'white' }}>עריכה</Text>
+          <Text style={{ fontSize: 14, lineHeight: 17, color: 'white', fontFamily: 'Danidin' }}>עריכה</Text>
         </VerticalLayout>
         <VerticalLayout style={{ alignItems: 'flex-end', justifyContent: 'space-between' }}>
           <HorizontalLayout>
-            <Text style={{ fontSize: 16, lineHeight: 19, color: 'white' }}>| {data.min} דק’</Text>
-            <Text style={{ fontSize: 16, lineHeight: 19, color: 'white', fontWeight: '600' }}>
+            <Text style={{ fontSize: 16, lineHeight: 19, color: 'white', fontFamily: 'Danidin' }}>| {data.min} דק’</Text>
+            <Text style={{ fontSize: 16, lineHeight: 19, color: 'white', fontWeight: '600', fontFamily: 'Danidin' }}>
               {data.type}
             </Text>
           </HorizontalLayout>
           <HorizontalLayout style={{ alignItems: 'center' }}>
-            <Text style={{ fontSize: 16, lineHeight: 19, color: 'white' }}>{data.timeArea}</Text>
+            <Text style={{ fontSize: 16, lineHeight: 19, color: 'white', fontFamily: 'Danidin' }}>{data.timeArea}</Text>
             <LocalImage
               source={require('src/assets/image/ic_clock_off.png')}
               style={{ width: 19.68, height: 19.68, marginLeft: 5 }}
             />
           </HorizontalLayout>
           <HorizontalLayout style={{ alignItems: 'center' }}>
-            <Text style={{ fontSize: 16, lineHeight: 19, color: 'white' }}>{data.name}</Text>
+            <Text style={{ fontSize: 16, lineHeight: 19, color: 'white', fontFamily: 'Danidin' }}>{data.name}</Text>
             <LocalImage
               source={require('src/assets/image/ic_coach_off.png')}
               style={{ width: 19.68, height: 19.68, marginLeft: 5 }}
             />
           </HorizontalLayout>
           <HorizontalLayout style={{ alignItems: 'center' }}>
-            <Text style={{ fontSize: 16, lineHeight: 19, color: 'white' }}>
+            <Text style={{ fontSize: 16, lineHeight: 19, color: 'white', fontFamily: 'Danidin' }}>
               {data.participants} משתתפים
             </Text>
             <LocalImage

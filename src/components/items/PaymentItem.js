@@ -27,7 +27,7 @@ class PaymentItem extends React.Component {
                 marginRight: 10,
               },
             ]}>
-            <Text style={{ fontSize: 14, lineHeight: 22, color: 'white' }}>{data.state}</Text>
+            <Text style={{ fontSize: 14, lineHeight: 22, color: 'white', fontFamily: 'Danidin' }}>{data.state}</Text>
           </View>
           <LocalImage
             source={require('src/assets/image/ic_download.png')}
@@ -39,8 +39,8 @@ class PaymentItem extends React.Component {
           />
         </HorizontalLayout>
         <VerticalLayout>
-          <Text style={{ fontSize: 16, lineHeight: 19, color: '#000', fontWeight: '600' }}>{data.method}</Text>
-          <Text style={{ fontSize: 14, lineHeight: 22, color: '#979797' }}>
+          <Text style={{ fontSize: 16, lineHeight: 19, color: '#000', fontWeight: '600', fontFamily: 'Danidin' }}>{data.method}</Text>
+          <Text style={{ fontSize: 14, lineHeight: 22, color: '#979797', fontFamily: 'Danidin' }}>
             {moment(data.date).format('hh:mm, DD.MM.YYYY')}
           </Text>
         </VerticalLayout>

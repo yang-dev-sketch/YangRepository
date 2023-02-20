@@ -79,7 +79,9 @@ class AllowPenaltyPopup extends React.Component {
                   />
                 </Button>
               </HorizontalLayout>
-              <Text style={{ fontSize: 18, lineHeight: 22 }}>סוג מסלול:</Text>
+              <Text style={{ fontSize: 18, lineHeight: 22, fontFamily: 'Danidin' }}>
+                סוג מסלול:
+              </Text>
             </HorizontalLayout>
             <View
               style={{
@@ -88,7 +90,9 @@ class AllowPenaltyPopup extends React.Component {
                 borderBottomColor: '#F2F2F2',
                 marginBottom: 20,
               }}>
-              <Text style={{ fontSize: 16, lineHeight: 19.2 }}>הזמנה על בסיס מקום פנוי</Text>
+              <Text style={{ fontSize: 16, lineHeight: 19.2, fontFamily: 'Danidin' }}>
+                הזמנה על בסיס מקום פנוי
+              </Text>
             </View>
             <ScrollView>
               <Text
@@ -194,12 +198,22 @@ class AllowPenaltyPopup extends React.Component {
                   />
                 }
               />
-              <Text style={{ width: '100%', color: '#0D65D9', marginBottom: 15 }}>
+              <Text
+                style={{
+                  width: '100%',
+                  color: '#0D65D9',
+                  marginBottom: 15,
+                  fontFamily: 'Danidin',
+                }}>
                 שימו לב! צמצום התוכנית של הלקוח שלך עשוי לגרום לביטול הרשמות עתידיות
               </Text>
-              <Text style={{ marginBottom: 15 }}>ספור היעדרות לקוחות לפי</Text>
+              <Text style={{ marginBottom: 15, fontFamily: 'Danidin' }}>
+                ספור היעדרות לקוחות לפי
+              </Text>
               <HorizontalLayout style={{ alignItems: 'center', justifyContent: 'flex-end' }}>
-                <Text style={{ fontSize: 16, lineHeight: 19 }}>אישורי הגעה</Text>
+                <Text style={{ fontSize: 16, lineHeight: 19, fontFamily: 'Danidin' }}>
+                  אישורי הגעה
+                </Text>
                 <CheckBox
                   value={this.state.countAbsence}
                   onChange={(value) => {
@@ -209,7 +223,9 @@ class AllowPenaltyPopup extends React.Component {
               </HorizontalLayout>
               <HorizontalLayout
                 style={{ alignItems: 'center', justifyContent: 'flex-end', marginBottom: 30 }}>
-                <Text style={{ fontSize: 16, lineHeight: 19 }}>היעדרות/ביטול מאוחר</Text>
+                <Text style={{ fontSize: 16, lineHeight: 19, fontFamily: 'Danidin' }}>
+                  היעדרות/ביטול מאוחר
+                </Text>
                 <CheckBox
                   value={this.state.absenceCancel}
                   onChange={(value) => {
@@ -277,6 +293,7 @@ const styles = StyleSheet.create({
     lineHeight: 19,
     color: '#5C9DF2',
     width: '50%',
+    fontFamily: 'Danidin',
   },
 });
 

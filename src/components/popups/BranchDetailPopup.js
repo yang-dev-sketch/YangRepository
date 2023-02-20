@@ -63,7 +63,7 @@ class BranchDetailPopup extends React.Component {
                   style={{ width: 31, height: 31 }}
                 />
               </Button>
-              <Text style={{ fontSize: 18, lineHeight: 22 }}>הסניפים שלנו</Text>
+              <Text style={{ fontSize: 18, lineHeight: 22, fontFamily: 'Danidin' }}>הסניפים שלנו</Text>
             </HorizontalLayout>
             <PaymentMethodCard />
             <SetValueGroup

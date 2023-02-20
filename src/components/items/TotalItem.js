@@ -54,13 +54,15 @@ const styles = StyleSheet.create({
     fontSize: 20,
     lineHeight: 24,
     letterSpacing: 1,
-    fontWeight: '700'
+    fontWeight: '700',
+    fontFamily: 'Danidin',
   },
   text: {
     fontSize: 14,
     lineHeight: 17,
     letterSpacing: 1,
     width: '53%',
-    color: '#000'
+    color: '#000',
+    fontFamily: 'Danidin',
   },
 });

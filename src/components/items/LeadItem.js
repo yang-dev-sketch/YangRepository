@@ -24,7 +24,7 @@ export default class LeadItem extends React.Component {
                 justifyContent: 'center',
                 backgroundColor: '#00AF3C',
               }}>
-              <Text style={{ fontSize: 14, lineHeight: 17, color: 'white' }}>פָּעִיל</Text>
+              <Text style={{ fontSize: 14, lineHeight: 17, color: 'white', fontFamily: 'Danidin' }}>פָּעִיל</Text>
             </Button>
           )}
           {data.type === 'treatment' && (
@@ -37,7 +37,7 @@ export default class LeadItem extends React.Component {
                 justifyContent: 'center',
                 backgroundColor: '#FCD400',
               }}>
-              <Text style={{ fontSize: 14, lineHeight: 17, color: 'white' }}>בטיפול</Text>
+              <Text style={{ fontSize: 14, lineHeight: 17, color: 'white', fontFamily: 'Danidin' }}>בטיפול</Text>
             </Button>
           )}
           {data.type === 'noreply' && (
@@ -50,7 +50,7 @@ export default class LeadItem extends React.Component {
                 justifyContent: 'center',
                 backgroundColor: '#E81C00',
               }}>
-              <Text style={{ fontSize: 14, lineHeight: 17, color: 'white' }}>אין מענה</Text>
+              <Text style={{ fontSize: 14, lineHeight: 17, color: 'white', fontFamily: 'Danidin' }}>אין מענה</Text>
             </Button>
           )}
           <LocalImage
@@ -60,18 +60,18 @@ export default class LeadItem extends React.Component {
         </VerticalLayout>
         <HorizontalLayout>
           <VerticalLayout style={{ justifyContent: 'space-between', alignItems: 'flex-end' }}>
-            <Text style={{ fontSize: 14, lineHeight: 17, color: '#000', fontWeight: '600', marginBottom: 5 }}>{data.name}</Text>
-            <Text style={{ fontSize: 14, lineHeight: 17, color: '#000', marginBottom: 5 }}>{data.phone}</Text>
-            <Text style={{ fontSize: 14, lineHeight: 17, color: '#000', marginBottom: 5 }}>{data.gmail}</Text>
+            <Text style={{ fontSize: 14, lineHeight: 17, color: '#000', fontWeight: '600', marginBottom: 5, fontFamily: 'Danidin' }}>{data.name}</Text>
+            <Text style={{ fontSize: 14, lineHeight: 17, color: '#000', marginBottom: 5, fontFamily: 'Danidin' }}>{data.phone}</Text>
+            <Text style={{ fontSize: 14, lineHeight: 17, color: '#000', marginBottom: 5, fontFamily: 'Danidin' }}>{data.gmail}</Text>
             <HorizontalLayout>
-              <Text style={{ fontSize: 14, lineHeight: 17, color: '#000', marginBottom: 5 }}>{data.createdAt}</Text>
-              <Text style={{ fontSize: 14, lineHeight: 17, color: '#000', fontWeight: '600' }}>
+              <Text style={{ fontSize: 14, lineHeight: 17, color: '#000', marginBottom: 5, fontFamily: 'Danidin' }}>{data.createdAt}</Text>
+              <Text style={{ fontSize: 14, lineHeight: 17, color: '#000', fontWeight: '600', fontFamily: 'Danidin' }}>
                 נוצר:
               </Text>
             </HorizontalLayout>
             <HorizontalLayout>
-              <Text style={{ fontSize: 14, lineHeight: 17, color: '#000' }}>{data.updatedAt}</Text>
-              <Text style={{ fontSize: 14, lineHeight: 17, color: '#000', fontWeight: '600' }}>
+              <Text style={{ fontSize: 14, lineHeight: 17, color: '#000', fontFamily: 'Danidin' }}>{data.updatedAt}</Text>
+              <Text style={{ fontSize: 14, lineHeight: 17, color: '#000', fontWeight: '600', fontFamily: 'Danidin' }}>
                 עדכון אחרון:
               </Text>
             </HorizontalLayout>

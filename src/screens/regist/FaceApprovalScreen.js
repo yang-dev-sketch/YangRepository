@@ -17,8 +17,8 @@ export default class FaceApprovalScreen extends AppScreen {
   constructor(props) {
     super(props);
     this.state = {
-      firstPhone: '',
-      secondPhone: '',
+      firstPhone: '1',
+      secondPhone: '5555215554',
     };
   }
 
@@ -48,6 +48,7 @@ export default class FaceApprovalScreen extends AppScreen {
                   lineHeight: 17,
                   textDecorationLine: 'underline',
                   color: '#000',
+                  fontFamily: 'Danidin',
                 }}>
                 {Langs.common.previous}
               </Text>
@@ -64,6 +65,7 @@ export default class FaceApprovalScreen extends AppScreen {
                 bottom: 13,
                 color: '#000',
                 fontWeight: '700',
+                fontFamily: 'Danidin',
               }}>
               {Langs.regist.approval_use_face}
             </Text>
@@ -111,6 +113,7 @@ export default class FaceApprovalScreen extends AppScreen {
                   textDecorationLine: 'underline',
                   color: '#000',
                   fontWeight: '600',
+                  fontFamily: 'Danidin',
                 }}>
                 {Langs.regist.identi_by_email}
               </Text>

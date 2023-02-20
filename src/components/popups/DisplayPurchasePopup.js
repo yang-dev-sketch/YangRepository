@@ -109,7 +109,14 @@ class DisplayPurchasePopup extends React.Component {
                   />
                 </Button>
               </HorizontalLayout>
-              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>
+              <Text
+                style={{
+                  fontSize: 18,
+                  lineHeight: 22,
+                  color: '#000',
+                  fontWeight: '600',
+                  fontFamily: 'Danidin',
+                }}>
                 סוג מסלול:
               </Text>
             </HorizontalLayout>
@@ -141,7 +148,15 @@ class DisplayPurchasePopup extends React.Component {
                         alignItems: 'center',
                         justifyContent: 'center',
                       }}>
-                      <Text style={{ fontSize: 16, lineHeight: 19, color: 'white' }}>יוֹגָה</Text>
+                      <Text
+                        style={{
+                          fontSize: 16,
+                          lineHeight: 19,
+                          color: 'white',
+                          fontFamily: 'Danidin',
+                        }}>
+                        יוֹגָה
+                      </Text>
                     </View>
                   );
                 })}
@@ -155,7 +170,8 @@ class DisplayPurchasePopup extends React.Component {
                   paddingTop: 10,
                   paddingBottom: 15,
                 }}>
-                <Text style={{ fontSize: 16, lineHeight: 19.2, marginTop: 10 }}>
+                <Text
+                  style={{ fontSize: 16, lineHeight: 19.2, marginTop: 10, fontFamily: 'Danidin' }}>
                   לאפשר הזמנה רק בימים ספציפיים
                 </Text>
                 <FlatList
@@ -175,7 +191,14 @@ class DisplayPurchasePopup extends React.Component {
                           width: '33.3%',
                           justifyContent: 'flex-end',
                         }}>
-                        <Text style={{ fontSize: 16, lineHeight: 19.2, marginRight: 10, color: '#000' }}>
+                        <Text
+                          style={{
+                            fontSize: 16,
+                            lineHeight: 19.2,
+                            marginRight: 10,
+                            color: '#000',
+                            fontFamily: 'Danidin',
+                          }}>
                           {item.name}
                         </Text>
                         <Button
@@ -204,7 +227,16 @@ class DisplayPurchasePopup extends React.Component {
                   }}
                 />
               </View>
-              <Text style={{ fontSize: 16, lineHeight: 19, textAlign: 'right', marginBottom: 7, marginTop: 10, color: '#000' }}>
+              <Text
+                style={{
+                  fontSize: 16,
+                  lineHeight: 19,
+                  textAlign: 'right',
+                  marginBottom: 7,
+                  marginTop: 10,
+                  color: '#000',
+                  fontFamily: 'Danidin',
+                }}>
                 שעות ספציפיות
               </Text>
               <SetValueGroup

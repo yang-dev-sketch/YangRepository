@@ -55,7 +55,7 @@ export default class SelectProgramScreen extends AppScreen {
         bankNumber: this.props.navigation.getParam('bankNumber'),
         branchNumber: this.props.navigation.getParam('branchNumber'),
         accountName: this.props.navigation.getParam('accountName'),
-        programType: this.state.programType
+        programType: this.state.programType,
       },
       key: 'PaymentDetail',
     });
@@ -80,7 +80,7 @@ export default class SelectProgramScreen extends AppScreen {
                 this.props.navigation.goBack();
               }}
               style={{ alignSelf: 'center', position: 'absolute', top: 60, left: 21 }}>
-              <Text style={{ fontSize: 14, lineHeight: 17, textDecorationLine: 'underline' }}>
+              <Text style={{ fontSize: 14, lineHeight: 17, textDecorationLine: 'underline', fontFamily: 'Danidin' }}>
                 הקודם
               </Text>
             </Button> */}
@@ -100,6 +100,7 @@ export default class SelectProgramScreen extends AppScreen {
                 top: 284,
                 color: '#000',
                 fontWeight: '600',
+                fontFamily: 'Danidin',
               }}>
               {Langs.regist.choose_suit_program}
             </Text>
@@ -107,10 +108,10 @@ export default class SelectProgramScreen extends AppScreen {
           <VerticalLayout style={{ paddingHorizontal: 20, marginTop: -34 }}>
             <Button
               onPress={() => {
-                this.setState({ type: 0 });
+                this.setState({ programType: 0 });
               }}
               style={[
-                (this.state.type === 0 && { borderWidth: 2, borderColor: '#5C9DF2' }) || {
+                (this.state.programType === 0 && { borderWidth: 2, borderColor: '#5C9DF2' }) || {
                   borderWidth: 1,
                   borderColor: '#D8D8D8',
                 },
@@ -140,7 +141,13 @@ export default class SelectProgramScreen extends AppScreen {
                 reverse={true}>
                 <VerticalLayout style={{ justifyContent: 'space-between', height: '100%' }}>
                   <HorizontalLayout style={{ alignItems: 'center' }} reverse={true}>
-                    <Text style={{ fontSize: 14, lineHeight: 17, color: '#000' }}>
+                    <Text
+                      style={{
+                        fontSize: 14,
+                        lineHeight: 17,
+                        color: '#000',
+                        fontFamily: 'Danidin',
+                      }}>
                       {Langs.regist.text}
                     </Text>
                     <LocalImage
@@ -149,7 +156,13 @@ export default class SelectProgramScreen extends AppScreen {
                     />
                   </HorizontalLayout>
                   <HorizontalLayout style={{ alignItems: 'center' }} reverse={true}>
-                    <Text style={{ fontSize: 14, lineHeight: 17, color: '#000' }}>
+                    <Text
+                      style={{
+                        fontSize: 14,
+                        lineHeight: 17,
+                        color: '#000',
+                        fontFamily: 'Danidin',
+                      }}>
                       {Langs.regist.text}
                     </Text>
                     <LocalImage
@@ -158,7 +171,13 @@ export default class SelectProgramScreen extends AppScreen {
                     />
                   </HorizontalLayout>
                   <HorizontalLayout style={{ alignItems: 'center' }} reverse={true}>
-                    <Text style={{ fontSize: 14, lineHeight: 17, color: '#000' }}>
+                    <Text
+                      style={{
+                        fontSize: 14,
+                        lineHeight: 17,
+                        color: '#000',
+                        fontFamily: 'Danidin',
+                      }}>
                       {Langs.regist.text}
                     </Text>
                     <LocalImage
@@ -167,7 +186,13 @@ export default class SelectProgramScreen extends AppScreen {
                     />
                   </HorizontalLayout>
                   <HorizontalLayout style={{ alignItems: 'center' }} reverse={true}>
-                    <Text style={{ fontSize: 14, lineHeight: 17, color: '#000' }}>
+                    <Text
+                      style={{
+                        fontSize: 14,
+                        lineHeight: 17,
+                        color: '#000',
+                        fontFamily: 'Danidin',
+                      }}>
                       {Langs.regist.text}
                     </Text>
                     <LocalImage
@@ -176,7 +201,13 @@ export default class SelectProgramScreen extends AppScreen {
                     />
                   </HorizontalLayout>
                   <HorizontalLayout style={{ alignItems: 'center' }} reverse={true}>
-                    <Text style={{ fontSize: 14, lineHeight: 17, color: '#000' }}>
+                    <Text
+                      style={{
+                        fontSize: 14,
+                        lineHeight: 17,
+                        color: '#000',
+                        fontFamily: 'Danidin',
+                      }}>
                       {Langs.regist.text}
                     </Text>
                     <LocalImage
@@ -199,6 +230,7 @@ export default class SelectProgramScreen extends AppScreen {
                       color: '#6F6F6F',
                       width: 90,
                       textAlign: 'center',
+                      fontFamily: 'Danidin',
                     }}
                     numberOfLines={2}>
                     {Langs.regist.subscription_monthly}
@@ -213,7 +245,13 @@ export default class SelectProgramScreen extends AppScreen {
                       style={{ width: 15, height: 12, marginRight: 6 }}
                     />
                     <Text
-                      style={{ fontSize: 32, lineHeight: 38, color: '#1E6FD9', fontWeight: '700' }}>
+                      style={{
+                        fontSize: 32,
+                        lineHeight: 38,
+                        color: '#1E6FD9',
+                        fontWeight: '700',
+                        fontFamily: 'Danidin',
+                      }}>
                       {this.state.monthlyPrice}
                     </Text>
                   </HorizontalLayout>
@@ -222,10 +260,10 @@ export default class SelectProgramScreen extends AppScreen {
             </Button>
             <Button
               onPress={() => {
-                this.setState({ type: 'profitable' });
+                this.setState({ programType: 1 });
               }}
               style={[
-                (this.state.type === 'profitable' && {
+                (this.state.programType === 1 && {
                   borderWidth: 2,
                   borderColor: '#5C9DF2',
                 }) || { borderWidth: 1, borderColor: '#D8D8D8' },
@@ -267,7 +305,13 @@ export default class SelectProgramScreen extends AppScreen {
                     paddingVertical: 25,
                   }}>
                   <HorizontalLayout style={{ alignItems: 'center' }} reverse={true}>
-                    <Text style={{ fontSize: 14, lineHeight: 17, color: '#000' }}>
+                    <Text
+                      style={{
+                        fontSize: 14,
+                        lineHeight: 17,
+                        color: '#000',
+                        fontFamily: 'Danidin',
+                      }}>
                       {Langs.regist.text}
                     </Text>
                     <LocalImage
@@ -276,7 +320,13 @@ export default class SelectProgramScreen extends AppScreen {
                     />
                   </HorizontalLayout>
                   <HorizontalLayout style={{ alignItems: 'center' }} reverse={true}>
-                    <Text style={{ fontSize: 14, lineHeight: 17, color: '#000' }}>
+                    <Text
+                      style={{
+                        fontSize: 14,
+                        lineHeight: 17,
+                        color: '#000',
+                        fontFamily: 'Danidin',
+                      }}>
                       {Langs.regist.text}
                     </Text>
                     <LocalImage
@@ -285,7 +335,13 @@ export default class SelectProgramScreen extends AppScreen {
                     />
                   </HorizontalLayout>
                   <HorizontalLayout style={{ alignItems: 'center' }} reverse={true}>
-                    <Text style={{ fontSize: 14, lineHeight: 17, color: '#000' }}>
+                    <Text
+                      style={{
+                        fontSize: 14,
+                        lineHeight: 17,
+                        color: '#000',
+                        fontFamily: 'Danidin',
+                      }}>
                       {Langs.regist.text}
                     </Text>
                     <LocalImage
@@ -294,7 +350,13 @@ export default class SelectProgramScreen extends AppScreen {
                     />
                   </HorizontalLayout>
                   <HorizontalLayout style={{ alignItems: 'center' }} reverse={true}>
-                    <Text style={{ fontSize: 14, lineHeight: 17, color: '#000' }}>
+                    <Text
+                      style={{
+                        fontSize: 14,
+                        lineHeight: 17,
+                        color: '#000',
+                        fontFamily: 'Danidin',
+                      }}>
                       {Langs.regist.text}
                     </Text>
                     <LocalImage
@@ -303,7 +365,13 @@ export default class SelectProgramScreen extends AppScreen {
                     />
                   </HorizontalLayout>
                   <Text
-                    style={{ fontSize: 16, lineHeight: 19, fontWeight: '600', color: '#5C9DF2' }}>
+                    style={{
+                      fontSize: 16,
+                      lineHeight: 19,
+                      fontWeight: '600',
+                      color: '#5C9DF2',
+                      fontFamily: 'Danidin',
+                    }}>
                     שבוע נסיון חינם
                   </Text>
                 </VerticalLayout>
@@ -325,6 +393,7 @@ export default class SelectProgramScreen extends AppScreen {
                         color: '#6F6F6F',
                         width: 90,
                         textAlign: 'center',
+                        fontFamily: 'Danidin',
                       }}
                       numberOfLines={2}>
                       {Langs.regist.subscription_monthly}
@@ -344,6 +413,7 @@ export default class SelectProgramScreen extends AppScreen {
                           lineHeight: 38,
                           color: '#1E6FD9',
                           fontWeight: '700',
+                          fontFamily: 'Danidin',
                         }}>
                         {this.state.profitablePrice}
                       </Text>
@@ -381,6 +451,7 @@ export default class SelectProgramScreen extends AppScreen {
                       left: 70,
                       bottom: (GlobalState.langPopup.langStatus === 'en' && 100) || 40,
                       transform: [{ rotate: '-90deg' }],
+                      fontFamily: 'Danidin',
                     }}
                     numberOfLines={1}>
                     {Langs.regist.most_profitable}
@@ -404,6 +475,7 @@ export default class SelectProgramScreen extends AppScreen {
                     textDecorationLine: 'underline',
                     opacity: 0.7,
                     color: '#000',
+                    fontFamily: 'Danidin',
                   }}>
                   {Langs.regist.privacy_policy}
                 </Text>
@@ -416,6 +488,7 @@ export default class SelectProgramScreen extends AppScreen {
                     textDecorationLine: 'underline',
                     opacity: 0.7,
                     color: '#000',
+                    fontFamily: 'Danidin',
                   }}>
                   {Langs.regist.terms_of_use}
                 </Text>

@@ -81,7 +81,16 @@ class AllowBookingPopup extends React.Component {
                   />
                 </Button>
               </HorizontalLayout>
-              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>סוג מסלול:</Text>
+              <Text
+                style={{
+                  fontSize: 18,
+                  lineHeight: 22,
+                  color: '#000',
+                  fontWeight: '600',
+                  fontFamily: 'Danidin',
+                }}>
+                סוג מסלול:
+              </Text>
             </HorizontalLayout>
             <View
               style={{
@@ -90,9 +99,25 @@ class AllowBookingPopup extends React.Component {
                 borderBottomColor: '#F2F2F2',
                 marginBottom: 20,
               }}>
-              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000', fontWeight: '600' }}>תכונות ייחודיות</Text>
+              <Text
+                style={{
+                  fontSize: 16,
+                  lineHeight: 19,
+                  color: '#000',
+                  fontWeight: '600',
+                  fontFamily: 'Danidin',
+                }}>
+                תכונות ייחודיות
+              </Text>
             </View>
-            <Text style={{ fontSize: 16, lineHeight: 19.2, marginBottom: 15 }}>
+            <Text
+              style={{
+                fontSize: 16,
+                lineHeight: 19.2,
+                marginBottom: 15,
+                fontFamily: 'Danidin',
+                fontFamily: 'Danidin',
+              }}>
               לאפשר הזמנה רק בימים ספציפיים
             </Text>
             <FlatList
@@ -132,7 +157,7 @@ class AllowBookingPopup extends React.Component {
                         style={{ width: 23, height: 23 }}
                       />
                     )}
-                    <Text style={{ fontSize: 16, lineHeight: 19.2 }}>{item.name}</Text>
+                    <Text style={{ fontSize: 16, lineHeight: 19.2, fontFamily: 'Danidin' }}>{item.name}</Text>
                   </Button>
                 );
               }}

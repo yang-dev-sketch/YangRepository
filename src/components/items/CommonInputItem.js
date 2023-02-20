@@ -168,6 +168,7 @@ const styles = {
     width: '100%',
     minHeight: 40,
     paddingBottom: 4,
+    fontFamily: 'Danidin'
   },
 
   err_text: {
@@ -177,6 +178,7 @@ const styles = {
     width: '100%',
     minHeight: 40,
     paddingBottom: 4,
+    fontFamily: 'Danidin'
   },
   div_input_body: { alignItems: 'center', position: 'relative' },
   ic_input_header: {

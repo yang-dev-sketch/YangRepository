@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 19,
     color: '#1E6FD9',
-    fontWeight: '600'
+    fontWeight: '600',
+    fontFamily: 'Danidin'
   },
 });

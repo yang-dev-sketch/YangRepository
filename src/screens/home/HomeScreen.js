@@ -58,7 +58,7 @@ export default class HomeScreen extends React.Component {
       showTrainerOrganizationPopup: false,
       showMyProfilePopup: false,
       accountList: [],
-      selectedAccountId: 0
+      selectedAccountId: 0,
     };
   }
 
@@ -195,7 +195,7 @@ export default class HomeScreen extends React.Component {
       { id: 2, name: 'coach', type: 'כל הסניפים' },
       { id: 3, name: 'coach', type: 'תל אביב' },
     ];
-    this.setState({accountList: accountList})
+    this.setState({ accountList: accountList });
   };
 
   render() {
@@ -224,6 +224,7 @@ export default class HomeScreen extends React.Component {
                   letterSpacing: 1,
                   color: '#000',
                   fontWeight: '700',
+                  fontFamily: 'Danidin',
                 }}>
                 פרופיל
               </Text>
@@ -252,7 +253,7 @@ export default class HomeScreen extends React.Component {
                   alignItems: 'center',
                   justifyContent: 'center',
                   borderWidth: 1,
-                  borderColor: '#D8D8D8'
+                  borderColor: '#D8D8D8',
                 }}>
                 <LocalImage
                   source={require('src/assets/image/ic_home.png')}
@@ -267,10 +268,18 @@ export default class HomeScreen extends React.Component {
                     letterSpacing: 1,
                     fontWeight: '600',
                     color: '#000',
+                    fontFamily: 'Danidin',
                   }}>
                   שלום STEPS,
                 </Text>
-                <Text style={{ fontSize: 14, lineHeight: 17, letterSpacing: 1, color: '#6F6F6F' }}>
+                <Text
+                  style={{
+                    fontSize: 14,
+                    lineHeight: 17,
+                    letterSpacing: 1,
+                    color: '#6F6F6F',
+                    fontFamily: 'Danidin',
+                  }}>
                   נתונים ליום חמישי 01.09.2022
                 </Text>
               </VerticalLayout>
@@ -287,7 +296,7 @@ export default class HomeScreen extends React.Component {
                   paddingVertical: 20,
                   justifyContent: 'space-between',
                   borderWidth: 1,
-                  borderColor: '#D8D8D8'
+                  borderColor: '#D8D8D8',
                 }}>
                 <PieChart
                   widthAndHeight={widthAndHeight}
@@ -307,6 +316,7 @@ export default class HomeScreen extends React.Component {
                             lineHeight: 12,
                             letterSpacing: 1,
                             color: '#6F6F6F',
+                            fontFamily: 'Danidin',
                           }}>
                           {item.title}
                         </Text>
@@ -322,8 +332,23 @@ export default class HomeScreen extends React.Component {
                 </VerticalLayout>
               </HorizontalLayout>
               <VerticalLayout style={{ alignItems: 'center', width: SCREEN_WIDTH - 260 }}>
-                <Text style={{ fontSize: 14, lineHeight: 17, color: '#000' }}>סה”כ אימונים</Text>
-                <Text style={{ fontSize: 70, lineHeight: 84, color: '#0D65D9', fontWeight: '700' }}>
+                <Text
+                  style={{
+                    fontSize: 14,
+                    lineHeight: 17,
+                    color: '#000',
+                    fontFamily: 'Danidin',
+                  }}>
+                  סה”כ אימונים
+                </Text>
+                <Text
+                  style={{
+                    fontSize: 70,
+                    lineHeight: 84,
+                    color: '#0D65D9',
+                    fontWeight: '700',
+                    fontFamily: 'Danidin',
+                  }}>
                   70
                 </Text>
               </VerticalLayout>
@@ -353,7 +378,7 @@ export default class HomeScreen extends React.Component {
                 justifyContent: 'space-between',
                 marginTop: 15,
                 borderWidth: 1,
-                borderColor: '#D8D8D8'
+                borderColor: '#D8D8D8',
               }}>
               <HorizontalLayout style={{ alignItems: 'center' }}>
                 <LinearGradient
@@ -383,13 +408,21 @@ export default class HomeScreen extends React.Component {
                   thousandSeparator={true}
                   renderText={(formattedValue) => (
                     <Text
-                      style={{ fontSize: 24, lineHeight: 29, fontWeight: '700', color: '#000' }}>
+                      style={{
+                        fontSize: 24,
+                        lineHeight: 29,
+                        fontWeight: '700',
+                        color: '#000',
+                        fontFamily: 'Danidin',
+                      }}>
                       {formattedValue}
                     </Text>
                   )}
                 />
               </HorizontalLayout>
-              <Text style={{ fontSize: 14, lineHeight: 17, color: '#000' }}>ההכנסה היומית שלי</Text>
+              <Text style={{ fontSize: 14, lineHeight: 17, color: '#000', fontFamily: 'Danidin' }}>
+                ההכנסה היומית שלי
+              </Text>
             </HorizontalLayout>
             <Button
               onPress={() => {
@@ -406,7 +439,7 @@ export default class HomeScreen extends React.Component {
                   justifyContent: 'space-between',
                   marginTop: 15,
                   borderWidth: 1,
-                  borderColor: '#D8D8D8'
+                  borderColor: '#D8D8D8',
                 }}>
                 <LocalImage
                   source={require('src/assets/image/ic_round_left.png')}
@@ -418,12 +451,19 @@ export default class HomeScreen extends React.Component {
                     displayType={'text'}
                     thousandSeparator={true}
                     renderText={(formattedValue) => (
-                      <Text style={{ fontSize: 16, lineHeight: 19, color: 'red' }}>
+                      <Text
+                        style={{
+                          fontSize: 16,
+                          lineHeight: 19,
+                          color: 'red',
+                          fontFamily: 'Danidin',
+                        }}>
                         ({formattedValue})
                       </Text>
                     )}
                   />
-                  <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>
+                  <Text
+                    style={{ fontSize: 16, lineHeight: 19, color: '#000', fontFamily: 'Danidin' }}>
                     אימונים קרובים
                   </Text>
                 </HorizontalLayout>
@@ -471,9 +511,15 @@ export default class HomeScreen extends React.Component {
                         justifyContent: 'flex-end',
                         paddingBottom: 13,
                         borderWidth: 1,
-                        borderColor: '#D8D8D8'
+                        borderColor: '#D8D8D8',
                       }}>
-                      <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>
+                      <Text
+                        style={{
+                          fontSize: 16,
+                          lineHeight: 19,
+                          color: '#000',
+                          fontFamily: 'Danidin',
+                        }}>
                         {item.title}
                       </Text>
                     </View>
@@ -658,7 +704,9 @@ export default class HomeScreen extends React.Component {
           }}
           setSearch={() => {}}
           data={this.state.accountList}
-          selectAccount={(index) => {this.setState({selectedAccountId: index})}}
+          selectAccount={(index) => {
+            this.setState({ selectedAccountId: index });
+          }}
           selectId={this.state.selectedAccountId}
         />
       </SafeAreaView>

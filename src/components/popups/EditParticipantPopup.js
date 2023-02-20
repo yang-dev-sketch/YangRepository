@@ -65,7 +65,7 @@ class EditParticipantPopup extends React.Component {
                   style={{ width: 31, height: 31 }}
                 />
               </Button>
-              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>
+              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600', fontFamily: 'Danidin' }}>
                 עריכת מתאמנים
               </Text>
             </HorizontalLayout>
@@ -96,7 +96,7 @@ class EditParticipantPopup extends React.Component {
                     )) || <View></View>}
                     <HorizontalLayout
                       style={{ alignItems: 'center', justifyContent: 'space-between' }}>
-                      <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>
+                      <Text style={{ fontSize: 16, lineHeight: 19, color: '#000', fontFamily: 'Danidin' }}>
                         {item.name}
                       </Text>
                       <View style={{ width: 45, height: 30, overflow: 'hidden', marginLeft: 6 }}>

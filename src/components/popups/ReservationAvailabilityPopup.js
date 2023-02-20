@@ -70,7 +70,7 @@ class ReservationAvailabilityPopup extends React.Component {
                   />
                 </Button>
               </HorizontalLayout>
-              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>סוג מסלול:</Text>
+              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600', fontFamily: 'Danidin' }}>סוג מסלול:</Text>
             </HorizontalLayout>
             <View
               style={{
@@ -79,7 +79,7 @@ class ReservationAvailabilityPopup extends React.Component {
                 borderBottomColor: '#F2F2F2',
                 marginBottom: 20,
               }}>
-              <Text style={{ fontSize: 16, lineHeight: 19.2 }}>הזמנה על בסיס מקום פנוי</Text>
+              <Text style={{ fontSize: 16, lineHeight: 19.2, fontFamily: 'Danidin' }}>הזמנה על בסיס מקום פנוי</Text>
             </View>
             <SetValueGroup
               style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#F5F5F5' }]}
@@ -120,7 +120,7 @@ class ReservationAvailabilityPopup extends React.Component {
                 justifyContent: 'flex-end',
                 marginBottom: 45,
               }}>
-              <Text style={{ color: '#5C9DF2', marginRight: 12 }}>שעות לפני השיעורים</Text>
+              <Text style={{ color: '#5C9DF2', marginRight: 12, fontFamily: 'Danidin' }}>שעות לפני השיעורים</Text>
               <CommonInput
                 style={{ width: 135 }}
                 numberOfLines={1}

@@ -71,7 +71,16 @@ class EditUserPopup extends React.Component {
                   style={{ width: 31, height: 31 }}
                 />
               </Button>
-              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>עריכת משתמשים</Text>
+              <Text
+                style={{
+                  fontSize: 18,
+                  lineHeight: 22,
+                  color: '#000',
+                  fontWeight: '600',
+                  fontFamily: 'Danidin',
+                }}>
+                עריכת משתמשים
+              </Text>
             </HorizontalLayout>
             <HorizontalLayout
               style={{ width: '100%', justifyContent: 'space-between', marginBottom: 15 }}>
@@ -95,7 +104,10 @@ class EditUserPopup extends React.Component {
                     justifyContent: 'center',
                   },
                 ]}>
-                <Text style={{ fontSize: 16, lineHeight: 19, color: '#1E6FD9' }}>מחכים לאישור</Text>
+                <Text
+                  style={{ fontSize: 16, lineHeight: 19, color: '#1E6FD9', fontFamily: 'Danidin' }}>
+                  מחכים לאישור
+                </Text>
               </Button>
               <Button
                 onPress={() => {
@@ -117,7 +129,10 @@ class EditUserPopup extends React.Component {
                     justifyContent: 'center',
                   },
                 ]}>
-                <Text style={{ fontSize: 16, lineHeight: 19, color: '#1E6FD9' }}>כל המשתמשים</Text>
+                <Text
+                  style={{ fontSize: 16, lineHeight: 19, color: '#1E6FD9', fontFamily: 'Danidin' }}>
+                  כל המשתמשים
+                </Text>
               </Button>
             </HorizontalLayout>
             <SearchInput

@@ -15,18 +15,41 @@ import LinearGradient from 'react-native-linear-gradient';
 import { ActiveButton, CommonInput, DisactiveButton, SetValueGroup } from '../../components/common';
 import auth from '@react-native-firebase/auth';
 import GlobalState from '../../mobx/GlobalState';
+import TouchID from 'react-native-touch-id';
+import Toast from 'react-native-root-toast';
 
 export default class LoginScreen extends AppScreen {
   constructor(props) {
     super(props);
     this.state = {
       type: this.props.navigation.getParam('type'),
-      firstPhone: '',
-      secondPhone: '',
+      firstPhone: '1',
+      secondPhone: '5555215554',
       code: '',
       confirm: null,
       verifyState: false,
+      faceSupport: true,
+      touchSupport: true,
     };
+  }
+
+  componentDidMount() {
+    // TouchID.isSupported()
+    //   .then((biometryType) => {
+    //     console.log(biometryType);
+    //     if (biometryType === 'FaceID') {
+    //       this.setState({ faceSupport: true });
+    //     } else if (biometryType === 'TouchID') {
+    //       this.setState({ touchSupport: true });
+    //     } else if (biometryType === true) {
+    //       // Touch ID is supported on Android
+    //       this.setState({ faceSupport: true, touchSupport: true });
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //     this.setState({ faceSupport: false, touchSupport: false });
+    //   });
   }
 
   signInWithPhoneNumber = () => {
@@ -44,17 +67,51 @@ export default class LoginScreen extends AppScreen {
   };
 
   confirmCode = () => {
-    const credential = auth.PhoneAuthProvider.credential(confirm.verificationId, code);
-    let userData = auth()
-      .currentUser.linkWithCredential(credential)
+    // const credential = auth.PhoneAuthProvider.credential(this.state.confirm.verificationId, this.state.code);
+    // let userData = auth()
+    //   .currentUser.linkWithCredential(credential)
+    //   .catch((error) => {
+    //     if (error.code == 'auth/invalid-verification-code') {
+    //       console.log('Invalid code.');
+    //     } else {
+    //       console.log('Account linking error');
+    //     }
+    //   });
+    // console.log(userData.user);
+  };
+
+  pressHandler = () => {
+    //config is optional to be passed in on Android
+    const optionalConfigObject = {
+      title: 'Authentication Required', // Android
+      color: '#e00606', // Android,
+      fallbackLabel: 'Show Passcode', // iOS (if empty, then label is hidden)
+    };
+    TouchID.authenticate('to demo this react-native component', optionalConfigObject)
+      .then((success) => {
+        Toast.show('Authenticated Successfully');
+      })
       .catch((error) => {
-        if (error.code == 'auth/invalid-verification-code') {
-          console.log('Invalid code.');
-        } else {
-          console.log('Account linking error');
-        }
+        Toast.show('Authentication Failed');
       });
-    console.log(userData.user);
+  };
+
+  clickHandler = () => {
+    TouchID.isSupported()
+      .then((biometryType) => {
+        // Success code
+        if (biometryType === 'FaceID') {
+          console.log('FaceID is supported.');
+        } else if (biometryType === 'TouchID') {
+          console.log('TouchID is supported.');
+        } else if (biometryType === true) {
+          // Touch ID is supported on Android
+        }
+      })
+      .catch((error) => {
+        // Failure code if the user's device does not have touchID or faceID enabled
+        console.log(error);
+      });
   };
 
   render() {
@@ -83,6 +140,7 @@ export default class LoginScreen extends AppScreen {
                   lineHeight: 17,
                   textDecorationLine: 'underline',
                   color: '#000',
+                  fontFamily: 'Danidin',
                 }}>
                 {Langs.common.previous}
               </Text>
@@ -98,7 +156,8 @@ export default class LoginScreen extends AppScreen {
                 color: '#000',
                 fontWeight: '700',
                 position: 'absolute',
-                bottom: 13
+                bottom: 13,
+                fontFamily: 'Danidin',
               }}>
               {Langs.common.entrance}
             </Text>
@@ -117,6 +176,7 @@ export default class LoginScreen extends AppScreen {
                     style={{ width: 70 }}
                     numberOfLines={1}
                     backgroundColor="#FFF"
+                    textAlignCenter={true}
                     maxLength={3}
                     value={this.state.firstPhone}
                     onChangeText={(text) => {
@@ -152,27 +212,37 @@ export default class LoginScreen extends AppScreen {
                       textDecorationLine: 'underline',
                       color: '#000',
                       fontWeight: '600',
+                      fontFamily: 'Danidin',
                     }}>
                     {Langs.regist.identi_by_email}
                   </Text>
                 </Button>
-                <LocalImage
-                  source={require('src/assets/image/ic_fingerprint.png')}
-                  style={{ width: 36, height: 36, marginBottom: 20, alignSelf: 'center' }}
-                />
+                {this.state.touchSupport && (
+                  <Button
+                    onPress={() => {
+                      this.pressHandler();
+                    }}>
+                    <LocalImage
+                      source={require('src/assets/image/ic_fingerprint.png')}
+                      style={{ width: 36, height: 36, marginBottom: 20, alignSelf: 'center' }}
+                    />
+                  </Button>
+                )}
                 <ActiveButton
                   text={Langs.common.entrance}
                   style={{ width: '100%', marginBottom: 15 }}
                   action={() => {}}
                 />
-                <DisactiveButton
-                  text={Langs.regist.use_facial_recog}
-                  image={true}
-                  style={{ width: '100%', marginBottom: 40 }}
-                  action={() => {
-                    this.props.navigation.navigate('Facial');
-                  }}
-                />
+                {this.state.faceSupport && (
+                  <DisactiveButton
+                    text={Langs.regist.use_facial_recog}
+                    image={true}
+                    style={{ width: '100%', marginBottom: 40 }}
+                    action={() => {
+                      this.props.navigation.navigate('Facial');
+                    }}
+                  />
+                )}
                 {(this.state.type === 'coach' && (
                   <Button
                     onPress={() => {
@@ -186,6 +256,7 @@ export default class LoginScreen extends AppScreen {
                         textDecorationLine: 'underline',
                         color: '#0D65D9',
                         fontWeight: '600',
+                        fontFamily: 'Danidin',
                       }}>
                       {Langs.regist.enrollment}
                     </Text>
@@ -204,7 +275,9 @@ export default class LoginScreen extends AppScreen {
                       backgroundColor: '#94BDF2',
                       marginBottom: 15,
                     }}>
-                    <Text style={{ fontSize: 16, lineHeight: 19, color: 'white' }}>{Langs.regist.enrollment}</Text>
+                    <Text style={{ fontSize: 16, lineHeight: 19, color: 'white' }}>
+                      {Langs.regist.enrollment}
+                    </Text>
                   </Button>
                 )}
               </>

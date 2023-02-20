@@ -20,7 +20,12 @@ export default class BankDetailScreen extends AppScreen {
   }
 
   next = () => {
-    if (this.state.accountNumber === '' || this.state.bankNumber === '' || this.state.branchNumber === '' || this.state.accountName === '') {
+    if (
+      this.state.accountNumber === '' ||
+      this.state.bankNumber === '' ||
+      this.state.branchNumber === '' ||
+      this.state.accountName === ''
+    ) {
       Toast.show('All field must be entered.');
     } else {
       // this.setState({
@@ -83,6 +88,7 @@ export default class BankDetailScreen extends AppScreen {
                 top: 80,
                 color: '#000',
                 fontWeight: '700',
+                fontFamily: 'Danidin',
               }}>
               {Langs.regist.bank_detail}
             </Text>
@@ -99,6 +105,7 @@ export default class BankDetailScreen extends AppScreen {
                 marginBottom: 35,
                 textAlign: 'center',
                 color: '#000',
+                fontFamily: 'Danidin',
               }}>
               {Langs.regist.where_want_money}
             </Text>

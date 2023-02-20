@@ -32,7 +32,7 @@ export default class ToastContainer extends React.Component {
           style={[{ width: 20, height: 20 }]}
           resizeMode="cover"
         />
-        <Text style={{ fontSize: 16, lineHeight: 19, color: 'white', fontWeight: '600' }}>{this.props.title}</Text>
+        <Text style={{ fontSize: 16, lineHeight: 19, color: 'white', fontWeight: '600', fontFamily: 'Danidin' }}>{this.props.title}</Text>
       </HorizontalLayout>
     );
   }

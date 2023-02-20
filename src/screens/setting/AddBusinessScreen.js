@@ -18,8 +18,8 @@ import { ActiveButton, CommonInput, DisactiveButton, SetValueGroup } from '../..
 import DropDownPicker from '../../components/controls/DropDownPicker';
 import CheckBox from './../../components/controls/CheckBox';
 import BranchDetailPopup from '../../components/popups/BranchDetailPopup';
-import Toast from "react-native-root-toast";
-import ToastContainer from "../../components/controls/ToastContainer";
+import Toast from 'react-native-root-toast';
+import ToastContainer from '../../components/controls/ToastContainer';
 
 @observer
 export default class AddBusinessScreen extends React.Component {
@@ -30,8 +30,8 @@ export default class AddBusinessScreen extends React.Component {
       title: '',
       description: '',
       address: '',
-      firstPhone: '',
-      secondPhone: '',
+      firstPhone: '1',
+      secondPhone: '5555215554',
       permanentPlace: false,
       showBranchDetailPopup: false,
     };
@@ -102,7 +102,8 @@ export default class AddBusinessScreen extends React.Component {
                   lineHeight: 22,
                   letterSpacing: 1,
                   color: '#000',
-                  fontWeight: '700'
+                  fontWeight: '700',
+                  fontFamily: 'Danidin',
                 }}>
                 הגדרות
               </Text>
@@ -113,7 +114,17 @@ export default class AddBusinessScreen extends React.Component {
                 />
               </Button>
             </HorizontalLayout>
-            <Text style={{ fontSize: 18, lineHeight: 22, marginBottom: 15, fontWeight: '600', color: '#000' }}>הוספת סניף חדש</Text>
+            <Text
+              style={{
+                fontSize: 18,
+                lineHeight: 22,
+                marginBottom: 15,
+                fontWeight: '600',
+                color: '#000',
+                fontFamily: 'Danidin',
+              }}>
+              הוספת סניף חדש
+            </Text>
             <VerticalLayout
               style={{
                 width: (SCREEN_WIDTH - 65) / 2,
@@ -144,7 +155,16 @@ export default class AddBusinessScreen extends React.Component {
                   />
                 )}
               </Button>
-              <Text style={{ fontSize: 16, lineHeight: 19, marginTop: 10, color: '#000' }}>לוגו של העסק</Text>
+              <Text
+                style={{
+                  fontSize: 16,
+                  lineHeight: 19,
+                  marginTop: 10,
+                  color: '#000',
+                  fontFamily: 'Danidin',
+                }}>
+                לוגו של העסק
+              </Text>
             </VerticalLayout>
             <SetValueGroup
               style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: 'white' }]}
@@ -224,7 +244,9 @@ export default class AddBusinessScreen extends React.Component {
             />
             <HorizontalLayout
               style={{ alignItems: 'center', justifyContent: 'flex-end', marginBottom: 40 }}>
-              <Text style={{ fontSize: 16, lineHeight: 19 }}>אין ברשותי מקום אימונים קבוע</Text>
+              <Text style={{ fontSize: 16, lineHeight: 19, fontFamily: 'Danidin' }}>
+                אין ברשותי מקום אימונים קבוע
+              </Text>
               <CheckBox
                 value={this.state.permanentPlace}
                 onChange={(value) => {

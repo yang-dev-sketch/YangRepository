@@ -80,7 +80,7 @@ class AllowTrainPopup extends React.Component {
                   />
                 </Button>
               </HorizontalLayout>
-              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>
+              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600', fontFamily: 'Danidin' }}>
                 סוג מסלול:
               </Text>
             </HorizontalLayout>
@@ -91,13 +91,13 @@ class AllowTrainPopup extends React.Component {
                 borderBottomColor: '#F2F2F2',
                 marginBottom: 20,
               }}>
-              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000', fontWeight: '600' }}>
+              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000', fontWeight: '600', fontFamily: 'Danidin' }}>
                 תכונות ייחודיות
               </Text>
             </View>
             <ScrollView>
               <HorizontalLayout style={{ alignItems: 'center', justifyContent: 'flex-end' }}>
-                <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>
+                <Text style={{ fontSize: 16, lineHeight: 19, color: '#000', fontFamily: 'Danidin' }}>
                   לאפשר לפי הגדרת התדירות אימונים הבאה
                 </Text>
                 <CheckBox
@@ -138,7 +138,7 @@ class AllowTrainPopup extends React.Component {
                       }
                       style={{ width: 17.41, height: 9.17 }}
                     />
-                    <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>
+                    <Text style={{ fontSize: 16, lineHeight: 19, color: '#000', fontFamily: 'Danidin' }}>
                       הגבל את תדירות הרישום
                     </Text>
                   </Button>
@@ -162,7 +162,7 @@ class AllowTrainPopup extends React.Component {
                             this.setState({ upto: text });
                           }}
                         />
-                        <Text style={{ fontSize: 16, lineHeight: 19.2, color: '#6F6F6F' }}>
+                        <Text style={{ fontSize: 16, lineHeight: 19.2, color: '#6F6F6F', fontFamily: 'Danidin' }}>
                           עד ל
                         </Text>
                       </HorizontalLayout>
@@ -182,7 +182,7 @@ class AllowTrainPopup extends React.Component {
                             this.setState({ selectedTimeType: value.name });
                           }}
                         />
-                        <Text style={{ fontSize: 16, lineHeight: 19.2, color: '#6F6F6F' }}>
+                        <Text style={{ fontSize: 16, lineHeight: 19.2, color: '#6F6F6F', fontFamily: 'Danidin' }}>
                           פעמים לכל
                         </Text>
                       </HorizontalLayout>
@@ -202,7 +202,7 @@ class AllowTrainPopup extends React.Component {
                             this.setState({ selectedExclude: value.name });
                           }}
                         />
-                        <Text style={{ fontSize: 16, lineHeight: 19.2, color: '#6F6F6F' }}>
+                        <Text style={{ fontSize: 16, lineHeight: 19.2, color: '#6F6F6F', fontFamily: 'Danidin' }}>
                           לְמַעֵט
                         </Text>
                       </HorizontalLayout>
@@ -251,7 +251,7 @@ class AllowTrainPopup extends React.Component {
                         }
                         style={{ width: 17.41, height: 9.17 }}
                       />
-                      <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>
+                      <Text style={{ fontSize: 16, lineHeight: 19, color: '#000', fontFamily: 'Danidin' }}>
                         הגבלת רישום לפי שיעור ותדירות
                       </Text>
                     </Button>
@@ -273,7 +273,7 @@ class AllowTrainPopup extends React.Component {
                               this.setState({ selectedRateType: value.name });
                             }}
                           />
-                          <Text style={{ fontSize: 16, lineHeight: 19.2, color: '#6F6F6F' }}>
+                          <Text style={{ fontSize: 16, lineHeight: 19.2, color: '#6F6F6F', fontFamily: 'Danidin' }}>
                             פעמים לכל
                           </Text>
                         </HorizontalLayout>
@@ -295,7 +295,7 @@ class AllowTrainPopup extends React.Component {
                               this.setState({ rateUpto: text });
                             }}
                           />
-                          <Text style={{ fontSize: 16, lineHeight: 19.2, color: '#6F6F6F' }}>
+                          <Text style={{ fontSize: 16, lineHeight: 19.2, color: '#6F6F6F', fontFamily: 'Danidin' }}>
                             עד ל
                           </Text>
                         </HorizontalLayout>
@@ -315,7 +315,7 @@ class AllowTrainPopup extends React.Component {
                               this.setState({ selectedTimesB: value.name });
                             }}
                           />
-                          <Text style={{ fontSize: 16, lineHeight: 19.2, color: '#6F6F6F' }}>
+                          <Text style={{ fontSize: 16, lineHeight: 19.2, color: '#6F6F6F', fontFamily: 'Danidin' }}>
                             לְמַעֵט
                           </Text>
                         </HorizontalLayout>

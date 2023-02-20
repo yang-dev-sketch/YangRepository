@@ -34,7 +34,7 @@ class BranchItem extends React.Component {
               />
             )) || <View></View>}
           <HorizontalLayout style={{ alignItems: 'center' }}>
-            <Text numberOfLines={1} style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>
+            <Text numberOfLines={1} style={{ fontSize: 16, lineHeight: 19, color: '#000', fontFamily: 'Danidin' }}>
               {data.name}
             </Text>
             {(data.id == this.props.selectBranchId && (

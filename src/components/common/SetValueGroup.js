@@ -52,7 +52,7 @@ export default class SetValueGroup extends React.Component {
               : (this.props.leftTitle && (
                   <HorizontalLayout
                     style={{ width: '50%', justifyContent: 'flex-end', alignItems: 'center' }}>
-                    <Text style={{ fontSize: 16, lineHeight: 19, color: '#6F6F6F' }}>
+                    <Text style={{ fontSize: 16, lineHeight: 19, color: '#6F6F6F', fontFamily: 'Danidin' }}>
                       {this.props.leftTitle}
                     </Text>
                     {this.props.leftImage && (
@@ -65,7 +65,7 @@ export default class SetValueGroup extends React.Component {
                 )) || <View></View>}
             <HorizontalLayout style={{ alignItems: 'center' }} reverse={true}>
               <Text
-                style={[{ fontSize: 16, lineHeight: 19, color: '#6F6F6F' }, this.props.textStyle]}>
+                style={[{ fontSize: 16, lineHeight: 19, color: '#6F6F6F', fontWeight: '400' }, this.props.textStyle]}>
                 {this.props.title}
               </Text>
               {this.props.image && (

@@ -121,7 +121,7 @@ export default class SplashScreen extends AppScreen {
     let login_type = await PrefUtils.getInt(PREF_PARAMS.LOGIN_TYPE);
     let lang = await PrefUtils.getString(PREF_PARAMS.LANG);
     if (CommonUtils.isEmpty(lang)) {
-      lang = 'en';
+      lang = 'hb';
     }
 
     EventBus.getInstance().fireEvent('changeLang', { lang: lang });
@@ -151,7 +151,7 @@ export default class SplashScreen extends AppScreen {
   go2Main = () => {
     setTimeout(() => {
       this.setState({ showButton: true });
-      this.props.navigation.navigate('RegistBusinessOne');
+      this.props.navigation.navigate('Main');
     }, Math.max(0, this.INTRO_TIME - (new Date().getTime() - this.startTime)));
   };
 }

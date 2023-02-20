@@ -73,7 +73,7 @@ class FilterByCoachPopup extends React.Component {
                 </Button>
               </HorizontalLayout>
               <HorizontalLayout>
-                <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>סינון לפי: מאמנים</Text>
+                <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600', fontFamily: 'Danidin' }}>סינון לפי: מאמנים</Text>
                 <LocalImage
                   source={require('src/assets/image/ic_sort_black.png')}
                   style={{ width: 24, height: 24 }}
@@ -116,7 +116,7 @@ class FilterByCoachPopup extends React.Component {
                     )}
                     <HorizontalLayout
                       style={{ alignItems: 'center', justifyContent: 'space-between' }}>
-                      <Text style={{ fontSize: 16, lineHeight: 19 }}>{item.name}</Text>
+                      <Text style={{ fontSize: 16, lineHeight: 19, fontFamily: 'Danidin' }}>{item.name}</Text>
                       <View style={{ width: 45, height: 30, overflow: 'hidden', marginLeft: 6 }}>
                         <FastImage
                           source={{ uri: item.avatar ? item.avatar : IMAGE_FOO_URL }}

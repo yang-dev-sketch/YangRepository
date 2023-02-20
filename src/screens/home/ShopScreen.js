@@ -172,7 +172,8 @@ export default class ShopScreen extends React.Component {
                   lineHeight: 22,
                   letterSpacing: 1,
                   color: '#000',
-                  fontWeight: '700'
+                  fontWeight: '700',
+                  fontFamily: 'Danidin',
                 }}>
                 חנות
               </Text>
@@ -203,14 +204,42 @@ export default class ShopScreen extends React.Component {
                     style={{ width: 11.67, height: 13.33 }}
                   />
                 </View>
-                <Text style={{ fontSize: 24, lineHeight: 29, color: '#000', fontWeight: '700' }}>5</Text>
-                <Text numberOfLines={2} style={{ width: '50%', color: '#000' }}>
+                <Text
+                  style={{
+                    fontSize: 24,
+                    lineHeight: 29,
+                    color: '#000',
+                    fontWeight: '700',
+                    fontFamily: 'Danidin',
+                  }}>
+                  5
+                </Text>
+                <Text
+                  numberOfLines={2}
+                  style={{ width: '50%', color: '#000', fontFamily: 'Danidin' }}>
                   נמכר בחודש
                 </Text>
               </HorizontalLayout>
               <HorizontalLayout style={styles.total_item}>
-                <Text style={{ fontSize: 24, lineHeight: 29, color: '#688EF8', fontWeight: '700' }}>100K</Text>
-                <Text numberOfLines={2} style={{ width: '50%', color: '#000', fontSize: 14, lineHeight: 17 }}>
+                <Text
+                  style={{
+                    fontSize: 24,
+                    lineHeight: 29,
+                    color: '#688EF8',
+                    fontWeight: '700',
+                    fontFamily: 'Danidin',
+                  }}>
+                  100K
+                </Text>
+                <Text
+                  numberOfLines={2}
+                  style={{
+                    width: '50%',
+                    color: '#000',
+                    fontSize: 14,
+                    lineHeight: 17,
+                    fontFamily: 'Danidin',
+                  }}>
                   נמכר
                 </Text>
               </HorizontalLayout>
@@ -232,7 +261,8 @@ export default class ShopScreen extends React.Component {
                     lineHeight: 19.2,
                     color: '#5C9DF2',
                     textDecorationLine: 'underline',
-                    fontWeight: '600'
+                    fontWeight: '600',
+                    fontFamily: 'Danidin',
                   }}>
                   סינון
                 </Text>
@@ -280,7 +310,10 @@ export default class ShopScreen extends React.Component {
               }}>
               <HorizontalLayout
                 style={{ alignItems: 'center', justifyContent: 'center', paddingVertical: 15 }}>
-                <Text style={{ fontSize: 16, lineHeight: 19.2, color: '#000' }}>להוסיף מוצר</Text>
+                <Text
+                  style={{ fontSize: 16, lineHeight: 19.2, color: '#000', fontFamily: 'Danidin' }}>
+                  להוסיף מוצר
+                </Text>
                 <LocalImage
                   source={require('src/assets/image/ic_plus_sign.png')}
                   style={{ width: 24, height: 24, marginLeft: 6 }}

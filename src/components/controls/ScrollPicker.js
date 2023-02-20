@@ -207,6 +207,7 @@ let styles = StyleSheet.create({
   },
   itemText: {
     color: '#999',
+    fontFamily: 'Danidin'
   },
   itemTextSelected: {
     color: '#333',

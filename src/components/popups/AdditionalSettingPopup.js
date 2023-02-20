@@ -72,7 +72,7 @@ class AdditionalSettingPopup extends React.Component {
                   />
                 </Button>
               </HorizontalLayout>
-              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>סוג מסלול:</Text>
+              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600', fontFamily: 'Danidin' }}>סוג מסלול:</Text>
             </HorizontalLayout>
             <View
               style={{
@@ -81,9 +81,9 @@ class AdditionalSettingPopup extends React.Component {
                 borderBottomColor: '#F2F2F2',
                 marginBottom: 20,
               }}>
-              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000', fontWeight: '600' }}>תכונות ייחודיות</Text>
+              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000', fontWeight: '600', fontFamily: 'Danidin' }}>תכונות ייחודיות</Text>
             </View>
-            <Text style={{ fontSize: 16, lineHeight: 19.2, marginBottom: 15 }}>הגדרות נוספות</Text>
+            <Text style={{ fontSize: 16, lineHeight: 19.2, marginBottom: 15, fontFamily: 'Danidin' }}>הגדרות נוספות</Text>
             <Button
               onPress={() => {
                 this.setState({ additionSetting: 'removeCalOfActive' });
@@ -111,7 +111,7 @@ class AdditionalSettingPopup extends React.Component {
                   style={{ width: 23, height: 23 }}
                 />
               )}
-              <Text style={{ fontSize: 16, lineHeight: 19.2 }}>הסר מחישוב החברים הפעילים</Text>
+              <Text style={{ fontSize: 16, lineHeight: 19.2, fontFamily: 'Danidin' }}>הסר מחישוב החברים הפעילים</Text>
             </Button>
             <Button
               onPress={() => {
@@ -140,7 +140,7 @@ class AdditionalSettingPopup extends React.Component {
                   style={{ width: 23, height: 23 }}
                 />
               )}
-              <Text style={{ fontSize: 16, lineHeight: 19.2 }}>מוגדר כחברות בחינם</Text>
+              <Text style={{ fontSize: 16, lineHeight: 19.2, fontFamily: 'Danidin' }}>מוגדר כחברות בחינם</Text>
             </Button>
             <ActiveButton
               text="הבא"

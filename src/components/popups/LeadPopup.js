@@ -115,7 +115,7 @@ class LeadPopup extends React.Component {
                   style={{ width: 31, height: 31 }}
                 />
               </Button>
-              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>לידים</Text>
+              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600', fontFamily: 'Danidin' }}>לידים</Text>
             </HorizontalLayout>
             <HorizontalLayout style={{ justifyContent: 'space-between', paddingHorizontal: 20 }}>
               <TotalItem amount={94} text="לידים נרשמו" color="#43C7FF"></TotalItem>
@@ -165,7 +165,7 @@ class LeadPopup extends React.Component {
                   />
                 </HorizontalLayout>
               </Button>
-              <Text style={{ fontSize: 18, lineHeight: 22 }}>{this.renderSelected()}</Text>
+              <Text style={{ fontSize: 18, lineHeight: 22, fontFamily: 'Danidin' }}>{this.renderSelected()}</Text>
             </HorizontalLayout>
             <ScrollView style={{ paddingHorizontal: 20 }}>
               <Timeline

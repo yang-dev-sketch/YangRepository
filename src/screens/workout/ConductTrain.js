@@ -164,7 +164,7 @@ export default class ConductTrain extends React.Component {
     // requestPost(API.Home.add_workout, {
     // }).then(async (result) => {
     //   if (result.code == API_RES_CODE.SUCCESS) {
-    Toast.show(<ToastContainer title={"אימון עודכן בהצלחה"} />, {
+    Toast.show(<ToastContainer title={'אימון עודכן בהצלחה'} />, {
       duration: 3000,
       position: 20,
       opacity: 1,
@@ -271,6 +271,7 @@ export default class ConductTrain extends React.Component {
                   lineHeight: 22,
                   color: '#000',
                   fontWeight: '600',
+                  fontFamily: 'Danidin',
                 }}>
                 עריכת אימון
               </Text>
@@ -326,7 +327,8 @@ export default class ConductTrain extends React.Component {
             />
             <HorizontalLayout
               style={{ alignItems: 'center', justifyContent: 'flex-end', marginBottom: 10 }}>
-              <Text style={{ fontSize: 16, lineHeight: 19, color: '#6F6F6F' }}>
+              <Text
+                style={{ fontSize: 16, lineHeight: 19, color: '#6F6F6F', fontFamily: 'Danidin' }}>
                 {this.state.selectedCoachName}
               </Text>
               <LocalImage
@@ -348,7 +350,9 @@ export default class ConductTrain extends React.Component {
                 source={require('src/assets/image/ic_edit_black.png')}
                 style={[{ width: 15.93, height: 15.93, marginLeft: 2.5 }]}
               />
-              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>עריכת המאמנים</Text>
+              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000', fontFamily: 'Danidin' }}>
+                עריכת המאמנים
+              </Text>
             </Button>
             <SetValueGroup
               style={[Styles.input_wrapper, { marginBottom: 13, backgroundColor: '#F5F5F5' }]}
@@ -395,14 +399,16 @@ export default class ConductTrain extends React.Component {
                 source={require('src/assets/image/ic_edit.png')}
                 style={[{ width: 15.93, height: 15.93, marginLeft: 2.5 }]}
               />
-              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>עריכת המשתתפים</Text>
+              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000', fontFamily: 'Danidin' }}>
+                עריכת המשתתפים
+              </Text>
             </Button>
             <HorizontalLayout
               style={{ alignItems: 'center', justifyContent: 'flex-end', marginBottom: 10 }}>
               <Text
                 style={[
                   (this.state.createSameWorkout && { color: '#0D65D9' }) || { color: '#000' },
-                  { fontSize: 16, lineHeight: 19 },
+                  { fontSize: 16, lineHeight: 19, fontFamily: 'Danidin' },
                 ]}>
                 יצירת אותו אימון
               </Text>
@@ -417,7 +423,9 @@ export default class ConductTrain extends React.Component {
             </HorizontalLayout>
             <HorizontalLayout
               style={{ alignItems: 'center', justifyContent: 'flex-end', marginBottom: 10 }}>
-              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>יצירת אותו אימון</Text>
+              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000', fontFamily: 'Danidin' }}>
+                יצירת אותו אימון
+              </Text>
               <CheckBox
                 style={{ marginLeft: 4 }}
                 value={this.state.addSaved}
@@ -428,7 +436,9 @@ export default class ConductTrain extends React.Component {
             </HorizontalLayout>
             <HorizontalLayout
               style={{ alignItems: 'center', justifyContent: 'flex-end', marginBottom: 10 }}>
-              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>אימון שקוף</Text>
+              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000', fontFamily: 'Danidin' }}>
+                אימון שקוף
+              </Text>
               <CheckBox
                 style={{ marginLeft: 4 }}
                 value={this.state.trasparent}

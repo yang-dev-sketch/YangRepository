@@ -283,8 +283,8 @@ export default class ProfileScreen extends React.Component {
       firstName: 'X',
       lastName: '',
       avatar: '',
-      firstPhone: '052',
-      secondPhone: '00000000',
+      firstPhone: '1',
+      secondPhone: '5555215554',
       mail: 'mastya1106@gmail.com',
       birthday: '1998-11-06',
       paidUp: 549.9,
@@ -324,6 +324,7 @@ export default class ProfileScreen extends React.Component {
                   letterSpacing: 1,
                   color: '#000',
                   fontWeight: '600',
+                  fontFamily: 'Danidin',
                 }}>
                 הפרופיל של {this.state.profileInfo.firstName} {this.state.profileInfo.lastName}
               </Text>
@@ -371,14 +372,29 @@ export default class ProfileScreen extends React.Component {
                 </View>
               </HorizontalLayout>
               <VerticalLayout style={{ alignItems: 'flex-end' }}>
-                <Text style={{ fontSize: 14, lineHeight: 17, marginBottom: 5, color: '#000' }}>
+                <Text
+                  style={{
+                    fontSize: 14,
+                    lineHeight: 17,
+                    marginBottom: 5,
+                    color: '#000',
+                    fontFamily: 'Danidin',
+                  }}>
                   {this.state.profileInfo.firstPhone} - {this.state.profileInfo.secondPhone}
                 </Text>
-                <Text style={{ fontSize: 14, lineHeight: 17, marginBottom: 10, color: '#000' }}>
+                <Text
+                  style={{
+                    fontSize: 14,
+                    lineHeight: 17,
+                    marginBottom: 10,
+                    color: '#000',
+                    fontFamily: 'Danidin',
+                  }}>
                   {this.state.profileInfo.mail}
                 </Text>
                 <HorizontalLayout>
-                  <Text style={{ fontSize: 14, lineHeight: 17, color: '#000' }}>
+                  <Text
+                    style={{ fontSize: 14, lineHeight: 17, color: '#000', fontFamily: 'Danidin' }}>
                     {CommonUtils.getBirthday(this.state.profileInfo.birthday)}
                   </Text>
                   <LocalImage
@@ -468,7 +484,13 @@ export default class ProfileScreen extends React.Component {
                       justifyContent: 'center',
                     }}>
                     <Text
-                      style={{ fontSize: 16, lineHeight: 19, color: 'white', fontWeight: '600' }}>
+                      style={{
+                        fontSize: 16,
+                        lineHeight: 19,
+                        color: 'white',
+                        fontWeight: '600',
+                        fontFamily: 'Danidin',
+                      }}>
                       {this.state.profileInfo.previousTrain}
                     </Text>
                   </View>
@@ -494,7 +516,13 @@ export default class ProfileScreen extends React.Component {
                       justifyContent: 'center',
                     }}>
                     <Text
-                      style={{ fontSize: 16, lineHeight: 19, color: 'white', fontWeight: '600' }}>
+                      style={{
+                        fontSize: 16,
+                        lineHeight: 19,
+                        color: 'white',
+                        fontWeight: '600',
+                        fontFamily: 'Danidin',
+                      }}>
                       {this.state.futureList.length}
                     </Text>
                   </View>
@@ -566,12 +594,18 @@ export default class ProfileScreen extends React.Component {
                             lineHeight: 19,
                             color: '#000',
                             fontWeight: '600',
+                            fontFamily: 'Danidin',
                           }}>
                           סוג מסלול:
                         </Text>
                         <Text
                           numberOfLines={2}
-                          style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>
+                          style={{
+                            fontSize: 16,
+                            lineHeight: 19,
+                            color: '#000',
+                            fontFamily: 'Danidin',
+                          }}>
                           כרטיס ניקוב 10 מתוך 12, המנוי מופעל ב-X, מתחדש בעוד Y פעמים
                         </Text>
                       </VerticalLayout>
@@ -601,7 +635,13 @@ export default class ProfileScreen extends React.Component {
                 }}>
                 <HorizontalLayout style={styles.profile_item}>
                   <LocalImage source={require('src/assets/image/ic_round_left.png')} />
-                  <Text style={{ fontSize: 16, lineHeight: 19, color: '#FC2121' }}>
+                  <Text
+                    style={{
+                      fontSize: 16,
+                      lineHeight: 19,
+                      color: '#FC2121',
+                      fontFamily: 'Danidin',
+                    }}>
                     ({this.state.profileInfo.task})
                   </Text>
                   <Text
@@ -609,6 +649,7 @@ export default class ProfileScreen extends React.Component {
                       fontSize: 16,
                       lineHeight: 19,
                       color: '#000',
+                      fontFamily: 'Danidin',
                     }}
                     numberOfLines={1}>
                     משימות

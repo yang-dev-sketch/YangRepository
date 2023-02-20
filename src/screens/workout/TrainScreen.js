@@ -229,6 +229,7 @@ export default class TrainScreen extends React.Component {
                   letterSpacing: 1,
                   color: '#000',
                   fontWeight: '700',
+                  fontFamily: 'Danidin',
                 }}>
                 אימונים
               </Text>
@@ -257,7 +258,7 @@ export default class TrainScreen extends React.Component {
                   backgroundColor: 'white',
                   elevation: 2,
                 }}>
-                <Text style={{ fontSize: 18, lineHeight: 22, color: '#1E6FD9', fontWeight: '600' }}>
+                <Text style={{ fontSize: 18, lineHeight: 22, color: '#1E6FD9', fontWeight: '600', fontFamily: 'Danidin' }}>
                   יוגה
                 </Text>
               </Button>
@@ -270,7 +271,7 @@ export default class TrainScreen extends React.Component {
                   backgroundColor: 'white',
                   elevation: 2,
                 }}>
-                <Text style={{ fontSize: 18, lineHeight: 22, color: '#43C7FF', fontWeight: '600' }}>
+                <Text style={{ fontSize: 18, lineHeight: 22, color: '#43C7FF', fontWeight: '600', fontFamily: 'Danidin' }}>
                   פילאטיס
                 </Text>
               </Button>
@@ -283,7 +284,7 @@ export default class TrainScreen extends React.Component {
                   backgroundColor: 'white',
                   elevation: 2,
                 }}>
-                <Text style={{ fontSize: 18, lineHeight: 22, color: '#5C9DF2', fontWeight: '600' }}>
+                <Text style={{ fontSize: 18, lineHeight: 22, color: '#5C9DF2', fontWeight: '600', fontFamily: 'Danidin' }}>
                   קבוצתי
                 </Text>
               </Button>
@@ -296,7 +297,7 @@ export default class TrainScreen extends React.Component {
                   backgroundColor: 'white',
                   elevation: 2,
                 }}>
-                <Text style={{ fontSize: 18, lineHeight: 22, color: '#94BDF2', fontWeight: '600' }}>
+                <Text style={{ fontSize: 18, lineHeight: 22, color: '#94BDF2', fontWeight: '600', fontFamily: 'Danidin' }}>
                   הכל
                 </Text>
               </Button>
@@ -313,7 +314,7 @@ export default class TrainScreen extends React.Component {
                 marginTop: 15,
                 marginBottom: 16.25,
               }}>
-              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>
+              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600', fontFamily: 'Danidin' }}>
                 {this.renderSelected()} | 01
               </Text>
             </HorizontalLayout>

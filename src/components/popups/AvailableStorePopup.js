@@ -66,7 +66,7 @@ class AvailableStorePopup extends React.Component {
                   />
                 </Button>
               </HorizontalLayout>
-              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>סוג מסלול:</Text>
+              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600', fontFamily: 'Danidin' }}>סוג מסלול:</Text>
             </HorizontalLayout>
             <View
               style={{
@@ -75,15 +75,15 @@ class AvailableStorePopup extends React.Component {
                 borderBottomColor: '#F2F2F2',
                 marginBottom: 20,
               }}>
-              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000', fontWeight: '600' }}>תכונות ייחודיות</Text>
+              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000', fontWeight: '600', fontFamily: 'Danidin' }}>תכונות ייחודיות</Text>
             </View>
-            <Text style={{ fontSize: 16, lineHeight: 19.2, marginBottom: 15 }}>זמין בחנות</Text>
+            <Text style={{ fontSize: 16, lineHeight: 19.2, marginBottom: 15, fontFamily: 'Danidin' }}>זמין בחנות</Text>
             <SetValueGroup
               style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#F5F5F5' }]}
               title="רכישה חד פעמית תוגבל ל:"
               inputNode={
                 <HorizontalLayout style={{ alignItems: 'center', justifyContent: 'flex-end' }}>
-                  <Text style={{ fontSize: 16, lineHeight: 19, color: '#5C9DF2' }}>
+                  <Text style={{ fontSize: 16, lineHeight: 19, color: '#5C9DF2', fontFamily: 'Danidin' }}>
                     תשלומים עבור פריט זה
                   </Text>
                   <CommonInput

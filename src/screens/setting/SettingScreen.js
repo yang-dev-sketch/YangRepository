@@ -75,7 +75,7 @@ export default class SettingScreen extends React.Component {
     this.setState({ branchList: branchList });
   };
 
-  deleteBranch = () => {}
+  deleteBranch = () => {};
 
   render() {
     return (
@@ -104,6 +104,7 @@ export default class SettingScreen extends React.Component {
                   letterSpacing: 1,
                   color: '#000',
                   fontWeight: '700',
+                  fontFamily: 'Danidin',
                 }}>
                 הגדרות
               </Text>
@@ -155,7 +156,14 @@ export default class SettingScreen extends React.Component {
                       />
                     )}
                     <HorizontalLayout style={{ alignItems: 'center' }}>
-                      <Text style={{ fontSize: 16, lineHeight: 19, marginRight: 7, color: '#000' }}>
+                      <Text
+                        style={{
+                          fontSize: 16,
+                          lineHeight: 19,
+                          marginRight: 7,
+                          color: '#000',
+                          fontFamily: 'Danidin',
+                        }}>
                         {item.name}
                       </Text>
                       {item.id !== 5 && (

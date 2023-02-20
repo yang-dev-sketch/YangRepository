@@ -50,6 +50,7 @@ export default class PaymentMethodScreen extends React.Component {
                 letterSpacing: 1,
                 color: '#000',
                 fontWeight: '700',
+                fontFamily: 'Danidin',
               }}>
               הגדרות
             </Text>
@@ -67,6 +68,7 @@ export default class PaymentMethodScreen extends React.Component {
               marginBottom: 20,
               color: '#000',
               fontWeight: '600',
+              fontFamily: 'Danidin',
             }}>
             עריכת אזור עסקי
           </Text>
@@ -77,6 +79,7 @@ export default class PaymentMethodScreen extends React.Component {
               marginBottom: 15,
               color: '#000',
               fontWeight: '600',
+              fontFamily: 'Danidin',
             }}>
             את פרטי אמצעי התשלום
           </Text>

@@ -35,12 +35,12 @@ class NotiItem extends React.Component {
                 alignItems: 'flex-start',
                 justifyContent: 'space-between',
               }}>
-              <Text style={{ fontSize: 14, lineHeight: 22, color: '#1E6FD9', fontWeight: '600' }}>
+              <Text style={{ fontSize: 14, lineHeight: 22, color: '#1E6FD9', fontWeight: '600', fontFamily: 'Danidin' }}>
                 {CommonUtils.getFormatedDate(data.date, 'hh:mm')}
               </Text>
               <HorizontalLayout>
                 <VerticalLayout>
-                  <Text style={{ fontSize: 16, lineHeight: 19, color: '#000', fontWeight: '600' }}>{data.task}</Text>
+                  <Text style={{ fontSize: 16, lineHeight: 19, color: '#000', fontWeight: '600', fontFamily: 'Danidin' }}>{data.task}</Text>
                   <Text
                     style={{
                       fontSize: 14,
@@ -59,7 +59,7 @@ class NotiItem extends React.Component {
               </HorizontalLayout>
             </HorizontalLayout>
             <VerticalLayout style={{ paddingVertical: 10, paddingHorizontal: 15 }}>
-              <Text style={{ fontSize: 14, lineHeight: 17, marginBottom: 8, color: '#000' }}>
+              <Text style={{ fontSize: 14, lineHeight: 17, marginBottom: 8, color: '#000', fontFamily: 'Danidin' }}>
                 זוהי עובדה מבוססת שדעתו של ...
               </Text>
               <Button
@@ -87,7 +87,7 @@ class NotiItem extends React.Component {
                 style={{ fontSize: 16, lineHeight: 22, letterSpacing: -0.17, width: '70%', color: '#000' }}>
                 {data.title}
               </Text>
-              <Text numberOfLines={1} style={{ fontSize: 14, lineHeight: 22, color: '#979797' }}>
+              <Text numberOfLines={1} style={{ fontSize: 14, lineHeight: 22, color: '#979797', fontFamily: 'Danidin' }}>
                 {CommonUtils.getFormatedDate(data.date, 'hh:mm, DD.MM.YYYY')}
               </Text>
             </VerticalLayout>

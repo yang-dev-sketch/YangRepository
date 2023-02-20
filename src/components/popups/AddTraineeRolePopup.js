@@ -10,8 +10,8 @@ import { ScrollView } from 'react-navigation';
 import CommonInput from '../common/CommonInput';
 import { API, API_RES_CODE, SCREEN_HEIGHT } from '../../constants/Constants';
 import DropDownPicker from '../controls/DropDownPicker';
-import Toast from "react-native-root-toast";
-import ToastContainer from "../controls/ToastContainer";
+import Toast from 'react-native-root-toast';
+import ToastContainer from '../controls/ToastContainer';
 
 @observer
 class AddTraineeRolePopup extends React.Component {
@@ -92,7 +92,16 @@ class AddTraineeRolePopup extends React.Component {
                   />
                 </Button>
               </HorizontalLayout>
-              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>להזמין חדש</Text>
+              <Text
+                style={{
+                  fontSize: 18,
+                  lineHeight: 22,
+                  color: '#000',
+                  fontWeight: '600',
+                  fontFamily: 'Danidin',
+                }}>
+                להזמין חדש
+              </Text>
             </HorizontalLayout>
             <ScrollView showsVerticalScrollIndicator={false}>
               <SetValueGroup
@@ -154,7 +163,10 @@ class AddTraineeRolePopup extends React.Component {
                   />
                 }
               />
-              <Text style={{ fontSize: 16, lineHeight: 19, marginVertical: 15 }}>הקצה תפקיד</Text>
+              <Text
+                style={{ fontSize: 16, lineHeight: 19, marginVertical: 15, fontFamily: 'Danidin' }}>
+                הקצה תפקיד
+              </Text>
               <FlatList
                 ref={(ref) => {
                   this._flContent = ref;
@@ -187,7 +199,9 @@ class AddTraineeRolePopup extends React.Component {
                           style={{ width: 22, height: 22 }}
                         />
                       )}
-                      <Text style={{ fontSize: 16, lineHeight: 19 }}>{item.name}</Text>
+                      <Text style={{ fontSize: 16, lineHeight: 19, fontFamily: 'Danidin' }}>
+                        {item.name}
+                      </Text>
                     </Button>
                   );
                 }}

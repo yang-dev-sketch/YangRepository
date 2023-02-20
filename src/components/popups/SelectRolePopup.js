@@ -78,10 +78,10 @@ class SelectRolePopup extends React.Component {
                   />
                 </Button>
               </HorizontalLayout>
-              <Text style={{ fontSize: 18, lineHeight: 22 }}>להזמין חדש</Text>
+              <Text style={{ fontSize: 18, lineHeight: 22, fontFamily: 'Danidin' }}>להזמין חדש</Text>
             </HorizontalLayout>
             <ScrollView showsVerticalScrollIndicator={false}>
-              <Text style={{ fontSize: 16, lineHeight: 19, marginBottom: 15 }}>הקצה תפקיד</Text>
+              <Text style={{ fontSize: 16, lineHeight: 19, marginBottom: 15, fontFamily: 'Danidin' }}>הקצה תפקיד</Text>
               <FlatList
                 ref={(ref) => {
                   this._flContent = ref;
@@ -114,7 +114,7 @@ class SelectRolePopup extends React.Component {
                           style={{ width: 22, height: 22 }}
                         />
                       )}
-                      <Text style={{ fontSize: 16, lineHeight: 19 }}>{item.name}</Text>
+                      <Text style={{ fontSize: 16, lineHeight: 19, fontFamily: 'Danidin' }}>{item.name}</Text>
                     </Button>
                   );
                 }}

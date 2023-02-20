@@ -69,9 +69,9 @@ export default class TimePicker extends React.Component {
                         alignItems: 'center',
                         justifyContent: 'space-evenly',
                       }}>
-                      <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>{data.value}</Text>
-                      <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>:</Text>
-                      <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>00</Text>
+                      <Text style={{ fontSize: 16, lineHeight: 19, color: '#000', fontFamily: 'Danidin' }}>{data.value}</Text>
+                      <Text style={{ fontSize: 16, lineHeight: 19, color: '#000', fontFamily: 'Danidin' }}>:</Text>
+                      <Text style={{ fontSize: 16, lineHeight: 19, color: '#000', fontFamily: 'Danidin' }}>00</Text>
                     </HorizontalLayout>
                   </Button>
                 );
@@ -148,13 +148,13 @@ export default class TimePicker extends React.Component {
               justifyContent: 'space-evenly',
               flexDirection: 'row',
             }}>
-            <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>
+            <Text style={{ fontSize: 16, lineHeight: 19, color: '#000', fontFamily: 'Danidin' }}>
               {this.props.selectedValue < 10
                 ? '0' + Number(this.props.selectedValue)
                 : Number(this.props.selectedValue)}
             </Text>
-            <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>:</Text>
-            <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>00</Text>
+            <Text style={{ fontSize: 16, lineHeight: 19, color: '#000', fontFamily: 'Danidin' }}>:</Text>
+            <Text style={{ fontSize: 16, lineHeight: 19, color: '#000', fontFamily: 'Danidin' }}>00</Text>
           </Button>
         )}
       </View>

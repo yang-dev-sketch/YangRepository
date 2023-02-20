@@ -64,7 +64,7 @@ export default class PaymentDetailScreen extends AppScreen {
         cvv: this.state.cvv,
         cardHolderName: this.state.cardHolderName,
       }).then((result) => {
-        console.log(result)
+        console.log(result);
         if (result.success) {
           requestPost(API.Regist.regist_coach, {
             avatar: this.props.navigation.getParam('userPhoto'),
@@ -112,10 +112,18 @@ export default class PaymentDetailScreen extends AppScreen {
                 marginBottom: 5,
                 color: '#000',
                 fontWeight: '700',
+                fontFamily: 'Danidin',
               }}>
               {Langs.regist.payment_detail}
             </Text>
-            <Text style={{ fontSize: 16, lineHeight: 19, marginBottom: 20, color: '#000' }}>
+            <Text
+              style={{
+                fontSize: 16,
+                lineHeight: 19,
+                marginBottom: 20,
+                color: '#000',
+                fontFamily: 'Danidin',
+              }}>
               {Langs.regist.business_registration}
             </Text>
             <PaymentMethodCard
@@ -143,6 +151,7 @@ export default class PaymentDetailScreen extends AppScreen {
                 marginBottom: 20,
                 marginTop: 25,
                 color: '#000',
+                fontFamily: 'Danidin',
               }}>
               {Langs.regist.lorem_ipsum}
             </Text>

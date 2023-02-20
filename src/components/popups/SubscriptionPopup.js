@@ -92,12 +92,12 @@ class SubscriptionPopup extends React.Component {
                   />
                 </Button>
               </HorizontalLayout>
-              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>
+              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600', fontFamily: 'Danidin' }}>
                 סוג מסלול:
               </Text>
             </HorizontalLayout>
             <ScrollView style={{ paddingHorizontal: 20 }}>
-              <Text style={{ fontSize: 18, lineHeight: 22, textAlign: 'right', marginBottom: 15 }}>
+              <Text style={{ fontSize: 18, lineHeight: 22, textAlign: 'right', marginBottom: 15, fontFamily: 'Danidin' }}>
                 מִנוּי
               </Text>
               <SetValueGroup
@@ -259,7 +259,7 @@ class SubscriptionPopup extends React.Component {
                 </Button>
               )}
               {this.props.selectedMembershipId !== 1 && (
-                <Text style={{ marginBottom: 45 }}>ברירת המחדל הינה לכל הסוגים</Text>
+                <Text style={{ marginBottom: 45, fontFamily: 'Danidin' }}>ברירת המחדל הינה לכל הסוגים</Text>
               )}
               {this.props.selectedMembershipId === 1 && (
                 <Button
@@ -274,6 +274,7 @@ class SubscriptionPopup extends React.Component {
                       textDecorationLine: 'underline',
                       marginTop: 15,
                       marginBottom: 40,
+                      fontFamily: 'Danidin'
                     }}>
                     הגדרות נוספות
                   </Text>

@@ -95,7 +95,7 @@ class NotiPopup extends React.Component {
                   style={{ width: 31, height: 31 }}
                 />
               </Button>
-              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>התראות</Text>
+              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600', fontFamily: 'Danidin' }}>התראות</Text>
             </HorizontalLayout>
             <View style={{ paddingHorizontal: 20 }}>
               <SearchInput

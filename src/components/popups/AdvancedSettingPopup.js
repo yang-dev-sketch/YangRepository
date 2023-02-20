@@ -34,6 +34,7 @@ class AdvancedSettingPopup extends React.Component {
                   height: 3,
                   borderRadius: 5,
                   backgroundColor: '#000',
+                  fontFamily: 'Danidin',
                   opacity: 0.2,
                 }}></View>
             </View>
@@ -63,7 +64,17 @@ class AdvancedSettingPopup extends React.Component {
                   />
                 </Button>
               </HorizontalLayout>
-              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>סוג מסלול:</Text>
+              <Text
+                style={{
+                  fontSize: 18,
+                  lineHeight: 22,
+                  color: '#000',
+                  fontFamily: 'Danidin',
+                  fontWeight: '600',
+                  fontFamily: 'Danidin',
+                }}>
+                סוג מסלול:
+              </Text>
             </HorizontalLayout>
             <View
               style={{
@@ -72,7 +83,17 @@ class AdvancedSettingPopup extends React.Component {
                 borderBottomColor: '#F2F2F2',
                 marginBottom: 15,
               }}>
-              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000', fontWeight: '600' }}>הגדרות מתקדמות</Text>
+              <Text
+                style={{
+                  fontSize: 16,
+                  lineHeight: 19,
+                  color: '#000',
+                  fontFamily: 'Danidin',
+                  fontWeight: '600',
+                  fontFamily: 'Danidin',
+                }}>
+                הגדרות מתקדמות
+              </Text>
             </View>
             <SearchInput
               style={{ marginBottom: 15 }}
@@ -90,7 +111,15 @@ class AdvancedSettingPopup extends React.Component {
                   source={require('src/assets/image/ic_round_left.png')}
                   style={{ width: 23, height: 23 }}
                 />
-                <Text style={{ fontSize: 16, lineHeight: 19, width: '90%', color: '#000' }} numberOfLines={2}>
+                <Text
+                  style={{
+                    fontSize: 16,
+                    lineHeight: 19,
+                    width: '90%',
+                    color: '#000',
+                    fontFamily: 'Danidin',
+                  }}
+                  numberOfLines={2}>
                   שם מוצר
                 </Text>
               </Button>
@@ -103,7 +132,15 @@ class AdvancedSettingPopup extends React.Component {
                   source={require('src/assets/image/ic_round_left.png')}
                   style={{ width: 23, height: 23 }}
                 />
-                <Text style={{ fontSize: 16, lineHeight: 19, width: '90%', color: '#000' }} numberOfLines={2}>
+                <Text
+                  style={{
+                    fontSize: 16,
+                    lineHeight: 19,
+                    width: '90%',
+                    color: '#000',
+                    fontFamily: 'Danidin',
+                  }}
+                  numberOfLines={2}>
                   תוכנית תשלומים חוזרים
                 </Text>
               </Button>
@@ -116,7 +153,15 @@ class AdvancedSettingPopup extends React.Component {
                   source={require('src/assets/image/ic_round_left.png')}
                   style={{ width: 23, height: 23 }}
                 />
-                <Text style={{ fontSize: 16, lineHeight: 19, width: '90%', color: '#000' }} numberOfLines={2}>
+                <Text
+                  style={{
+                    fontSize: 16,
+                    lineHeight: 19,
+                    width: '90%',
+                    color: '#000',
+                    fontFamily: 'Danidin',
+                  }}
+                  numberOfLines={2}>
                   הגבלת סוגי אימון
                 </Text>
               </Button>
@@ -129,7 +174,15 @@ class AdvancedSettingPopup extends React.Component {
                   source={require('src/assets/image/ic_round_left.png')}
                   style={{ width: 23, height: 23 }}
                 />
-                <Text style={{ fontSize: 16, lineHeight: 19, width: '90%', color: '#000' }} numberOfLines={2}>
+                <Text
+                  style={{
+                    fontSize: 16,
+                    lineHeight: 19,
+                    width: '90%',
+                    color: '#000',
+                    fontFamily: 'Danidin',
+                  }}
+                  numberOfLines={2}>
                   לאפשר לפי הגדרת התדירות אימונים
                 </Text>
               </Button>
@@ -142,7 +195,15 @@ class AdvancedSettingPopup extends React.Component {
                   source={require('src/assets/image/ic_round_left.png')}
                   style={{ width: 23, height: 23 }}
                 />
-                <Text style={{ fontSize: 16, lineHeight: 19, width: '90%', color: '#000' }} numberOfLines={2}>
+                <Text
+                  style={{
+                    fontSize: 16,
+                    lineHeight: 19,
+                    width: '90%',
+                    color: '#000',
+                    fontFamily: 'Danidin',
+                  }}
+                  numberOfLines={2}>
                   לאפשר הזמנה רק בימים ספציפיים
                 </Text>
               </Button>
@@ -155,7 +216,15 @@ class AdvancedSettingPopup extends React.Component {
                   source={require('src/assets/image/ic_round_left.png')}
                   style={{ width: 23, height: 23 }}
                 />
-                <Text style={{ fontSize: 16, lineHeight: 19, width: '90%', color: '#000' }} numberOfLines={2}>
+                <Text
+                  style={{
+                    fontSize: 16,
+                    lineHeight: 19,
+                    width: '90%',
+                    color: '#000',
+                    fontFamily: 'Danidin',
+                  }}
+                  numberOfLines={2}>
                   הגבלת שעות
                 </Text>
               </Button>
@@ -168,7 +237,15 @@ class AdvancedSettingPopup extends React.Component {
                   source={require('src/assets/image/ic_round_left.png')}
                   style={{ width: 23, height: 23 }}
                 />
-                <Text style={{ fontSize: 16, lineHeight: 19, width: '90%', color: '#000' }} numberOfLines={2}>
+                <Text
+                  style={{
+                    fontSize: 16,
+                    lineHeight: 19,
+                    width: '90%',
+                    color: '#000',
+                    fontFamily: 'Danidin',
+                  }}
+                  numberOfLines={2}>
                   הזמן על מקום פנוי
                 </Text>
               </Button>
@@ -181,7 +258,15 @@ class AdvancedSettingPopup extends React.Component {
                   source={require('src/assets/image/ic_round_left.png')}
                   style={{ width: 23, height: 23 }}
                 />
-                <Text style={{ fontSize: 16, lineHeight: 19, width: '90%', color: '#000' }} numberOfLines={2}>
+                <Text
+                  style={{
+                    fontSize: 16,
+                    lineHeight: 19,
+                    width: '90%',
+                    color: '#000',
+                    fontFamily: 'Danidin',
+                  }}
+                  numberOfLines={2}>
                   לאפשר עונשים או הגבלות עקב מספר גבוה של היעדרויות
                 </Text>
               </Button>
@@ -194,7 +279,15 @@ class AdvancedSettingPopup extends React.Component {
                   source={require('src/assets/image/ic_round_left.png')}
                   style={{ width: 23, height: 23 }}
                 />
-                <Text style={{ fontSize: 16, lineHeight: 19, width: '90%', color: '#000' }} numberOfLines={2}>
+                <Text
+                  style={{
+                    fontSize: 16,
+                    lineHeight: 19,
+                    width: '90%',
+                    color: '#000',
+                    fontFamily: 'Danidin',
+                  }}
+                  numberOfLines={2}>
                   הגדרות אחרות
                 </Text>
               </Button>

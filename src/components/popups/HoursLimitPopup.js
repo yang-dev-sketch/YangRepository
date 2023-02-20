@@ -68,7 +68,7 @@ class HoursLimitPopup extends React.Component {
                   />
                 </Button>
               </HorizontalLayout>
-              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>
+              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600', fontFamily: 'Danidin' }}>
                 סוג מסלול:
               </Text>
             </HorizontalLayout>
@@ -79,12 +79,12 @@ class HoursLimitPopup extends React.Component {
                 borderBottomColor: '#F2F2F2',
                 marginBottom: 20,
               }}>
-              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000', fontWeight: '600' }}>
+              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000', fontWeight: '600', fontFamily: 'Danidin' }}>
                 תכונות ייחודיות
               </Text>
             </View>
             <ScrollView scrollEnabled={this.state.scrollEnabled}>
-              <Text style={{ fontSize: 16, lineHeight: 19.2, marginBottom: 15, color: '#000' }}>
+              <Text style={{ fontSize: 16, lineHeight: 19.2, marginBottom: 15, color: '#000', fontFamily: 'Danidin' }}>
                 הגבלת שעות
               </Text>
               <FlatList
@@ -189,7 +189,7 @@ class HoursLimitPopup extends React.Component {
                   marginBottom: 45,
                   flexDirection: 'row',
                 }}>
-                <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>
+                <Text style={{ fontSize: 16, lineHeight: 19, color: '#000', fontFamily: 'Danidin' }}>
                   הוספת הגבלת זמן נוספת לרישום
                 </Text>
                 <LocalImage

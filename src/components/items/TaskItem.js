@@ -46,14 +46,14 @@ export default class TaskItem extends React.Component {
               style={{ width: 22.92, height: 22.92, marginRight: 10 }}
             />
             {CommonUtils.isBeforeToday(data.date) || (
-              <Text style={{ fontSize: 14, lineHeight: 22, fontWeight: '600', color: '#1E6FD9' }}>
+              <Text style={{ fontSize: 14, lineHeight: 22, fontWeight: '600', color: '#1E6FD9', fontFamily: 'Danidin' }}>
                 {moment(data.date).format('hh:mm')}
               </Text>
             )}
           </HorizontalLayout>
           <HorizontalLayout>
             <VerticalLayout>
-              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000', fontWeight: '600' }}>
+              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000', fontWeight: '600', fontFamily: 'Danidin' }}>
                 {data.name}
               </Text>
               <Text

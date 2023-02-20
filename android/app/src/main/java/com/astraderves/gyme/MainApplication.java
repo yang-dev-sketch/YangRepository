@@ -57,7 +57,7 @@ public class MainApplication extends Application implements ReactApplication {
     // I18nUtil sharedI18nUtilInstance = I18nUtil.getInstance(); // <== AmerllicA config
     // sharedI18nUtilInstance.forceRTL(this, true); // <== AmerllicA config
     // sharedI18nUtilInstance.allowRTL(this, true); // <== AmerllicA config
-    ReactFontManager.getInstance().addCustomFont(this, "Raleway", R.font.raleway);
+    ReactFontManager.getInstance().addCustomFont(this, "Danidin", R.font.danidin);
     SoLoader.init(this, /* native exopackage */ false);
     initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
   }

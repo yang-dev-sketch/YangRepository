@@ -30,7 +30,14 @@ class ProfileInfoItem extends React.Component {
           {(this.props.complex && (
             <VerticalLayout
               style={{ alignItems: 'flex-end', justifyContent: 'space-between', height: '100%' }}>
-              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000', fontWeight: '600' }}>
+              <Text
+                style={{
+                  fontSize: 16,
+                  lineHeight: 19,
+                  color: '#000',
+                  fontWeight: '600',
+                  fontFamily: 'Danidin',
+                }}>
                 {this.props.firstLineText}
               </Text>
               <HorizontalLayout style={{ alignItems: 'center' }}>
@@ -40,7 +47,9 @@ class ProfileInfoItem extends React.Component {
                     style={{ width: 12, height: 10, marginRight: 5 }}
                   />
                 )}
-                <Text style={this.props.secondLineTextStyle}>{this.props.secondLineText}</Text>
+                <Text style={[this.props.secondLineTextStyle, { fontFamily: 'Danidin' }]}>
+                  {this.props.secondLineText}
+                </Text>
               </HorizontalLayout>
             </VerticalLayout>
           )) || (
@@ -51,7 +60,7 @@ class ProfileInfoItem extends React.Component {
                 lineHeight: 19,
                 color: '#000',
                 fontWeight: '400',
-                marginRight: 7
+                marginRight: 7,
               }}
               numberOfLines={this.props.numberOfLines}>
               {this.props.text}

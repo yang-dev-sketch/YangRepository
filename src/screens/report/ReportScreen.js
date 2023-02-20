@@ -86,6 +86,7 @@ export default class ReportScreen extends React.Component {
                   letterSpacing: 1,
                   color: '#000',
                   fontWeight: '700',
+                  fontFamily: 'Danidin',
                 }}>
                 דוחות
               </Text>
@@ -118,6 +119,7 @@ export default class ReportScreen extends React.Component {
                           color: '#5C9DF2',
                           textDecorationLine: 'underline',
                           fontWeight: '600',
+                          fontFamily: 'Danidin',
                         }}>
                         למין
                       </Text>
@@ -148,7 +150,14 @@ export default class ReportScreen extends React.Component {
                   selectedItem.name === 'תאריך מותאם אישית' && this.setState({ customDate: true });
                 }}
               />
-              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000', fontWeight: '600' }}>
+              <Text
+                style={{
+                  fontSize: 16,
+                  lineHeight: 19,
+                  color: '#000',
+                  fontWeight: '600',
+                  fontFamily: 'Danidin',
+                }}>
                 חברות פעילה
               </Text>
             </HorizontalLayout>
@@ -180,16 +189,31 @@ export default class ReportScreen extends React.Component {
                     color: '#94CF0A',
                     marginLeft: 10,
                     fontWeight: '600',
+                    fontFamily: 'Danidin',
                   }}>
                   21
                 </Text>
               </HorizontalLayout>
               <HorizontalLayout style={{ alignItems: 'center' }}>
-                <Text style={{ fontSize: 16, lineHeight: 19, marginRight: 7, color: '#000' }}>
+                <Text
+                  style={{
+                    fontSize: 16,
+                    lineHeight: 19,
+                    marginRight: 7,
+                    color: '#000',
+                    fontFamily: 'Danidin',
+                  }}>
                   מנויים
                 </Text>
                 <View style={[styles.info_num, { backgroundColor: '#95B7EA' }]}>
-                  <Text style={{ fontSize: 18, lineHeight: 22, color: 'white', fontWeight: '600' }}>
+                  <Text
+                    style={{
+                      fontSize: 18,
+                      lineHeight: 22,
+                      color: 'white',
+                      fontWeight: '600',
+                      fontFamily: 'Danidin',
+                    }}>
                     {this.state.active_subscribers}
                   </Text>
                 </View>
@@ -220,16 +244,31 @@ export default class ReportScreen extends React.Component {
                     color: '#FF9797',
                     marginLeft: 10,
                     fontWeight: '600',
+                    fontFamily: 'Danidin',
                   }}>
                   21
                 </Text>
               </HorizontalLayout>
               <HorizontalLayout style={{ alignItems: 'center' }}>
-                <Text style={{ fontSize: 16, lineHeight: 19, marginRight: 7, color: '#000' }}>
+                <Text
+                  style={{
+                    fontSize: 16,
+                    lineHeight: 19,
+                    marginRight: 7,
+                    color: '#000',
+                    fontFamily: 'Danidin',
+                  }}>
                   כרטיסי ניקוב
                 </Text>
                 <View style={[styles.info_num, { backgroundColor: '#0D65D9' }]}>
-                  <Text style={{ fontSize: 18, lineHeight: 22, color: 'white', fontWeight: '600' }}>
+                  <Text
+                    style={{
+                      fontSize: 18,
+                      lineHeight: 22,
+                      color: 'white',
+                      fontWeight: '600',
+                      fontFamily: 'Danidin',
+                    }}>
                     {this.state.active_punchCard}
                   </Text>
                 </View>
@@ -242,6 +281,7 @@ export default class ReportScreen extends React.Component {
                 marginBottom: 15,
                 color: '#000',
                 fontWeight: '600',
+                fontFamily: 'Danidin',
               }}>
               חברות לא פעילה
             </Text>
@@ -250,13 +290,25 @@ export default class ReportScreen extends React.Component {
                 <HorizontalLayout style={styles.info_item}>
                   <View style={[styles.info_num, { backgroundColor: '#4399FF' }]}>
                     <Text
-                      style={{ fontSize: 18, lineHeight: 22, color: 'white', fontWeight: '600' }}>
+                      style={{
+                        fontSize: 18,
+                        lineHeight: 22,
+                        color: 'white',
+                        fontWeight: '600',
+                        fontFamily: 'Danidin',
+                      }}>
                       {this.state.inactive_punchCard}
                     </Text>
                   </View>
                   <Text
                     numberOfLines={2}
-                    style={{ fontSize: 16, lineHeight: 19, width: '50%', color: '#000' }}>
+                    style={{
+                      fontSize: 16,
+                      lineHeight: 19,
+                      width: '50%',
+                      color: '#000',
+                      fontFamily: 'Danidin',
+                    }}>
                     כרטיסי ניקוב
                   </Text>
                 </HorizontalLayout>
@@ -265,11 +317,19 @@ export default class ReportScreen extends React.Component {
                 <HorizontalLayout style={styles.info_item}>
                   <View style={[styles.info_num, { backgroundColor: '#43C7FF' }]}>
                     <Text
-                      style={{ fontSize: 18, lineHeight: 22, color: 'white', fontWeight: '600' }}>
+                      style={{
+                        fontSize: 18,
+                        lineHeight: 22,
+                        color: 'white',
+                        fontWeight: '600',
+                        fontFamily: 'Danidin',
+                      }}>
                       {this.state.inactive_subscriber}
                     </Text>
                   </View>
-                  <Text numberOfLines={1} style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>
+                  <Text
+                    numberOfLines={1}
+                    style={{ fontSize: 16, lineHeight: 19, color: '#000', fontFamily: 'Danidin' }}>
                     מנויים
                   </Text>
                 </HorizontalLayout>
@@ -294,7 +354,8 @@ export default class ReportScreen extends React.Component {
                     lineHeight: 19,
                     color: '#5C9DF2',
                     textDecorationLine: 'underline',
-                    fontWeight: '600'
+                    fontWeight: '600',
+                    fontFamily: 'Danidin',
                   }}>
                   סינון
                 </Text>
@@ -327,7 +388,16 @@ export default class ReportScreen extends React.Component {
                 onPress={() => {
                   this.setState({ tabIndex: 0 });
                 }}>
-                <Text style={{ fontSize: 16, lineHeight: 19, color: '#1E6FD9', fontWeight: '600' }}>כרטיסי ניקוב</Text>
+                <Text
+                  style={{
+                    fontSize: 16,
+                    lineHeight: 19,
+                    color: '#1E6FD9',
+                    fontWeight: '600',
+                    fontFamily: 'Danidin',
+                  }}>
+                  כרטיסי ניקוב
+                </Text>
               </Button>
               <Button
                 style={[
@@ -337,7 +407,16 @@ export default class ReportScreen extends React.Component {
                 onPress={() => {
                   this.setState({ tabIndex: 1 });
                 }}>
-                <Text style={{ fontSize: 16, lineHeight: 19, color: '#1E6FD9', fontWeight: '600' }}>מִנוּי</Text>
+                <Text
+                  style={{
+                    fontSize: 16,
+                    lineHeight: 19,
+                    color: '#1E6FD9',
+                    fontWeight: '600',
+                    fontFamily: 'Danidin',
+                  }}>
+                  מִנוּי
+                </Text>
               </Button>
             </HorizontalLayout>
             <FlatList
@@ -355,7 +434,15 @@ export default class ReportScreen extends React.Component {
                       style={{ width: 27, height: 27 }}
                     />
                     <HorizontalLayout style={{ alignItems: 'center' }}>
-                      <Text style={{ fontSize: 16, lineHeight: 19, marginRight: 5, fontWeight: '600', color: '#000' }}>
+                      <Text
+                        style={{
+                          fontSize: 16,
+                          lineHeight: 19,
+                          marginRight: 5,
+                          fontWeight: '600',
+                          color: '#000',
+                          fontFamily: 'Danidin',
+                        }}>
                         {item.name}
                       </Text>
                       <FastImage

@@ -9,7 +9,7 @@ import { requestGet, requestPost, requestUpload } from '../../utils/ApiUtils';
 import { ActiveButton, DisactiveButton } from '../../components/common';
 import LegalDocumentPopup from '../../components/popups/LegalDocumentPopup';
 import { AddBranchPopup, BranchPopup } from '../../components/popups';
-import moment from "moment/moment";
+import moment from 'moment/moment';
 
 @observer
 export default class SubscriptionScreen extends React.Component {
@@ -91,6 +91,7 @@ export default class SubscriptionScreen extends React.Component {
                   letterSpacing: 1,
                   color: '#000',
                   fontWeight: '700',
+                  fontFamily: 'Danidin',
                 }}>
                 הגדרות
               </Text>
@@ -108,11 +109,15 @@ export default class SubscriptionScreen extends React.Component {
                 marginBottom: 20,
                 color: '#000',
                 fontWeight: '600',
+                fontFamily: 'Danidin',
               }}>
               המנוי שלי
             </Text>
             <VerticalLayout style={styles.package_type}>
-              <Text style={{ fontSize: 16, lineHeight: 19, marginBottom: 5 }}>סוג החבילה</Text>
+              <Text
+                style={{ fontSize: 16, lineHeight: 19, marginBottom: 5, fontFamily: 'Danidin' }}>
+                סוג החבילה
+              </Text>
               <Text
                 style={{
                   fontSize: 16,
@@ -120,6 +125,7 @@ export default class SubscriptionScreen extends React.Component {
                   color: '#0D65D9',
                   marginBottom: 10,
                   fontWeight: '600',
+                  fontFamily: 'Danidin',
                 }}>
                 {this.state.packageType}
               </Text>
@@ -130,10 +136,14 @@ export default class SubscriptionScreen extends React.Component {
                   color: '#0D65D9',
                   textDecorationLine: 'underline',
                   marginBottom: 15,
+                  fontFamily: 'Danidin',
                 }}>
                 סוג החבילה
               </Text>
-              <Text style={{ fontSize: 16, lineHeight: 19, marginBottom: 5 }}>סוג החבילה</Text>
+              <Text
+                style={{ fontSize: 16, lineHeight: 19, marginBottom: 5, fontFamily: 'Danidin' }}>
+                סוג החבילה
+              </Text>
               <Text
                 style={{
                   fontSize: 16,
@@ -141,6 +151,7 @@ export default class SubscriptionScreen extends React.Component {
                   color: '#0D65D9',
                   marginBottom: 15,
                   fontWeight: '600',
+                  fontFamily: 'Danidin',
                 }}>
                 {this.state.nextBilling}
               </Text>
@@ -167,11 +178,21 @@ export default class SubscriptionScreen extends React.Component {
                     source={require('src/assets/image/ic_income_white.png')}
                     style={{ width: 12, height: 10, marginRight: 4 }}
                   />
-                  <Text style={{ fontSize: 16, lineHeight: 19, color: 'white', fontWeight: '600' }}>
+                  <Text
+                    style={{
+                      fontSize: 16,
+                      lineHeight: 19,
+                      color: 'white',
+                      fontWeight: '600',
+                      fontFamily: 'Danidin',
+                    }}>
                     {this.state.packageSum}
                   </Text>
                 </Button>
-                <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>סכום:</Text>
+                <Text
+                  style={{ fontSize: 16, lineHeight: 19, color: '#000', fontFamily: 'Danidin' }}>
+                  סכום:
+                </Text>
               </HorizontalLayout>
             </VerticalLayout>
             <Button
@@ -182,6 +203,7 @@ export default class SubscriptionScreen extends React.Component {
                   fontSize: 16,
                   lineHeight: 19,
                   color: '#0D65D9',
+                  fontFamily: 'Danidin',
                 }}>
                 רוצים לבטל את המנוי? לחצו כאן
               </Text>
@@ -198,7 +220,14 @@ export default class SubscriptionScreen extends React.Component {
                   borderTopRightRadius: 11,
                   paddingRight: 15,
                 }}>
-                <Text style={{ fontSize: 16, lineHeight: 16, color: 'white', fontWeight: '600' }}>
+                <Text
+                  style={{
+                    fontSize: 16,
+                    lineHeight: 16,
+                    color: 'white',
+                    fontWeight: '600',
+                    fontFamily: 'Danidin',
+                  }}>
                   תשלומים
                 </Text>
               </HorizontalLayout>
@@ -232,7 +261,7 @@ export default class SubscriptionScreen extends React.Component {
                             style={[
                               item.type === 'נכשל' && { color: '#FF7F7F' },
                               item.type === 'שולם' && { color: '#75A700' },
-                              { fontSize: 14, lineHeight: 22 },
+                              { fontSize: 14, lineHeight: 22, fontFamily: 'Danidin' },
                             ]}>
                             {item.type}
                           </Text>
@@ -253,6 +282,7 @@ export default class SubscriptionScreen extends React.Component {
                             lineHeight: 19,
                             fontWeight: '600',
                             color: '#000',
+                            fontFamily: 'Danidin',
                           }}>
                           {item.income}
                         </Text>
@@ -264,10 +294,17 @@ export default class SubscriptionScreen extends React.Component {
                             lineHeight: 19,
                             color: '#000',
                             fontWeight: '600',
+                            fontFamily: 'Danidin',
                           }}>
                           {item.name}
                         </Text>
-                        <Text style={{ fontSize: 14, lineHeight: 22, color: '#979797' }}>
+                        <Text
+                          style={{
+                            fontSize: 14,
+                            lineHeight: 22,
+                            color: '#979797',
+                            fontFamily: 'Danidin',
+                          }}>
                           {moment(item.date).format('hh:mm, DD.MM.YYYY')}
                         </Text>
                       </VerticalLayout>
@@ -298,6 +335,7 @@ export default class SubscriptionScreen extends React.Component {
                     marginRight: 17,
                     marginBottom: 15,
                     textDecorationLine: 'underline',
+                    fontFamily: 'Danidin',
                   }}>
                   ראו עוד
                 </Text>
@@ -315,6 +353,7 @@ export default class SubscriptionScreen extends React.Component {
                     lineHeight: 19,
                     color: '#0D65D9',
                     textDecorationLine: 'underline',
+                    fontFamily: 'Danidin',
                   }}>
                   מסמכים משפטים
                 </Text>
@@ -329,6 +368,7 @@ export default class SubscriptionScreen extends React.Component {
                     lineHeight: 19,
                     color: '#0D65D9',
                     textDecorationLine: 'underline',
+                    fontFamily: 'Danidin',
                   }}>
                   הסניפים שלנו
                 </Text>

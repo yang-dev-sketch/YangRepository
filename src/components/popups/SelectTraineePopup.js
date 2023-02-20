@@ -23,7 +23,7 @@ class SelectTraineePopup extends React.Component {
   }
 
   addParticipant = () => {
-    Toast.show(<ToastContainer title={this.state.selectedNum + " מתאמנים נוספו בהצלחה! "} />, {
+    Toast.show(<ToastContainer title={this.state.selectedNum + ' מתאמנים נוספו בהצלחה! '} />, {
       duration: 3000,
       position: 20,
       opacity: 1,
@@ -80,7 +80,14 @@ class SelectTraineePopup extends React.Component {
                   />
                 </Button>
               </HorizontalLayout>
-              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>
+              <Text
+                style={{
+                  fontSize: 18,
+                  lineHeight: 22,
+                  color: '#000',
+                  fontWeight: '600',
+                  fontFamily: 'Danidin',
+                }}>
                 עריכת מתאמנים: הוספה
               </Text>
             </HorizontalLayout>
@@ -128,7 +135,13 @@ class SelectTraineePopup extends React.Component {
                       />
                     )) || <View></View>}
                     <HorizontalLayout style={{ alignItems: 'center' }}>
-                      <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>
+                      <Text
+                        style={{
+                          fontSize: 16,
+                          lineHeight: 19,
+                          color: '#000',
+                          fontFamily: 'Danidin',
+                        }}>
                         {item.name}
                       </Text>
                       <FastImage

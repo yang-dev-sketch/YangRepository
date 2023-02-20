@@ -37,7 +37,7 @@ class CommonItem extends React.Component {
                 />
               )) || <View></View>}
             {this.props.leftText != '' && (
-              <Text numberOfLines={2} style={{ fontSize: 16, lineHeight: 22, color: '#979797' }}>
+              <Text numberOfLines={2} style={{ fontSize: 16, lineHeight: 22, color: '#979797', fontFamily: 'Danidin' }}>
                 {this.props.leftText}
               </Text>
             )}

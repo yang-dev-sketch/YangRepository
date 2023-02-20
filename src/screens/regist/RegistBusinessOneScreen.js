@@ -26,8 +26,8 @@ export default class RegistBusinessOneScreen extends AppScreen {
       hp: 'hp',
       companyName: 'company_name',
       firstPhone: '1',
-      secondPhone: '8508104265',
-      email: 'andasedev@hotmail.com',
+      secondPhone: '5555215554',
+      email: 'oleksandrbokii@gmail.com',
     };
   }
 
@@ -90,7 +90,7 @@ export default class RegistBusinessOneScreen extends AppScreen {
                 this.props.navigation.goBack();
               }}
               style={{ alignSelf: 'center', position: 'absolute', top: 60, left: 21 }}>
-              <Text style={{ fontSize: 14, lineHeight: 17, textDecorationLine: 'underline' }}>
+              <Text style={{ fontSize: 14, lineHeight: 17, textDecorationLine: 'underline', fontFamily: 'Danidin' }}>
                 הקודם
               </Text>
             </Button> */}
@@ -172,6 +172,7 @@ export default class RegistBusinessOneScreen extends AppScreen {
                     style={{ width: 70 }}
                     numberOfLines={1}
                     backgroundColor="#FFF"
+                    textAlignCenter={true}
                     maxLength={3}
                     value={this.state.firstPhone}
                     onChangeText={(text) => {

@@ -76,7 +76,7 @@ export default class PaymentScreen extends React.Component {
                 style={{ width: 27.12, height: 27.12 }}
               />
             </Button>
-            <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>
+            <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600', fontFamily: 'Danidin' }}>
               תשלומים
             </Text>
           </HorizontalLayout>
@@ -109,7 +109,7 @@ export default class PaymentScreen extends React.Component {
             }}>
             <HorizontalLayout
               style={{ alignItems: 'center', justifyContent: 'center', paddingVertical: 15 }}>
-              <Text style={{ fontSize: 16, lineHeight: 19 }}>חיוב ידני</Text>
+              <Text style={{ fontSize: 16, lineHeight: 19, fontFamily: 'Danidin' }}>חיוב ידני</Text>
               <LocalImage
                 source={require('src/assets/image/ic_plus_sign.png')}
                 style={{ width: 24, height: 24, marginLeft: 6 }}

@@ -92,7 +92,14 @@ class EditProductPopup extends React.Component {
                   style={{ width: 31, height: 31 }}
                 />
               </Button>
-              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>
+              <Text
+                style={{
+                  fontSize: 18,
+                  lineHeight: 22,
+                  color: '#000',
+                  fontWeight: '600',
+                  fontFamily: 'Danidin',
+                }}>
                 עריכה
               </Text>
             </HorizontalLayout>
@@ -125,7 +132,9 @@ class EditProductPopup extends React.Component {
                     />
                   )}
                 </Button>
-                <Text numberOfLines={2} style={{ fontSize: 16, lineHeight: 19 }}>
+                <Text
+                  numberOfLines={2}
+                  style={{ fontSize: 16, lineHeight: 19, fontFamily: 'Danidin' }}>
                   לוגו של העסק
                 </Text>
               </VerticalLayout>

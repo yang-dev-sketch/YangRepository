@@ -134,14 +134,14 @@ const styles = StyleSheet.create({
   labelCancel: {
     color: '#666666',
     fontSize: Dimens.fs_18,
-    fontFamily: FontFamily.korean_gd_15_r,
     includeFontPadding: false,
+    fontFamily: 'Danidin'
   },
   labelConfirm: {
     color: 'black',
     fontSize: Dimens.fs_18,
-    fontFamily: FontFamily.korean_gd_15_r,
     includeFontPadding: false,
+    fontFamily: 'Danidin'
   },
 });
 

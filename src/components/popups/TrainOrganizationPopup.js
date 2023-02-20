@@ -8,7 +8,7 @@ import SwipeUpDownModal from 'react-native-swipe-modal-up-down';
 import { ActiveButton, SearchInput } from '../common';
 import { API, MAIN_TAB, SCREEN_WIDTH } from '../../constants/Constants';
 import CommonItem from '../items/CommonItem';
-import GlobalState from "../../mobx/GlobalState";
+import GlobalState from '../../mobx/GlobalState';
 
 @observer
 class TrainOrganizationPopup extends React.Component {
@@ -69,7 +69,16 @@ class TrainOrganizationPopup extends React.Component {
                   style={{ width: 31, height: 31 }}
                 />
               </Button>
-              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>מתאמנים באירגון</Text>
+              <Text
+                style={{
+                  fontSize: 18,
+                  lineHeight: 22,
+                  color: '#000',
+                  fontWeight: '600',
+                  fontFamily: 'Danidin',
+                }}>
+                מתאמנים באירגון
+              </Text>
             </HorizontalLayout>
             <HorizontalLayout
               style={{ width: '100%', justifyContent: 'space-between', marginBottom: 15 }}>
@@ -93,7 +102,16 @@ class TrainOrganizationPopup extends React.Component {
                     justifyContent: 'center',
                   },
                 ]}>
-                <Text style={{ fontSize: 16, lineHeight: 19, color: '#1E6FD9', fontWeight: '600' }}>מחכים לאישור</Text>
+                <Text
+                  style={{
+                    fontSize: 16,
+                    lineHeight: 19,
+                    color: '#1E6FD9',
+                    fontWeight: '600',
+                    fontFamily: 'Danidin',
+                  }}>
+                  מחכים לאישור
+                </Text>
               </Button>
               <Button
                 onPress={() => {
@@ -115,7 +133,16 @@ class TrainOrganizationPopup extends React.Component {
                     justifyContent: 'center',
                   },
                 ]}>
-                <Text style={{ fontSize: 16, lineHeight: 19, color: '#1E6FD9', fontWeight: '600' }}>מתאמנים</Text>
+                <Text
+                  style={{
+                    fontSize: 16,
+                    lineHeight: 19,
+                    color: '#1E6FD9',
+                    fontWeight: '600',
+                    fontFamily: 'Danidin',
+                  }}>
+                  מתאמנים
+                </Text>
               </Button>
             </HorizontalLayout>
             <SearchInput
@@ -163,7 +190,10 @@ class TrainOrganizationPopup extends React.Component {
                   marginTop: 20,
                   marginBottom: 41.5,
                 }}>
-                <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>הוספת מתאמן</Text>
+                <Text
+                  style={{ fontSize: 16, lineHeight: 19, color: '#000', fontFamily: 'Danidin' }}>
+                  הוספת מתאמן
+                </Text>
                 <LocalImage
                   source={require('src/assets/image/ic_plus_sign.png')}
                   style={{ width: 24, height: 24, marginLeft: 6 }}

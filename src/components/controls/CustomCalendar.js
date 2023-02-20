@@ -42,7 +42,7 @@ const CustomHeaderComponent = ({ onPressLeft, title, onPressRight, sort, sortabl
             sort();
           }}>
           <HorizontalLayout style={{ alignItems: 'center' }}>
-            <Text style={{ color: '#000', fontSize: 16, lineHeight: 19 }}>סינון לפי</Text>
+            <Text style={{ color: '#000', fontSize: 16, lineHeight: 19, fontFamily: 'Danidin' }}>סינון לפי</Text>
             <LocalImage
               source={require('src/assets/image/ic_sort_black.png')}
               style={{ width: 24, height: 24 }}
@@ -60,10 +60,10 @@ const CustomHeaderComponent = ({ onPressLeft, title, onPressRight, sort, sortabl
             style={{ width: 9.17, height: 17.41, marginRight: 21.54 }}
           />
         </Button>
-        <Text style={{ fontSize: 18, lineHeight: 22, width: 50, textAlign: 'left', color: '#000' }}>
+        <Text style={{ fontSize: 18, lineHeight: 22, width: 50, textAlign: 'left', color: '#000', fontFamily: 'Danidin' }}>
           {customYear(title)}
         </Text>
-        <Text style={{ fontSize: 18, lineHeight: 22, width: 70, color: '#000' }}>
+        <Text style={{ fontSize: 18, lineHeight: 22, width: 70, color: '#000', fontFamily: 'Danidin' }}>
           {customTitle(title)}
         </Text>
         <Button

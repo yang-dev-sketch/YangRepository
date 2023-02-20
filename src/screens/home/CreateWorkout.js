@@ -15,8 +15,8 @@ import DropDownPicker from '../../components/controls/DropDownPicker';
 import DateDropDown from '../../components/controls/DateDropDown';
 import TimePicker from '../../components/controls/TimePicker';
 import GlobalState from '../../mobx/GlobalState';
-import ToastContainer from "../../components/controls/ToastContainer";
-import Toast from "react-native-root-toast";
+import ToastContainer from '../../components/controls/ToastContainer';
+import Toast from 'react-native-root-toast';
 
 @observer
 export default class CreateWorkout extends React.Component {
@@ -171,6 +171,7 @@ export default class CreateWorkout extends React.Component {
                           color: '#5C9DF2',
                           textDecorationLine: 'underline',
                           fontWeight: '600',
+                          fontFamily: 'Danidin',
                         }}>
                         סניף:{this.state.selectedBranch}
                       </Text>
@@ -191,6 +192,7 @@ export default class CreateWorkout extends React.Component {
                   lineHeight: 22,
                   color: '#000',
                   fontWeight: '600',
+                  fontFamily: 'Danidin',
                 }}>
                 יצירת אימון
               </Text>
@@ -288,11 +290,16 @@ export default class CreateWorkout extends React.Component {
                     style={{ width: 15.93, height: 15.93 }}
                   />
                 </Button>
-                <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>עריכת המשתתפים</Text>
+                <Text
+                  style={{ fontSize: 16, lineHeight: 19, color: '#000', fontFamily: 'Danidin' }}>
+                  עריכת המשתתפים
+                </Text>
               </HorizontalLayout>
             )}
             <HorizontalLayout style={{ alignItems: 'center', justifyContent: 'flex-end' }}>
-              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>יצירת אותו אימון</Text>
+              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000', fontFamily: 'Danidin' }}>
+                יצירת אותו אימון
+              </Text>
               <CheckBox
                 style={{ marginRight: -8 }}
                 value={this.state.createSameWorkout}
@@ -303,7 +310,9 @@ export default class CreateWorkout extends React.Component {
             </HorizontalLayout>
             <HorizontalLayout
               style={{ alignItems: 'center', justifyContent: 'flex-end', marginBottom: 45 }}>
-              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000' }}>אימון שקוף</Text>
+              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000', fontFamily: 'Danidin' }}>
+                אימון שקוף
+              </Text>
               <CheckBox
                 style={{ marginRight: -8 }}
                 value={this.state.payMethod}

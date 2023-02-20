@@ -108,7 +108,7 @@ export default class RegistBusinessTwoScreen extends AppScreen {
                 this.props.navigation.goBack();
               }}
               style={{ alignSelf: 'center', position: 'absolute', top: 60, left: 21 }}>
-              <Text style={{ fontSize: 14, lineHeight: 17, textDecorationLine: 'underline' }}>
+              <Text style={{ fontSize: 14, lineHeight: 17, textDecorationLine: 'underline', fontFamily: 'Danidin' }}>
                 הקודם
               </Text>
             </Button> */}
@@ -139,7 +139,14 @@ export default class RegistBusinessTwoScreen extends AppScreen {
                   />
                 )}
               </Button>
-              <Text style={{ fontSize: 14, lineHeight: 17, color: '#000', fontWeight: '400' }}>
+              <Text
+                style={{
+                  fontSize: 14,
+                  lineHeight: 17,
+                  color: '#000',
+                  fontWeight: '400',
+                  fontFamily: 'Danidin',
+                }}>
                 {Langs.regist.profile_image}
               </Text>
             </VerticalLayout>
@@ -160,7 +167,7 @@ export default class RegistBusinessTwoScreen extends AppScreen {
             />
             <SetValueGroup
               style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#F5F5F5' }]}
-              title={Langs.regist.branchName}
+              title={Langs.regist.branch_name}
               image={require('src/assets/image/ic_address.png')}
               inputNode={
                 <CommonInput
@@ -175,7 +182,7 @@ export default class RegistBusinessTwoScreen extends AppScreen {
             />
             <SetValueGroup
               style={[Styles.input_wrapper, { marginBottom: 15, backgroundColor: '#F5F5F5' }]}
-              title={Langs.regist.businessAddress}
+              title={Langs.regist.business_address}
               image={require('src/assets/image/ic_address.png')}
               inputNode={
                 <CommonInput
@@ -191,7 +198,14 @@ export default class RegistBusinessTwoScreen extends AppScreen {
             <HorizontalLayout
               style={{ alignItems: 'center', justifyContent: 'flex-end', marginBottom: 25 }}
               reverse={true}>
-              <Text style={{ fontSize: 16, lineHeight: 19, color: '#000', marginHorizontal: 7 }}>
+              <Text
+                style={{
+                  fontSize: 16,
+                  lineHeight: 19,
+                  color: '#000',
+                  marginHorizontal: 7,
+                  fontFamily: 'Danidin',
+                }}>
                 {Langs.regist.not_have_train_place}
               </Text>
               <CheckBox
@@ -209,6 +223,7 @@ export default class RegistBusinessTwoScreen extends AppScreen {
                 textAlign: 'center',
                 marginHorizontal: 57,
                 marginBottom: 45,
+                fontFamily: 'Danidin',
               }}
               numberOfLines={3}>
               {Langs.regist.if_branch_can_add_regist}

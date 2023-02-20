@@ -172,7 +172,7 @@ export default class PaymentMethodCard extends React.Component {
           <HorizontalLayout
             style={{ justifyContent: 'flex-end', width: '100%', alignItems: 'center' }}
             reverse={true}>
-            <Text style={{ fontSize: 16, lineHeight: 19.2, color: '#000', marginHorizontal: 7.67 }}>
+            <Text style={{ fontSize: 16, lineHeight: 19.2, color: '#000', marginHorizontal: 7.67, fontFamily: 'Danidin' }}>
               {Langs.regist.reserved_card}
             </Text>
             <LocalImage

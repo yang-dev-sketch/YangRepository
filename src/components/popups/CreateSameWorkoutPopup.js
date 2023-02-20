@@ -71,7 +71,7 @@ class CreateSameWorkoutpopup extends React.Component {
                   style={{ width: 27.12, height: 27.12 }}
                 />
               </Button>
-              <Text style={{ fontSize: 18, lineHeight: 22, fontWeight: '600', color: '#000' }}>
+              <Text style={{ fontSize: 18, lineHeight: 22, fontWeight: '600', color: '#000', fontFamily: 'Danidin' }}>
                 יצירת אותו אימון
               </Text>
             </HorizontalLayout>

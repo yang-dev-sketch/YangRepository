@@ -14,8 +14,8 @@ class LoginUserPopup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstPhone: '',
-      secondPhone: '',
+      firstPhone: '1',
+      secondPhone: '5555215554',
       verifyState: false,
     };
   }
@@ -57,7 +57,7 @@ class LoginUserPopup extends React.Component {
                   style={{ width: 31, height: 31 }}
                 />
               </Button>
-              <Text style={{ fontSize: 18, lineHeight: 22, fontWeight: '600', color: '#000' }}>
+              <Text style={{ fontSize: 18, lineHeight: 22, fontWeight: '600', color: '#000', fontFamily: 'Danidin' }}>
                 {Langs.regist.login_your_user}
               </Text>
             </HorizontalLayout>

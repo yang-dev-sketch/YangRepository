@@ -95,7 +95,7 @@ class TrainerOrganizationPopup extends React.Component {
                   />
                 </Button>
               </HorizontalLayout>
-              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600' }}>הסניפים שלנו</Text>
+              <Text style={{ fontSize: 18, lineHeight: 22, color: '#000', fontWeight: '600', fontFamily: 'Danidin' }}>הסניפים שלנו</Text>
             </HorizontalLayout>
             <SearchInput
               setSearch={(search) => {
@@ -139,7 +139,7 @@ class TrainerOrganizationPopup extends React.Component {
                       />
                     )) || <View></View>}
                     <HorizontalLayout style={{ alignItems: 'center' }}>
-                      <Text style={{ fontSize: 16, lineHeight: 19.2 }}>{item.name}</Text>
+                      <Text style={{ fontSize: 16, lineHeight: 19.2, fontFamily: 'Danidin' }}>{item.name}</Text>
                       {(this.state.modifyState && (
                         <FastImage
                           source={{ uri: data.avatar ? data.avatar : IMAGE_FOO_URL }}

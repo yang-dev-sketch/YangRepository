@@ -33,5 +33,5 @@ const styles = StyleSheet.create({
   //Empty List View
   emptyWrap: { height: 100, flex: 1, justifyContent: 'center', alignItems: 'center' },
   emptyLabelWrap: { alignSelf: 'stretch', marginHorizontal: 10, marginTop: 10 },
-  emptyLabel: { color: '#989898', textAlign: 'center' },
+  emptyLabel: { color: '#989898', textAlign: 'center', fontFamily: 'Danidin' },
 });

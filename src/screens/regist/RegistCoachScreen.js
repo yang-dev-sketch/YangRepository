@@ -27,7 +27,7 @@ export default class RegistCoachScreen extends AppScreen {
       lastName: 'lastname',
       email: 'oleksandrbokii@gmail.com',
       firstPhone: '1',
-      secondPhone: '5555215554',
+      secondPhone: '2345678912',
       birthday: '2000-01-01',
       genderType: [{ name: Langs.common.man }, { name: Langs.common.women }],
       selectedGender: Langs.common.man,
@@ -70,28 +70,30 @@ export default class RegistCoachScreen extends AppScreen {
     ) {
       Toast.show('Enter details to signup!');
     } else {
-      // auth()
-      //   .createUserWithEmailAndPassword(this.state.email, 'Fantasy123!@#')
-      //   .then((res) => {
-      //     res.user.updateProfile({
-      //       avatar: this.state.avatar,
-      //       displayName: this.state.firstName + this.state.lastName,
-      //       phone: this.state.firstPhone + this.state.secondPhone,
-      //       birthday: this.state.birthday,
-      //       gender: this.state.selectedGender,
-      //     });
+      auth()
+        .createUserWithEmailAndPassword(this.state.email, 'Fantasy123!@#')
+        .then((res) => {
+          res.user.updateProfile({
+            avatar: this.state.avatar,
+            displayName: this.state.firstName + this.state.lastName,
+            phone: this.state.firstPhone + this.state.secondPhone,
+            birthday: this.state.birthday,
+            gender: this.state.selectedGender,
+            height: this.state.height,
+            width: this.state.width
+          });
 
-      requestPost(API.Regist.regist_coach, {
-        avatar: this.state.avatar,
-        firstName: this.state.firstName,
-        lastName: this.state.lastName,
-        email: this.state.email,
-        phone: this.state.firstPhone + this.state.secondPhone,
-        birthday: this.state.birthday,
-        gender: this.state.selectedGender,
-        height: this.state.height,
-        weight: this.state.weight,
-      });
+      // requestPost(API.Regist.regist_coach, {
+      //   avatar: this.state.avatar,
+      //   firstName: this.state.firstName,
+      //   lastName: this.state.lastName,
+      //   email: this.state.email,
+      //   phone: this.state.firstPhone + this.state.secondPhone,
+      //   birthday: this.state.birthday,
+      //   gender: this.state.selectedGender,
+      //   height: this.state.height,
+      //   weight: this.state.weight,
+      // });
 
       this.setState({
         avatar: '',
@@ -102,28 +104,30 @@ export default class RegistCoachScreen extends AppScreen {
         secondPhone: '',
         birthday: '',
         selectedGender: 'איש',
+        height: '',
+        weight: ''
       });
       this.props.navigation.navigate('Login');
-      // })
-      // .catch((error) => {
-      //   if (error.code === 'auth/email-already-in-use') {
-      //     Toast.show('That email address is already in use!');
-      //   }
+      })
+      .catch((error) => {
+        if (error.code === 'auth/email-already-in-use') {
+          Toast.show('That email address is already in use!');
+        }
 
-      //   if (error.code === 'auth/invalid-email') {
-      //     Toast.show('That email address is invalid!');
-      //   }
+        if (error.code === 'auth/invalid-email') {
+          Toast.show('That email address is invalid!');
+        }
 
-      //   if (error.code === 'auth/weak-password') {
-      //     Toast.show('Password should be at least 6 characters');
-      //   }
+        if (error.code === 'auth/weak-password') {
+          Toast.show('Password should be at least 6 characters');
+        }
 
-      //   if (error.code === 'auth/email-already-in-use') {
-      //     Toast.show('The email address is already in use by another account.');
-      //   }
+        if (error.code === 'auth/email-already-in-use') {
+          Toast.show('The email address is already in use by another account.');
+        }
 
-      //   console.error(error);
-      // });
+        console.error(error);
+      });
     }
   };
 
@@ -250,6 +254,7 @@ export default class RegistCoachScreen extends AppScreen {
                     numberOfLines={1}
                     backgroundColor="#FFF"
                     maxLength={3}
+                    textAlignCenter={true}
                     value={this.state.firstPhone}
                     onChangeText={(text) => {
                       this.setState({ firstPhone: text });

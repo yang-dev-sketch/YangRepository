@@ -24,19 +24,30 @@ export default class LoginScreen extends AppScreen {
     this.state = {
       type: this.props.navigation.getParam('type'),
       firstPhone: '1',
-      secondPhone: '5555215554',
+      secondPhone: '3232879385',
       code: '',
       confirm: null,
       verifyState: false,
-      faceSupport: true,
-      touchSupport: true,
+      faceSupport: false,
+      touchSupport: false,
+      isAuth: false,
     };
   }
 
-  componentDidMount() {
-    // TouchID.isSupported()
+  componentDidMount = () => {
+    // const optionalConfigObject = {
+    //   title: 'Provide Your Touch ID', // Android
+    //   imageColor: '#e00606', // Android
+    //   imageErrorColor: '#ff0000', // Android
+    //   sensorDescription: 'Touch sensor', // Android
+    //   sensorErrorDescription: 'Failed', // Android
+    //   cancelText: 'Cancel', // Android
+    //   fallbackLabel: 'Show Passcode', // iOS (if empty, then label is hidden)
+    //   unifiedErrors: false, // use unified error messages (default false)
+    //   passcodeFallback: false, // iOS - allows the device to fall back to using the passcode, if faceid/touch is not available. this does not mean that if touchid/faceid fails the first few times it will revert to passcode, rather that if the former are not enrolled, then it will use the passcode.
+    // };
+    // TouchID.isSupported(optionalConfigObject)
     //   .then((biometryType) => {
-    //     console.log(biometryType);
     //     if (biometryType === 'FaceID') {
     //       this.setState({ faceSupport: true });
     //     } else if (biometryType === 'TouchID') {
@@ -47,70 +58,67 @@ export default class LoginScreen extends AppScreen {
     //     }
     //   })
     //   .catch((error) => {
-    //     console.log(error);
-    //     this.setState({ faceSupport: false, touchSupport: false });
+    //     // Failure code if the user's device does not have touchID or faceID enabled
+    //     console.log('error: ', error);
     //   });
-  }
+  };
 
-  signInWithPhoneNumber = () => {
+  signInWithPhoneNumber = async () => {
     const phoneNumber = '+' + this.state.firstPhone + this.state.secondPhone;
-    console.log(phoneNumber);
     const confirmation = auth()
       .signInWithPhoneNumber(phoneNumber)
+      .then(() => {
+        this.setState({ verifyState: true });
+      })
       .catch((error) => {
+        console.log(error);
         if (error.code == 'auth/invalid-phone-number') {
           console.log('The format of the phone number provided is incorrect.');
         }
       });
-    console.log(confirmation);
-    this.setState({ verifyState: true, confirm: confirmation });
+    console.log('confirmation: ', confirmation);
+    if (confirmation) {
+      this.setState({ confirm: confirmation });
+    }
   };
 
-  confirmCode = () => {
-    // const credential = auth.PhoneAuthProvider.credential(this.state.confirm.verificationId, this.state.code);
-    // let userData = auth()
-    //   .currentUser.linkWithCredential(credential)
-    //   .catch((error) => {
-    //     if (error.code == 'auth/invalid-verification-code') {
-    //       console.log('Invalid code.');
-    //     } else {
-    //       console.log('Account linking error');
-    //     }
-    //   });
-    // console.log(userData.user);
+  confirmCode = async () => {
+    try {
+      let data = await this.state.confirm.confirm(this.state.code);
+      console.log('data: ', data);
+      this.setState({ verifyState: false });
+      this.props.navigation.navigate('Facial');
+    } catch (error) {
+      if (error.code == 'auth/invalid-verification-code') {
+        console.log('Invalid code.');
+      } else {
+        console.log('Account linking error');
+      }
+    }
   };
 
-  pressHandler = () => {
-    //config is optional to be passed in on Android
+  handleBiometric = () => {
     const optionalConfigObject = {
-      title: 'Authentication Required', // Android
-      color: '#e00606', // Android,
+      title: 'Provide Your Touch ID', // Android
+      imageColor: '#e00606', // Android
+      imageErrorColor: '#ff0000', // Android
+      sensorDescription: 'Touch sensor', // Android
+      sensorErrorDescription: 'Failed', // Android
+      cancelText: 'Cancel', // Android
       fallbackLabel: 'Show Passcode', // iOS (if empty, then label is hidden)
+      unifiedErrors: false, // use unified error messages (default false)
+      passcodeFallback: false, // iOS - allows the device to fall back to using the passcode, if faceid/touch is not available. this does not mean that if touchid/faceid fails the first few times it will revert to passcode, rather that if the former are not enrolled, then it will use the passcode.
     };
-    TouchID.authenticate('to demo this react-native component', optionalConfigObject)
+    if (this.state.isAuth) {
+      return null;
+    }
+    TouchId.authenticate('', optionalConfigObject)
       .then((success) => {
-        Toast.show('Authenticated Successfully');
+        this.setState({ isAuth: success });
+        this.props.navigation.navigate('Main');
       })
-      .catch((error) => {
-        Toast.show('Authentication Failed');
-      });
-  };
-
-  clickHandler = () => {
-    TouchID.isSupported()
-      .then((biometryType) => {
-        // Success code
-        if (biometryType === 'FaceID') {
-          console.log('FaceID is supported.');
-        } else if (biometryType === 'TouchID') {
-          console.log('TouchID is supported.');
-        } else if (biometryType === true) {
-          // Touch ID is supported on Android
-        }
-      })
-      .catch((error) => {
-        // Failure code if the user's device does not have touchID or faceID enabled
-        console.log(error);
+      .catch((err) => {
+        Toast.show('Error: ', err);
       });
   };
 
@@ -220,7 +228,7 @@ export default class LoginScreen extends AppScreen {
                 {this.state.touchSupport && (
                   <Button
                     onPress={() => {
-                      this.pressHandler();
+                      this.handleBiometric();
                     }}>
                     <LocalImage
                       source={require('src/assets/image/ic_fingerprint.png')}
@@ -290,7 +298,7 @@ export default class LoginScreen extends AppScreen {
                     <CommonInput
                       numberOfLines={1}
                       backgroundColor="#FFF"
-                      maxLength={10}
+                      maxLength={6}
                       value={this.state.code}
                       onChangeText={(text) => {
                         this.setState({ code: text });
@@ -302,8 +310,9 @@ export default class LoginScreen extends AppScreen {
                   text={Langs.common.entrance}
                   style={{ width: '100%', marginBottom: 15 }}
                   action={() => {
-                    this.confirmCode();
-                    this.props.navigation.navigate('Facial');
+                    if (this.state.code.length === 6) {
+                      this.confirmCode();
+                    }
                   }}
                 />
               </>

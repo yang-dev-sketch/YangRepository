@@ -16,8 +16,35 @@ import { ActiveButton, DisactiveButton } from '../../components/common';
 export default class FacialRecogScreen extends AppScreen {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      isAuth: false,
+    };
   }
+
+  handleBiometric = () => {
+    const optionalConfigObject = {
+      title: 'Provide Your Touch ID', // Android
+      imageColor: '#e00606', // Android
+      imageErrorColor: '#ff0000', // Android
+      sensorDescription: 'Touch sensor', // Android
+      sensorErrorDescription: 'Failed', // Android
+      cancelText: 'Cancel', // Android
+      fallbackLabel: 'Show Passcode', // iOS (if empty, then label is hidden)
+      unifiedErrors: false, // use unified error messages (default false)
+      passcodeFallback: false, // iOS - allows the device to fall back to using the passcode, if faceid/touch is not available. this does not mean that if touchid/faceid fails the first few times it will revert to passcode, rather that if the former are not enrolled, then it will use the passcode.
+    };
+    if (this.state.isAuth) {
+      return null;
+    }
+    TouchId.authenticate('', optionalConfigObject)
+      .then((success) => {
+        this.setState({ isAuth: success });
+        this.props.navigation.navigate('FaceApproval');
+      })
+      .catch((err) => {
+        Toast.show('Error: ', err);
+      });
+  };
 
   render() {
     return (
@@ -85,17 +112,16 @@ export default class FacialRecogScreen extends AppScreen {
                 text={Langs.regist.agree}
                 style={{ width: '100%', marginBottom: 40 }}
                 action={() => {
-                  this.props.navigation.goBack();
+                  this.handleBiometric();
                 }}
               />
             </View>
             <View style={{ width: (SCREEN_WIDTH - 65) / 2 }}>
               <DisactiveButton
                 text={Langs.regist.no_thanks}
-                image={true}
                 style={{ width: '100%', marginBottom: 40 }}
                 action={() => {
-                  this.props.navigation.navigate('FaceApproval');
+                  this.props.navigation.goBack();
                 }}
               />
             </View>

@@ -65,7 +65,7 @@ export default class SetValueGroup extends React.Component {
                 )) || <View></View>}
             <HorizontalLayout style={{ alignItems: 'center' }} reverse={true}>
               <Text
-                style={[{ fontSize: 16, lineHeight: 19, color: '#6F6F6F', fontWeight: '400' }, this.props.textStyle]}>
+                style={[{ fontSize: 16, lineHeight: 19, color: '#6F6F6F', fontWeight: '400', fontFamily: 'Danidin' }, this.props.textStyle]}>
                 {this.props.title}
               </Text>
               {this.props.image && (

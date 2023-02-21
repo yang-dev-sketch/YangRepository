@@ -134,7 +134,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.astraderves.gyme"
+        applicationId "com.astraverdes.gyme"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

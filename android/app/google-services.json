@@ -1,33 +1,41 @@
 {
   "project_info": {
-    "project_number": "685033681152",
-    "project_id": "gyme-8e03c",
-    "storage_bucket": "gyme-8e03c.appspot.com"
+    "project_number": "796299838236",
+    "project_id": "gyme-80355",
+    "storage_bucket": "gyme-80355.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:685033681152:android:9fe991dc53b74dd87643e5",
+        "mobilesdk_app_id": "1:796299838236:android:8537d84bd983c38d0ab0d9",
         "android_client_info": {
-          "package_name": "com.astraderves.gyme"
+          "package_name": "com.astraverdes.gyme"
         }
       },
       "oauth_client": [
         {
-          "client_id": "685033681152-nti6r5lh65a097ahtpguocruo04clp9e.apps.googleusercontent.com",
+          "client_id": "796299838236-4hs58sku0oivcsomhr443tgialm7e9k9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.astraverdes.gyme",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "796299838236-qnkvctc1ubhge8e6feio0pm5bd1fhdbb.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBxEAMS0uFd56gtFYuQ4xE_Xu3VAiDLj7U"
+          "current_key": "AIzaSyCQARraX0aODpnbTQ6hfcWj0hx6bA3giUs"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "685033681152-nti6r5lh65a097ahtpguocruo04clp9e.apps.googleusercontent.com",
+              "client_id": "796299838236-qnkvctc1ubhge8e6feio0pm5bd1fhdbb.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

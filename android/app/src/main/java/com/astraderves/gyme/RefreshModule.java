@@ -1,4 +1,4 @@
-package com.astraderves.gyme;
+package com.astraverdes.gyme;
 
 import android.content.Intent;
 import android.net.Uri;

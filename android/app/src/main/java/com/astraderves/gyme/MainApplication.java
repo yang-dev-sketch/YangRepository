@@ -1,4 +1,4 @@
-package com.astraderves.gyme;
+package com.astraverdes.gyme;
 
 import android.app.Application;
 import android.content.Context;
@@ -17,6 +17,7 @@ import java.util.List;
 import com.eko.RNBackgroundDownloaderPackage;
 import com.reactnativecommunity.art.ARTPackage;
 import com.facebook.react.views.text.ReactFontManager;
+import com.facebook.react.BuildConfig;
 
 // import com.facebook.react.modules.i18nmanager.I18nUtil; //<== AmerllicA config
 

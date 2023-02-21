@@ -12,15 +12,15 @@ target 'gyme' do
     :hermes_enabled => false
   )
 
-  pod 'Stripe', '~> 14.0.0'
+  # pod 'Stripe', '~> 14.0.0'
 
-  pod 'Firebase/Core'
-  pod 'Firebase/Auth'
-  pod 'Firebase/Database'
-  pod 'Firebase/Firestore'
-  pod 'Firebase/Messaging'
-  pod 'Firebase/Performance'
-  pod 'Firebase/Storage'
+  # pod 'Firebase/Core'
+  # pod 'Firebase/Auth'
+  # pod 'Firebase/Database'
+  # pod 'Firebase/Firestore'
+  # pod 'Firebase/Messaging'
+  # pod 'Firebase/Performance'
+  # pod 'Firebase/Storage'
 
   pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
 

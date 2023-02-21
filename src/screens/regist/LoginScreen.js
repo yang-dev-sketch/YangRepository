@@ -35,32 +35,32 @@ export default class LoginScreen extends AppScreen {
   }
 
   componentDidMount = () => {
-    const optionalConfigObject = {
-      title: 'Provide Your Touch ID', // Android
-      imageColor: '#e00606', // Android
-      imageErrorColor: '#ff0000', // Android
-      sensorDescription: 'Touch sensor', // Android
-      sensorErrorDescription: 'Failed', // Android
-      cancelText: 'Cancel', // Android
-      fallbackLabel: 'Show Passcode', // iOS (if empty, then label is hidden)
-      unifiedErrors: false, // use unified error messages (default false)
-      passcodeFallback: false, // iOS - allows the device to fall back to using the passcode, if faceid/touch is not available. this does not mean that if touchid/faceid fails the first few times it will revert to passcode, rather that if the former are not enrolled, then it will use the passcode.
-    };
-    TouchID.isSupported(optionalConfigObject)
-      .then((biometryType) => {
-        if (biometryType === 'FaceID') {
-          this.setState({ faceSupport: true });
-        } else if (biometryType === 'TouchID') {
-          this.setState({ touchSupport: true });
-        } else if (biometryType === true) {
-          // Touch ID is supported on Android
-          this.setState({ faceSupport: true, touchSupport: true });
-        }
-      })
-      .catch((error) => {
-        // Failure code if the user's device does not have touchID or faceID enabled
-        console.log('error: ', error);
-      });
+    // const optionalConfigObject = {
+    //   title: 'Provide Your Touch ID', // Android
+    //   imageColor: '#e00606', // Android
+    //   imageErrorColor: '#ff0000', // Android
+    //   sensorDescription: 'Touch sensor', // Android
+    //   sensorErrorDescription: 'Failed', // Android
+    //   cancelText: 'Cancel', // Android
+    //   fallbackLabel: 'Show Passcode', // iOS (if empty, then label is hidden)
+    //   unifiedErrors: false, // use unified error messages (default false)
+    //   passcodeFallback: false, // iOS - allows the device to fall back to using the passcode, if faceid/touch is not available. this does not mean that if touchid/faceid fails the first few times it will revert to passcode, rather that if the former are not enrolled, then it will use the passcode.
+    // };
+    // TouchID.isSupported(optionalConfigObject)
+    //   .then((biometryType) => {
+    //     if (biometryType === 'FaceID') {
+    //       this.setState({ faceSupport: true });
+    //     } else if (biometryType === 'TouchID') {
+    //       this.setState({ touchSupport: true });
+    //     } else if (biometryType === true) {
+    //       // Touch ID is supported on Android
+    //       this.setState({ faceSupport: true, touchSupport: true });
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     // Failure code if the user's device does not have touchID or faceID enabled
+    //     console.log('error: ', error);
+    //   });
   };
 
   signInWithPhoneNumber = async () => {
